@@ -1,0 +1,362 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED5391DB1DA5772100071709 /* FZYanSJW.TTF in Resources */ = {isa = PBXBuildFile; fileRef = EDB1F92C1DA561FC00540AEA /* FZYanSJW.TTF */; };
+		ED5391DE1DA580E100071709 /* AlarmClockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391DD1DA580E100071709 /* AlarmClockCell.swift */; };
+		ED5391E01DA5841900071709 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391DF1DA5841900071709 /* Global.swift */; };
+		ED5391E21DA5845D00071709 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391E11DA5845D00071709 /* Extensions.swift */; };
+		ED5391E61DA5899F00071709 /* AlarmClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391E51DA5899F00071709 /* AlarmClockModel.swift */; };
+		EDB1F91A1DA55E6B00540AEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB1F9191DA55E6B00540AEA /* AppDelegate.swift */; };
+		EDB1F91C1DA55E6B00540AEA /* AlarmClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB1F91B1DA55E6B00540AEA /* AlarmClockViewController.swift */; };
+		EDB1F91F1DA55E6B00540AEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDB1F91D1DA55E6B00540AEA /* Main.storyboard */; };
+		EDB1F9211DA55E6B00540AEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDB1F9201DA55E6B00540AEA /* Assets.xcassets */; };
+		EDB1F9241DA55E6B00540AEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDB1F9221DA55E6B00540AEA /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		ED5391DD1DA580E100071709 /* AlarmClockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmClockCell.swift; sourceTree = "<group>"; };
+		ED5391DF1DA5841900071709 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		ED5391E11DA5845D00071709 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		ED5391E51DA5899F00071709 /* AlarmClockModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmClockModel.swift; sourceTree = "<group>"; };
+		EDB1F9161DA55E6B00540AEA /* CoupleTimezones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoupleTimezones.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDB1F9191DA55E6B00540AEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EDB1F91B1DA55E6B00540AEA /* AlarmClockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmClockViewController.swift; sourceTree = "<group>"; };
+		EDB1F91E1DA55E6B00540AEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EDB1F9201DA55E6B00540AEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDB1F9231DA55E6B00540AEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EDB1F9251DA55E6B00540AEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDB1F92C1DA561FC00540AEA /* FZYanSJW.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = FZYanSJW.TTF; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDB1F9131DA55E6A00540AEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED5391DC1DA580C400071709 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ED5391DD1DA580E100071709 /* AlarmClockCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		ED5391E31DA5898300071709 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED5391E51DA5899F00071709 /* AlarmClockModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		ED5391E41DA5898700071709 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EDB1F91B1DA55E6B00540AEA /* AlarmClockViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		EDB1F90D1DA55E6A00540AEA = {
+			isa = PBXGroup;
+			children = (
+				EDB1F9181DA55E6B00540AEA /* CoupleTimezones */,
+				EDB1F9171DA55E6B00540AEA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDB1F9171DA55E6B00540AEA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDB1F9161DA55E6B00540AEA /* CoupleTimezones.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDB1F9181DA55E6B00540AEA /* CoupleTimezones */ = {
+			isa = PBXGroup;
+			children = (
+				EDB1F92B1DA55ED100540AEA /* AlarmClock */,
+				EDB1F9191DA55E6B00540AEA /* AppDelegate.swift */,
+				EDB1F91D1DA55E6B00540AEA /* Main.storyboard */,
+				EDB1F92C1DA561FC00540AEA /* FZYanSJW.TTF */,
+				EDB1F9201DA55E6B00540AEA /* Assets.xcassets */,
+				EDB1F9221DA55E6B00540AEA /* LaunchScreen.storyboard */,
+				EDB1F9251DA55E6B00540AEA /* Info.plist */,
+				ED5391DF1DA5841900071709 /* Global.swift */,
+				ED5391E11DA5845D00071709 /* Extensions.swift */,
+			);
+			path = CoupleTimezones;
+			sourceTree = "<group>";
+		};
+		EDB1F92B1DA55ED100540AEA /* AlarmClock */ = {
+			isa = PBXGroup;
+			children = (
+				ED5391E41DA5898700071709 /* Controllers */,
+				ED5391E31DA5898300071709 /* Models */,
+				ED5391DC1DA580C400071709 /* Views */,
+			);
+			name = AlarmClock;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDB1F9151DA55E6A00540AEA /* CoupleTimezones */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDB1F9281DA55E6B00540AEA /* Build configuration list for PBXNativeTarget "CoupleTimezones" */;
+			buildPhases = (
+				EDB1F9121DA55E6A00540AEA /* Sources */,
+				EDB1F9131DA55E6A00540AEA /* Frameworks */,
+				EDB1F9141DA55E6A00540AEA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoupleTimezones;
+			productName = CoupleTimezones;
+			productReference = EDB1F9161DA55E6B00540AEA /* CoupleTimezones.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDB1F90E1DA55E6A00540AEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = Ant;
+				TargetAttributes = {
+					EDB1F9151DA55E6A00540AEA = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = SLMFH6GDG4;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = EDB1F9111DA55E6A00540AEA /* Build configuration list for PBXProject "CoupleTimezones" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDB1F90D1DA55E6A00540AEA;
+			productRefGroup = EDB1F9171DA55E6B00540AEA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDB1F9151DA55E6A00540AEA /* CoupleTimezones */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDB1F9141DA55E6A00540AEA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED5391DB1DA5772100071709 /* FZYanSJW.TTF in Resources */,
+				EDB1F9241DA55E6B00540AEA /* LaunchScreen.storyboard in Resources */,
+				EDB1F9211DA55E6B00540AEA /* Assets.xcassets in Resources */,
+				EDB1F91F1DA55E6B00540AEA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDB1F9121DA55E6A00540AEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED5391E21DA5845D00071709 /* Extensions.swift in Sources */,
+				ED5391E01DA5841900071709 /* Global.swift in Sources */,
+				ED5391E61DA5899F00071709 /* AlarmClockModel.swift in Sources */,
+				EDB1F91C1DA55E6B00540AEA /* AlarmClockViewController.swift in Sources */,
+				ED5391DE1DA580E100071709 /* AlarmClockCell.swift in Sources */,
+				EDB1F91A1DA55E6B00540AEA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EDB1F91D1DA55E6B00540AEA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDB1F91E1DA55E6B00540AEA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EDB1F9221DA55E6B00540AEA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDB1F9231DA55E6B00540AEA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDB1F9261DA55E6B00540AEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDB1F9271DA55E6B00540AEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EDB1F9291DA55E6B00540AEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SLMFH6GDG4;
+				INFOPLIST_FILE = CoupleTimezones/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.chengkang.CoupleTimezones;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		EDB1F92A1DA55E6B00540AEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SLMFH6GDG4;
+				INFOPLIST_FILE = CoupleTimezones/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.chengkang.CoupleTimezones;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDB1F9111DA55E6A00540AEA /* Build configuration list for PBXProject "CoupleTimezones" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDB1F9261DA55E6B00540AEA /* Debug */,
+				EDB1F9271DA55E6B00540AEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDB1F9281DA55E6B00540AEA /* Build configuration list for PBXNativeTarget "CoupleTimezones" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDB1F9291DA55E6B00540AEA /* Debug */,
+				EDB1F92A1DA55E6B00540AEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDB1F90E1DA55E6A00540AEA /* Project object */;
+}
