@@ -12,6 +12,15 @@
 		ED5391E01DA5841900071709 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391DF1DA5841900071709 /* Global.swift */; };
 		ED5391E21DA5845D00071709 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391E11DA5845D00071709 /* Extensions.swift */; };
 		ED5391E61DA5899F00071709 /* AlarmClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391E51DA5899F00071709 /* AlarmClockModel.swift */; };
+		ED5392091DA64C2800071709 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5392081DA64C2800071709 /* UserData.swift */; };
+		ED53920B1DA6513000071709 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED53920A1DA6513000071709 /* Helpers.swift */; };
+		ED53920D1DA652B100071709 /* NewAlarmClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED53920C1DA652B100071709 /* NewAlarmClockViewController.swift */; };
+		ED53920F1DA65BEF00071709 /* RatioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED53920E1DA65BEF00071709 /* RatioView.swift */; };
+		ED5392111DA6600F00071709 /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5392101DA6600F00071709 /* SwitchView.swift */; };
+		ED5392141DA6811600071709 /* DayInWeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5392131DA6811600071709 /* DayInWeekCell.swift */; };
+		ED5392161DA6832900071709 /* SelectRepeatDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5392151DA6832900071709 /* SelectRepeatDayViewController.swift */; };
+		ED5392181DA6CDF400071709 /* EditTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5392171DA6CDF400071709 /* EditTagViewController.swift */; };
+		ED53921A1DA6D62800071709 /* NoContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5392191DA6D62800071709 /* NoContentCell.swift */; };
 		EDB1F91A1DA55E6B00540AEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB1F9191DA55E6B00540AEA /* AppDelegate.swift */; };
 		EDB1F91C1DA55E6B00540AEA /* AlarmClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB1F91B1DA55E6B00540AEA /* AlarmClockViewController.swift */; };
 		EDB1F91F1DA55E6B00540AEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDB1F91D1DA55E6B00540AEA /* Main.storyboard */; };
@@ -24,6 +33,15 @@
 		ED5391DF1DA5841900071709 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		ED5391E11DA5845D00071709 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		ED5391E51DA5899F00071709 /* AlarmClockModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmClockModel.swift; sourceTree = "<group>"; };
+		ED5392081DA64C2800071709 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		ED53920A1DA6513000071709 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		ED53920C1DA652B100071709 /* NewAlarmClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAlarmClockViewController.swift; sourceTree = "<group>"; };
+		ED53920E1DA65BEF00071709 /* RatioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatioView.swift; sourceTree = "<group>"; };
+		ED5392101DA6600F00071709 /* SwitchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
+		ED5392131DA6811600071709 /* DayInWeekCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayInWeekCell.swift; sourceTree = "<group>"; };
+		ED5392151DA6832900071709 /* SelectRepeatDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRepeatDayViewController.swift; sourceTree = "<group>"; };
+		ED5392171DA6CDF400071709 /* EditTagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTagViewController.swift; sourceTree = "<group>"; };
+		ED5392191DA6D62800071709 /* NoContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoContentCell.swift; sourceTree = "<group>"; };
 		EDB1F9161DA55E6B00540AEA /* CoupleTimezones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoupleTimezones.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDB1F9191DA55E6B00540AEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDB1F91B1DA55E6B00540AEA /* AlarmClockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmClockViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +67,10 @@
 			isa = PBXGroup;
 			children = (
 				ED5391DD1DA580E100071709 /* AlarmClockCell.swift */,
+				ED53920E1DA65BEF00071709 /* RatioView.swift */,
+				ED5392101DA6600F00071709 /* SwitchView.swift */,
+				ED5392131DA6811600071709 /* DayInWeekCell.swift */,
+				ED5392191DA6D62800071709 /* NoContentCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -65,6 +87,9 @@
 			isa = PBXGroup;
 			children = (
 				EDB1F91B1DA55E6B00540AEA /* AlarmClockViewController.swift */,
+				ED53920C1DA652B100071709 /* NewAlarmClockViewController.swift */,
+				ED5392151DA6832900071709 /* SelectRepeatDayViewController.swift */,
+				ED5392171DA6CDF400071709 /* EditTagViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -88,6 +113,10 @@
 		EDB1F9181DA55E6B00540AEA /* CoupleTimezones */ = {
 			isa = PBXGroup;
 			children = (
+				ED5392081DA64C2800071709 /* UserData.swift */,
+				ED5391DF1DA5841900071709 /* Global.swift */,
+				ED53920A1DA6513000071709 /* Helpers.swift */,
+				ED5391E11DA5845D00071709 /* Extensions.swift */,
 				EDB1F92B1DA55ED100540AEA /* AlarmClock */,
 				EDB1F9191DA55E6B00540AEA /* AppDelegate.swift */,
 				EDB1F91D1DA55E6B00540AEA /* Main.storyboard */,
@@ -95,8 +124,6 @@
 				EDB1F9201DA55E6B00540AEA /* Assets.xcassets */,
 				EDB1F9221DA55E6B00540AEA /* LaunchScreen.storyboard */,
 				EDB1F9251DA55E6B00540AEA /* Info.plist */,
-				ED5391DF1DA5841900071709 /* Global.swift */,
-				ED5391E11DA5845D00071709 /* Extensions.swift */,
 			);
 			path = CoupleTimezones;
 			sourceTree = "<group>";
@@ -187,10 +214,19 @@
 			files = (
 				ED5391E21DA5845D00071709 /* Extensions.swift in Sources */,
 				ED5391E01DA5841900071709 /* Global.swift in Sources */,
+				ED5392091DA64C2800071709 /* UserData.swift in Sources */,
+				ED5392141DA6811600071709 /* DayInWeekCell.swift in Sources */,
+				ED53920B1DA6513000071709 /* Helpers.swift in Sources */,
 				ED5391E61DA5899F00071709 /* AlarmClockModel.swift in Sources */,
 				EDB1F91C1DA55E6B00540AEA /* AlarmClockViewController.swift in Sources */,
+				ED53920D1DA652B100071709 /* NewAlarmClockViewController.swift in Sources */,
+				ED5392111DA6600F00071709 /* SwitchView.swift in Sources */,
+				ED5392181DA6CDF400071709 /* EditTagViewController.swift in Sources */,
+				ED53921A1DA6D62800071709 /* NoContentCell.swift in Sources */,
+				ED53920F1DA65BEF00071709 /* RatioView.swift in Sources */,
 				ED5391DE1DA580E100071709 /* AlarmClockCell.swift in Sources */,
 				EDB1F91A1DA55E6B00540AEA /* AppDelegate.swift in Sources */,
+				ED5392161DA6832900071709 /* SelectRepeatDayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

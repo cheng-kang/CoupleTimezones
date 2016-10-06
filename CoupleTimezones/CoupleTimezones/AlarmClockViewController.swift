@@ -28,43 +28,51 @@ class AlarmClockViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // fake data
-        tabledata.append(AlarmClockModel(withId: "a",
-                                         period: "上午",
-                                         time: "04:40",
-                                         location: "洛杉矶",
-                                         content: "要去机场了！！！",
-                                         isActive: true,
-                                         days: [true, true, false, false, true, false, true])
-        )
-        tabledata.append(AlarmClockModel(withId: "b",
-                                         period: "上午",
-                                         time: "08:30",
-                                         location: "洛杉矶",
-                                         content: "宝贝早上没有第一节课，所以晚点叫她",
-                                         isActive: true,
-                                         days: [true, true, true, true, true, true, true])
-        )
-        tabledata.append(AlarmClockModel(withId: "c",
-                                         period: "上午",
-                                         time: "12:30",
-                                         location: "洛杉矶",
-                                         content: "宝贝要吃饭啦！！！",
-                                         isActive: true,
-                                         days: [false, false, false, false, true, false, true])
-        )
+        UserDefaults.standard.removeObject(forKey: "AlarmClock")
+        UserDefaults.standard.synchronize()
+        
+        print(UserDefaults.standard.object(forKey: "AlarmClock"))
+        self.reloadData()
         
         // init tableview
         tableview.dataSource = self
         tableview.delegate = self
         tableview.tableFooterView = UIView()
+        
+        // add notification reciever
+        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadData), name: NSNotification.Name(rawValue: "AlarmClockDataSynchronized"), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "AlarmClockDataSynchronized"), object: nil)
+    }
+    
+    // reload data from user defaults
+    func reloadData() {
+        self.tabledata = UserData.sharedInstance.getAlarmClock()
+    }
+    
+    // save data to user defaults
+    func saveData() {
+        if UserData.sharedInstance.updateAlarmClock(withList: self.tabledata) {
+            Helpers.sharedInstance.toast(withString: "Success")
+        } else {
+            Helpers.sharedInstance.toast(withString: "Fail")
+        }
+    }
 
+    @IBAction func addBtnClick(_ sender: UIButton) {
+        let vc = NewAlarmClockViewController.vc {
+            // some callback thing
+        }
+        self.present(vc, animated: true, completion: nil)
+    }
+    
 
 }
 
@@ -74,7 +82,7 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tabledata.count
+        return tabledata.count == 0 ? 1 : tabledata.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -83,25 +91,40 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmClockCell") as! AlarmClockCell
-        
-        cell.configureCell(withAlarmClockData: tabledata[indexPath.row])
-        
-        return cell
+        if tabledata.count > 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmClockCell") as! AlarmClockCell
+            
+            cell.configureCell(withAlarmClockData: tabledata[indexPath.row])
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NoContentCell") as! NoContentCell
+            cell.configureCell(withText: "暂时没有闹钟")
+            
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let edit = UITableViewRowAction(style: .normal, title: "编辑") { (editAction, curIndexPath) in
+        if tabledata.count > 0 {
+            let edit = UITableViewRowAction(style: .normal, title: "编辑") { (editAction, curIndexPath) in
+                let vc = NewAlarmClockViewController.vc(withElement: self.tabledata[indexPath.row], index: indexPath.row, saveCallback: {
+                })
+                self.present(vc, animated: true, completion: nil)
+            }
+            edit.backgroundColor = SLIDER_BG_DARK
             
+            let delete = UITableViewRowAction(style: .destructive, title: "删除") { (deleteAction, curIndexPath) in
+                self.tabledata.remove(at: curIndexPath.row)
+                
+                self.saveData()
+            }
+            delete.backgroundColor = SLIDER_BLOCK
+            
+            return [delete, edit]
+        } else {
+            return []
         }
-        edit.backgroundColor = SLIDER_BG_DARK
-        
-        let delete = UITableViewRowAction(style: .destructive, title: "删除") { (deleteAction, curIndexPath) in
-            self.tabledata.remove(at: curIndexPath.row)
-        }
-        delete.backgroundColor = SLIDER_BLOCK
-        
-        return [delete, edit]
     }
 }

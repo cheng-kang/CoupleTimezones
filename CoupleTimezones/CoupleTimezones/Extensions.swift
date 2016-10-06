@@ -23,3 +23,16 @@ extension UIColor {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
     }
 }
+
+extension String {
+    
+    func widthThatFitsContentByHeight(height: CGFloat) -> CGFloat {
+        let lbl = UILabel()
+        lbl.numberOfLines = 0
+        lbl.text = self
+        lbl.font = UIFont(name: "FZYanSongS-R-GB", size: 20)
+        let newSize = lbl.sizeThatFits(CGSize(width: CGFloat(MAXFLOAT), height: height))
+        
+        return newSize.width
+    }
+}
