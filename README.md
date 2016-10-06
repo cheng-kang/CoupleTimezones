@@ -9,6 +9,7 @@ An iOS alarm clock app for lovers at different timezones.
   - timezone
 
 # Archive
-- Add Alarm Clock
-- Edit Alarm Clock
-- Delete Alarm Clock
+
+- ~~Add Alarm Clock~~
+- ~~Edit Alarm Clock~~
+- ~~Delete Alarm Clock~~
