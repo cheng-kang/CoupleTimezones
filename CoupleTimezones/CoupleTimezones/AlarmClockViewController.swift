@@ -73,6 +73,34 @@ class AlarmClockViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
+    @IBAction func menuBtnClick(_ sender: UIButton) {
+        let settings = UserData.sharedInstance.getUserSettings()
+        
+        SlidingFormPageConfig.sharedInstance.customFontName = "FZYanSongS-R-GB"
+        
+        let vc = SlidingFormViewController.vc(withStoryboardName: "Main", bundle: nil, identifier: "SlidingFormViewController", andFormTitle: "自定义设置", pages: [
+                SlidingFormPage.getInput(withTitle: "你的昵称", isRequired: true, desc: "请在此输入一个你喜欢的昵称。", defaultValue: settings.nickname),
+                SlidingFormPage.getInput(withTitle: "对方的昵称", isRequired: true, desc: "请在此输入一个对方的昵称。", defaultValue: settings.partnerNickname),
+                SlidingFormPage.getInput(withTitle: "你的神秘代码", isRequired: true, desc: "请输入一个用于标识你的身份的神秘代码。/n格式：/n四位以上，由数字和字母组成。/n用途：/n当你输入的 神秘代码 和 对方的神秘代码 与另一位用户的两个神秘代码吻合时，你们就配对成功了。配对成功后，你们的闹钟数据会自动同步。", defaultValue: settings.code),
+                SlidingFormPage.getInput(withTitle: "对方的神秘代码", isRequired: true, desc: "请询问对方的神秘代码，并输入。/n格式：/n四位以上，由数字和字母组成。/n用途：/n当你输入的 神秘代码 和 对方的神秘代码 与另一位用户的两个神秘代码吻合时，你们就配对成功了。配对成功后，你们的闹钟数据会自动同步。", defaultValue: settings.partnerCode),
+                SlidingFormPage.getSelect(withTitle: "你的时区", desc: nil, selectOptions: TIMEZONE_STRING, selectedOptionIndex: settings.timezone ?? 0),
+                SlidingFormPage.getSelect(withTitle: "对方的时区", desc: nil, selectOptions: TIMEZONE_STRING, selectedOptionIndex: settings.partnerTimezone ?? 0),
+        ]) { results in
+            settings.nickname = results[0] as! String
+            settings.partnerNickname = results[1] as! String
+            settings.code = results[2] as! String
+            settings.partnerCode = results[3] as! String
+            settings.timezone = (results[4] as! [Any])[0] as! Int
+            settings.partnerTimezone = (results[5] as! [Any])[0] as! Int
+            
+            if UserData.sharedInstance.updateUserSettings(withUserSettings: settings) {
+                Helpers.sharedInstance.toast(withString: "Success!")
+            } else {
+                Helpers.sharedInstance.toast(withString: "Failed!")
+            }
+        }
+        self.present(vc, animated: true, completion: nil)
+    }
 
 }
 

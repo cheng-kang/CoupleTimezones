@@ -25,3 +25,6 @@ let DAY_SQUARE_DARK = UIColor(red: 93, green: 87, blue: 107)
 func TEXT_FONT(withSize size: CGFloat) -> UIFont {
     return UIFont(name: "FZYanSongS-R-GB", size: size)!
 }
+
+let TIMEZONE_STRING = ["洛杉矶", "伦敦", "北京"]
+let TIMEZONE_NUMBER = [-7, 1, 8]

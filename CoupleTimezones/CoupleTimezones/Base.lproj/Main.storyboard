@@ -50,8 +50,11 @@
                                             <constraint firstAttribute="width" constant="30" id="hyp-R7-d4q"/>
                                             <constraint firstAttribute="height" constant="30" id="nIg-mJ-vbl"/>
                                         </constraints>
-                                        <inset key="imageEdgeInsets" minX="4" minY="4" maxX="4" maxY="0.0"/>
-                                        <state key="normal" image="Menu"/>
+                                        <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
+                                        <state key="normal" image="SettingsF"/>
+                                        <connections>
+                                            <action selector="menuBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zuu-1y-IiE"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tq0-mM-RG7">
                                         <constraints>
@@ -76,7 +79,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="72V-8F-OX1"/>
+                                    <constraint firstAttribute="height" constant="70" id="72V-8F-OX1"/>
                                     <constraint firstItem="dhv-CC-Oqi" firstAttribute="leading" secondItem="k6O-YN-Gwo" secondAttribute="trailing" constant="8" id="B9r-4c-6el"/>
                                     <constraint firstAttribute="bottom" secondItem="PhP-jJ-jEB" secondAttribute="bottom" constant="8" id="Dlq-0W-ZJH"/>
                                     <constraint firstItem="dhv-CC-Oqi" firstAttribute="centerX" secondItem="Khx-DP-at7" secondAttribute="centerX" id="Gcj-Xo-zXf"/>
@@ -334,6 +337,140 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="0KA-Ke-V7j">
+            <objects>
+                <viewController id="q6P-Yc-zFQ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N1T-QF-kgX"/>
+                        <viewControllerLayoutGuide type="bottom" id="psG-iO-yIU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rPA-er-bTK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="请输入【标题】" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbf-Kf-hQd">
+                                <frame key="frameInset" minX="16" minY="216" width="140" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="FZYANS_JW--GB1-0" family="FZYanSongS-R-GB" pointSize="20"/>
+                                <color key="textColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="上一页" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LS1-sC-mpR">
+                                <frame key="frameInset" minX="11" minY="573" width="60" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="FZYANS_JW--GB1-0" family="FZYanSongS-R-GB" pointSize="20"/>
+                                <color key="textColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="下一页" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFG-El-oKa">
+                                <frame key="frameInset" minX="79" minY="573" width="60" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="FZYANS_JW--GB1-0" family="FZYanSongS-R-GB" pointSize="20"/>
+                                <color key="textColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2/13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agp-wi-52r">
+                                <frame key="frameInset" minX="16" minY="626" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="FZYANS_JW--GB1-0" family="FZYanSongS-R-GB" pointSize="17"/>
+                                <color key="textColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="设置" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIA-A4-JLO">
+                                <frame key="frameInset" minX="16" minY="53" width="343" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="FZYANS_JW--GB1-0" family="FZYanSongS-R-GB" pointSize="40"/>
+                                <color key="textColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="说明：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dns-Tu-CqR">
+                                <frame key="frameInset" minX="16" minY="300" width="59" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="FZYANS_JW--GB1-0" family="FZYanSongS-R-GB" pointSize="12"/>
+                                <color key="textColor" red="0.76862745099999996" green="0.75686274509999996" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*必填" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLf-hJ-caR">
+                                <frame key="frameInset" minX="164" minY="228" width="26" height="13"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="FZYANS_JW--GB1-0" family="FZYanSongS-R-GB" pointSize="10"/>
+                                <color key="textColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="！你的昵称不符合要求" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2z-DB-1Uj">
+                                <frame key="frameInset" minX="16" minY="242" width="100" height="13"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="FZYANS_JW--GB1-0" family="FZYanSongS-R-GB" pointSize="10"/>
+                                <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="a8Gk" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jfF-Vf-pll">
+                                <frame key="frameInset" minX="16" minY="258" width="317" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="FZYANS_JW--GB1-0" family="FZYanSongS-R-GB" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" text="当你的密码和你对象的密码匹配时，你们的闹钟会同步。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qXR-Bp-byv">
+                                <frame key="frameInset" minX="16" minY="329" width="343" height="216"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.76862745099999996" green="0.75686274509999996" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="FZYANS_JW--GB1-0" family="FZYanSongS-R-GB" pointSize="10"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MK8-rf-JTr">
+                                <frame key="frameInset" minX="16" minY="290" width="317" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4d-RX-A0j">
+                                <frame key="frameInset" minX="232" minY="139" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="olP-gU-mEf">
+                                <frame key="frameInset" minY="527" height="45"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phY-MS-UkF">
+                                <frame key="frameInset" minX="184" minY="559" width="60" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="FZYANS_JW--GB1-0" family="FZYanSongS-R-GB" pointSize="20"/>
+                                <state key="normal" title="上一页"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.36470588240000001" green="0.3411764706" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dXQ-Kj-DEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="826.39999999999998" y="806.44677661169419"/>
+        </scene>
+        <!--Sliding Form View Controller-->
+        <scene sceneID="96S-A4-3D5">
+            <objects>
+                <viewController storyboardIdentifier="SlidingFormViewController" id="6CO-dL-Klt" customClass="SlidingFormViewController" customModule="CoupleTimezones" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hAv-5b-0V4"/>
+                        <viewControllerLayoutGuide type="bottom" id="bql-Zl-M4c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="q91-gs-iez">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2w2-8Q-qTf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1645" y="810"/>
+        </scene>
         <!--New Alarm Clock View Controller-->
         <scene sceneID="wEr-nv-MVc">
             <objects>
@@ -383,7 +520,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="5Ac-0z-9uP"/>
+                                    <constraint firstAttribute="height" constant="70" id="5Ac-0z-9uP"/>
                                     <constraint firstItem="emS-iX-Yfm" firstAttribute="leading" secondItem="2qy-xC-i9D" secondAttribute="trailing" constant="8" id="5nA-R9-H4s"/>
                                     <constraint firstAttribute="trailing" secondItem="emS-iX-Yfm" secondAttribute="trailing" constant="8" id="K9R-sp-KLn"/>
                                     <constraint firstAttribute="bottom" secondItem="yqE-cW-Y0G" secondAttribute="bottom" constant="8" id="LFK-Cc-W6j"/>
@@ -519,7 +656,7 @@
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="r7W-3I-Zci" firstAttribute="centerX" secondItem="qIA-td-62j" secondAttribute="centerX" id="B6K-xp-uEe"/>
-                                    <constraint firstAttribute="height" constant="60" id="TdV-6C-gHU"/>
+                                    <constraint firstAttribute="height" constant="70" id="TdV-6C-gHU"/>
                                     <constraint firstItem="r7W-3I-Zci" firstAttribute="centerY" secondItem="eCp-Vo-EWy" secondAttribute="centerY" id="aiN-1G-9ma"/>
                                     <constraint firstItem="r7W-3I-Zci" firstAttribute="leading" secondItem="eCp-Vo-EWy" secondAttribute="trailing" constant="8" id="epe-t3-6mh"/>
                                     <constraint firstItem="eCp-Vo-EWy" firstAttribute="leading" secondItem="qIA-td-62j" secondAttribute="leading" constant="8" id="sEm-az-gvZ"/>
@@ -648,7 +785,7 @@
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Aw3-Ew-hn0" secondAttribute="bottom" constant="8" id="GA8-97-Fu7"/>
-                                    <constraint firstAttribute="height" constant="60" id="Lgg-6Q-Vdm"/>
+                                    <constraint firstAttribute="height" constant="70" id="Lgg-6Q-Vdm"/>
                                     <constraint firstItem="Aw3-Ew-hn0" firstAttribute="leading" secondItem="Dc2-b0-2Gt" secondAttribute="leading" constant="8" id="a83-SH-9VG"/>
                                     <constraint firstItem="vnJ-ZG-AHn" firstAttribute="leading" secondItem="Aw3-Ew-hn0" secondAttribute="trailing" constant="8" id="cQa-SM-Als"/>
                                     <constraint firstItem="vnJ-ZG-AHn" firstAttribute="centerX" secondItem="Dc2-b0-2Gt" secondAttribute="centerX" id="eCY-9e-F7N"/>
@@ -689,7 +826,7 @@
         <image name="Add" width="100" height="100"/>
         <image name="Back" width="100" height="100"/>
         <image name="Dismiss" width="100" height="100"/>
-        <image name="Menu" width="100" height="100"/>
         <image name="Post" width="100" height="100"/>
+        <image name="SettingsF" width="100" height="100"/>
     </resources>
 </document>
