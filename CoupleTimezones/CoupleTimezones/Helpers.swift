@@ -17,9 +17,18 @@ class Helpers: NSObject {
         print(text)
     }
     
-    func datetimeText(fromDate date: Date, withFormat format: String) -> String {
+    func getDatetimeText(fromDate date: Date, withFormat format: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: date)
+    }
+    
+    func getCTDate(atTimezone name: String) -> CTDateModel {
+        
+        let GMTDate = Date().addingTimeInterval(-TimeInterval(NSTimeZone.local.secondsFromGMT()))
+        
+        let dateAtTimezone = GMTDate.addingTimeInterval(TimeInterval(NSTimeZone(name: name)!.secondsFromGMT))
+        
+        return CTDateModel(withDate: dateAtTimezone)
     }
 }

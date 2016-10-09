@@ -18,7 +18,7 @@ class SelectRepeatDayViewController: UIViewController {
     
     var savaCallback: ((_ selection: [Bool])->())?
     
-    let daysText = ["每周日", "每周一", "每周二", "每周三", "每周四", "每周五", "每周六"]
+    let daysText = [NSLocalizedString("Sunday", comment: "Repetance"), NSLocalizedString("Monday", comment: "Repetance"), NSLocalizedString("Tuesday", comment: "Repetance"), NSLocalizedString("Wednesday", comment: "Repetance"), NSLocalizedString("Thursday", comment: "Repetance"), NSLocalizedString("Friday", comment: "Repetance"), NSLocalizedString("Saturday", comment: "Repetance")]
     var isInitSelection = true
     var selection = [false, false, false, false, false, false, false] {
         didSet {
@@ -71,7 +71,7 @@ class SelectRepeatDayViewController: UIViewController {
         self.ratioPanelView.addSubview(weekdayBtn)
         self.ratioPanelView.addSubview(weekendBtn)
         // init ratio views
-        self.allBtn.initRatioView(withIsSelected: false, text: "每天", centerPoint: CGPoint(x: self.view.frame.width / 4, y: 30)) { isSelected in
+        self.allBtn.initRatioView(withIsSelected: false, text: NSLocalizedString("Everyday", comment: "Repetance"), centerPoint: CGPoint(x: self.view.frame.width / 4, y: 30)) { isSelected in
             if isSelected {
                 self.selection = [true, true, true, true, true, true, true]
             } else {
@@ -80,7 +80,7 @@ class SelectRepeatDayViewController: UIViewController {
                 }
             }
         }
-        self.weekdayBtn.initRatioView(withIsSelected: false, text: "工作日", centerPoint: CGPoint(x: self.view.frame.width / 2, y: 30)) { isSelected in
+        self.weekdayBtn.initRatioView(withIsSelected: false, text: NSLocalizedString("Weekday", comment: "Repetance"), centerPoint: CGPoint(x: self.view.frame.width / 2, y: 30)) { isSelected in
             if isSelected {
                 self.selection = [false, true, true, true, true, true, false]
             } else {
@@ -89,7 +89,7 @@ class SelectRepeatDayViewController: UIViewController {
                 }
             }
         }
-            self.weekendBtn.initRatioView(withIsSelected: false, text: "周末", centerPoint: CGPoint(x: self.view.frame.width / 4 * 3, y: 30)) { isSelected in
+            self.weekendBtn.initRatioView(withIsSelected: false, text: NSLocalizedString("Weekend", comment: "Repetance"), centerPoint: CGPoint(x: self.view.frame.width / 4 * 3, y: 30)) { isSelected in
                 if isSelected {
                     self.selection = [true, false, false, false, false, false, true]
                 } else {

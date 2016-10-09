@@ -16,18 +16,18 @@ class NewAlarmClockViewController: UIViewController {
     
     var saveCallback: (()->())?
     
-    var data = AlarmClockModel(withId: "a", period: "", time: "", location: "", content: "提醒亲爱的", isActive: true, days: [false, false, false, false, false, false, false])
+    var data = AlarmClockModel(withId: "a", period: "", time: "", isSetBySelf: true, content: NSLocalizedString("Remind Darling", comment: "AlarmClock"), isActive: true, days: [false, false, false, false, false, false, false])
     var isNew = true
     var dataIndex = 0
     
-    var settings = ["重复", "标签"]
+    var settings = [NSLocalizedString("Repetance", comment: "AlarmClock"), NSLocalizedString("Tag", comment: "AlarmClock")]
     
     var textForRepeatance: String {
         var count = 0
         var weekendCount = 0
         
         let selection = data.days
-        let dayText = ["日", "一", "二", "三", "四", "五", "六"]
+        let dayText = [NSLocalizedString("Sun", comment: "AlarmClock"), NSLocalizedString("Mon", comment: "AlarmClock"), NSLocalizedString("Tue", comment: "AlarmClock"), NSLocalizedString("Wed", comment: "AlarmClock"), NSLocalizedString("Thu", comment: "AlarmClock"), NSLocalizedString("Fri", comment: "AlarmClock"), NSLocalizedString("Sat", comment: "AlarmClock")]
         var selectionText = ""
         for i in 0..<7 {
             if selection![i] {
@@ -37,21 +37,21 @@ class NewAlarmClockViewController: UIViewController {
                 }
                 
                 if count == 1 {
-                    selectionText = "每周"+dayText[i]
+                    selectionText = NSLocalizedString("Every ", comment: "AlarmClock")+dayText[i]
                 } else {
-                    selectionText += "、"+dayText[i]
+                    selectionText += NSLocalizedString(", ", comment: "AlarmClock")+dayText[i]
                 }
             }
         }
         
         if count == 7 {
-            return "每天"
+            return NSLocalizedString("Everyday", comment: "AlarmClock")
         } else if count == 5 && weekendCount == 0 {
-            return "工作日"
+            return NSLocalizedString("Weekday", comment: "AlarmClock")
         } else if count == 2 && weekendCount == 2 {
-            return "周末"
+            return NSLocalizedString("Weekend", comment: "AlarmClock")
         } else if count == 0 {
-            return "永不"
+            return NSLocalizedString("Never", comment: "AlarmClock")
         } else {
             return selectionText
         }
@@ -105,11 +105,11 @@ class NewAlarmClockViewController: UIViewController {
     
     @IBAction func saveBtnClick(_ sender: UIButton) {
         
-        data.period = Helpers.sharedInstance.datetimeText(fromDate: self.datePicker.date, withFormat: "a")
-        data.time = Helpers.sharedInstance.datetimeText(fromDate: self.datePicker.date, withFormat: "HH:mm")
+        data.period = Helpers.sharedInstance.getDatetimeText(fromDate: self.datePicker.date, withFormat: "a")
+        data.time = Helpers.sharedInstance.getDatetimeText(fromDate: self.datePicker.date, withFormat: "HH:mm")
         
         if isNew {
-            data.location = "洛杉矶"
+            data.isSetBySelf = true
             
             if UserData.sharedInstance.insertAlarmClock(newElement: data) {
                 Helpers.sharedInstance.toast(withString: "Success")

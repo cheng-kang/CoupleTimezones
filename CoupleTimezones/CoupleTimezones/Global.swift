@@ -11,6 +11,7 @@ import UIKit
 
 let BG = UIColor(red: 252, green: 252, blue: 252)
 let TEXT_LIGHT = UIColor(red: 252, green: 252, blue: 252)
+let TEXT_LIGHT_HIGHLIGHTED = UIColor(red: 252/255, green: 252/255, blue: 252/255, alpha: 0.7)
 let TEXT_GREY = UIColor(red: 240, green: 239, blue: 241)
 let TEXT_DARK = UIColor(red: 51, green: 48, blue: 59)
 let SLIDER_BLOCK = UIColor(red: 68, green: 64, blue: 78)
@@ -26,5 +27,10 @@ func TEXT_FONT(withSize size: CGFloat) -> UIFont {
     return UIFont(name: "FZYanSongS-R-GB", size: size)!
 }
 
-let TIMEZONE_STRING = ["洛杉矶", "伦敦", "北京"]
-let TIMEZONE_NUMBER = [-7, 1, 8]
+let TIMEZONE_NAME: [String] = ["America/Los_Angeles", "Europe/London", "Asia/Shanghai"]
+let TIMEZONE_NAME_LOCALIZED: [String] = [
+    NSTimeZone(name: "America/Los_Angeles")!.localizedName(.shortGeneric, locale: Locale.current)!,
+    NSTimeZone(name: "Europe/London")!.localizedName(.shortGeneric, locale: Locale.current)!,
+    NSTimeZone(name: "Asia/Shanghai")!.localizedName(.shortGeneric, locale: Locale.current)!]
+
+let timezones = TimeZone.knownTimeZoneIdentifiers

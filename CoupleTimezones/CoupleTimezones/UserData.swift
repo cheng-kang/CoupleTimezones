@@ -61,6 +61,9 @@ class UserData: NSObject {
     // MARK: Settings Data
     var userSettings: UserSettings?
     var isUserSettingsUpdated = false
+    var isUserSettingCompleted: Bool {
+        return getUserSettings().partnerTimezone != nil
+    }
     
     func getUserSettings() -> UserSettings {
         if self.userSettings == nil || self.isUserSettingsUpdated {
@@ -74,7 +77,6 @@ class UserData: NSObject {
                 self.userSettings = UserSettings()
             }
         }
-        
         
         return self.userSettings!
     }

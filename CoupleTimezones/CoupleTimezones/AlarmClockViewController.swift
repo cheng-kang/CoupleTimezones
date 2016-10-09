@@ -23,13 +23,16 @@ class AlarmClockViewController: UIViewController {
             tableview.reloadData()
         }
     }
+    
+    var timer: Timer?
+    var timerCount: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        UserDefaults.standard.removeObject(forKey: "AlarmClock")
-        UserDefaults.standard.synchronize()
+//        UserDefaults.standard.removeObject(forKey: "AlarmClock")
+//        UserDefaults.standard.synchronize()
         
         print(UserDefaults.standard.object(forKey: "AlarmClock"))
         self.reloadData()
@@ -42,10 +45,35 @@ class AlarmClockViewController: UIViewController {
         // add notification reciever
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadData), name: NSNotification.Name(rawValue: "AlarmClockDataSynchronized"), object: nil)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navLocLbl.text = TIMEZONE_NAME_LOCALIZED[UserData.sharedInstance.getUserSettings().partnerTimezone!]
+        // start timer
+        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(AlarmClockViewController.updateTimeLbl), userInfo: nil, repeats: true)
+        timer!.fire()
+    }
+    
+    func updateTimeLbl() {
+        self.timerCount += 1
+        let partnerDate = Helpers.sharedInstance.getCTDate(atTimezone: TIMEZONE_NAME[UserData.sharedInstance.getUserSettings().partnerTimezone!])
+        self.navTimeLbl.text = (self.timerCount % 2 ) == 0 ? partnerDate.time :partnerDate.timeWithoutColon
+        self.navPeriodLbl.text = partnerDate.period
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        // deinit timer
+        self.timer?.invalidate()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    class func vc() -> AlarmClockViewController {
+        let sb = UIStoryboard.init(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "AlarmClockViewController") as! AlarmClockViewController
+        return vc
     }
     
     deinit {
@@ -78,13 +106,13 @@ class AlarmClockViewController: UIViewController {
         
         SlidingFormPageConfig.sharedInstance.customFontName = "FZYanSongS-R-GB"
         
-        let vc = SlidingFormViewController.vc(withStoryboardName: "Main", bundle: nil, identifier: "SlidingFormViewController", andFormTitle: "自定义设置", pages: [
-                SlidingFormPage.getInput(withTitle: "你的昵称", isRequired: true, desc: "请在此输入一个你喜欢的昵称。", defaultValue: settings.nickname),
-                SlidingFormPage.getInput(withTitle: "对方的昵称", isRequired: true, desc: "请在此输入一个对方的昵称。", defaultValue: settings.partnerNickname),
-                SlidingFormPage.getInput(withTitle: "你的神秘代码", isRequired: true, desc: "请输入一个用于标识你的身份的神秘代码。/n格式：/n四位以上，由数字和字母组成。/n用途：/n当你输入的 神秘代码 和 对方的神秘代码 与另一位用户的两个神秘代码吻合时，你们就配对成功了。配对成功后，你们的闹钟数据会自动同步。", defaultValue: settings.code),
-                SlidingFormPage.getInput(withTitle: "对方的神秘代码", isRequired: true, desc: "请询问对方的神秘代码，并输入。/n格式：/n四位以上，由数字和字母组成。/n用途：/n当你输入的 神秘代码 和 对方的神秘代码 与另一位用户的两个神秘代码吻合时，你们就配对成功了。配对成功后，你们的闹钟数据会自动同步。", defaultValue: settings.partnerCode),
-                SlidingFormPage.getSelect(withTitle: "你的时区", desc: nil, selectOptions: TIMEZONE_STRING, selectedOptionIndex: settings.timezone ?? 0),
-                SlidingFormPage.getSelect(withTitle: "对方的时区", desc: nil, selectOptions: TIMEZONE_STRING, selectedOptionIndex: settings.partnerTimezone ?? 0),
+        let vc = SlidingFormViewController.vc(withStoryboardName: "Main", bundle: nil, identifier: "SlidingFormViewController", andFormTitle: NSLocalizedString("Settings", comment: "SlidingForm"), pages: [
+                SlidingFormPage.getInput(withTitle: NSLocalizedString("Your Nickname", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please enter your nickname.", comment: "SlidingForm"), defaultValue: settings.nickname),
+                SlidingFormPage.getInput(withTitle: NSLocalizedString("Partner's Nickname", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please enter your partner's nickname.", comment: "SlidingForm"), defaultValue: settings.partnerNickname),
+                SlidingFormPage.getInput(withTitle: NSLocalizedString("Your Code", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please enter a special code to identify yourself.\nFormat:\n4 or more characters, consisting only letters and numbers.\nUsage: When the two codes (your code and your partner's code) match with another pair of codes set by another user, your accounts are matched. Matched users will share their alarm clocks.", comment: "SlidingForm"), defaultValue: settings.code),
+                SlidingFormPage.getInput(withTitle: NSLocalizedString("Partner's Code", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please ask your partner for his/her Code.", comment: "SlidingForm"), defaultValue: settings.partnerCode),
+                SlidingFormPage.getSelect(withTitle: NSLocalizedString("Your Timezone", comment: "SlidingForm"), desc: nil, selectOptions: TIMEZONE_NAME_LOCALIZED, selectedOptionIndex: settings.timezone ?? 0),
+                SlidingFormPage.getSelect(withTitle: NSLocalizedString("Partner's Timezone", comment: "SlidingForm"), desc: nil, selectOptions: TIMEZONE_NAME_LOCALIZED, selectedOptionIndex: settings.partnerTimezone ?? 0),
         ]) { results in
             settings.nickname = results[0] as! String
             settings.partnerNickname = results[1] as! String
@@ -115,7 +143,6 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -127,7 +154,7 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NoContentCell") as! NoContentCell
-            cell.configureCell(withText: "暂时没有闹钟")
+            cell.configureCell(withText: NSLocalizedString("No Alarm Clock", comment: "AlarmClock"))
             
             return cell
         }
@@ -136,14 +163,14 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         if tabledata.count > 0 {
-            let edit = UITableViewRowAction(style: .normal, title: "编辑") { (editAction, curIndexPath) in
+            let edit = UITableViewRowAction(style: .normal, title: NSLocalizedString("Edit", comment: "AlarmClock")) { (editAction, curIndexPath) in
                 let vc = NewAlarmClockViewController.vc(withElement: self.tabledata[indexPath.row], index: indexPath.row, saveCallback: {
                 })
                 self.present(vc, animated: true, completion: nil)
             }
             edit.backgroundColor = SLIDER_BG_DARK
             
-            let delete = UITableViewRowAction(style: .destructive, title: "删除") { (deleteAction, curIndexPath) in
+            let delete = UITableViewRowAction(style: .destructive, title: NSLocalizedString("Delete", comment: "AlarmClock")) { (deleteAction, curIndexPath) in
                 self.tabledata.remove(at: curIndexPath.row)
                 
                 self.saveData()

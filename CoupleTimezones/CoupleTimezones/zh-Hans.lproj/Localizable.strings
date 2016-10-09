@@ -1,0 +1,151 @@
+/* 的时间 */
+"'s Time" = "的时间";
+
+/* SlidingForm */
+"*required" = "*必填";
+
+/* AlarmClock */
+", " = "、";
+
+/* AlarmClock */
+"Delete" = "删除";
+
+/* SlidingForm */
+"Description:" = "说明：";
+
+/* SlidingForm */
+"Done" = "完成";
+
+/* AlarmClock */
+"Edit" = "编辑";
+
+/* AlarmClock */
+"Every " = "每周";
+
+/* AlarmClock
+   Repetance */
+"Everyday" = "每天";
+
+/* SlidingForm */
+"First" = "第一项";
+
+/* AlarmClock */
+"Fri" = "五";
+
+/* Repetance */
+"Friday" = "每周五";
+
+/* AlarmClock */
+"Mon" = "一";
+
+/* Repetance */
+"Monday" = "每周一";
+
+/* 我的时间 */
+"My Time" = "我的时间";
+
+/* AlarmClock */
+"Never" = "永不";
+
+/* SlidingForm */
+"Next" = "下一项";
+
+/* AlarmClock */
+"No Alarm Clock" = "暂时没有闹钟";
+
+/* SlidingForm */
+"Partner's Code" = "对方的神秘代码";
+
+/* SlidingForm */
+"Partner's Nickname" = "对方的昵称";
+
+/* SlidingForm */
+"Partner's Timezone" = "对方的时区";
+
+/* SlidingForm */
+"Please ask your partner for his/her Code." = "请询问对方的神秘代码，并填入。";
+
+/* SlidingForm */
+"Please enter a special code to identify yourself.
+Format:
+4 or more characters, consisting only letters and numbers.
+Usage: When the two codes (your code and your partner's code) match with another pair of codes set by another user, your accounts are matched. Matched users will share their alarm clocks." = "请输入一个用于标识你的身份的神秘代码。
+格式：
+四位以上，由数字和字母组成。
+用途：
+当你输入的 神秘代码 和 对方的神秘代码 与另一位用户的两个神秘代码吻合时，你们就配对成功了。配对成功后，你们的闹钟数据会自动同步。";
+
+/* SlidingForm */
+"Please enter your nickname." = "请输入你的昵称。";
+
+/* SlidingForm */
+"Please enter your partner's nickname." = "请输入对方的昵称。";
+
+/* SlidingForm */
+"Prev" = "上一项";
+
+/* AlarmClock */
+"Remind Darling" = "提醒亲爱的";
+
+/* AlarmClock */
+"Repetance" = "重复";
+
+/* AlarmClock */
+"Sat" = "六";
+
+/* Repetance */
+"Saturday" = "每周六";
+
+/* 初始化设置 */
+"Setting" = "初始化设置";
+
+/* SlidingForm */
+"Settings" = "自定义设置";
+
+/* 开始使用 */
+"Start" = "开始使用";
+
+/* AlarmClock */
+"Sun" = "日";
+
+/* Repetance */
+"Sunday" = "每周日";
+
+/* AlarmClock */
+"Tag" = "标签";
+
+/* AlarmClock */
+"Thu" = "四";
+
+/* Repetance */
+"Thursday" = "每周四";
+
+/* AlarmClock */
+"Tue" = "二";
+
+/* Repetance */
+"Tuesday" = "每周二";
+
+/* AlarmClock */
+"Wed" = "三";
+
+/* Repetance */
+"Wednesday" = "每周三";
+
+/* AlarmClock
+   Repetance */
+"Weekday" = "工作日";
+
+/* AlarmClock
+   Repetance */
+"Weekend" = "周末";
+
+/* SlidingForm */
+"Your Code" = "你的神秘代码";
+
+/* SlidingForm */
+"Your Nickname" = "你的昵称";
+
+/* SlidingForm */
+"Your Timezone" = "你的时区";
+

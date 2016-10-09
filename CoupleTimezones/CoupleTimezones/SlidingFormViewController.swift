@@ -51,11 +51,6 @@ class SlidingFormViewController: UIViewController {
     var scrollviewToTop: CGFloat = 8
     var scrollviewToBottom: CGFloat = 8
     
-    var prevBtnTitle = "上一页"
-    var prevBtnTitleS = "第一页"
-    var nextBtnTitle = "下一页"
-    var nextBtnTitleS = "完成"
-    
     var prevBtnToLeft: CGFloat = 20
     var prevBtnToScrollview: CGFloat = 25
     
@@ -64,35 +59,27 @@ class SlidingFormViewController: UIViewController {
     var pageLblToLeft: CGFloat = 20
     var pageLblToBottom: CGFloat = 30
     
-    var lightColor: UIColor = UIColor(red: 252/255, green: 252/255, blue: 252/255, alpha: 1)
-    var lightColorHighlighted: UIColor = UIColor(red: 252/255, green: 252/255, blue: 252/255, alpha: 0.7)
-    var greyColor: UIColor = UIColor(red: 240/255, green: 239/255, blue: 241/255, alpha: 1)
-    var bgColor: UIColor = UIColor(red: 93/255, green: 87/255, blue: 107/255, alpha: 1)
-    var warningColor: UIColor = UIColor(red: 1, green: 1, blue: 0, alpha: 1)
-    
     var formTitile = "" {
         didSet {
             self.titleLbl.text = formTitile
         }
     }
     
-    var anwsers = [String]()
-    
     var currentPageIndex = 0 {
         didSet {
             self.pageLbl.text = "\(currentPageIndex+1)/\(pages.count)"
             
             if isLastPage {
-                self.nextBtn.setTitle(nextBtnTitleS, for: .normal)
+                self.nextBtn.setTitle(config.nextBtnTitleS, for: .normal)
             } else {
-                self.nextBtn.setTitle(nextBtnTitle, for: .normal)
+                self.nextBtn.setTitle(config.nextBtnTitle, for: .normal)
             }
             
             if isFirstPage {
-                self.prevBtn.setTitle(prevBtnTitleS, for: .normal)
+                self.prevBtn.setTitle(config.prevBtnTitleS, for: .normal)
                 self.prevBtn.isEnabled = false
             } else {
-                self.prevBtn.setTitle(prevBtnTitle, for: .normal)
+                self.prevBtn.setTitle(config.prevBtnTitle, for: .normal)
                 self.prevBtn.isEnabled = true
             }
             
@@ -167,7 +154,7 @@ class SlidingFormViewController: UIViewController {
     func initUI() {
         self.view.isUserInteractionEnabled = true
         self.prevBtn.isUserInteractionEnabled = true
-        self.view.backgroundColor = bgColor
+        self.view.backgroundColor = config.bgColor
         
         self.view.addSubview(cancelBtn)
         self.view.addSubview(titleLbl)
@@ -191,7 +178,7 @@ class SlidingFormViewController: UIViewController {
         
         // init titleLbl
         self.titleLbl.textAlignment = .left
-        self.titleLbl.textColor = lightColor
+        self.titleLbl.textColor = config.textColor
         
         if let font = UIFont(name: config.customFontName, size: config.nameLblSize) {
             self.titleLbl.font = font
@@ -206,9 +193,9 @@ class SlidingFormViewController: UIViewController {
         
         
         // init page btns
-        self.prevBtn.tintColor = lightColor
-        self.prevBtn.setTitleColor(lightColorHighlighted, for: .highlighted)
-        self.prevBtn.setTitleColor(lightColorHighlighted, for: .disabled)
+        self.prevBtn.tintColor = config.textColor
+        self.prevBtn.setTitleColor(config.textColorHighlighted, for: .highlighted)
+        self.prevBtn.setTitleColor(config.textColorHighlighted, for: .disabled)
         
         if let font = UIFont(name: config.customFontName, size: config.pageBtnSize) {
             self.prevBtn.titleLabel?.font = font
@@ -216,9 +203,9 @@ class SlidingFormViewController: UIViewController {
             self.prevBtn.titleLabel?.font = UIFont(name: "System", size: config.pageBtnSize)
         }
         
-        self.nextBtn.tintColor = lightColor
-        self.nextBtn.setTitleColor(lightColorHighlighted, for: .highlighted)
-        self.nextBtn.setTitleColor(lightColorHighlighted, for: .disabled)
+        self.nextBtn.tintColor = config.textColor
+        self.nextBtn.setTitleColor(config.textColorHighlighted, for: .highlighted)
+        self.nextBtn.setTitleColor(config.textColorHighlighted, for: .disabled)
         
         if let font = UIFont(name: config.customFontName, size: config.pageBtnSize) {
             self.nextBtn.titleLabel?.font = font
@@ -232,7 +219,7 @@ class SlidingFormViewController: UIViewController {
         
         // init pageLbl
         self.pageLbl.textAlignment = .left
-        self.pageLbl.textColor = lightColor
+        self.pageLbl.textColor = config.textColor
         
         if let font = UIFont(name: config.customFontName, size: config.pageLblSize) {
             self.pageLbl.font = font

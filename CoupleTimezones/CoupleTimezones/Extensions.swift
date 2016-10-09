@@ -36,3 +36,9 @@ extension String {
         return newSize.width
     }
 }
+
+extension Date {
+    func currentTimeAndPeriod(byTimezone: Int) {
+        
+    }
+}

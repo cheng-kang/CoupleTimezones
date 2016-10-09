@@ -1,0 +1,81 @@
+/* Class = "UILabel"; text = "Add Alarm Clock"; ObjectID = "2qy-xC-i9D"; */
+"2qy-xC-i9D.text" = "新增闹钟";
+
+/* Class = "UILabel"; text = "宝贝早上没有第一节课，所以晚点叫她"; ObjectID = "7aK-vR-teL"; */
+"7aK-vR-teL.text" = "宝贝早上没有第一节课，所以晚点叫她";
+
+/* Class = "UILabel"; text = "Remind darling..."; ObjectID = "B1L-1W-KY9"; */
+"B1L-1W-KY9.text" = "提醒亲爱的";
+
+/* Class = "UILabel"; text = "No Alarm Clock"; ObjectID = "Fxj-6a-91N"; */
+"Fxj-6a-91N.text" = "暂时没有闹钟";
+
+/* Class = "UILabel"; text = "上一页"; ObjectID = "LS1-sC-mpR"; */
+"LS1-sC-mpR.text" = "上一页";
+
+/* Class = "UILabel"; text = "设置"; ObjectID = "aIA-A4-JLO"; */
+"aIA-A4-JLO.text" = "设置";
+
+/* Class = "UILabel"; text = "2/13"; ObjectID = "agp-wi-52r"; */
+"agp-wi-52r.text" = "2/13";
+
+/* Class = "UILabel"; text = "Repetance"; ObjectID = "crA-Lh-FES"; */
+"crA-Lh-FES.text" = "重复";
+
+/* Class = "UILabel"; text = "*必填"; ObjectID = "dLf-hJ-caR"; */
+"dLf-hJ-caR.text" = "*必填";
+
+/* Class = "UILabel"; text = "12:30"; ObjectID = "dhv-CC-Oqi"; */
+"dhv-CC-Oqi.text" = "12:30";
+
+/* Class = "UILabel"; text = "说明："; ObjectID = "dns-Tu-CqR"; */
+"dns-Tu-CqR.text" = "说明：";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "e4d-RX-A0j"; */
+"e4d-RX-A0j.text" = "Label";
+
+/* Class = "UILabel"; text = "上午"; ObjectID = "egS-8H-Me4"; */
+"egS-8H-Me4.text" = "上午";
+
+/* Class = "UILabel"; text = "请输入【标题】"; ObjectID = "fbf-Kf-hQd"; */
+"fbf-Kf-hQd.text" = "请输入【标题】";
+
+/* Class = "UILabel"; text = "每周一"; ObjectID = "gXO-n7-jx9"; */
+"gXO-n7-jx9.text" = "每周一";
+
+/* Class = "UITextField"; text = "a8Gk"; ObjectID = "jfF-Vf-pll"; */
+"jfF-Vf-pll.text" = "a8Gk";
+
+/* Class = "UILabel"; text = "洛杉矶"; ObjectID = "k6O-YN-Gwo"; */
+"k6O-YN-Gwo.text" = "洛杉矶";
+
+/* Class = "UILabel"; text = "Tag"; ObjectID = "kbn-OX-xYB"; */
+"kbn-OX-xYB.text" = "标签";
+
+/* Class = "UILabel"; text = "上午"; ObjectID = "lHD-7e-ssw"; */
+"lHD-7e-ssw.text" = "上午";
+
+/* Class = "UILabel"; text = "洛杉矶"; ObjectID = "nLq-d9-Vnr"; */
+"nLq-d9-Vnr.text" = "洛杉矶";
+
+/* Class = "UIButton"; normalTitle = "上一页"; ObjectID = "phY-MS-UkF"; */
+"phY-MS-UkF.normalTitle" = "上一页";
+
+/* Class = "UILabel"; text = "Repetance"; ObjectID = "r7W-3I-Zci"; */
+"r7W-3I-Zci.text" = "重复";
+
+/* Class = "UILabel"; text = "Never"; ObjectID = "uxy-V6-7j1"; */
+"uxy-V6-7j1.text" = "永不";
+
+/* Class = "UILabel"; text = "！你的昵称不符合要求"; ObjectID = "v2z-DB-1Uj"; */
+"v2z-DB-1Uj.text" = "！你的昵称不符合要求";
+
+/* Class = "UILabel"; text = "Tag"; ObjectID = "vnJ-ZG-AHn"; */
+"vnJ-ZG-AHn.text" = "标签";
+
+/* Class = "UILabel"; text = "下一页"; ObjectID = "yFG-El-oKa"; */
+"yFG-El-oKa.text" = "下一页";
+
+/* Class = "UILabel"; text = "04:30"; ObjectID = "zNV-xb-RA1"; */
+"zNV-xb-RA1.text" = "04:30";
+

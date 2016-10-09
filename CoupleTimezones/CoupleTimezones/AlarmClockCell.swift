@@ -25,7 +25,32 @@ class AlarmClockCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.isUserInteractionEnabled = true
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(AlarmClockCell.toggleTimezone))
+        self.addGestureRecognizer(tap)
+    }
+    
+    func toggleTimezone() {
+        let settings = UserData.sharedInstance.getUserSettings()
+        
+        if locationLbl.text == alarmClock.selfTimeText {
+            let CTDate = Helpers.sharedInstance.getCTDate(atTimezone: TIMEZONE_NAME[settings.partnerTimezone!])
+            
+            self.locationLbl.text = settings.partnerNickname! + NSLocalizedString("'s Time", comment: "的时间")
+            self.timeLbl.text = CTDate.time
+            self.periodLbl.text = CTDate.period
+        } else {
+            self.locationLbl.text = alarmClock.selfTimeText
+            self.timeLbl.text = alarmClock.time
+            self.periodLbl.text = alarmClock.period
+        }
+    }
+    
+    deinit {
+        self.gestureRecognizers?.forEach({ (gr) in
+            self.removeGestureRecognizer(gr)
+        })
     }
     
     @IBAction func toggleSliderBtnClick(_ sender: UIButton) {
@@ -50,7 +75,7 @@ class AlarmClockCell: UITableViewCell {
         
         self.periodLbl.text = data.period
         self.timeLbl.text = data.time
-        self.locationLbl.text = data.location
+        self.locationLbl.text = data.selfTimeText
         self.contentLbl.text = data.content
         
         for i in 0..<data.days.count {
