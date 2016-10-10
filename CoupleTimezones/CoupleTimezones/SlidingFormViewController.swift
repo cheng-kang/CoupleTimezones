@@ -113,7 +113,7 @@ class SlidingFormViewController: UIViewController {
         self.initUI()
         
         NotificationCenter.default.addObserver(self, selector: #selector(SlidingFormViewController.handleCurrentPageFinished), name: NSNotification.Name(rawValue: "CurrentPageFinished"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(SlidingFormViewController.handleCurrentPageFinished), name: NSNotification.Name(rawValue: "CurrentPageUnFinished"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SlidingFormViewController.handleCurrentPageUnfinished), name: NSNotification.Name(rawValue: "CurrentPageUnFinished"), object: nil)
     }
     
     func handleCurrentPageFinished() {

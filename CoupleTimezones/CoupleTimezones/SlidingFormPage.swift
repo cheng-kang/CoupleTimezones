@@ -32,7 +32,11 @@ class SlidingFormPage: UIView {
     var isFinished: Bool {
         if self.type == .input {
             if self.isRequired != nil {
-                return self.inputValue != nil && self.inputValue != ""
+                if inputRule != nil {
+                    return NSPredicate(format: "SELF MATCHES %@", self.inputRule!).evaluate(with: self.inputValue)
+                } else {
+                    return self.inputValue != nil && self.inputValue != ""
+                }
             }
         } else if self.type == .select {
             // nothing
@@ -57,6 +61,7 @@ class SlidingFormPage: UIView {
     // for input
     var inputValue: String?
     var inputFormat: String?
+    var inputRule: String? // regular expression
     
     // for select
     var selectOptions: [String]?
@@ -65,10 +70,14 @@ class SlidingFormPage: UIView {
     // for switches
     var switchesOptions: [String]?
     var switchesList: [SlidingFormElementSwitch]?
+    var switchesMax: Int?
+    var switchesMin: Int?
     
     // for checkbox
     var checkboxOptions: [String]?
     var checkboxList: [SlidingFormElementCheckbox]?
+    var checkboxMax: Int?
+    var checkboxMin: Int?
     
     // for ratio
     var ratioOptions: [String]?
@@ -183,7 +192,7 @@ class SlidingFormPage: UIView {
         }
     }
     
-    class func getInput(withTitle title: String, isRequired: Bool, desc: String?, defaultValue: String? = nil) -> SlidingFormPage {
+    class func getInput(withTitle title: String, isRequired: Bool, desc: String?, defaultValue: String? = nil, inputRule: String? = nil, errorMsg: String? = nil) -> SlidingFormPage {
         let page = SlidingFormPage()
         
         page.type = .input
@@ -191,6 +200,8 @@ class SlidingFormPage: UIView {
         page.isRequired = isRequired
         page.desc = desc
         page.inputValue = defaultValue
+        page.inputRule = inputRule
+        page.errorMsg = errorMsg
         
         page.initCommon()
         
@@ -201,6 +212,8 @@ class SlidingFormPage: UIView {
         textFiledBottomLineView.translatesAutoresizingMaskIntoConstraints = false
         page.addSubview(textField)
         page.addSubview(textFiledBottomLineView)
+        
+        textField.addTarget(page, action: #selector(page.handleTextFieldChange(sender:)), for: .editingChanged)
         
         
         textField.delegate = page
@@ -292,17 +305,22 @@ class SlidingFormPage: UIView {
         
     }
     
+    func handleTextFieldChange(sender: UITextField) {
+        self.inputValue = sender.text
+        
+        if self.isFinished {
+            self.errorMsgLbl.text = ""
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentPageFinished"), object: nil)
+        } else {
+            self.errorMsgLbl.text = self.errorMsg
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentPageUnFinished"), object: nil)
+        }
+    }
+    
 }
 
 extension SlidingFormPage: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.inputValue = textField.text
-        
-        if self.isFinished {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentPageFinished"), object: nil)
-        } else {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentPageUnFinished"), object: nil)
-        }
         textField.resignFirstResponder()
         
         return true
