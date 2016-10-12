@@ -27,10 +27,29 @@ func TEXT_FONT(withSize size: CGFloat) -> UIFont {
     return UIFont(name: "FZYanSongS-R-GB", size: size)!
 }
 
-let TIMEZONE_NAME: [String] = ["America/Los_Angeles", "Europe/London", "Asia/Shanghai"]
-let TIMEZONE_NAME_LOCALIZED: [String] = [
-    NSTimeZone(name: "America/Los_Angeles")!.localizedName(.shortGeneric, locale: Locale.current)!,
-    NSTimeZone(name: "Europe/London")!.localizedName(.shortGeneric, locale: Locale.current)!,
-    NSTimeZone(name: "Asia/Shanghai")!.localizedName(.shortGeneric, locale: Locale.current)!]
+var AVAILABLE_TIME_ZONE_LIST: [String] {
+    let currentSupportList = ["America/Los_Angeles", "Europe/London", "Asia/Shanghai"]
+    
+    let localTimeZoneName = TimeZone.current.identifier
+    if let _ = currentSupportList.index(of: localTimeZoneName) {
+        return currentSupportList
+    } else {
+        var newList = [String]()
+        newList.append(localTimeZoneName)
+        newList.append(contentsOf: currentSupportList)
+        return newList
+    }
+}
+
+var AVAILABLE_TIME_ZONE_LIST_LOCALIZED: [String] {
+    let originalList = AVAILABLE_TIME_ZONE_LIST
+    var localizedList = [String]()
+    
+    for name in originalList {
+        localizedList.append(TimeZone(identifier: name)!.localizedName(for: .shortGeneric, locale: Locale.current)!)
+    }
+    
+    return localizedList
+}
 
 let timezones = TimeZone.knownTimeZoneIdentifiers

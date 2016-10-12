@@ -9,39 +9,39 @@
 import Foundation
 
 class AlarmClockModel: NSObject, NSCoding {
-    var id: String!
-    var period: String!
-    var time: String!
-    var isSetBySelf: Bool!
-    var content: String!
-    var isActive: Bool!
-    var days: [Bool]!
+    var id: String?
+    var period: String? // at partnerTimezone
+    var time: String? // at partnerTimezone
+    var isSetBySelf: Bool? // if set by self, the time is in partner's time zone
+    var tag: String?
+    var isActive: Bool?
+    var days: [Bool]?
     
     var selfTimeText: String {
         return NSLocalizedString("My Time", comment: "我的时间")
     }
     
-    init(withId id: String, period: String, time: String, isSetBySelf: Bool, content: String, isActive: Bool, days: [Bool]) {
+    init(withId id: String?, period: String?, time: String?, isSetBySelf: Bool?, tag: String?, isActive: Bool?, days: [Bool]?) {
         self.id = id
         self.period = period
         self.time = time
         self.isSetBySelf = isSetBySelf
-        self.content = content
+        self.tag = tag
         self.isActive = isActive
         self.days = days
     }
     
     // MARK: NSCoding
     required convenience init?(coder aDecoder: NSCoder) {
-        let id = aDecoder.decodeObject(forKey: "id") as! String
-        let period = aDecoder.decodeObject(forKey: "period") as! String
-        let time = aDecoder.decodeObject(forKey: "time") as! String
-        let isSetBySelf = aDecoder.decodeObject(forKey: "isSetBySelf") as! Bool
-        let content = aDecoder.decodeObject(forKey: "content") as! String
-        let isActive = aDecoder.decodeObject(forKey: "isActive") as! Bool
-        let days = aDecoder.decodeObject(forKey: "days") as! [Bool]
+        let id = aDecoder.decodeObject(forKey: "id") as? String
+        let period = aDecoder.decodeObject(forKey: "period") as? String
+        let time = aDecoder.decodeObject(forKey: "time") as? String
+        let isSetBySelf = aDecoder.decodeObject(forKey: "isSetBySelf") as? Bool
+        let tag = aDecoder.decodeObject(forKey: "tag") as? String
+        let isActive = aDecoder.decodeObject(forKey: "isActive") as? Bool
+        let days = aDecoder.decodeObject(forKey: "days") as? [Bool]
         
-        self.init(withId: id, period: period, time: time, isSetBySelf: isSetBySelf, content: content, isActive: isActive, days: days)
+        self.init(withId: id, period: period, time: time, isSetBySelf: isSetBySelf, tag: tag, isActive: isActive, days: days)
     }
     
     func encode(with aCoder: NSCoder) {
@@ -49,7 +49,7 @@ class AlarmClockModel: NSObject, NSCoding {
         aCoder.encode(period, forKey: "period")
         aCoder.encode(time, forKey: "time")
         aCoder.encode(isSetBySelf, forKey: "isSetBySelf")
-        aCoder.encode(content, forKey: "content")
+        aCoder.encode(tag, forKey: "tag")
         aCoder.encode(isActive, forKey: "isActive")
         aCoder.encode(days, forKey: "days")
     }

@@ -1,532 +1,1545 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		ED5391DB1DA5772100071709 /* FZYanSJW.TTF in Resources */ = {isa = PBXBuildFile; fileRef = EDB1F92C1DA561FC00540AEA /* FZYanSJW.TTF */; };
-		ED5391DE1DA580E100071709 /* AlarmClockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391DD1DA580E100071709 /* AlarmClockCell.swift */; };
-		ED5391E01DA5841900071709 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391DF1DA5841900071709 /* Global.swift */; };
-		ED5391E21DA5845D00071709 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391E11DA5845D00071709 /* Extensions.swift */; };
-		ED5391E61DA5899F00071709 /* AlarmClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391E51DA5899F00071709 /* AlarmClockModel.swift */; };
-		ED5392091DA64C2800071709 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5392081DA64C2800071709 /* UserData.swift */; };
-		ED53920B1DA6513000071709 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED53920A1DA6513000071709 /* Helpers.swift */; };
-		ED53920D1DA652B100071709 /* NewAlarmClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED53920C1DA652B100071709 /* NewAlarmClockViewController.swift */; };
-		ED53920F1DA65BEF00071709 /* RatioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED53920E1DA65BEF00071709 /* RatioView.swift */; };
-		ED5392111DA6600F00071709 /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5392101DA6600F00071709 /* SwitchView.swift */; };
-		ED5392141DA6811600071709 /* DayInWeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5392131DA6811600071709 /* DayInWeekCell.swift */; };
-		ED5392161DA6832900071709 /* SelectRepeatDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5392151DA6832900071709 /* SelectRepeatDayViewController.swift */; };
-		ED5392181DA6CDF400071709 /* EditTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5392171DA6CDF400071709 /* EditTagViewController.swift */; };
-		ED53921A1DA6D62800071709 /* NoContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5392191DA6D62800071709 /* NoContentCell.swift */; };
-		ED660C301DA7ADE900411874 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED660C2F1DA7ADE900411874 /* SettingViewController.swift */; };
-		ED660C341DA7E78B00411874 /* SlidingFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED660C331DA7E78B00411874 /* SlidingFormViewController.swift */; };
-		ED660C3A1DA9016600411874 /* SlidingFormPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED660C391DA9016600411874 /* SlidingFormPage.swift */; };
-		ED660C3C1DA90A1E00411874 /* SlidingFormElementCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED660C3B1DA90A1E00411874 /* SlidingFormElementCheckbox.swift */; };
-		ED660C3E1DA90A6C00411874 /* SlidingFormElementRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED660C3D1DA90A6C00411874 /* SlidingFormElementRatio.swift */; };
-		ED660C401DA913B800411874 /* SlidingFormPageConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED660C3F1DA913B800411874 /* SlidingFormPageConfig.swift */; };
-		ED660C421DA928E500411874 /* SlidingFormElementSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED660C411DA928E500411874 /* SlidingFormElementSwitch.swift */; };
-		EDB1F91A1DA55E6B00540AEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB1F9191DA55E6B00540AEA /* AppDelegate.swift */; };
-		EDB1F91C1DA55E6B00540AEA /* AlarmClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB1F91B1DA55E6B00540AEA /* AlarmClockViewController.swift */; };
-		EDB1F91F1DA55E6B00540AEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDB1F91D1DA55E6B00540AEA /* Main.storyboard */; };
-		EDB1F9211DA55E6B00540AEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDB1F9201DA55E6B00540AEA /* Assets.xcassets */; };
-		EDB1F9241DA55E6B00540AEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDB1F9221DA55E6B00540AEA /* LaunchScreen.storyboard */; };
-		EDC521191DA969B5007039FC /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC521181DA969B5007039FC /* UserSettings.swift */; };
-		EDC5211E1DA9ABC4007039FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDC521201DA9ABC4007039FC /* Localizable.strings */; };
-		EDC521231DA9ABC4007039FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDC521251DA9ABC4007039FC /* InfoPlist.strings */; };
-		EDC521271DAA4D5F007039FC /* CTDateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC521261DAA4D5F007039FC /* CTDateModel.swift */; };
-		EDC521291DAA6057007039FC /* FZMSTJW.TTF in Resources */ = {isa = PBXBuildFile; fileRef = EDC521281DAA6034007039FC /* FZMSTJW.TTF */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXFileReference section */
-		ED5391DD1DA580E100071709 /* AlarmClockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmClockCell.swift; sourceTree = "<group>"; };
-		ED5391DF1DA5841900071709 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		ED5391E11DA5845D00071709 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		ED5391E51DA5899F00071709 /* AlarmClockModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmClockModel.swift; sourceTree = "<group>"; };
-		ED5392081DA64C2800071709 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		ED53920A1DA6513000071709 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		ED53920C1DA652B100071709 /* NewAlarmClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAlarmClockViewController.swift; sourceTree = "<group>"; };
-		ED53920E1DA65BEF00071709 /* RatioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatioView.swift; sourceTree = "<group>"; };
-		ED5392101DA6600F00071709 /* SwitchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
-		ED5392131DA6811600071709 /* DayInWeekCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayInWeekCell.swift; sourceTree = "<group>"; };
-		ED5392151DA6832900071709 /* SelectRepeatDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRepeatDayViewController.swift; sourceTree = "<group>"; };
-		ED5392171DA6CDF400071709 /* EditTagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTagViewController.swift; sourceTree = "<group>"; };
-		ED5392191DA6D62800071709 /* NoContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoContentCell.swift; sourceTree = "<group>"; };
-		ED660C2F1DA7ADE900411874 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		ED660C331DA7E78B00411874 /* SlidingFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingFormViewController.swift; sourceTree = "<group>"; };
-		ED660C391DA9016600411874 /* SlidingFormPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingFormPage.swift; sourceTree = "<group>"; };
-		ED660C3B1DA90A1E00411874 /* SlidingFormElementCheckbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingFormElementCheckbox.swift; sourceTree = "<group>"; };
-		ED660C3D1DA90A6C00411874 /* SlidingFormElementRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingFormElementRatio.swift; sourceTree = "<group>"; };
-		ED660C3F1DA913B800411874 /* SlidingFormPageConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingFormPageConfig.swift; sourceTree = "<group>"; };
-		ED660C411DA928E500411874 /* SlidingFormElementSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingFormElementSwitch.swift; sourceTree = "<group>"; };
-		EDB1F9161DA55E6B00540AEA /* CoupleTimezones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoupleTimezones.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDB1F9191DA55E6B00540AEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EDB1F91B1DA55E6B00540AEA /* AlarmClockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmClockViewController.swift; sourceTree = "<group>"; };
-		EDB1F91E1DA55E6B00540AEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EDB1F9201DA55E6B00540AEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EDB1F9231DA55E6B00540AEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		EDB1F9251DA55E6B00540AEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EDB1F92C1DA561FC00540AEA /* FZYanSJW.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = FZYanSJW.TTF; sourceTree = "<group>"; };
-		EDC521181DA969B5007039FC /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
-		EDC5211A1DA9A1D5007039FC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
-		EDC5211B1DA9A1D5007039FC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		EDC5211F1DA9ABC4007039FC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		EDC521241DA9ABC4007039FC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		EDC521261DAA4D5F007039FC /* CTDateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTDateModel.swift; sourceTree = "<group>"; };
-		EDC521281DAA6034007039FC /* FZMSTJW.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = FZMSTJW.TTF; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		EDB1F9131DA55E6A00540AEA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		ED5391DC1DA580C400071709 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				ED5391DD1DA580E100071709 /* AlarmClockCell.swift */,
-				ED53920E1DA65BEF00071709 /* RatioView.swift */,
-				ED5392101DA6600F00071709 /* SwitchView.swift */,
-				ED5392131DA6811600071709 /* DayInWeekCell.swift */,
-				ED5392191DA6D62800071709 /* NoContentCell.swift */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		ED5391E31DA5898300071709 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				ED5391E51DA5899F00071709 /* AlarmClockModel.swift */,
-				EDC521261DAA4D5F007039FC /* CTDateModel.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		ED5391E41DA5898700071709 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				EDB1F91B1DA55E6B00540AEA /* AlarmClockViewController.swift */,
-				ED53920C1DA652B100071709 /* NewAlarmClockViewController.swift */,
-				ED5392151DA6832900071709 /* SelectRepeatDayViewController.swift */,
-				ED5392171DA6CDF400071709 /* EditTagViewController.swift */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
-		ED660C2B1DA7AD4100411874 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				ED660C2E1DA7AD8400411874 /* Controllers */,
-				ED660C2D1DA7AD7900411874 /* Models */,
-				ED660C2C1DA7AD6B00411874 /* Views */,
-			);
-			name = Settings;
-			sourceTree = "<group>";
-		};
-		ED660C2C1DA7AD6B00411874 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		ED660C2D1DA7AD7900411874 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				EDC521181DA969B5007039FC /* UserSettings.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		ED660C2E1DA7AD8400411874 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				ED660C2F1DA7ADE900411874 /* SettingViewController.swift */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
-		ED660C351DA9012000411874 /* SlidingForm */ = {
-			isa = PBXGroup;
-			children = (
-				ED660C381DA9013900411874 /* Constrollers */,
-				ED660C371DA9013500411874 /* Models */,
-				ED660C361DA9012D00411874 /* Views */,
-			);
-			name = SlidingForm;
-			sourceTree = "<group>";
-		};
-		ED660C361DA9012D00411874 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				ED660C391DA9016600411874 /* SlidingFormPage.swift */,
-				ED660C3B1DA90A1E00411874 /* SlidingFormElementCheckbox.swift */,
-				ED660C3D1DA90A6C00411874 /* SlidingFormElementRatio.swift */,
-				ED660C3F1DA913B800411874 /* SlidingFormPageConfig.swift */,
-				ED660C411DA928E500411874 /* SlidingFormElementSwitch.swift */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		ED660C371DA9013500411874 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		ED660C381DA9013900411874 /* Constrollers */ = {
-			isa = PBXGroup;
-			children = (
-				ED660C331DA7E78B00411874 /* SlidingFormViewController.swift */,
-			);
-			name = Constrollers;
-			sourceTree = "<group>";
-		};
-		EDB1F90D1DA55E6A00540AEA = {
-			isa = PBXGroup;
-			children = (
-				EDB1F9181DA55E6B00540AEA /* CoupleTimezones */,
-				EDB1F9171DA55E6B00540AEA /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		EDB1F9171DA55E6B00540AEA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EDB1F9161DA55E6B00540AEA /* CoupleTimezones.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		EDB1F9181DA55E6B00540AEA /* CoupleTimezones */ = {
-			isa = PBXGroup;
-			children = (
-				EDC521251DA9ABC4007039FC /* InfoPlist.strings */,
-				EDC521201DA9ABC4007039FC /* Localizable.strings */,
-				ED5392081DA64C2800071709 /* UserData.swift */,
-				ED5391DF1DA5841900071709 /* Global.swift */,
-				ED53920A1DA6513000071709 /* Helpers.swift */,
-				ED5391E11DA5845D00071709 /* Extensions.swift */,
-				EDB1F92B1DA55ED100540AEA /* AlarmClock */,
-				ED660C2B1DA7AD4100411874 /* Settings */,
-				ED660C351DA9012000411874 /* SlidingForm */,
-				EDB1F9191DA55E6B00540AEA /* AppDelegate.swift */,
-				EDB1F91D1DA55E6B00540AEA /* Main.storyboard */,
-				EDB1F92C1DA561FC00540AEA /* FZYanSJW.TTF */,
-				EDC521281DAA6034007039FC /* FZMSTJW.TTF */,
-				EDB1F9201DA55E6B00540AEA /* Assets.xcassets */,
-				EDB1F9221DA55E6B00540AEA /* LaunchScreen.storyboard */,
-				EDB1F9251DA55E6B00540AEA /* Info.plist */,
-			);
-			path = CoupleTimezones;
-			sourceTree = "<group>";
-		};
-		EDB1F92B1DA55ED100540AEA /* AlarmClock */ = {
-			isa = PBXGroup;
-			children = (
-				ED5391E41DA5898700071709 /* Controllers */,
-				ED5391E31DA5898300071709 /* Models */,
-				ED5391DC1DA580C400071709 /* Views */,
-			);
-			name = AlarmClock;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		EDB1F9151DA55E6A00540AEA /* CoupleTimezones */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EDB1F9281DA55E6B00540AEA /* Build configuration list for PBXNativeTarget "CoupleTimezones" */;
-			buildPhases = (
-				EDB1F9121DA55E6A00540AEA /* Sources */,
-				EDB1F9131DA55E6A00540AEA /* Frameworks */,
-				EDB1F9141DA55E6A00540AEA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CoupleTimezones;
-			productName = CoupleTimezones;
-			productReference = EDB1F9161DA55E6B00540AEA /* CoupleTimezones.app */;
-			productType = "com.apple.product-type.application";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		EDB1F90E1DA55E6A00540AEA /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
-				ORGANIZATIONNAME = Ant;
-				TargetAttributes = {
-					EDB1F9151DA55E6A00540AEA = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = SLMFH6GDG4;
-						ProvisioningStyle = Automatic;
-					};
-				};
-			};
-			buildConfigurationList = EDB1F9111DA55E6A00540AEA /* Build configuration list for PBXProject "CoupleTimezones" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = EDB1F90D1DA55E6A00540AEA;
-			productRefGroup = EDB1F9171DA55E6B00540AEA /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				EDB1F9151DA55E6A00540AEA /* CoupleTimezones */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		EDB1F9141DA55E6A00540AEA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EDC5211E1DA9ABC4007039FC /* Localizable.strings in Resources */,
-				EDC521231DA9ABC4007039FC /* InfoPlist.strings in Resources */,
-				ED5391DB1DA5772100071709 /* FZYanSJW.TTF in Resources */,
-				EDC521291DAA6057007039FC /* FZMSTJW.TTF in Resources */,
-				EDB1F9241DA55E6B00540AEA /* LaunchScreen.storyboard in Resources */,
-				EDB1F9211DA55E6B00540AEA /* Assets.xcassets in Resources */,
-				EDB1F91F1DA55E6B00540AEA /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		EDB1F9121DA55E6A00540AEA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ED660C421DA928E500411874 /* SlidingFormElementSwitch.swift in Sources */,
-				ED660C301DA7ADE900411874 /* SettingViewController.swift in Sources */,
-				ED5391E21DA5845D00071709 /* Extensions.swift in Sources */,
-				ED5391E01DA5841900071709 /* Global.swift in Sources */,
-				ED5392091DA64C2800071709 /* UserData.swift in Sources */,
-				ED5392141DA6811600071709 /* DayInWeekCell.swift in Sources */,
-				ED660C3A1DA9016600411874 /* SlidingFormPage.swift in Sources */,
-				ED53920B1DA6513000071709 /* Helpers.swift in Sources */,
-				ED660C341DA7E78B00411874 /* SlidingFormViewController.swift in Sources */,
-				ED660C3E1DA90A6C00411874 /* SlidingFormElementRatio.swift in Sources */,
-				ED5391E61DA5899F00071709 /* AlarmClockModel.swift in Sources */,
-				EDB1F91C1DA55E6B00540AEA /* AlarmClockViewController.swift in Sources */,
-				ED53920D1DA652B100071709 /* NewAlarmClockViewController.swift in Sources */,
-				ED660C401DA913B800411874 /* SlidingFormPageConfig.swift in Sources */,
-				ED5392111DA6600F00071709 /* SwitchView.swift in Sources */,
-				ED5392181DA6CDF400071709 /* EditTagViewController.swift in Sources */,
-				ED53921A1DA6D62800071709 /* NoContentCell.swift in Sources */,
-				EDC521191DA969B5007039FC /* UserSettings.swift in Sources */,
-				ED53920F1DA65BEF00071709 /* RatioView.swift in Sources */,
-				ED660C3C1DA90A1E00411874 /* SlidingFormElementCheckbox.swift in Sources */,
-				EDC521271DAA4D5F007039FC /* CTDateModel.swift in Sources */,
-				ED5391DE1DA580E100071709 /* AlarmClockCell.swift in Sources */,
-				EDB1F91A1DA55E6B00540AEA /* AppDelegate.swift in Sources */,
-				ED5392161DA6832900071709 /* SelectRepeatDayViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		EDB1F91D1DA55E6B00540AEA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EDB1F91E1DA55E6B00540AEA /* Base */,
-				EDC5211A1DA9A1D5007039FC /* zh-Hans */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		EDB1F9221DA55E6B00540AEA /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EDB1F9231DA55E6B00540AEA /* Base */,
-				EDC5211B1DA9A1D5007039FC /* zh-Hans */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		EDC521201DA9ABC4007039FC /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EDC5211F1DA9ABC4007039FC /* zh-Hans */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		EDC521251DA9ABC4007039FC /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EDC521241DA9ABC4007039FC /* zh-Hans */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		EDB1F9261DA55E6B00540AEA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		EDB1F9271DA55E6B00540AEA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		EDB1F9291DA55E6B00540AEA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = SLMFH6GDG4;
-				INFOPLIST_FILE = CoupleTimezones/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.chengkang.CoupleTimezones;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		EDB1F92A1DA55E6B00540AEA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = SLMFH6GDG4;
-				INFOPLIST_FILE = CoupleTimezones/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.chengkang.CoupleTimezones;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		EDB1F9111DA55E6A00540AEA /* Build configuration list for PBXProject "CoupleTimezones" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EDB1F9261DA55E6B00540AEA /* Debug */,
-				EDB1F9271DA55E6B00540AEA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EDB1F9281DA55E6B00540AEA /* Build configuration list for PBXNativeTarget "CoupleTimezones" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EDB1F9291DA55E6B00540AEA /* Debug */,
-				EDB1F92A1DA55E6B00540AEA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = EDB1F90E1DA55E6A00540AEA /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>073231FF07FBD526DB9F5891</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-CoupleTimezones.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-CoupleTimezones/Pods-CoupleTimezones.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2E79E6423D49071B02D6BA10</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods_CoupleTimezones.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>6BCAA7F74A2409AE153276EF</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2E79E6423D49071B02D6BA10</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AECB12EE505B5B0523EFDB8</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>&#128230; Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-CoupleTimezones/Pods-CoupleTimezones-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>BF4FFC3BF64FDE8E18EE8CE0</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>EB1425EFCFD125D923B0EB2F</string>
+				<string>073231FF07FBD526DB9F5891</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CB54568702E47198AF705E21</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2E79E6423D49071B02D6BA10</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EB1425EFCFD125D923B0EB2F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-CoupleTimezones.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-CoupleTimezones/Pods-CoupleTimezones.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EBE9E66262F929A7A7C9F469</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>&#128230; Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-CoupleTimezones/Pods-CoupleTimezones-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>EC438C8D981C849E34444FB1</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>&#128230; Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>ED5391DB1DA5772100071709</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDB1F92C1DA561FC00540AEA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED5391DC1DA580C400071709</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>ED5391DD1DA580E100071709</string>
+				<string>ED53920E1DA65BEF00071709</string>
+				<string>ED5392101DA6600F00071709</string>
+				<string>ED5392131DA6811600071709</string>
+				<string>ED5392191DA6D62800071709</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Views</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED5391DD1DA580E100071709</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>AlarmClockCell.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED5391DE1DA580E100071709</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED5391DD1DA580E100071709</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED5391DF1DA5841900071709</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Constants.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED5391E01DA5841900071709</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED5391DF1DA5841900071709</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED5391E11DA5845D00071709</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Extensions.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED5391E21DA5845D00071709</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED5391E11DA5845D00071709</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED5391E31DA5898300071709</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>ED5391E51DA5899F00071709</string>
+				<string>EDC521261DAA4D5F007039FC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Models</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED5391E41DA5898700071709</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>EDB1F91B1DA55E6B00540AEA</string>
+				<string>ED53920C1DA652B100071709</string>
+				<string>ED5392151DA6832900071709</string>
+				<string>ED5392171DA6CDF400071709</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Controllers</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED5391E51DA5899F00071709</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>AlarmClockModel.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED5391E61DA5899F00071709</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED5391E51DA5899F00071709</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED5392081DA64C2800071709</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>UserData.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED5392091DA64C2800071709</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED5392081DA64C2800071709</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED53920A1DA6513000071709</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Helpers.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED53920B1DA6513000071709</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED53920A1DA6513000071709</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED53920C1DA652B100071709</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>NewAlarmClockViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED53920D1DA652B100071709</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED53920C1DA652B100071709</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED53920E1DA65BEF00071709</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>RatioView.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED53920F1DA65BEF00071709</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED53920E1DA65BEF00071709</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED5392101DA6600F00071709</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SwitchView.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED5392111DA6600F00071709</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED5392101DA6600F00071709</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED5392131DA6811600071709</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>DayInWeekCell.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED5392141DA6811600071709</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED5392131DA6811600071709</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED5392151DA6832900071709</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SelectRepeatDayViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED5392161DA6832900071709</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED5392151DA6832900071709</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED5392171DA6CDF400071709</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>EditTagViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED5392181DA6CDF400071709</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED5392171DA6CDF400071709</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED5392191DA6D62800071709</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>NoContentCell.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED53921A1DA6D62800071709</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED5392191DA6D62800071709</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED660C2B1DA7AD4100411874</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>ED660C2E1DA7AD8400411874</string>
+				<string>ED660C2D1DA7AD7900411874</string>
+				<string>ED660C2C1DA7AD6B00411874</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Settings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED660C2C1DA7AD6B00411874</key>
+		<dict>
+			<key>children</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Views</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED660C2D1DA7AD7900411874</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>EDC521181DA969B5007039FC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Models</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED660C2E1DA7AD8400411874</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>ED660C2F1DA7ADE900411874</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Controllers</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED660C2F1DA7ADE900411874</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SettingViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED660C301DA7ADE900411874</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED660C2F1DA7ADE900411874</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED660C331DA7E78B00411874</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SlidingFormViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED660C341DA7E78B00411874</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED660C331DA7E78B00411874</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED660C351DA9012000411874</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>ED660C381DA9013900411874</string>
+				<string>ED660C371DA9013500411874</string>
+				<string>ED660C361DA9012D00411874</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>SlidingForm</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED660C361DA9012D00411874</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>ED660C391DA9016600411874</string>
+				<string>ED660C3B1DA90A1E00411874</string>
+				<string>ED660C3D1DA90A6C00411874</string>
+				<string>ED660C3F1DA913B800411874</string>
+				<string>ED660C411DA928E500411874</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Views</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED660C371DA9013500411874</key>
+		<dict>
+			<key>children</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Models</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED660C381DA9013900411874</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>ED660C331DA7E78B00411874</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Constrollers</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED660C391DA9016600411874</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SlidingFormPage.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED660C3A1DA9016600411874</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED660C391DA9016600411874</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED660C3B1DA90A1E00411874</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SlidingFormElementCheckbox.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED660C3C1DA90A1E00411874</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED660C3B1DA90A1E00411874</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED660C3D1DA90A6C00411874</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SlidingFormElementRatio.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED660C3E1DA90A6C00411874</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED660C3D1DA90A6C00411874</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED660C3F1DA913B800411874</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SlidingFormPageConfig.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED660C401DA913B800411874</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED660C3F1DA913B800411874</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED660C411DA928E500411874</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SlidingFormElementSwitch.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED660C421DA928E500411874</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED660C411DA928E500411874</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EDB1F90D1DA55E6A00540AEA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>EDB1F9181DA55E6B00540AEA</string>
+				<string>EDB1F9171DA55E6B00540AEA</string>
+				<string>BF4FFC3BF64FDE8E18EE8CE0</string>
+				<string>6BCAA7F74A2409AE153276EF</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDB1F90E1DA55E6A00540AEA</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastSwiftUpdateCheck</key>
+				<string>0800</string>
+				<key>LastUpgradeCheck</key>
+				<string>0800</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>Ant</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>EDB1F9151DA55E6A00540AEA</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>8.0</string>
+						<key>DevelopmentTeam</key>
+						<string>SLMFH6GDG4</string>
+						<key>ProvisioningStyle</key>
+						<string>Automatic</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>EDB1F9111DA55E6A00540AEA</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>EDB1F90D1DA55E6A00540AEA</string>
+			<key>productRefGroup</key>
+			<string>EDB1F9171DA55E6B00540AEA</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>EDB1F9151DA55E6A00540AEA</string>
+			</array>
+		</dict>
+		<key>EDB1F9111DA55E6A00540AEA</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>EDB1F9261DA55E6B00540AEA</string>
+				<string>EDB1F9271DA55E6B00540AEA</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>EDB1F9121DA55E6A00540AEA</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>ED660C421DA928E500411874</string>
+				<string>ED660C301DA7ADE900411874</string>
+				<string>ED5391E21DA5845D00071709</string>
+				<string>ED5391E01DA5841900071709</string>
+				<string>ED5392091DA64C2800071709</string>
+				<string>ED5392141DA6811600071709</string>
+				<string>ED660C3A1DA9016600411874</string>
+				<string>ED53920B1DA6513000071709</string>
+				<string>ED660C341DA7E78B00411874</string>
+				<string>ED660C3E1DA90A6C00411874</string>
+				<string>ED5391E61DA5899F00071709</string>
+				<string>EDB1F91C1DA55E6B00540AEA</string>
+				<string>ED53920D1DA652B100071709</string>
+				<string>ED660C401DA913B800411874</string>
+				<string>ED5392111DA6600F00071709</string>
+				<string>ED5392181DA6CDF400071709</string>
+				<string>ED53921A1DA6D62800071709</string>
+				<string>EDC521191DA969B5007039FC</string>
+				<string>ED53920F1DA65BEF00071709</string>
+				<string>ED660C3C1DA90A1E00411874</string>
+				<string>EDC521271DAA4D5F007039FC</string>
+				<string>ED5391DE1DA580E100071709</string>
+				<string>EDB1F91A1DA55E6B00540AEA</string>
+				<string>ED5392161DA6832900071709</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>EDB1F9131DA55E6A00540AEA</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>CB54568702E47198AF705E21</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>EDB1F9141DA55E6A00540AEA</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>EDC5211E1DA9ABC4007039FC</string>
+				<string>EDC5212B1DAB9861007039FC</string>
+				<string>EDC521231DA9ABC4007039FC</string>
+				<string>ED5391DB1DA5772100071709</string>
+				<string>EDC521291DAA6057007039FC</string>
+				<string>EDB1F9241DA55E6B00540AEA</string>
+				<string>EDB1F9211DA55E6B00540AEA</string>
+				<string>EDB1F91F1DA55E6B00540AEA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>EDB1F9151DA55E6A00540AEA</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>EDB1F9281DA55E6B00540AEA</string>
+			<key>buildPhases</key>
+			<array>
+				<string>EC438C8D981C849E34444FB1</string>
+				<string>EDB1F9121DA55E6A00540AEA</string>
+				<string>EDB1F9131DA55E6A00540AEA</string>
+				<string>EDB1F9141DA55E6A00540AEA</string>
+				<string>9AECB12EE505B5B0523EFDB8</string>
+				<string>EBE9E66262F929A7A7C9F469</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>CoupleTimezones</string>
+			<key>productName</key>
+			<string>CoupleTimezones</string>
+			<key>productReference</key>
+			<string>EDB1F9161DA55E6B00540AEA</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>EDB1F9161DA55E6B00540AEA</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>CoupleTimezones.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>EDB1F9171DA55E6B00540AEA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>EDB1F9161DA55E6B00540AEA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDB1F9181DA55E6B00540AEA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>EDC521251DA9ABC4007039FC</string>
+				<string>EDC521201DA9ABC4007039FC</string>
+				<string>ED5392081DA64C2800071709</string>
+				<string>ED5391DF1DA5841900071709</string>
+				<string>ED53920A1DA6513000071709</string>
+				<string>ED5391E11DA5845D00071709</string>
+				<string>EDB1F92B1DA55ED100540AEA</string>
+				<string>ED660C2B1DA7AD4100411874</string>
+				<string>ED660C351DA9012000411874</string>
+				<string>EDB1F9191DA55E6B00540AEA</string>
+				<string>EDB1F91D1DA55E6B00540AEA</string>
+				<string>EDB1F92C1DA561FC00540AEA</string>
+				<string>EDC521281DAA6034007039FC</string>
+				<string>EDB1F9201DA55E6B00540AEA</string>
+				<string>EDB1F9221DA55E6B00540AEA</string>
+				<string>EDB1F9251DA55E6B00540AEA</string>
+				<string>EDC5212A1DAB9861007039FC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>CoupleTimezones</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDB1F9191DA55E6B00540AEA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>AppDelegate.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDB1F91A1DA55E6B00540AEA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDB1F9191DA55E6B00540AEA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EDB1F91B1DA55E6B00540AEA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>AlarmClockViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDB1F91C1DA55E6B00540AEA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDB1F91B1DA55E6B00540AEA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EDB1F91D1DA55E6B00540AEA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>EDB1F91E1DA55E6B00540AEA</string>
+				<string>EDC5211A1DA9A1D5007039FC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDB1F91E1DA55E6B00540AEA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDB1F91F1DA55E6B00540AEA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDB1F91D1DA55E6B00540AEA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EDB1F9201DA55E6B00540AEA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Assets.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDB1F9211DA55E6B00540AEA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDB1F9201DA55E6B00540AEA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EDB1F9221DA55E6B00540AEA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>EDB1F9231DA55E6B00540AEA</string>
+				<string>EDC5211B1DA9A1D5007039FC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>LaunchScreen.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDB1F9231DA55E6B00540AEA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/LaunchScreen.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDB1F9241DA55E6B00540AEA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDB1F9221DA55E6B00540AEA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EDB1F9251DA55E6B00540AEA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDB1F9261DA55E6B00540AEA</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED</key>
+				<string>YES</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_DOCUMENTATION_COMMENTS</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INFINITE_RECURSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_SUSPICIOUS_MOVES</key>
+				<string>YES</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>ENABLE_TESTABILITY</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>10.0</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SWIFT_ACTIVE_COMPILATION_CONDITIONS</key>
+				<string>DEBUG</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>EDB1F9271DA55E6B00540AEA</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED</key>
+				<string>YES</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_DOCUMENTATION_COMMENTS</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INFINITE_RECURSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_SUSPICIOUS_MOVES</key>
+				<string>YES</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>10.0</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Owholemodule</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>EDB1F9281DA55E6B00540AEA</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>EDB1F9291DA55E6B00540AEA</string>
+				<string>EDB1F92A1DA55E6B00540AEA</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>EDB1F9291DA55E6B00540AEA</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>EB1425EFCFD125D923B0EB2F</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>DEVELOPMENT_TEAM</key>
+				<string>SLMFH6GDG4</string>
+				<key>INFOPLIST_FILE</key>
+				<string>CoupleTimezones/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>me.chengkang.CoupleTimezones</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>EDB1F92A1DA55E6B00540AEA</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>073231FF07FBD526DB9F5891</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>DEVELOPMENT_TEAM</key>
+				<string>SLMFH6GDG4</string>
+				<key>INFOPLIST_FILE</key>
+				<string>CoupleTimezones/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>me.chengkang.CoupleTimezones</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>EDB1F92B1DA55ED100540AEA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>ED5391E41DA5898700071709</string>
+				<string>ED5391E31DA5898300071709</string>
+				<string>ED5391DC1DA580C400071709</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>AlarmClock</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDB1F92C1DA561FC00540AEA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>FZYanSJW.TTF</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDC521181DA969B5007039FC</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>UserSettings.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDC521191DA969B5007039FC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDC521181DA969B5007039FC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EDC5211A1DA9A1D5007039FC</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>zh-Hans</string>
+			<key>path</key>
+			<string>zh-Hans.lproj/Main.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDC5211B1DA9A1D5007039FC</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>zh-Hans</string>
+			<key>path</key>
+			<string>zh-Hans.lproj/LaunchScreen.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDC5211E1DA9ABC4007039FC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDC521201DA9ABC4007039FC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EDC5211F1DA9ABC4007039FC</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>zh-Hans</string>
+			<key>path</key>
+			<string>zh-Hans.lproj/Localizable.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDC521201DA9ABC4007039FC</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>EDC5211F1DA9ABC4007039FC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Localizable.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDC521231DA9ABC4007039FC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDC521251DA9ABC4007039FC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EDC521241DA9ABC4007039FC</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>zh-Hans</string>
+			<key>path</key>
+			<string>zh-Hans.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDC521251DA9ABC4007039FC</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>EDC521241DA9ABC4007039FC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDC521261DAA4D5F007039FC</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>CTDateModel.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDC521271DAA4D5F007039FC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDC521261DAA4D5F007039FC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EDC521281DAA6034007039FC</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>FZMSTJW.TTF</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDC521291DAA6057007039FC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDC521281DAA6034007039FC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EDC5212A1DAB9861007039FC</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>GoogleService-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDC5212B1DAB9861007039FC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDC5212A1DAB9861007039FC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>EDB1F90E1DA55E6A00540AEA</string>
+</dict>
+</plist>

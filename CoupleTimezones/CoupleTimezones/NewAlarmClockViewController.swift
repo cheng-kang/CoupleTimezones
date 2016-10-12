@@ -16,7 +16,7 @@ class NewAlarmClockViewController: UIViewController {
     
     var saveCallback: (()->())?
     
-    var data = AlarmClockModel(withId: "a", period: "", time: "", isSetBySelf: true, content: NSLocalizedString("Remind Darling", comment: "AlarmClock"), isActive: true, days: [false, false, false, false, false, false, false])
+    var data = AlarmClockModel(withId: nil, period: nil, time: nil, isSetBySelf: true, tag: NSLocalizedString("Remind Darling", comment: "AlarmClock"), isActive: true, days: [false, false, false, false, false, false, false])
     var isNew = true
     var dataIndex = 0
     
@@ -65,10 +65,14 @@ class NewAlarmClockViewController: UIViewController {
         self.tableview.delegate = self
         self.tableview.tableFooterView = UIView()
         
+        let df = DateFormatter()
+        df.dateFormat = "HH:mm"
         if !isNew {
-            let df = DateFormatter()
-            df.dateFormat = "HH:mm"
-            self.datePicker.date = df.date(from: data.time)!
+            self.datePicker.date = df.date(from: data.time!)!
+        } else {
+            // set the init time to the time at partner's timezone
+            let date = Helpers.sharedInstance.getDateAtTimezone(UserData.sharedInstance.getUserSettings().partnerTimezone!)
+            self.datePicker.date = date
         }
     }
 
@@ -111,20 +115,15 @@ class NewAlarmClockViewController: UIViewController {
         if isNew {
             data.isSetBySelf = true
             
-            if UserData.sharedInstance.insertAlarmClock(newElement: data) {
-                Helpers.sharedInstance.toast(withString: "Success")
-            } else {
-                Helpers.sharedInstance.toast(withString: "Fail")
-            }
+            UserData.sharedInstance.insertAlarmClock(toSelf: true, newElement: data, callback: { isSuccess in
+                self.saveCallback?()
+            })
         } else {
-            if UserData.sharedInstance.updateAlarmClock(atIndex: dataIndex, withElement: data) {
-                Helpers.sharedInstance.toast(withString: "Success")
-            } else {
-                Helpers.sharedInstance.toast(withString: "Fail")
-            }
+            UserData.sharedInstance.updateAlarmClock(ofSelf: true, atIndex: dataIndex, withElement: data, callback: { isSuccess in
+                self.saveCallback?()
+            })
         }
         
-        saveCallback?()
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -150,7 +149,7 @@ extension NewAlarmClockViewController: UITableViewDataSource, UITableViewDelegat
         if indexPath.row == 0 {
             cell.detailTextLabel?.text = textForRepeatance
         } else if indexPath.row == 1 {
-            cell.detailTextLabel?.text = data.content
+            cell.detailTextLabel?.text = data.tag
         }
         
         return cell
@@ -158,14 +157,14 @@ extension NewAlarmClockViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            let vc = SelectRepeatDayViewController.vc(withSelectionList: self.data.days,savaCallback: { (selectionList) in
+            let vc = SelectRepeatDayViewController.vc(withSelectionList: self.data.days!,savaCallback: { (selectionList) in
                 self.data.days = selectionList
                 self.tableview.reloadData()
             })
             self.present(vc, animated: true, completion: nil)
         } else if indexPath.row == 1 {
-            let vc = EditTagViewController.vc(withTag: self.data.content, editTagCallback: { (tag) in
-                self.data.content = tag
+            let vc = EditTagViewController.vc(withTag: self.data.tag!, editTagCallback: { (tag) in
+                self.data.tag = tag
                 self.tableview.reloadData()
             })
             self.present(vc, animated: true, completion: nil)

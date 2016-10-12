@@ -17,18 +17,72 @@ class Helpers: NSObject {
         print(text)
     }
     
+    func getTimezoneIndexByIdentifier(_ identifier: String?) -> Int {
+        
+        if let name = identifier {
+            if let timezoneIndex = AVAILABLE_TIME_ZONE_LIST.index(of: name) {
+                return timezoneIndex
+            }
+        }
+        
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "TimeZoneNotSupported"), object: nil)
+        return 0
+    }
+    
+    func AddLocalNotification(_ identifier: String, tag: String, fireDate: Date, musicIndex: Int? = nil) {
+        
+    }
+    
+    
+    // MARK: Methods to deal with date
     func getDatetimeText(fromDate date: Date, withFormat format: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: date)
     }
     
-    func getCTDate(atTimezone name: String) -> CTDateModel {
+    func getDateInFormat(_ format: String, withDateString dateString: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
         
-        let GMTDate = Date().addingTimeInterval(-TimeInterval(NSTimeZone.local.secondsFromGMT()))
+        return dateFormatter.date(from: dateString)!
+    }
+    
+    // get a CTDateModel of a specific time at today
+    func getCTDate(atTimezone name: String, withTimeString time: String) -> CTDateModel {
+        let df = DateFormatter()
+        df.defaultDate = Date()
+        df.dateFormat = "HH:mm"
+        let date = df.date(from: time)!
+        
+        let GMTDate = date.addingTimeInterval(-TimeInterval(NSTimeZone.local.secondsFromGMT()))
         
         let dateAtTimezone = GMTDate.addingTimeInterval(TimeInterval(NSTimeZone(name: name)!.secondsFromGMT))
         
-        return CTDateModel(withDate: dateAtTimezone)
+        return CTDateModel(currentDate: dateAtTimezone, originalDate: date)
+    }
+    
+    // start here
+    func getDateOfTodayAtTime(_ time: String, inFormat format: String) -> Date {
+        let df = DateFormatter()
+        df.defaultDate = Date()
+        df.dateFormat = "HH:mm"
+        return df.date(from: time)!
+    }
+    
+    func getTimeIntervalBetweenLocalAndTimeZone(_ timeZoneName: String) -> TimeInterval {
+        let local = Double(TimeZone.current.secondsFromGMT())
+        let theOther = Double(TimeZone(identifier: timeZoneName)!.secondsFromGMT())
+        return local - theOther
+    }
+    
+    func getDateAtTimezone(_ timezoneName: String) -> Date {
+        let date = Date()
+        
+        let GMTDate = date.addingTimeInterval(-TimeInterval(TimeZone.current.secondsFromGMT()))
+        
+        let dateAtTimezone = GMTDate.addingTimeInterval(TimeInterval(TimeZone(identifier: timezoneName)!.secondsFromGMT()))
+        
+        return dateAtTimezone
     }
 }

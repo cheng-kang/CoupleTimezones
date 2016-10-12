@@ -8,30 +8,48 @@
 
 import Foundation
 
+// CTDateModel
+// !!!this currentDate may contain wrong day component
 class CTDateModel: NSObject {
-    var date: Date!
+    var originalNickname: String?
+    var originalTime: String?
+    var originalTimezone: String?
     
-    var time: String {
-        return Helpers.sharedInstance.getDatetimeText(fromDate: self.date, withFormat: "HH:mm")
+    var originalDate: Date!
+    
+    var currentNickname: String?
+    var currentTimezone: String?
+    
+    var currentDate: Date! {
+        didSet {
+            timeString = Helpers.sharedInstance.getDatetimeText(fromDate: currentDate, withFormat: "HH:mm")
+            timeStringWithoutColon = Helpers.sharedInstance.getDatetimeText(fromDate: currentDate, withFormat: "HH mm")
+            periodString = Helpers.sharedInstance.getDatetimeText(fromDate: currentDate, withFormat: "a")
+        }
     }
     
-    var timeWithoutColon: String {
-        return Helpers.sharedInstance.getDatetimeText(fromDate: self.date, withFormat: "HH mm")
+    var timeIntervalBetweenTimezones: TimeInterval?
+    
+    var timeString: String!
+    
+    var timeStringWithoutColon: String!
+    
+    var periodString: String!
+    
+    var dayDiffString: String?
+    
+    func getDayDiffString() -> String {
+        if let str = dayDiffString {
+            return str
+        } else {
+            dayDiffString = ""
+            return dayDiffString!
+        }
     }
     
-    var period: String {
-        return Helpers.sharedInstance.getDatetimeText(fromDate: self.date, withFormat: "a")
-    }
-    
-    var dayDiffFromLocal: String {
-        let localDay = Helpers.sharedInstance.getDatetimeText(fromDate: Date(), withFormat: "d")
-        let thisDay = Helpers.sharedInstance.getDatetimeText(fromDate: self.date, withFormat: "d")
-        
-        return "\(Int(thisDay)! - Int(localDay)!)"
-    }
-    
-    init(withDate date: Date) {
+    init(currentDate: Date, originalDate: Date) {
         super.init()
-        self.date = date
+        self.currentDate = currentDate
+        self.originalDate = originalDate
     }
 }
