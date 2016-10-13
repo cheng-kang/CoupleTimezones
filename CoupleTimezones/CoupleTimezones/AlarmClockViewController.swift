@@ -95,13 +95,18 @@ class AlarmClockViewController: UIViewController {
     
     // save data to user defaults
     func saveData(atIndex idx: Int) {
+        // update local notification
+        let alarmClock = self.tabledata[idx]
+        
+        // sava to userdefaults
         let isSelf = self.tabledata.count <= self.selfAlarmCount
         let relIndex = isSelf ? idx : idx - self.selfAlarmCount
-        UserData.sharedInstance.updateAlarmClock(ofSelf: isSelf, atIndex: relIndex, withElement: self.tabledata[idx], callback: { isSuccess in
+        
+        UserData.sharedInstance.deleteAlarmClock(ofSelf: isSelf, atIndex: relIndex) { (isSuccess) in
             if isSuccess {
                 self.reloadData()
             }
-        })
+        }
     }
 
     @IBAction func addBtnClick(_ sender: UIButton) {
@@ -183,7 +188,6 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
             edit.backgroundColor = SLIDER_BG_DARK
             
             let delete = UITableViewRowAction(style: .destructive, title: NSLocalizedString("Delete", comment: "AlarmClock")) { (deleteAction, curIndexPath) in
-                self.tabledata.remove(at: curIndexPath.row)
                 
                 self.saveData(atIndex: indexPath.row)
             }

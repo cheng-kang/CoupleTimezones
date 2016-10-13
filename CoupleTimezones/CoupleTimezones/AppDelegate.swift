@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import UserNotifications
 import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -22,6 +23,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UserDefaults.standard.removeObject(forKey: "AlarmClock")
 //        UserDefaults.standard.removeObject(forKey: "UserSettings")
 //        UserDefaults.standard.synchronize()
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (isSuccess, error) in
+            if error != nil {
+                Helpers.sharedInstance.toast(withString: "Error!")
+                return
+            }
+            
+            if isSuccess {
+                Helpers.sharedInstance.toast(withString: "Local Notification Enabled!")
+            } else {
+                Helpers.sharedInstance.toast(withString: "Please Enable Local Notification In Settings.")
+            }
+        }
+        Helpers.sharedInstance.checkDeliveredLocalNotification()
+        
         return true
     }
 
@@ -46,7 +61,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        //Play sound
+        
+        let alert = UIAlertController(title: NSLocalizedString("Remember", comment: "记得"), message: notification.request.content.body, preferredStyle: .alert)
+        
+        let dismissAction = UIAlertAction(title: NSLocalizedString("Dismiss", comment: "知道了"), style: .cancel, handler: nil)
+        
+        alert.addAction(dismissAction)
+        
+        window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
 }
 

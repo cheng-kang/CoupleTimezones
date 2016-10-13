@@ -54,6 +54,7 @@ class UserData: NSObject {
         let selfList = self.getAlarmClock(ofSelf: true)
         list.append(contentsOf: selfList)
         list.append(contentsOf: self.getAlarmClock(ofSelf: false))
+        
         return (list, selfList.count)
     }
     
@@ -92,7 +93,20 @@ class UserData: NSObject {
         var curAlarmClockList = self.getAlarmClock(ofSelf: isSelf)
         curAlarmClockList[index] = element
         
+        if element.isActive! == false {
+            Helpers.sharedInstance.cancelLocalNotification(element._id!)
+        } else {
+            Helpers.sharedInstance.scheduleLocalNotification(element)
+        }
+        
         updateAlarmClock(ofSelf: isSelf, withList: curAlarmClockList, isFromUploadAlarmClocks: isFromUploadAlarmClocks, callback: callback)
+    }
+    
+    func deleteAlarmClock(ofSelf isSelf: Bool, atIndex index: Int, callback: ((_ isSuccess: Bool)->())? = nil) {
+        var curAlarmClockList = self.getAlarmClock(ofSelf: isSelf)
+        Helpers.sharedInstance.cancelLocalNotification(curAlarmClockList[index]._id!)
+        curAlarmClockList.remove(at: index)
+        updateAlarmClock(ofSelf: isSelf, withList: curAlarmClockList, isFromUploadAlarmClocks: false, callback: callback)
     }
     
     func insertAlarmClock(toSelf isSelf: Bool, newElement: AlarmClockModel, callback: ((_ isSuccess: Bool)->())?) {
@@ -100,6 +114,8 @@ class UserData: NSObject {
         curAlarmClockList.append(newElement)
         
         updateAlarmClock(ofSelf: isSelf, withList: curAlarmClockList, callback: callback)
+        
+        Helpers.sharedInstance.scheduleLocalNotification(newElement)
     }
     
     func uploadAlarmClocks(ofSelf isSelf: Bool, withId id: String, callback: @escaping ((_ isSuccess: Bool)->())) {
@@ -247,15 +263,6 @@ class UserData: NSObject {
     
     func checkMatch(successCallback: ((_ partnerId: String)->())?, failureCallback: (()->())? = nil) {
         (FIRDatabase.database().reference().child("users")).queryOrdered(byChild: "code").queryEqual(toValue: self.getUserSettings().partnerCode).observe(.value) { (snapshot: FIRDataSnapshot) in
-//            if let list = snapshots.value as? [String:Any] {
-//                for item in list {
-//                    if let user = item as? [String: Any] {
-//                        let partnerCode = user["partnerCode"] as! String
-//                        print(partnerCode)
-//                    }
-//                }
-//            }
-            print(snapshot.childrenCount) // I got the expected number of items
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? FIRDataSnapshot {
                 if let user = rest.value as? [String: String] {

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/UserData.swift"
-            timestampString = "497816748.18156"
+            timestampString = "498054097.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "getAlarmClockAll()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/UserData.swift"
-            timestampString = "497817407.025783"
+            timestampString = "498054097.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "insertAlarmClock(toSelf:newElement:callback:)"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "updateAlarmClock(ofSelf:withList:isFromUploadAlarmClocks:callback:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/UserData.swift"
-            timestampString = "497816748.18156"
+            timestampString = "498054097.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
@@ -90,27 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/UserData.swift"
-            timestampString = "497816748.18156"
+            timestampString = "498054097.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "updateAlarmClock(ofSelf:withList:isFromUploadAlarmClocks:callback:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CoupleTimezones/UserData.swift"
-            timestampString = "497817407.025783"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "updateAlarmClock(ofSelf:withList:isFromUploadAlarmClocks:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/UserData.swift"
-            timestampString = "497816748.18156"
+            timestampString = "498054097.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "updateAlarmClock(ofSelf:withList:isFromUploadAlarmClocks:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/UserData.swift"
-            timestampString = "497821379.198086"
+            timestampString = "498054097.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "getUserSettings()"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/UserData.swift"
-            timestampString = "497821471.430523"
+            timestampString = "498054097.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "syncDataWithServer(callback:)"
             landmarkType = "7">
             <Locations>
@@ -282,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/UserData.swift"
-            timestampString = "497821472.580563"
+            timestampString = "498054097.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "syncDataWithServer(callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/UserData.swift"
-            timestampString = "497821490.257784"
+            timestampString = "498054097.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "syncDataWithServer(callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/UserData.swift"
-            timestampString = "497821491.639741"
+            timestampString = "498054097.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "syncDataWithServer(callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/UserData.swift"
-            timestampString = "497821514.954852"
+            timestampString = "498054097.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "syncDataWithServer(callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/UserData.swift"
-            timestampString = "497821520.423237"
+            timestampString = "498054097.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "syncDataWithServer(callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/UserData.swift"
-            timestampString = "497821566.297261"
+            timestampString = "498054097.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "uploadAlarmClocks(ofSelf:withId:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/UserData.swift"
-            timestampString = "497821624.395768"
+            timestampString = "498054097.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "uploadAlarmClocks(ofSelf:withId:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/UserData.swift"
-            timestampString = "497821631.119703"
+            timestampString = "498054097.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "uploadAlarmClocks(ofSelf:withId:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -415,6 +399,38 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
             endingLineNumber = "15">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_671CAA51B6A04775F0C3D7261C9C94B3_func3"
+                  moduleName = "CoupleTimezones"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ant/github/CoupleTimezones/CoupleTimezones/CoupleTimezones/Constants.swift"
+                  timestampString = "498067330.076294"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CoupleTimezones.TEXT_GREY.unsafeMutableAddressor : __ObjC.UIColor"
+                  moduleName = "CoupleTimezones"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ant/github/CoupleTimezones/CoupleTimezones/CoupleTimezones/Constants.swift"
+                  timestampString = "498067330.077534"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
