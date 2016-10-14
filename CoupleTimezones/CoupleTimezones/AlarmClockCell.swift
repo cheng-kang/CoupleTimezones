@@ -23,6 +23,8 @@ class AlarmClockCell: UITableViewCell {
     var alarmClock: AlarmClockModel!
     var cellHelper: AlarmClockHelperModel!
     
+    var toggleSliderCallback: ((_ isActive: Bool)->())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -45,20 +47,24 @@ class AlarmClockCell: UITableViewCell {
         })
     }
     
-    @IBAction func toggleSliderBtnClick(_ sender: UIButton) {
+    @IBAction func toggleSliderBtnClick(sender: UIButton) {
         self.toggleSlider()
     }
     
     func toggleSlider(animated: Bool = true) {
-        let isActive = (self.frame.width - self.sliderBlockView.frame.origin.x - self.sliderBlockView.frame.width) != 35
-        let distantToMove: CGFloat = !isActive ? 26 : -26
+        let isActive = (self.frame.width - self.sliderBlockView.frame.origin.x - self.sliderBlockView.frame.width) == 35
+        let distantToMove: CGFloat = isActive ? 26 : -26
         let newCenter = CGPoint(x: self.sliderBlockView.center.x + distantToMove, y: self.sliderBlockView.center.y)
         
-        if animated {
-            UIView.animate(withDuration: 0.3) {
-                self.sliderBlockView.center = newCenter
-            }
-        } else {
+//        if animated {
+//            UIView.animate(withDuration: 0.3) {
+//                self.sliderBlockView.center = newCenter
+//            }
+//        } else {
+//            self.sliderBlockView.center = newCenter
+//        }
+        
+        UIView.animate(withDuration: 0.3) {
             self.sliderBlockView.center = newCenter
         }
         
@@ -69,10 +75,13 @@ class AlarmClockCell: UITableViewCell {
         } else {
             Helpers.sharedInstance.cancelLocalNotification(self.alarmClock._id!)
         }
+        
+        toggleSliderCallback?(isActive)
     }
     
-    func configureCell(withAlarmClockData data: AlarmClockModel) {
+    func configureCell(withAlarmClockData data: AlarmClockModel, toggleSliderCallback: ((_ isActive: Bool)->())?) {
         self.alarmClock = data
+        self.toggleSliderCallback = toggleSliderCallback
         
         self.periodLbl.text = data.period
         self.timeLbl.text = data.time

@@ -26,7 +26,7 @@ extension UIColor {
 
 extension String {
     
-    func widthThatFitsContentByHeight(height: CGFloat) -> CGFloat {
+    func widthThatFitsContentByHeight(_ height: CGFloat) -> CGFloat {
         let lbl = UILabel()
         lbl.numberOfLines = 0
         lbl.text = self
@@ -38,7 +38,7 @@ extension String {
 }
 
 extension Date {
-    func currentTimeAndPeriod(byTimezone: Int) {
+    func currentTimeAndPeriod(_ byTimezone: Int) {
         
     }
 }

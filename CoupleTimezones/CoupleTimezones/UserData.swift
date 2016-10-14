@@ -180,7 +180,7 @@ class UserData: NSObject {
                     
                     let alarmClock = AlarmClockModel(withId: key,
                                                      period: data["period"] as! String,
-                                                     time: data["period"] as! String,
+                                                     time: data["time"] as! String,
                                                      isSetBySelf: isSelf,
                                                      tag: data["tag"] as! String,
                                                      isActive: data["isActive"] as! Bool,

@@ -50,7 +50,7 @@ class SwitchView: UIView {
         self.addSubview(switchButtonView)
         
         // init tap event by adding tap gesture recognizer to self
-        let tap = UITapGestureRecognizer(target: self, action: #selector(SwitchView.handleTap(sender:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(SwitchView.handleTap(_:)))
         self.addGestureRecognizer(tap)
     }
     
@@ -63,16 +63,16 @@ class SwitchView: UIView {
     
     func initSwitch(withIsActive isActive: Bool) {
         if self.isActive != isActive {
-            self.toggleSwitch(animated: false)
+            self.toggleSwitch(false)
         }
     }
     
-    func handleTap(sender: UITapGestureRecognizer) {
+    func handleTap(_ sender: UITapGestureRecognizer) {
         self.toggleSwitch()
     }
     
     // if animated == true, toggleSwithCallback will be invoked
-    func toggleSwitch(animated: Bool = true) {
+    func toggleSwitch(_ animated: Bool = true) {
         self.isActive = !self.isActive
         
         let newCenter: CGPoint = CGPoint(x: self.isActive ? width/4*3 + borderWidth : width/4 + borderWidth, y: switchButtonView.center.y)

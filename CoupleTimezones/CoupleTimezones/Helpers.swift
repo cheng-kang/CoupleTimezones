@@ -70,7 +70,8 @@ class Helpers: NSObject {
     func AddLocalNotification(_ identifier: String, tag: String, fireDate: DateComponents, musicIndex: Int? = nil, repeated: Bool) {
         let content = UNMutableNotificationContent()
         content.body = tag
-        content.sound = UNNotificationSound(named: "ElephanteCatchingOnfeat25.aiff")
+        content.sound = UNNotificationSound(named: "CoupleTimezones/ElephanteCatchingOnfeat25")
+        content.userInfo = ["id": identifier, "sound": "ElephanteCatchingOnfeat25"]
         let trigger = UNCalendarNotificationTrigger(dateMatching: fireDate, repeats: repeated)
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         
@@ -210,6 +211,7 @@ class Helpers: NSObject {
         let df = DateFormatter()
         df.defaultDate = Date()
         df.dateFormat = "HH:mm"
+
         return df.date(from: time)!
     }
     

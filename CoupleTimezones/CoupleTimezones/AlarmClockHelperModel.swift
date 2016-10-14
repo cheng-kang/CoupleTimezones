@@ -9,13 +9,13 @@
 import Foundation
 
 class AlarmClockHelperModel: NSObject {
-    private var _isSetBySelf: Bool!
+    fileprivate var _isSetBySelf: Bool!
     
-    private var _time: String!
-    private var _period: String!
-    private var _partnerTime: String!
-    private var _partnerPeriod: String
-    private var _partnerNickname: String!
+    fileprivate var _time: String!
+    fileprivate var _period: String!
+    fileprivate var _partnerTime: String!
+    fileprivate var _partnerPeriod: String
+    fileprivate var _partnerNickname: String!
     
     var _isShowingSelf: Bool!
     

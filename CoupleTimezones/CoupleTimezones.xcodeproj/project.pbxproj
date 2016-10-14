@@ -44,6 +44,7 @@
 		EDC5213D1DAFBAA6007039FC /* ElephanteCatchingOnfeat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = EDC5213C1DAFBAA6007039FC /* ElephanteCatchingOnfeat.m4a */; };
 		EDC5213F1DAFBC75007039FC /* ElephanteCatchingOnfeat(25).wav in Resources */ = {isa = PBXBuildFile; fileRef = EDC5213E1DAFBC75007039FC /* ElephanteCatchingOnfeat(25).wav */; };
 		EDC521411DAFC3D8007039FC /* ElephanteCatchingOnfeat25.aiff in Resources */ = {isa = PBXBuildFile; fileRef = EDC521401DAFC3D8007039FC /* ElephanteCatchingOnfeat25.aiff */; };
+		EDC521631DB0E9DC007039FC /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC521621DB0E9DC007039FC /* AlertViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		EDC5213C1DAFBAA6007039FC /* ElephanteCatchingOnfeat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ElephanteCatchingOnfeat.m4a; sourceTree = "<group>"; };
 		EDC5213E1DAFBC75007039FC /* ElephanteCatchingOnfeat(25).wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "ElephanteCatchingOnfeat(25).wav"; sourceTree = "<group>"; };
 		EDC521401DAFC3D8007039FC /* ElephanteCatchingOnfeat25.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = ElephanteCatchingOnfeat25.aiff; sourceTree = "<group>"; };
+		EDC521621DB0E9DC007039FC /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				ED53920C1DA652B100071709 /* NewAlarmClockViewController.swift */,
 				ED5392151DA6832900071709 /* SelectRepeatDayViewController.swift */,
 				ED5392171DA6CDF400071709 /* EditTagViewController.swift */,
+				EDC521621DB0E9DC007039FC /* AlertViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 					EDB1F9151DA55E6A00540AEA = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = SLMFH6GDG4;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -422,6 +426,7 @@
 				ED660C341DA7E78B00411874 /* SlidingFormViewController.swift in Sources */,
 				ED660C3E1DA90A6C00411874 /* SlidingFormElementRatio.swift in Sources */,
 				ED5391E61DA5899F00071709 /* AlarmClockModel.swift in Sources */,
+				EDC521631DB0E9DC007039FC /* AlertViewController.swift in Sources */,
 				EDB1F91C1DA55E6B00540AEA /* AlarmClockViewController.swift in Sources */,
 				ED53920D1DA652B100071709 /* NewAlarmClockViewController.swift in Sources */,
 				ED660C401DA913B800411874 /* SlidingFormPageConfig.swift in Sources */,

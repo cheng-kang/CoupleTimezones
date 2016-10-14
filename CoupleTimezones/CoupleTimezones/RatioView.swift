@@ -64,35 +64,35 @@ class RatioView: UIView {
         self.textLbl.textColor = textColor
         self.textLbl.text = text
         self.textLbl.font = textFont
-        self.textLbl.frame = CGRect(x: buttonWidth, y: 0, width: text.widthThatFitsContentByHeight(height: height), height: height)
+        self.textLbl.frame = CGRect(x: buttonWidth, y: 0, width: text.widthThatFitsContentByHeight(height), height: height)
         self.textLbl.alpha = textLblAlphaUnselected
         self.addSubview(textLbl)
         
-        self.frame.size = CGSize(width: buttonWidth+text.widthThatFitsContentByHeight(height: height), height: height)
+        self.frame.size = CGSize(width: buttonWidth+text.widthThatFitsContentByHeight(height), height: height)
         
         // tap event
-        let tap = UITapGestureRecognizer(target: self, action: #selector(RatioView.handleTap(sender:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(RatioView.handleTap(_:)))
         self.addGestureRecognizer(tap)
     }
     
     func select() {
         if !self.isSeleted {
-            self.toggleRatioSelection(animated: false)
+            self.toggleRatioSelection(false)
         }
     }
     
     func deselect() {
         if self.isSeleted {
-            self.toggleRatioSelection(animated: false)
+            self.toggleRatioSelection(false)
         }
     }
     
-    func handleTap(sender: UITapGestureRecognizer) {
+    func handleTap(_ sender: UITapGestureRecognizer) {
         self.toggleRatioSelection()
     }
     
     // if animated == true, toggleRatioSelectionCallback will be invoked
-    func toggleRatioSelection(animated: Bool = true) {
+    func toggleRatioSelection(_ animated: Bool = true) {
         self.isSeleted = !self.isSeleted
         
         let newDotAlpha: CGFloat = self.isSeleted ? 1 : dotViewAlphaUnselected
@@ -121,7 +121,7 @@ class RatioView: UIView {
     // !!!You should invoke one of the init methods everytime you create a new RatioView
     func initRatioView(withIsSelected isSeleted: Bool, text: String, centerPoint: CGPoint, toggleRatioSelectionCallback: ((_ isSelected: Bool)->())?) {
         if self.isSeleted != isSeleted {
-            self.toggleRatioSelection(animated: false)
+            self.toggleRatioSelection(false)
         }
         
         self.toggleRatioSelectionCallback = toggleRatioSelectionCallback
@@ -135,7 +135,7 @@ class RatioView: UIView {
     
     func initRatioView(withIsSeleted isSeleted: Bool, text: String, originPoint: CGPoint, toggleRatioSelectionCallback: ((_ isSelected: Bool)->())?) {
         if self.isSeleted != isSeleted {
-            self.toggleRatioSelection(animated: false)
+            self.toggleRatioSelection(false)
         }
         
         self.toggleRatioSelectionCallback = toggleRatioSelectionCallback

@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import AVFoundation
 import Firebase
 
 @UIApplicationMain
@@ -35,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 Helpers.sharedInstance.toast(withString: "Please Enable Local Notification In Settings.")
             }
         }
+        
         Helpers.sharedInstance.checkDeliveredLocalNotification()
         
         return true
@@ -52,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        Helpers.sharedInstance.checkDeliveredLocalNotification()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -63,15 +66,89 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        //Play sound
+        let topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
+        topWindow.rootViewController = UIViewController()
+        topWindow.windowLevel = UIWindowLevelAlert + 1
         
-        let alert = UIAlertController(title: NSLocalizedString("Remember", comment: "记得"), message: notification.request.content.body, preferredStyle: .alert)
+        var player: AVAudioPlayer!
+        let url = Bundle.main.url(forResource: notification.request.content.userInfo["sound"] as! String, withExtension: "aiff")
+        do {
+            player = try AVAudioPlayer(contentsOf: url!)
+            
+            player.prepareToPlay()
+            player.play()
+        } catch let error as NSError {
+            print(error.description)
+        }
         
-        let dismissAction = UIAlertAction(title: NSLocalizedString("Dismiss", comment: "知道了"), style: .cancel, handler: nil)
+        let alert = AlertViewController.vc(title: NSLocalizedString("Remember", comment: "记得"), content: notification.request.content.body, dismissBtnTitle: NSLocalizedString("Dismiss", comment: "知道了"), dismissBtnClick: {
+            if player.isPlaying {
+                player.stop()
+            }
+            topWindow.isHidden = true
+        })
         
-        alert.addAction(dismissAction)
+        topWindow.makeKeyAndVisible()
+        topWindow.rootViewController?.present(alert, animated: true, completion: nil)
         
-        window?.rootViewController?.present(alert, animated: true, completion: nil)
+        let (allData, selfCount) = UserData.sharedInstance.getAlarmClockAll()
+        for i in 0..<allData.count {
+            if allData[i]._id == notification.request.identifier {
+                let isSelf = allData.count <= selfCount
+                let relIndex = isSelf ? i : i - selfCount
+                
+                let alarmClock = allData[i]
+                alarmClock.isActive = false
+                
+                UserData.sharedInstance.updateAlarmClock(ofSelf: isSelf, atIndex: relIndex, withElement: alarmClock, isFromUploadAlarmClocks: false, callback: { (isSuccess) in
+                })
+            }
+        }
     }
+    
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+        let topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
+        topWindow.rootViewController = UIViewController()
+        topWindow.windowLevel = UIWindowLevelAlert + 1
+        
+        var player: AVAudioPlayer!
+        let url = Bundle.main.url(forResource: notification.userInfo?["sound"] as! String, withExtension: "aiff")
+        do {
+            player = try AVAudioPlayer(contentsOf: url!)
+            
+            player.prepareToPlay()
+            player.play()
+        } catch let error as NSError {
+            print(error.description)
+        }
+        
+        let alert = AlertViewController.vc(title: NSLocalizedString("Remember", comment: "记得"), content: notification.alertBody!, dismissBtnTitle: NSLocalizedString("Dismiss", comment: "知道了"), dismissBtnClick: {
+            if player.isPlaying {
+                player.stop()
+            }
+            topWindow.isHidden = true
+        })
+        
+        topWindow.makeKeyAndVisible()
+        topWindow.rootViewController?.present(alert, animated: true, completion: nil)
+
+        
+        
+        
+        let (allData, selfCount) = UserData.sharedInstance.getAlarmClockAll()
+        for i in 0..<allData.count {
+            if allData[i]._id == notification.userInfo?["id"] as! String {
+                let isSelf = allData.count <= selfCount
+                let relIndex = isSelf ? i : i - selfCount
+                
+                let alarmClock = allData[i]
+                alarmClock.isActive = false
+                
+                UserData.sharedInstance.updateAlarmClock(ofSelf: isSelf, atIndex: relIndex, withElement: alarmClock, isFromUploadAlarmClocks: false, callback: { (isSuccess) in
+                })
+            }
+        }
+    }
+
 }
 

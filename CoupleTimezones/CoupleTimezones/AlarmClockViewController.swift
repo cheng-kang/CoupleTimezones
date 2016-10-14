@@ -36,7 +36,8 @@ class AlarmClockViewController: UIViewController {
         tableview.tableFooterView = UIView()
         
         // add notification reciever
-        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadData), name: NSNotification.Name(rawValue: "AlarmClockDataSynchronized"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadData), name: NSNotification.Name(rawValue: "SelfAlarmListSaved"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadData), name: NSNotification.Name(rawValue: "PartnerAlarmListSaved"), object: nil)
         
         
         UserData.sharedInstance.syncDataWithServer { (isSuccess) in
@@ -51,17 +52,6 @@ class AlarmClockViewController: UIViewController {
         // start timer
         timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(AlarmClockViewController.updateTimeLbl), userInfo: nil, repeats: true)
         timer!.fire()
-    }
-    
-    func updateTimeLbl() {
-        self.timerCount += 1
-        
-        let settings = UserData.sharedInstance.getUserSettings()
-        
-        let date = Helpers.sharedInstance.getDateAtTimezone(settings.partnerTimezone!)
-        
-        self.navTimeLbl.text = (self.timerCount % 2 ) == 0 ? Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "HH:mm") : Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "HH mm")
-        self.navPeriodLbl.text = Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "a")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -81,7 +71,19 @@ class AlarmClockViewController: UIViewController {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "AlarmClockDataSynchronized"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "SelfAlarmListSaved"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "PartnerAlarmListSaved"), object: nil)
+    }
+    
+    func updateTimeLbl() {
+        self.timerCount += 1
+        
+        let settings = UserData.sharedInstance.getUserSettings()
+        
+        let date = Helpers.sharedInstance.getDateAtTimezone(settings.partnerTimezone!)
+        
+        self.navTimeLbl.text = (self.timerCount % 2 ) == 0 ? Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "HH:mm") : Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "HH mm")
+        self.navPeriodLbl.text = Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "a")
     }
     
     // reload data from user defaults
@@ -94,15 +96,31 @@ class AlarmClockViewController: UIViewController {
     }
     
     // save data to user defaults
-    func saveData(atIndex idx: Int) {
-        // update local notification
-        let alarmClock = self.tabledata[idx]
-        
+    func deleteData(atIndex idx: Int) {
         // sava to userdefaults
         let isSelf = self.tabledata.count <= self.selfAlarmCount
         let relIndex = isSelf ? idx : idx - self.selfAlarmCount
         
         UserData.sharedInstance.deleteAlarmClock(ofSelf: isSelf, atIndex: relIndex) { (isSuccess) in
+            if isSuccess {
+                self.reloadData()
+            }
+        }
+    }
+    
+    // save data to user defaults
+    func updateData(atIndex idx: Int, isActive: Bool) {
+        // update local notification
+        let alarmClock = self.tabledata[idx]
+        alarmClock.isActive = isActive
+        
+        print(isActive)
+        
+        // sava to userdefaults
+        let isSelf = self.tabledata.count <= self.selfAlarmCount
+        let relIndex = isSelf ? idx : idx - self.selfAlarmCount
+        
+        UserData.sharedInstance.updateAlarmClock(ofSelf: isSelf, atIndex: relIndex, withElement: alarmClock, isFromUploadAlarmClocks: false) { (isSuccess) in
             if isSuccess {
                 self.reloadData()
             }
@@ -165,7 +183,9 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
         if tabledata.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmClockCell") as! AlarmClockCell
             
-            cell.configureCell(withAlarmClockData: tabledata[indexPath.row])
+            cell.configureCell(withAlarmClockData: tabledata[indexPath.row], toggleSliderCallback: { isActive in
+                self.updateData(atIndex: indexPath.row, isActive: isActive)
+            })
             
             return cell
         } else {
@@ -189,7 +209,7 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
             
             let delete = UITableViewRowAction(style: .destructive, title: NSLocalizedString("Delete", comment: "AlarmClock")) { (deleteAction, curIndexPath) in
                 
-                self.saveData(atIndex: indexPath.row)
+                self.deleteData(atIndex: indexPath.row)
             }
             delete.backgroundColor = SLIDER_BLOCK
             

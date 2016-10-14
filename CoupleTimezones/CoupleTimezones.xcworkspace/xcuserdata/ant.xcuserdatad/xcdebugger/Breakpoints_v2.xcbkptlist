@@ -399,38 +399,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
             endingLineNumber = "15">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "globalinit_33_671CAA51B6A04775F0C3D7261C9C94B3_func3"
-                  moduleName = "CoupleTimezones"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ant/github/CoupleTimezones/CoupleTimezones/CoupleTimezones/Constants.swift"
-                  timestampString = "498067330.076294"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "15"
-                  endingLineNumber = "15"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CoupleTimezones.TEXT_GREY.unsafeMutableAddressor : __ObjC.UIColor"
-                  moduleName = "CoupleTimezones"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ant/github/CoupleTimezones/CoupleTimezones/CoupleTimezones/Constants.swift"
-                  timestampString = "498067330.077534"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "15"
-                  endingLineNumber = "15"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

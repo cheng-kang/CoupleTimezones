@@ -213,7 +213,7 @@ class SlidingFormPage: UIView {
         page.addSubview(textField)
         page.addSubview(textFiledBottomLineView)
         
-        textField.addTarget(page, action: #selector(page.handleTextFieldChange(sender:)), for: .editingChanged)
+        textField.addTarget(page, action: #selector(SlidingFormPage.handleTextFieldChange(_:)), for: .editingChanged)
         
         
         textField.delegate = page
@@ -305,7 +305,7 @@ class SlidingFormPage: UIView {
         
     }
     
-    func handleTextFieldChange(sender: UITextField) {
+    func handleTextFieldChange(_ sender: UITextField) {
         self.inputValue = sender.text
         
         if self.isFinished {
