@@ -70,5 +70,6 @@ class AlarmClockHelperModel: NSObject {
             self._partnerPeriod = Helpers.sharedInstance.getDatetimeText(fromDate: dateAtTimeInPartnerTimeZone, withFormat: "HH:mm")
             self._partnerNickname = settings.partnerNickname!
         }
+        
     }
 }

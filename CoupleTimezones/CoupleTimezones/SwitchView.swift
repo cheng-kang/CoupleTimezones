@@ -27,6 +27,8 @@ class SwitchView: UIView {
     let bgColorActive: UIColor = UIColor(red: 93/255, green: 87/255, blue: 107/255, alpha: 1)
     let buttonColor: UIColor = UIColor(red: 68/255, green: 64/255, blue: 78/255, alpha: 1)
     
+    let duration: Double = 0.2
+    
     var bgLeftActiveView = UIView()
     var switchButtonView = UIView()
     
@@ -61,9 +63,12 @@ class SwitchView: UIView {
         })
     }
     
-    func initSwitch(withIsActive isActive: Bool) {
-        if self.isActive != isActive {
-            self.toggleSwitch(false)
+    func initSwitch(_ isActive: Bool) {
+        self.isActive = isActive
+        if self.isActive {
+            self.setActive(false)
+        } else {
+            self.setInactive(false)
         }
     }
     
@@ -78,10 +83,34 @@ class SwitchView: UIView {
         let newCenter: CGPoint = CGPoint(x: self.isActive ? width/4*3 + borderWidth : width/4 + borderWidth, y: switchButtonView.center.y)
         
         if animated {
-            UIView.animate(withDuration: 0.3, animations: { 
+            UIView.animate(withDuration: duration, animations: {
                 self.switchButtonView.center = newCenter
             })
             self.toggleSwitchCallback?(self.isActive)
+        } else {
+            self.switchButtonView.center = newCenter
+        }
+    }
+    
+    func setActive(_ animated: Bool = true) {
+        let newCenter: CGPoint = CGPoint(x: width/4*3 + borderWidth, y: switchButtonView.center.y)
+        
+        if animated {
+            UIView.animate(withDuration: duration, animations: {
+                self.switchButtonView.center = newCenter
+            })
+        } else {
+            self.switchButtonView.center = newCenter
+        }
+    }
+    
+    func setInactive(_ animated: Bool = true) {
+        let newCenter: CGPoint = CGPoint(x: width/4 + borderWidth, y: switchButtonView.center.y)
+        
+        if animated {
+            UIView.animate(withDuration: duration, animations: {
+                self.switchButtonView.center = newCenter
+            })
         } else {
             self.switchButtonView.center = newCenter
         }

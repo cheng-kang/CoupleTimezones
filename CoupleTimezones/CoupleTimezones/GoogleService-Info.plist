@@ -7,21 +7,19 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>438133201464-4r6i363f6lg7h72mdqsqsrgnescsgiet.apps.googleusercontent.com</string>
+	<string>296180491786-202ojg336l3j04ke40ga5f1icctejigh.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.438133201464-4r6i363f6lg7h72mdqsqsrgnescsgiet</string>
-	<key>API_KEY</key>
-	<string>AIzaSyBJG_UUWMqAXfv8e2-9dPxjucghRRx_gn8</string>
+	<string>com.googleusercontent.apps.296180491786-202ojg336l3j04ke40ga5f1icctejigh</string>
 	<key>GCM_SENDER_ID</key>
-	<string>438133201464</string>
+	<string>296180491786</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>me.chengkang.CoupleTimezones</string>
 	<key>PROJECT_ID</key>
-	<string>coupletimezones</string>
+	<string>coupletimezonenew</string>
 	<key>STORAGE_BUCKET</key>
-	<string>coupletimezones.appspot.com</string>
+	<string>coupletimezonenew.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:438133201464:ios:2f8990763e8491bd</string>
+	<string>1:296180491786:ios:2f8990763e8491bd</string>
 	<key>DATABASE_URL</key>
-	<string>https://coupletimezones.firebaseio.com</string>
+	<string>https://coupletimezonenew.firebaseio.com</string>
 </dict>
 </plist>

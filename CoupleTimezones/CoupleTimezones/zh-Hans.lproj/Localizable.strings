@@ -13,6 +13,9 @@
 /* SlidingForm */
 "Description:" = "说明：";
 
+/* 知道了 */
+"Dismiss" = "知道了";
+
 /* SlidingForm */
 "Done" = "完成";
 
@@ -83,6 +86,9 @@ Usage: When the two codes (your code and your partner's code) match with another
 
 /* SlidingForm */
 "Prev" = "上一项";
+
+/* 记得 */
+"Remember" = "记得";
 
 /* AlarmClock */
 "Remind Darling" = "提醒亲爱的";

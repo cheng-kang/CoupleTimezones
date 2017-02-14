@@ -18,7 +18,7 @@ class SelectRepeatDayViewController: UIViewController {
     
     var savaCallback: ((_ selection: [Bool])->())?
     
-    let daysText = [NSLocalizedString("Sunday", comment: "Repetance"), NSLocalizedString("Monday", comment: "Repetance"), NSLocalizedString("Tuesday", comment: "Repetance"), NSLocalizedString("Wednesday", comment: "Repetance"), NSLocalizedString("Thursday", comment: "Repetance"), NSLocalizedString("Friday", comment: "Repetance"), NSLocalizedString("Saturday", comment: "Repetance")]
+    let daysText = [NSLocalizedString("Monday", comment: "Repetance"), NSLocalizedString("Tuesday", comment: "Repetance"), NSLocalizedString("Wednesday", comment: "Repetance"), NSLocalizedString("Thursday", comment: "Repetance"), NSLocalizedString("Friday", comment: "Repetance"), NSLocalizedString("Saturday", comment: "Repetance"), NSLocalizedString("Sunday", comment: "Repetance")]
     var isInitSelection = true
     var selection = [false, false, false, false, false, false, false] {
         didSet {
@@ -82,7 +82,7 @@ class SelectRepeatDayViewController: UIViewController {
         }
         self.weekdayBtn.initRatioView(withIsSelected: false, text: NSLocalizedString("Weekday", comment: "Repetance"), centerPoint: CGPoint(x: self.view.frame.width / 2, y: 30)) { isSelected in
             if isSelected {
-                self.selection = [false, true, true, true, true, true, false]
+                self.selection = [true, true, true, true, true, false, false]
             } else {
                 if !self.weekendBtn.isSeleted && !self.allBtn.isSeleted {
                     self.selection = [false, false, false, false, false, false, false]
@@ -91,7 +91,7 @@ class SelectRepeatDayViewController: UIViewController {
         }
             self.weekendBtn.initRatioView(withIsSelected: false, text: NSLocalizedString("Weekend", comment: "Repetance"), centerPoint: CGPoint(x: self.view.frame.width / 4 * 3, y: 30)) { isSelected in
                 if isSelected {
-                    self.selection = [true, false, false, false, false, false, true]
+                    self.selection = [false, false, false, false, false, true, true]
                 } else {
                     if !self.allBtn.isSeleted && !self.weekdayBtn.isSeleted {
                         self.selection = [false, false, false, false, false, false, false]

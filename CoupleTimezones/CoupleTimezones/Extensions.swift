@@ -42,3 +42,24 @@ extension Date {
         
     }
 }
+
+extension AlarmClock {
+    var days: [Bool] {
+        get {
+            return self.daysStr!.components(separatedBy: "-").map({ (day) -> Bool in
+                if day == "1" {
+                    return true
+                }
+                return false
+            })
+        }
+        set {
+            self.daysStr = newValue.map { (day) -> String in
+                if day == true {
+                    return "1"
+                }
+                return "0"
+            }.joined(separator: "-")
+        }
+    }
+}

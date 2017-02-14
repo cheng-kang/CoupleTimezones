@@ -1,6 +1,9 @@
 /* Class = "UILabel"; text = "Add Alarm Clock"; ObjectID = "2qy-xC-i9D"; */
 "2qy-xC-i9D.text" = "新增闹钟";
 
+/* Class = "UILabel"; text = "Title"; ObjectID = "6Pw-UW-Fil"; */
+"6Pw-UW-Fil.text" = "标题";
+
 /* Class = "UILabel"; text = "宝贝早上没有第一节课，所以晚点叫她"; ObjectID = "7aK-vR-teL"; */
 "7aK-vR-teL.text" = "宝贝早上没有第一节课，所以晚点叫她";
 
@@ -9,6 +12,9 @@
 
 /* Class = "UILabel"; text = "No Alarm Clock"; ObjectID = "Fxj-6a-91N"; */
 "Fxj-6a-91N.text" = "暂时没有闹钟";
+
+/* Class = "UIButton"; normalTitle = "Got it!"; ObjectID = "HCR-l1-kcb"; */
+"HCR-l1-kcb.normalTitle" = "知道了";
 
 /* Class = "UILabel"; text = "上一页"; ObjectID = "LS1-sC-mpR"; */
 "LS1-sC-mpR.text" = "上一页";

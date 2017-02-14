@@ -29,6 +29,10 @@
 		ED660C3E1DA90A6C00411874 /* SlidingFormElementRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED660C3D1DA90A6C00411874 /* SlidingFormElementRatio.swift */; };
 		ED660C401DA913B800411874 /* SlidingFormPageConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED660C3F1DA913B800411874 /* SlidingFormPageConfig.swift */; };
 		ED660C421DA928E500411874 /* SlidingFormElementSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED660C411DA928E500411874 /* SlidingFormElementSwitch.swift */; };
+		ED945ACB1E51F8FA00FC217E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED945ACA1E51F8FA00FC217E /* GoogleService-Info.plist */; };
+		ED945ACE1E51F9A700FC217E /* localdata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED945ACC1E51F9A700FC217E /* localdata.xcdatamodeld */; };
+		ED945AD11E51FEE100FC217E /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED945AD01E51FEE100FC217E /* UserService.swift */; };
+		ED945AD41E520D2200FC217E /* AlarmClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED945AD31E520D2200FC217E /* AlarmClockService.swift */; };
 		EDB1F91A1DA55E6B00540AEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB1F9191DA55E6B00540AEA /* AppDelegate.swift */; };
 		EDB1F91C1DA55E6B00540AEA /* AlarmClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB1F91B1DA55E6B00540AEA /* AlarmClockViewController.swift */; };
 		EDB1F91F1DA55E6B00540AEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDB1F91D1DA55E6B00540AEA /* Main.storyboard */; };
@@ -39,7 +43,6 @@
 		EDC521231DA9ABC4007039FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDC521251DA9ABC4007039FC /* InfoPlist.strings */; };
 		EDC521271DAA4D5F007039FC /* CTDateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC521261DAA4D5F007039FC /* CTDateModel.swift */; };
 		EDC521291DAA6057007039FC /* FZMSTJW.TTF in Resources */ = {isa = PBXBuildFile; fileRef = EDC521281DAA6034007039FC /* FZMSTJW.TTF */; };
-		EDC5212B1DAB9861007039FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDC5212A1DAB9861007039FC /* GoogleService-Info.plist */; };
 		EDC521391DAE923C007039FC /* AlarmClockHelperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC521381DAE923C007039FC /* AlarmClockHelperModel.swift */; };
 		EDC5213D1DAFBAA6007039FC /* ElephanteCatchingOnfeat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = EDC5213C1DAFBAA6007039FC /* ElephanteCatchingOnfeat.m4a */; };
 		EDC5213F1DAFBC75007039FC /* ElephanteCatchingOnfeat(25).wav in Resources */ = {isa = PBXBuildFile; fileRef = EDC5213E1DAFBC75007039FC /* ElephanteCatchingOnfeat(25).wav */; };
@@ -71,6 +74,10 @@
 		ED660C3D1DA90A6C00411874 /* SlidingFormElementRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingFormElementRatio.swift; sourceTree = "<group>"; };
 		ED660C3F1DA913B800411874 /* SlidingFormPageConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingFormPageConfig.swift; sourceTree = "<group>"; };
 		ED660C411DA928E500411874 /* SlidingFormElementSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingFormElementSwitch.swift; sourceTree = "<group>"; };
+		ED945ACA1E51F8FA00FC217E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ED945ACD1E51F9A700FC217E /* localdata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = localdata.xcdatamodel; sourceTree = "<group>"; };
+		ED945AD01E51FEE100FC217E /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		ED945AD31E520D2200FC217E /* AlarmClockService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmClockService.swift; sourceTree = "<group>"; };
 		EDB1F9161DA55E6B00540AEA /* CoupleTimezones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoupleTimezones.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDB1F9191DA55E6B00540AEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDB1F91B1DA55E6B00540AEA /* AlarmClockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmClockViewController.swift; sourceTree = "<group>"; };
@@ -86,7 +93,6 @@
 		EDC521241DA9ABC4007039FC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		EDC521261DAA4D5F007039FC /* CTDateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTDateModel.swift; sourceTree = "<group>"; };
 		EDC521281DAA6034007039FC /* FZMSTJW.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = FZMSTJW.TTF; sourceTree = "<group>"; };
-		EDC5212A1DAB9861007039FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EDC521381DAE923C007039FC /* AlarmClockHelperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmClockHelperModel.swift; sourceTree = "<group>"; };
 		EDC5213C1DAFBAA6007039FC /* ElephanteCatchingOnfeat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ElephanteCatchingOnfeat.m4a; sourceTree = "<group>"; };
 		EDC5213E1DAFBC75007039FC /* ElephanteCatchingOnfeat(25).wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "ElephanteCatchingOnfeat(25).wav"; sourceTree = "<group>"; };
@@ -227,9 +233,19 @@
 			name = Constrollers;
 			sourceTree = "<group>";
 		};
+		ED945AD21E520D0F00FC217E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ED945AD01E51FEE100FC217E /* UserService.swift */,
+				ED945AD31E520D2200FC217E /* AlarmClockService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		EDB1F90D1DA55E6A00540AEA = {
 			isa = PBXGroup;
 			children = (
+				ED945ACC1E51F9A700FC217E /* localdata.xcdatamodeld */,
 				EDB1F9181DA55E6B00540AEA /* CoupleTimezones */,
 				EDB1F9171DA55E6B00540AEA /* Products */,
 				BF4FFC3BF64FDE8E18EE8CE0 /* Pods */,
@@ -248,6 +264,7 @@
 		EDB1F9181DA55E6B00540AEA /* CoupleTimezones */ = {
 			isa = PBXGroup;
 			children = (
+				ED945AD21E520D0F00FC217E /* Services */,
 				EDC521251DA9ABC4007039FC /* InfoPlist.strings */,
 				EDC521201DA9ABC4007039FC /* Localizable.strings */,
 				ED5392081DA64C2800071709 /* UserData.swift */,
@@ -267,7 +284,7 @@
 				EDC5213E1DAFBC75007039FC /* ElephanteCatchingOnfeat(25).wav */,
 				EDB1F9221DA55E6B00540AEA /* LaunchScreen.storyboard */,
 				EDB1F9251DA55E6B00540AEA /* Info.plist */,
-				EDC5212A1DAB9861007039FC /* GoogleService-Info.plist */,
+				ED945ACA1E51F8FA00FC217E /* GoogleService-Info.plist */,
 			);
 			path = CoupleTimezones;
 			sourceTree = "<group>";
@@ -289,12 +306,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDB1F9281DA55E6B00540AEA /* Build configuration list for PBXNativeTarget "CoupleTimezones" */;
 			buildPhases = (
-				EC438C8D981C849E34444FB1 /* 📦 Check Pods Manifest.lock */,
+				EC438C8D981C849E34444FB1 /* [CP] Check Pods Manifest.lock */,
 				EDB1F9121DA55E6A00540AEA /* Sources */,
 				EDB1F9131DA55E6A00540AEA /* Frameworks */,
 				EDB1F9141DA55E6A00540AEA /* Resources */,
-				9AECB12EE505B5B0523EFDB8 /* 📦 Embed Pods Frameworks */,
-				EBE9E66262F929A7A7C9F469 /* 📦 Copy Pods Resources */,
+				9AECB12EE505B5B0523EFDB8 /* [CP] Embed Pods Frameworks */,
+				EBE9E66262F929A7A7C9F469 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -348,13 +365,13 @@
 			files = (
 				EDC5213D1DAFBAA6007039FC /* ElephanteCatchingOnfeat.m4a in Resources */,
 				EDC5211E1DA9ABC4007039FC /* Localizable.strings in Resources */,
-				EDC5212B1DAB9861007039FC /* GoogleService-Info.plist in Resources */,
 				EDC521231DA9ABC4007039FC /* InfoPlist.strings in Resources */,
 				EDC521411DAFC3D8007039FC /* ElephanteCatchingOnfeat25.aiff in Resources */,
 				ED5391DB1DA5772100071709 /* FZYanSJW.TTF in Resources */,
 				EDC521291DAA6057007039FC /* FZMSTJW.TTF in Resources */,
 				EDC5213F1DAFBC75007039FC /* ElephanteCatchingOnfeat(25).wav in Resources */,
 				EDB1F9241DA55E6B00540AEA /* LaunchScreen.storyboard in Resources */,
+				ED945ACB1E51F8FA00FC217E /* GoogleService-Info.plist in Resources */,
 				EDB1F9211DA55E6B00540AEA /* Assets.xcassets in Resources */,
 				EDB1F91F1DA55E6B00540AEA /* Main.storyboard in Resources */,
 			);
@@ -363,14 +380,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9AECB12EE505B5B0523EFDB8 /* 📦 Embed Pods Frameworks */ = {
+		9AECB12EE505B5B0523EFDB8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,14 +395,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoupleTimezones/Pods-CoupleTimezones-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EBE9E66262F929A7A7C9F469 /* 📦 Copy Pods Resources */ = {
+		EBE9E66262F929A7A7C9F469 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,19 +410,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoupleTimezones/Pods-CoupleTimezones-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EC438C8D981C849E34444FB1 /* 📦 Check Pods Manifest.lock */ = {
+		EC438C8D981C849E34444FB1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -415,11 +432,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED945AD11E51FEE100FC217E /* UserService.swift in Sources */,
 				ED660C421DA928E500411874 /* SlidingFormElementSwitch.swift in Sources */,
 				ED660C301DA7ADE900411874 /* SettingViewController.swift in Sources */,
 				ED5391E21DA5845D00071709 /* Extensions.swift in Sources */,
 				ED5391E01DA5841900071709 /* Constants.swift in Sources */,
 				ED5392091DA64C2800071709 /* UserData.swift in Sources */,
+				ED945ACE1E51F9A700FC217E /* localdata.xcdatamodeld in Sources */,
 				ED5392141DA6811600071709 /* DayInWeekCell.swift in Sources */,
 				ED660C3A1DA9016600411874 /* SlidingFormPage.swift in Sources */,
 				ED53920B1DA6513000071709 /* Helpers.swift in Sources */,
@@ -440,6 +459,7 @@
 				ED5391DE1DA580E100071709 /* AlarmClockCell.swift in Sources */,
 				EDB1F91A1DA55E6B00540AEA /* AppDelegate.swift in Sources */,
 				EDC521391DAE923C007039FC /* AlarmClockHelperModel.swift in Sources */,
+				ED945AD41E520D2200FC217E /* AlarmClockService.swift in Sources */,
 				ED5392161DA6832900071709 /* SelectRepeatDayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -629,6 +649,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		ED945ACC1E51F9A700FC217E /* localdata.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				ED945ACD1E51F9A700FC217E /* localdata.xcdatamodel */,
+			);
+			currentVersion = ED945ACD1E51F9A700FC217E /* localdata.xcdatamodel */;
+			path = localdata.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EDB1F90E1DA55E6A00540AEA /* Project object */;
 }

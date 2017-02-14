@@ -17,9 +17,9 @@ class AlarmClockViewController: UIViewController {
     @IBOutlet weak var navPeriodLbl: UILabel!
     
     @IBOutlet weak var tableview: UITableView!
+    var currentUser: User?
     
-    var tabledata = [AlarmClockModel]()
-    var selfAlarmCount: Int = 0
+    var tabledata = [AlarmClock]()
     
     var timer: Timer?
     var timerCount: Int = 0
@@ -34,21 +34,12 @@ class AlarmClockViewController: UIViewController {
         tableview.dataSource = self
         tableview.delegate = self
         tableview.tableFooterView = UIView()
-        
-        // add notification reciever
-        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadData), name: NSNotification.Name(rawValue: "SelfAlarmListSaved"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadData), name: NSNotification.Name(rawValue: "PartnerAlarmListSaved"), object: nil)
-        
-        
-        UserData.sharedInstance.syncDataWithServer { (isSuccess) in
-            if isSuccess {
-                 self.reloadData()
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navLocLbl.text = TimeZone(identifier: UserData.sharedInstance.getUserSettings().partnerTimezone!)?.localizedName(for: .shortGeneric, locale: Locale.current)
+        currentUser = UserService.shared.get()
+        
+        self.navLocLbl.text = TimeZone(identifier: UserService.shared.get()!.partnerTimeZone!)?.localizedName(for: .shortGeneric, locale: Locale.current)
         // start timer
         timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(AlarmClockViewController.updateTimeLbl), userInfo: nil, repeats: true)
         timer!.fire()
@@ -58,11 +49,6 @@ class AlarmClockViewController: UIViewController {
         // deinit timer
         self.timer?.invalidate()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     class func vc() -> AlarmClockViewController {
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
@@ -71,60 +57,31 @@ class AlarmClockViewController: UIViewController {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "SelfAlarmListSaved"), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "PartnerAlarmListSaved"), object: nil)
     }
     
     func updateTimeLbl() {
         self.timerCount += 1
         
-        let settings = UserData.sharedInstance.getUserSettings()
-        
-        let date = Helpers.sharedInstance.getDateAtTimezone(settings.partnerTimezone!)
+        let date = Helpers.sharedInstance.getDateAtTimezone(UserService.shared.get()!.partnerTimeZone!)
         
         self.navTimeLbl.text = (self.timerCount % 2 ) == 0 ? Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "HH:mm") : Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "HH mm")
         self.navPeriodLbl.text = Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "a")
     }
     
-    // reload data from user defaults
     func reloadData() {
-        let (allData, selfAlarmCount) = UserData.sharedInstance.getAlarmClockAll()
-        self.tabledata = allData
-        self.selfAlarmCount = selfAlarmCount
+        self.tabledata = AlarmClockService.shared.get()
         
         self.tableview.reloadData()
     }
     
-    // save data to user defaults
     func deleteData(atIndex idx: Int) {
-        // sava to userdefaults
-        let isSelf = self.tabledata.count <= self.selfAlarmCount
-        let relIndex = isSelf ? idx : idx - self.selfAlarmCount
-        
-        UserData.sharedInstance.deleteAlarmClock(ofSelf: isSelf, atIndex: relIndex) { (isSuccess) in
-            if isSuccess {
-                self.reloadData()
-            }
-        }
-    }
-    
-    // save data to user defaults
-    func updateData(atIndex idx: Int, isActive: Bool) {
-        // update local notification
-        let alarmClock = self.tabledata[idx]
-        alarmClock.isActive = isActive
-        
-        print(isActive)
-        
-        // sava to userdefaults
-        let isSelf = self.tabledata.count <= self.selfAlarmCount
-        let relIndex = isSelf ? idx : idx - self.selfAlarmCount
-        
-        UserData.sharedInstance.updateAlarmClock(ofSelf: isSelf, atIndex: relIndex, withElement: alarmClock, isFromUploadAlarmClocks: false) { (isSuccess) in
-            if isSuccess {
-                self.reloadData()
-            }
-        }
+        // Pop out the item
+        let item = self.tabledata.remove(at: idx)
+        // Refresh table before deleting the record from database
+        // So that it won't occur the case that
+        // the cell to be deleted display on screen with no data
+        self.tableview.reloadData()
+        AlarmClockService.shared.delete(object: item)
     }
 
     @IBAction func addBtnClick(_ sender: UIButton) {
@@ -135,7 +92,7 @@ class AlarmClockViewController: UIViewController {
     }
     
     @IBAction func menuBtnClick(_ sender: UIButton) {
-        let settings = UserData.sharedInstance.getUserSettings()
+        let settings = UserService.shared.get()!
         
         SlidingFormPageConfig.sharedInstance.customFontName = "FZYanSongS-R-GB"
         
@@ -149,17 +106,18 @@ class AlarmClockViewController: UIViewController {
                 SlidingFormPage.getInput(withTitle: NSLocalizedString("Partner's Nickname", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please enter your partner's nickname.", comment: "SlidingForm"), defaultValue: settings.partnerNickname, errorMsg: "长度至少一位"),
                 SlidingFormPage.getInput(withTitle: NSLocalizedString("Your Code", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please enter a special code to identify yourself.\nFormat:\n4 or more characters, consisting only letters and numbers.\nUsage: When the two codes (your code and your partner's code) match with another pair of codes set by another user, your accounts are matched. Matched users will share their alarm clocks.", comment: "SlidingForm"), defaultValue: settings.code, inputRule: "[A-Za-z0-9]{4,}", errorMsg: "长度至少四位，由字母和数字组成"),
                 SlidingFormPage.getInput(withTitle: NSLocalizedString("Partner's Code", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please ask your partner for his/her Code.", comment: "SlidingForm"), defaultValue: settings.partnerCode, inputRule: "[A-Za-z0-9]{4,}", errorMsg: "长度至少四位，由字母和数字组成"),
-                SlidingFormPage.getSelect(withTitle: NSLocalizedString("Your Timezone", comment: "SlidingForm"), desc: nil, selectOptions: AVAILABLE_TIME_ZONE_LIST_LOCALIZED, selectedOptionIndex: Helpers.sharedInstance.getTimezoneIndexByIdentifier(settings.timezone!) ),
-                SlidingFormPage.getSelect(withTitle: NSLocalizedString("Partner's Timezone", comment: "SlidingForm"), desc: nil, selectOptions: AVAILABLE_TIME_ZONE_LIST_LOCALIZED, selectedOptionIndex: Helpers.sharedInstance.getTimezoneIndexByIdentifier(settings.partnerTimezone!)),
+                SlidingFormPage.getSelect(withTitle: NSLocalizedString("Your Timezone", comment: "SlidingForm"), desc: nil, selectOptions: AVAILABLE_TIME_ZONE_LIST_LOCALIZED, selectedOptionIndex: Helpers.sharedInstance.getTimezoneIndexByIdentifier(settings.timeZone!) ),
+                SlidingFormPage.getSelect(withTitle: NSLocalizedString("Partner's Timezone", comment: "SlidingForm"), desc: nil, selectOptions: AVAILABLE_TIME_ZONE_LIST_LOCALIZED, selectedOptionIndex: Helpers.sharedInstance.getTimezoneIndexByIdentifier(settings.partnerTimeZone!)),
                 ]) { results in
-                    settings.nickname = results[0] as! String
-                    settings.partnerNickname = results[1] as! String
-                    settings.code = results[2] as! String
-                    settings.partnerCode = results[3] as! String
-                    settings.timezone = AVAILABLE_TIME_ZONE_LIST[(results[4] as! [Any])[0] as! Int]
-                    settings.partnerTimezone = AVAILABLE_TIME_ZONE_LIST[(results[5] as! [Any])[0] as! Int]
+                    let user = UserService.shared.get()!
+                    user.nickname = results[0] as! String
+                    user.partnerNickname = results[1] as! String
+                    user.code = results[2] as! String
+                    user.partnerCode = results[3] as! String
+                    user.timeZone = AVAILABLE_TIME_ZONE_LIST[(results[4] as! [Any])[0] as! Int]
+                    user.partnerTimeZone = AVAILABLE_TIME_ZONE_LIST[(results[5] as! [Any])[0] as! Int]
                     
-                    UserData.sharedInstance.updateUserSettings(withUserSettings: settings)
+                    UserService.shared.save()
         }
         self.present(vc, animated: true, completion: nil)
     }
@@ -183,9 +141,7 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
         if tabledata.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmClockCell") as! AlarmClockCell
             
-            cell.configureCell(withAlarmClockData: tabledata[indexPath.row], toggleSliderCallback: { isActive in
-                self.updateData(atIndex: indexPath.row, isActive: isActive)
-            })
+            cell.configureCell(with: tabledata[indexPath.row])
             
             return cell
         } else {
@@ -200,7 +156,7 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
         
         if tabledata.count > 0 {
             let edit = UITableViewRowAction(style: .normal, title: NSLocalizedString("Edit", comment: "AlarmClock")) { (editAction, curIndexPath) in
-                let vc = NewAlarmClockViewController.vc(withElement: self.tabledata[indexPath.row], index: indexPath.row, saveCallback: {
+                let vc = NewAlarmClockViewController.vc(with: self.tabledata[indexPath.row], saveCallback: {
                     self.reloadData()
                 })
                 self.present(vc, animated: true, completion: nil)

@@ -13,36 +13,44 @@ class SettingViewController: UIViewController {
     
     @IBOutlet weak var startBtn: UIButton!
     let settings = UserData.sharedInstance.getUserSettings()
+    var currentUser: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        UserDefaults.standard.removeObject(forKey: "AlarmClock")
-//        UserDefaults.standard.removeObject(forKey: "UserSettings")
-//        UserDefaults.standard.synchronize()
+        //        AlarmClockService.shared.get().map { (t) in
+        //            AlarmClockService.shared.delete(object: t)
+        //        }
+//        UserService.shared.get().map { (t) in
+//            UserService.shared.delete(object: t)
+//        }
+//        
+//        AlarmClockService.shared.get()
+//        let user = User(context: UserService.shared.context)
+//        user.nickname = "程康"
+//        user.partnerNickname = "宝贝"
+//        user.code = "caca9931"
+//        user.partnerNickname = "ckck0317"
+//        user.timeZone = "UK"
+//        user.partnerTimeZone = "US"
+//        user.email = "me@chengkang.pw"
+//        user.topMessage = "我爱你！！！"
+//        user.bottomMessage = "么么哒~"
+//        UserService.shared.saveCurrentUser()
         
         self.startBtn.setTitleColor(TEXT_LIGHT, for: .normal)
         self.startBtn.setTitleColor(TEXT_LIGHT_HIGHLIGHTED, for: .highlighted)
-        
-        if UserData.sharedInstance.isUserSettingCompleted {
-            self.startBtn.setTitle(NSLocalizedString("Start", comment: "开始使用"), for: .normal)
-        } else {
-            self.startBtn.setTitle(NSLocalizedString("Setting", comment: "初始化设置"), for: .normal)
-        }
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(SettingViewController.handleUserSettingDataSynchronized), name: NSNotification.Name(rawValue: "UserSettingDataSynchronized"), object: nil)
+        SlidingFormPageConfig.sharedInstance.customFontName = "FZMingShangTis-R-GB"
     }
     
-    func handleUserSettingDataSynchronized() {
-        self.startBtn.setTitle(NSLocalizedString("Setting", comment: "初始化设置"), for: .normal)
+    override func viewWillAppear(_ animated: Bool) {
+        if UserService.shared.get() == nil {
+            self.startBtn.setTitle(NSLocalizedString("Setting", comment: "初始化设置"), for: .normal)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        //        SlidingFormPageConfig.sharedInstance.customFontName = "FZYanSongS-R-GB"
-        SlidingFormPageConfig.sharedInstance.customFontName = "FZMingShangTis-R-GB"
-        
-        if UserData.sharedInstance.isUserSettingCompleted {
+        if UserService.shared.get() != nil {
             self.presentAlarmClockVC()
         }
     }
@@ -61,14 +69,15 @@ class SettingViewController: UIViewController {
             SlidingFormPage.getSelect(withTitle: NSLocalizedString("Your Timezone", comment: "SlidingForm"), desc: nil, selectOptions: AVAILABLE_TIME_ZONE_LIST_LOCALIZED, selectedOptionIndex: Helpers.sharedInstance.getTimezoneIndexByIdentifier(settings.timezone) ),
             SlidingFormPage.getSelect(withTitle: NSLocalizedString("Partner's Timezone", comment: "SlidingForm"), desc: nil, selectOptions: AVAILABLE_TIME_ZONE_LIST_LOCALIZED, selectedOptionIndex: Helpers.sharedInstance.getTimezoneIndexByIdentifier(settings.partnerTimezone)),
             ]) { results in
-                self.settings.nickname = results[0] as! String
-                self.settings.partnerNickname = results[1] as! String
-                self.settings.code = results[2] as! String
-                self.settings.partnerCode = results[3] as! String
-                self.settings.timezone = AVAILABLE_TIME_ZONE_LIST[(results[4] as! [Any])[0] as! Int]
-                self.settings.partnerTimezone = AVAILABLE_TIME_ZONE_LIST[(results[5] as! [Any])[0] as! Int]
+                let user = UserService.shared.new()
+                user.nickname = results[0] as! String
+                user.partnerNickname = results[1] as! String
+                user.code = results[2] as! String
+                user.partnerCode = results[3] as! String
+                user.timeZone = AVAILABLE_TIME_ZONE_LIST[(results[4] as! [Any])[0] as! Int]
+                user.partnerTimeZone = AVAILABLE_TIME_ZONE_LIST[(results[5] as! [Any])[0] as! Int]
                 
-                UserData.sharedInstance.updateUserSettings(withUserSettings: self.settings)
+                UserService.shared.save()
         }
         self.present(vc, animated: true, completion: nil)
     }
@@ -77,12 +86,6 @@ class SettingViewController: UIViewController {
         let vc = AlarmClockViewController.vc()
         self.present(vc, animated: true, completion: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     /*
     // MARK: - Navigation
 
@@ -94,7 +97,7 @@ class SettingViewController: UIViewController {
     */
 
     @IBAction func startBtnClick(_ sender: UIButton) {
-        if UserData.sharedInstance.isUserSettingCompleted {
+        if (currentUser != nil) {
             self.presentAlarmClockVC()
         } else {
             self.presentSettingVC()

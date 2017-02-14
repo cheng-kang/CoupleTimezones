@@ -16,23 +16,23 @@ class NewAlarmClockViewController: UIViewController {
     
     var saveCallback: (()->())?
     
-    var data = AlarmClockModel(withId: nil, period: nil, time: nil, isSetBySelf: true, tag: NSLocalizedString("Remind Darling", comment: "AlarmClock"), isActive: true, days: [false, false, false, false, false, false, false])
+    var data: AlarmClock!
     var isNew = true
     var dataIndex = 0
     
     var settings = [NSLocalizedString("Repetance", comment: "AlarmClock"), NSLocalizedString("Tag", comment: "AlarmClock")]
     
-    var textForRepeatance: String {
+    var textForRepeat: String {
         var count = 0
         var weekendCount = 0
         
         let selection = data.days
-        let dayText = [NSLocalizedString("Sun", comment: "AlarmClock"), NSLocalizedString("Mon", comment: "AlarmClock"), NSLocalizedString("Tue", comment: "AlarmClock"), NSLocalizedString("Wed", comment: "AlarmClock"), NSLocalizedString("Thu", comment: "AlarmClock"), NSLocalizedString("Fri", comment: "AlarmClock"), NSLocalizedString("Sat", comment: "AlarmClock")]
+        let dayText = [NSLocalizedString("Mon", comment: "AlarmClock"), NSLocalizedString("Tue", comment: "AlarmClock"), NSLocalizedString("Wed", comment: "AlarmClock"), NSLocalizedString("Thu", comment: "AlarmClock"), NSLocalizedString("Fri", comment: "AlarmClock"), NSLocalizedString("Sat", comment: "AlarmClock"), NSLocalizedString("Sun", comment: "AlarmClock")]
         var selectionText = ""
         for i in 0..<7 {
-            if selection![i] {
+            if selection[i] {
                 count += 1
-                if i == 0 || i == 6 {
+                if i > 5 {
                     weekendCount += 1
                 }
                 
@@ -71,7 +71,7 @@ class NewAlarmClockViewController: UIViewController {
             self.datePicker.date = df.date(from: data.time!)!
         } else {
             // set the init time to the time at partner's timezone
-            let date = Helpers.sharedInstance.getDateAtTimezone(UserData.sharedInstance.getUserSettings().partnerTimezone!)
+            let date = Helpers.sharedInstance.getDateAtTimezone(UserService.shared.get()!.partnerTimeZone!)
             self.datePicker.date = date
         }
     }
@@ -81,13 +81,20 @@ class NewAlarmClockViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    class func vc(withElement element: AlarmClockModel? = nil, index: Int = 0, saveCallback: (()->())?) -> NewAlarmClockViewController {
+    class func vc(with element: AlarmClock? = nil, saveCallback: (()->())?) -> NewAlarmClockViewController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "NewAlarmClockViewController") as! NewAlarmClockViewController
         if element != nil {
             vc.isNew = false
             vc.data = element!
-            vc.dataIndex = index
+        } else {
+            // Init new AlarmClock
+            let data = AlarmClockService.shared.new()
+            data.timeZone = UserService.shared.get()?.partnerTimeZone!
+            data.tag = NSLocalizedString("Remind Darling", comment: "AlarmClock")
+            data.isActive = true
+            data.days = [false, false, false, false, false, false, false]
+            vc.data = data
         }
         vc.saveCallback = saveCallback
         return vc
@@ -112,17 +119,10 @@ class NewAlarmClockViewController: UIViewController {
         data.period = Helpers.sharedInstance.getDatetimeText(fromDate: self.datePicker.date, withFormat: "a")
         data.time = Helpers.sharedInstance.getDatetimeText(fromDate: self.datePicker.date, withFormat: "HH:mm")
         
-        if isNew {
-            data.isSetBySelf = true
-            
-            UserData.sharedInstance.insertAlarmClock(toSelf: true, newElement: data, callback: { isSuccess in
-                self.saveCallback?()
-            })
-        } else {
-            UserData.sharedInstance.updateAlarmClock(ofSelf: true, atIndex: dataIndex, withElement: data, callback: { isSuccess in
-                self.saveCallback?()
-            })
-        }
+        // Sava data
+        AlarmClockService.shared.save()
+        // Refresh table on AlarmClock page
+        self.saveCallback?()
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -147,7 +147,7 @@ extension NewAlarmClockViewController: UITableViewDataSource, UITableViewDelegat
         
         cell.textLabel?.text = self.settings[indexPath.row]
         if indexPath.row == 0 {
-            cell.detailTextLabel?.text = textForRepeatance
+            cell.detailTextLabel?.text = textForRepeat
         } else if indexPath.row == 1 {
             cell.detailTextLabel?.text = data.tag
         }
@@ -157,7 +157,7 @@ extension NewAlarmClockViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            let vc = SelectRepeatDayViewController.vc(withSelectionList: self.data.days!,savaCallback: { (selectionList) in
+            let vc = SelectRepeatDayViewController.vc(withSelectionList: self.data.days,savaCallback: { (selectionList) in
                 self.data.days = selectionList
                 self.tableview.reloadData()
             })
