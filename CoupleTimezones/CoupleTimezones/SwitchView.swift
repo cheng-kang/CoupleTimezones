@@ -63,12 +63,12 @@ class SwitchView: UIView {
         })
     }
     
-    func initSwitch(_ isActive: Bool) {
+    func initSwitch(_ isActive: Bool, animated: Bool = false) {
         self.isActive = isActive
         if self.isActive {
-            self.setActive(false)
+            self.setActive(animated)
         } else {
-            self.setInactive(false)
+            self.setInactive(animated)
         }
     }
     

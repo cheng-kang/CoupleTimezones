@@ -20,6 +20,7 @@ class SelectRepeatDayViewController: UIViewController {
     
     let daysText = [NSLocalizedString("Monday", comment: "Repetance"), NSLocalizedString("Tuesday", comment: "Repetance"), NSLocalizedString("Wednesday", comment: "Repetance"), NSLocalizedString("Thursday", comment: "Repetance"), NSLocalizedString("Friday", comment: "Repetance"), NSLocalizedString("Saturday", comment: "Repetance"), NSLocalizedString("Sunday", comment: "Repetance")]
     var isInitSelection = true
+    var isSelectOnCell = false
     var selection = [false, false, false, false, false, false, false] {
         didSet {
             var count = 0
@@ -27,7 +28,7 @@ class SelectRepeatDayViewController: UIViewController {
             for i in 0..<7 {
                 if selection[i] {
                     count += 1
-                    if i == 0 || i == 6 {
+                    if i > 4 {
                         weekendCount += 1
                     }
                 }
@@ -53,6 +54,8 @@ class SelectRepeatDayViewController: UIViewController {
             
             if isInitSelection {
                 isInitSelection = false
+            } else if isSelectOnCell {
+                isSelectOnCell = false
             } else {
                 self.tableview.reloadData()
             }
@@ -70,6 +73,14 @@ class SelectRepeatDayViewController: UIViewController {
         self.ratioPanelView.addSubview(allBtn)
         self.ratioPanelView.addSubview(weekdayBtn)
         self.ratioPanelView.addSubview(weekendBtn)
+        if NSLocalizedString("Everyday", comment: "Repetance") == "Everyday" {
+            self.allBtn.textFont = UIFont(name: "FZYanSongS-R-GB", size: 14)!
+            self.weekdayBtn.textFont = UIFont(name: "FZYanSongS-R-GB", size: 14)!
+            self.weekendBtn.textFont = UIFont(name: "FZYanSongS-R-GB", size: 14)!
+            self.allBtn.buttonWidth = 10
+            self.weekdayBtn.buttonWidth = 10
+            self.weekendBtn.buttonWidth = 10
+        }
         // init ratio views
         self.allBtn.initRatioView(withIsSelected: false, text: NSLocalizedString("Everyday", comment: "Repetance"), centerPoint: CGPoint(x: self.view.frame.width / 4, y: 30)) { isSelected in
             if isSelected {
@@ -89,14 +100,14 @@ class SelectRepeatDayViewController: UIViewController {
                 }
             }
         }
-            self.weekendBtn.initRatioView(withIsSelected: false, text: NSLocalizedString("Weekend", comment: "Repetance"), centerPoint: CGPoint(x: self.view.frame.width / 4 * 3, y: 30)) { isSelected in
-                if isSelected {
-                    self.selection = [false, false, false, false, false, true, true]
-                } else {
-                    if !self.allBtn.isSeleted && !self.weekdayBtn.isSeleted {
-                        self.selection = [false, false, false, false, false, false, false]
-                    }
+        self.weekendBtn.initRatioView(withIsSelected: false, text: NSLocalizedString("Weekend", comment: "Repetance"), centerPoint: CGPoint(x: self.view.frame.width / 4 * 3, y: 30)) { isSelected in
+            if isSelected {
+                self.selection = [false, false, false, false, false, true, true]
+            } else {
+                if !self.allBtn.isSeleted && !self.weekdayBtn.isSeleted {
+                    self.selection = [false, false, false, false, false, false, false]
                 }
+            }
         }
         
         // reload selection data to init btns' UI
@@ -147,6 +158,7 @@ extension SelectRepeatDayViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DayInWeekCell") as! DayInWeekCell
         cell.configureCell(withText: daysText[indexPath.row], isActive: selection[indexPath.row] ) { isActive in
+            self.isSelectOnCell = true
             self.selection[indexPath.row] = isActive
         }
         

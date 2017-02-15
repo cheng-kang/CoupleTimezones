@@ -85,7 +85,6 @@ class RatioView: UIView {
         if self.isSeleted {
             self.toggleRatioSelection(false)
         }
-//        NSLayoutConstraint(item: <#T##Any#>, attribute: <#T##NSLayoutAttribute#>, relatedBy: <#T##NSLayoutRelation#>, toItem: <#T##Any?#>, attribute: <#T##NSLayoutAttribute#>, multiplier: <#T##CGFloat#>, constant: <#T##CGFloat#>)
     }
     
     func handleTap(_ sender: UITapGestureRecognizer) {

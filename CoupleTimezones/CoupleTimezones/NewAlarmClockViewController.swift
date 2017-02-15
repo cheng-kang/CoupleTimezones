@@ -32,7 +32,7 @@ class NewAlarmClockViewController: UIViewController {
         for i in 0..<7 {
             if selection[i] {
                 count += 1
-                if i > 5 {
+                if i > 4 {
                     weekendCount += 1
                 }
                 

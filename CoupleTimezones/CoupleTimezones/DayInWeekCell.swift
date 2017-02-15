@@ -21,7 +21,7 @@ class DayInWeekCell: UITableViewCell {
     }
     
     func configureCell(withText text: String, isActive: Bool, switchOnCallback: ((_ isActive: Bool)->())?) {
-        self.switchBtn.initSwitch(isActive)
+        self.switchBtn.initSwitch(isActive, animated: true)
         self.textLbl.text = text
         self.switchOnCallback = switchOnCallback
         

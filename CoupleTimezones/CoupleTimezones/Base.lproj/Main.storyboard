@@ -351,11 +351,74 @@
                                             <outlet property="textLbl" destination="Fxj-6a-91N" id="9lt-n6-NLv"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AttentionCell" rowHeight="34" id="AVH-ag-GWS" customClass="AttentionCell" customModule="CoupleTimezones" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="208" width="375" height="34"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AVH-ag-GWS" id="OSL-AI-Hqc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="33"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No match found." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kCJ-ei-I50">
+                                                    <rect key="frame" x="34" y="8" width="333" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="Uir-si-sgZ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="FZYANS_JW--GB1-0" family="FZYanSongS-R-GB" pointSize="14"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Attention" translatesAutoresizingMaskIntoConstraints="NO" id="k2r-sk-XBg">
+                                                    <rect key="frame" x="8" y="7" width="18" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="Vki-mz-eKl"/>
+                                                        <constraint firstAttribute="width" constant="18" id="sl7-Ii-iaV"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="k2r-sk-XBg" firstAttribute="centerY" secondItem="OSL-AI-Hqc" secondAttribute="centerY" id="Bgd-V4-eJp"/>
+                                                <constraint firstItem="kCJ-ei-I50" firstAttribute="centerY" secondItem="OSL-AI-Hqc" secondAttribute="centerY" id="Zha-Yq-ChO"/>
+                                                <constraint firstItem="k2r-sk-XBg" firstAttribute="leading" secondItem="OSL-AI-Hqc" secondAttribute="leading" constant="8" id="eut-39-MVD"/>
+                                                <constraint firstItem="kCJ-ei-I50" firstAttribute="leading" secondItem="k2r-sk-XBg" secondAttribute="trailing" constant="8" id="gYL-FF-Jqc"/>
+                                                <constraint firstAttribute="trailing" secondItem="kCJ-ei-I50" secondAttribute="trailing" constant="8" id="poE-E0-iRG"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="iconImage" destination="k2r-sk-XBg" id="v7e-rq-fSI"/>
+                                            <outlet property="msgLbl" destination="kCJ-ei-I50" id="wlk-E4-nJi"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbV-o0-FSn" userLabel="Upload">
+                                <rect key="frame" x="8" y="485.5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="29N-pb-HhK"/>
+                                    <constraint firstAttribute="height" constant="30" id="mGO-16-xb5"/>
+                                </constraints>
+                                <state key="normal" image="Upload"/>
+                                <connections>
+                                    <action selector="uploadBtnOnPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5UT-0q-xr9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibQ-V6-BEF" userLabel="Download">
+                                <rect key="frame" x="46" y="485.5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="AZd-ed-RMa"/>
+                                    <constraint firstAttribute="height" constant="30" id="ymj-qm-vtG"/>
+                                </constraints>
+                                <state key="normal" image="Download"/>
+                                <connections>
+                                    <action selector="downloadBtnOnPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W1F-sR-7OX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ibQ-V6-BEF" firstAttribute="leading" secondItem="bbV-o0-FSn" secondAttribute="trailing" priority="750" constant="8" id="9hm-Fm-Wbv"/>
+                            <constraint firstItem="ibQ-V6-BEF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" priority="250" constant="46" id="GOo-Fa-RXb"/>
+                            <constraint firstItem="ibQ-V6-BEF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.5" id="Izn-0d-2aY"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZWb-XJ-7fW" secondAttribute="bottom" id="LGE-UW-VKc"/>
                             <constraint firstItem="ZWb-XJ-7fW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZPA-rj-a3L"/>
                             <constraint firstAttribute="trailing" secondItem="ZWb-XJ-7fW" secondAttribute="trailing" id="c7d-rR-2rg"/>
@@ -363,15 +426,19 @@
                             <constraint firstItem="Khx-DP-at7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gpl-rt-1hs"/>
                             <constraint firstItem="Khx-DP-at7" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="l1K-uc-zGq"/>
                             <constraint firstAttribute="trailing" secondItem="Khx-DP-at7" secondAttribute="trailing" id="qUm-gR-3Rk"/>
+                            <constraint firstItem="bbV-o0-FSn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="qY8-ov-09N"/>
+                            <constraint firstItem="bbV-o0-FSn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.5" id="r3r-jI-6w7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addBtn" destination="Tq0-mM-RG7" id="UOz-da-cms"/>
+                        <outlet property="downloadBtn" destination="ibQ-V6-BEF" id="C6p-Sj-YZ2"/>
                         <outlet property="menuBtn" destination="PhP-jJ-jEB" id="Czy-Oh-6AW"/>
                         <outlet property="navLocLbl" destination="k6O-YN-Gwo" id="JfC-6Z-lb6"/>
                         <outlet property="navPeriodLbl" destination="lHD-7e-ssw" id="HPq-el-24I"/>
                         <outlet property="navTimeLbl" destination="dhv-CC-Oqi" id="FcL-HG-trv"/>
                         <outlet property="tableview" destination="ZWb-XJ-7fW" id="QM5-kM-JyL"/>
+                        <outlet property="uploadBtn" destination="bbV-o0-FSn" id="iMC-Hv-HhE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -972,9 +1039,12 @@
     </scenes>
     <resources>
         <image name="Add" width="100" height="100"/>
+        <image name="Attention" width="100" height="100"/>
         <image name="Back" width="100" height="100"/>
         <image name="Dismiss" width="100" height="100"/>
+        <image name="Download" width="100" height="100"/>
         <image name="Post" width="100" height="100"/>
         <image name="SettingsF" width="100" height="100"/>
+        <image name="Upload" width="100" height="100"/>
     </resources>
 </document>

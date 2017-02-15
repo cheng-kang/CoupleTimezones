@@ -62,6 +62,7 @@ class SlidingFormPage: UIView {
     var inputValue: String?
     var inputFormat: String?
     var inputRule: String? // regular expression
+    var inputValueAsyncCheck: (( _ inputValue: String, _ errorMsgLbl: UILabel )->())?
     
     // for select
     var selectOptions: [String]?
@@ -192,7 +193,7 @@ class SlidingFormPage: UIView {
         }
     }
     
-    class func getInput(withTitle title: String, isRequired: Bool, desc: String?, defaultValue: String? = nil, inputRule: String? = nil, errorMsg: String? = nil) -> SlidingFormPage {
+    class func getInput(withTitle title: String, isRequired: Bool, desc: String?, defaultValue: String? = nil, inputRule: String? = nil, errorMsg: String? = nil, inputValueAsyncCheck: ((_ inputValue: String, _ errorMsgLbl: UILabel)->())? = nil) -> SlidingFormPage {
         let page = SlidingFormPage()
         
         page.type = .input
@@ -201,6 +202,7 @@ class SlidingFormPage: UIView {
         page.desc = desc
         page.inputValue = defaultValue
         page.inputRule = inputRule
+        page.inputValueAsyncCheck = inputValueAsyncCheck
         page.errorMsg = errorMsg
         
         page.initCommon()
@@ -306,11 +308,16 @@ class SlidingFormPage: UIView {
     }
     
     func handleTextFieldChange(_ sender: UITextField) {
-        self.inputValue = sender.text
+        self.inputValue = sender.text!
         
         if self.isFinished {
-            self.errorMsgLbl.text = ""
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentPageFinished"), object: nil)
+            if let asyncCheck = self.inputValueAsyncCheck {
+                asyncCheck(self.inputValue!, self.errorMsgLbl)
+                self.errorMsgLbl.text = NSLocalizedString("Checking...", comment: "验证中……")
+            } else {
+                self.errorMsgLbl.text = ""
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentPageFinished"), object: nil)
+            }
         } else {
             self.errorMsgLbl.text = self.errorMsg
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentPageUnFinished"), object: nil)
