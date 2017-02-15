@@ -34,7 +34,7 @@ class AlarmClockCell: UITableViewCell {
         self.isActiveSwitch.toggleSwitchCallback = { isActive in
             // Save the change once toggled
             self.alarmClock.isActive = isActive
-            AlarmClockService.shared.save()
+            AlarmClockService.shared.save(false)
             // Reschedule local notification
             
             

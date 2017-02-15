@@ -18,8 +18,10 @@ class AlarmClockViewController: UIViewController {
     @IBOutlet weak var navPeriodLbl: UILabel!
     @IBOutlet weak var uploadBtn: UIButton!
     @IBOutlet weak var downloadBtn: UIButton!
+    @IBOutlet var uploadBtnToRight: NSLayoutConstraint!
     
     @IBOutlet weak var tableview: UITableView!
+    let loadingView = LoadingView()
     var currentUser: User?
     var isMatched: Bool? {
         didSet {
@@ -47,6 +49,8 @@ class AlarmClockViewController: UIViewController {
         tableview.delegate = self
         tableview.tableFooterView = UIView()
         
+        loadingView.initView()
+        
         self.uploadBtn.alpha = 0
         self.downloadBtn.alpha = 0
         let uploadImage = UIImage(named: "Upload")?.withRenderingMode(.alwaysTemplate)
@@ -62,11 +66,13 @@ class AlarmClockViewController: UIViewController {
                 // Show downloadBtn
                 UIView.animate(withDuration: 0.3, animations: {
                     self.downloadBtn.alpha = 1
+                    self.uploadBtnToRight.constant = 46
                 })
             } else {
                 // Hide downloadBtn
                 UIView.animate(withDuration: 0.3, animations: {
                     self.downloadBtn.alpha = 0
+                    self.uploadBtnToRight.constant = 8
                 })
             }
         })
@@ -98,6 +104,11 @@ class AlarmClockViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadData), name: NSNotification.Name("DownloadedAlarmClocks"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.hideUploadBtn), name: NSNotification.Name("CanUploadFalse"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.showUploadBtn), name: NSNotification.Name("CanUploadTrue"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.hideLoadingView), name: NSNotification.Name("ActivityDone"), object: nil)
+    }
+    
+    func hideLoadingView() {
+        loadingView.removeFromSuperview()
     }
     
     func clearTable() {
@@ -264,10 +275,12 @@ class AlarmClockViewController: UIViewController {
     }
 
     @IBAction func uploadBtnOnPress(_ sender: UIButton) {
+        self.view.addSubview(loadingView)
         AlarmClockService.shared.upload()
     }
     
     @IBAction func downloadBtnOnPress(_ sender: UIButton) {
+        self.view.addSubview(loadingView)
         AlarmClockService.shared.download()
     }
 }

@@ -52,13 +52,15 @@ class AlarmClockService: NSObject {
         return AlarmClock(context: context)
     }
     
-    func save() {
+    func save(_ canUpload: Bool = true) {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
         refresh()
         
-        UserService.shared.get()?.canUpload = true
-        UserService.shared.save()
-        NotificationCenter.default.post(name: NSNotification.Name("CanUploadTrue"), object: nil)
+        if canUpload {
+            UserService.shared.get()?.canUpload = true
+            UserService.shared.save()
+            NotificationCenter.default.post(name: NSNotification.Name("CanUploadTrue"), object: nil)
+        }
     }
     
     func insert() {
@@ -90,13 +92,15 @@ class AlarmClockService: NSObject {
         }
         let updates: [String : Any] = [
             "/alarms/"+codePair: data,
-            "/canDownload/"+UserService.shared.get()!.partnerCode!: true
+            "/canDownload/"+UserService.shared.get()!.partnerCode!: true,
+            "/canDownload/"+UserService.shared.get()!.code!: NSNull()
         ]
         FIRDatabase.database().reference().updateChildValues(updates) { (error, ref) in
             if error == nil {
                 UserService.shared.get()?.canUpload = false
                 UserService.shared.save()
-                
+                NotificationCenter.default.post(name: NSNotification.Name("CanUploadFalse"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name("ActivityDone"), object: nil)
                 // Pop up alert: Upload Success
             } else {
                 // Pop up alert: upload fail
@@ -121,16 +125,17 @@ class AlarmClockService: NSObject {
                             let item = value as! [String: Any]
                             let alarm = self.new()
                             alarm.id = key
-                            alarm.time = item["time"] as! String
-                            alarm.period = item["period"] as! String
-                            alarm.tag = item["tag"] as! String
+                            alarm.time = item["time"] as? String
+                            alarm.period = item["period"] as? String
+                            alarm.tag = item["tag"] as? String
                             alarm.isActive = item["isActive"] as! Bool
-                            alarm.daysStr = item["daysStr"] as! String
-                            alarm.timeZone = item["timeZone"] as! String
-                            self.save()
+                            alarm.daysStr = item["daysStr"] as? String
+                            alarm.timeZone = item["timeZone"] as? String
+                            self.save(false)
                         }
                     }
                     NotificationCenter.default.post(name: NSNotification.Name("DownloadedAlarmClocks"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name("ActivityDone"), object: nil)
                     UserService.shared.get()?.canUpload = false
                     UserService.shared.save()
                     NotificationCenter.default.post(name: NSNotification.Name("CanUploadFalse"), object: nil)
