@@ -18,26 +18,6 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        AlarmClockService.shared.get().map { (t) in
-        //            AlarmClockService.shared.delete(object: t)
-        //        }
-//        UserService.shared.get().map { (t) in
-//            UserService.shared.delete(object: t)
-//        }
-//        
-//        AlarmClockService.shared.get()
-//        let user = User(context: UserService.shared.context)
-//        user.nickname = "程康"
-//        user.partnerNickname = "宝贝"
-//        user.code = "caca9931"
-//        user.partnerNickname = "ckck0317"
-//        user.timeZone = "UK"
-//        user.partnerTimeZone = "US"
-//        user.email = "me@chengkang.pw"
-//        user.topMessage = "我爱你！！！"
-//        user.bottomMessage = "么么哒~"
-//        UserService.shared.saveCurrentUser()
-        
         self.startBtn.setTitleColor(TEXT_LIGHT, for: .normal)
         self.startBtn.setTitleColor(TEXT_LIGHT_HIGHLIGHTED, for: .highlighted)
         SlidingFormPageConfig.sharedInstance.customFontName = "FZMingShangTis-R-GB"
