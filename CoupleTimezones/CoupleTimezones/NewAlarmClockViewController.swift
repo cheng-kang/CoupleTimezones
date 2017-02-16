@@ -15,8 +15,6 @@ class NewAlarmClockViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var tableview: UITableView!
     
-    var saveCallback: (()->())?
-    
     var data: AlarmClock!
     var isNew = true
     var dataIndex = 0
@@ -82,7 +80,7 @@ class NewAlarmClockViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    class func vc(with element: AlarmClock? = nil, saveCallback: (()->())?) -> NewAlarmClockViewController {
+    class func vc(with element: AlarmClock? = nil) -> NewAlarmClockViewController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "NewAlarmClockViewController") as! NewAlarmClockViewController
         if element != nil {
@@ -99,7 +97,6 @@ class NewAlarmClockViewController: UIViewController {
             data.isShowingPartnerText = true
             vc.data = data
         }
-        vc.saveCallback = saveCallback
         return vc
     }
     
@@ -125,7 +122,7 @@ class NewAlarmClockViewController: UIViewController {
         // Sava data
         AlarmClockService.shared.saveAndUploadSingle(data)
         // Refresh table on AlarmClock page
-        self.saveCallback?()
+        NotificationCenter.default.post(name: NSNotification.Name("ShouldRefreshAlarmClocks"), object: nil)
         
         self.dismiss(animated: true, completion: nil)
     }

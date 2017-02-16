@@ -34,7 +34,6 @@ class UserService: NSObject {
         userFetch.fetchLimit = 1
         do {
             let fetchedUsers = try context.fetch(userFetch) as! [User]
-            print(fetchedUsers)
             if fetchedUsers.count == 0 {
                 return nil
             }

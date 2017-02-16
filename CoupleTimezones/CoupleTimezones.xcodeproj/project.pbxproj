@@ -29,6 +29,7 @@
 		ED660C3E1DA90A6C00411874 /* SlidingFormElementRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED660C3D1DA90A6C00411874 /* SlidingFormElementRatio.swift */; };
 		ED660C401DA913B800411874 /* SlidingFormPageConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED660C3F1DA913B800411874 /* SlidingFormPageConfig.swift */; };
 		ED660C421DA928E500411874 /* SlidingFormElementSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED660C411DA928E500411874 /* SlidingFormElementSwitch.swift */; };
+		ED6FE6861E563967003E0EB2 /* StateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6FE6851E563967003E0EB2 /* StateService.swift */; };
 		ED945ACB1E51F8FA00FC217E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED945ACA1E51F8FA00FC217E /* GoogleService-Info.plist */; };
 		ED945ACE1E51F9A700FC217E /* localdata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED945ACC1E51F9A700FC217E /* localdata.xcdatamodeld */; };
 		ED945AD11E51FEE100FC217E /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED945AD01E51FEE100FC217E /* UserService.swift */; };
@@ -77,6 +78,7 @@
 		ED660C3D1DA90A6C00411874 /* SlidingFormElementRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingFormElementRatio.swift; sourceTree = "<group>"; };
 		ED660C3F1DA913B800411874 /* SlidingFormPageConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingFormPageConfig.swift; sourceTree = "<group>"; };
 		ED660C411DA928E500411874 /* SlidingFormElementSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingFormElementSwitch.swift; sourceTree = "<group>"; };
+		ED6FE6851E563967003E0EB2 /* StateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateService.swift; sourceTree = "<group>"; };
 		ED945ACA1E51F8FA00FC217E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED945ACD1E51F9A700FC217E /* localdata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = localdata.xcdatamodel; sourceTree = "<group>"; };
 		ED945AD01E51FEE100FC217E /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				ED945AD01E51FEE100FC217E /* UserService.swift */,
 				ED945AD31E520D2200FC217E /* AlarmClockService.swift */,
 				ED945AD91E55DC3900FC217E /* NotifService.swift */,
+				ED6FE6851E563967003E0EB2 /* StateService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				ED53921A1DA6D62800071709 /* NoContentCell.swift in Sources */,
 				EDC521191DA969B5007039FC /* UserSettings.swift in Sources */,
 				ED53920F1DA65BEF00071709 /* RatioView.swift in Sources */,
+				ED6FE6861E563967003E0EB2 /* StateService.swift in Sources */,
 				ED660C3C1DA90A1E00411874 /* SlidingFormElementCheckbox.swift in Sources */,
 				EDC521271DAA4D5F007039FC /* CTDateModel.swift in Sources */,
 				ED945AD61E54A76200FC217E /* AttentionCell.swift in Sources */,

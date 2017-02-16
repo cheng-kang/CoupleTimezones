@@ -24,13 +24,6 @@ class AlarmClockViewController: UIViewController {
     let loadingView = LoadingView()
     let topMsgView = UILabel()
     var currentUser: User?
-    var isMatched: Bool? {
-        didSet {
-            if oldValue != isMatched {
-                self.tableview.reloadData()
-            }
-        }
-    }
     var partnerCodeObserverHandle:UInt?
     
     var tabledata = [AlarmClock]()
@@ -67,57 +60,45 @@ class AlarmClockViewController: UIViewController {
         self.downloadBtn.tintColor = SLIDER_BG_DARK
         
         // Check if user can download
-        FIRDatabase.database().reference().child("canDownload").child(currentUser!.code!).observe(.value, with: { (snapshot) in
+        FIRDatabase.database().reference().child("canDownload").child(self.currentUser!.code!).observe(.value, with: { (snapshot) in
             if snapshot.exists() {
-                self.downloadBtn.sendActions(for: .touchUpInside)
-                // Show downloadBtn
-//                UIView.animate(withDuration: 0.3, animations: {
-//                    self.downloadBtn.alpha = 1
-//                    self.uploadBtnToRight.constant = 46
-//                })
-            } else {
-                // Hide downloadBtn
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.downloadBtn.alpha = 0
-                    self.uploadBtnToRight.constant = 8
-                })
+                if self.currentUser!.canUpload == true {
+                    self.showBtns()
+                } else {
+                    AlarmClockService.shared.download()
+                }
             }
         })
         
-        // Check if user can upload
+        // Set check: check if user can upload
         partnerCodeObserverHandle = FIRDatabase.database().reference()
             .child("users")
             .child(currentUser!.partnerCode!)
             .child("partnerCode")
             .observe(.value, with: { (snapshot) in
-                if snapshot.value as? String == self.currentUser?.code {
-                    self.isMatched = true
-                    if self.currentUser?.canUpload ?? false {
-                        self.uploadBtn.sendActions(for: .touchUpInside)
-                        
-                        // Show uploadBtn
-//                        UIView.animate(withDuration: 0.3, animations: {
-//                            self.uploadBtn.alpha = 1
-//                        })
+                var partnerCode = ""
+                if let value = snapshot.value as? String {
+                    partnerCode = value
+                }
+                if let value = snapshot.value as? Int {
+                    partnerCode = value.description
+                }
+                if partnerCode == self.currentUser?.code {
+                    StateService.shared.isMatched = true
+                    if self.currentUser?.canUpload == true {
+                        AlarmClockService.shared.upload()
                     }
                 } else {
-                    self.isMatched = false
-                    // Hide uploadBtn
-                    UIView.animate(withDuration: 0.3, animations: {
-                        self.uploadBtn.alpha = 0
-                    })
+                    StateService.shared.isMatched = false
                 }
             })
         
-        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.clearTable), name: NSNotification.Name("DownloadingAlarmClocks"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadData), name: NSNotification.Name("DownloadedAlarmClocks"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.showLoadingView), name: NSNotification.Name("ActivityStart"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.hideLoadingView), name: NSNotification.Name("ActivityDone"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadData), name: NSNotification.Name("ShouldRefreshAlarmClocks"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadTable), name: NSNotification.Name("ShouldRefreshTable"), object: nil)
         
-        // Feature [Upload all] might be discard.
-//        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.hideUploadBtn), name: NSNotification.Name("CanUploadFalse"), object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.showUploadBtn), name: NSNotification.Name("CanUploadTrue"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.hideBtns), name: NSNotification.Name("CanUploadFalse"), object: nil)
     }
     
     func showLoadingView() {
@@ -134,15 +115,18 @@ class AlarmClockViewController: UIViewController {
         self.tableview.reloadData()
     }
     
-    func hideUploadBtn() {
+    func hideBtns() {
         UIView.animate(withDuration: 0.3, animations: {
             self.uploadBtn.alpha = 0
+            self.downloadBtn.alpha = 0
         })
     }
     
-    func showUploadBtn() {
+    // Show upload/download btns
+    func showBtns() {
         UIView.animate(withDuration: 0.3, animations: {
             self.uploadBtn.alpha = 1
+            self.downloadBtn.alpha = 1
         })
     }
     
@@ -150,10 +134,12 @@ class AlarmClockViewController: UIViewController {
         // Refresh user data after setting finished
         currentUser = UserService.shared.get()
         
-        if let handle = partnerCodeObserverHandle {
-            FIRDatabase.database().reference().removeObserver(withHandle: handle)
+        // If partnerCode changed, reset check
+        if StateService.shared.isPartnerCodeChanged {
+            if let handle = partnerCodeObserverHandle {
+                FIRDatabase.database().reference().removeObserver(withHandle: handle)
+            }
             
-            // Reset check: check if user can upload
             partnerCodeObserverHandle = FIRDatabase.database().reference()
                 .child("users")
                 .child(currentUser!.partnerCode!)
@@ -167,21 +153,17 @@ class AlarmClockViewController: UIViewController {
                         partnerCode = value.description
                     }
                     if partnerCode == self.currentUser?.code {
-                        self.isMatched = true
-                        if self.currentUser?.canUpload ?? false {
-                            // Show uploadBtn
-                            UIView.animate(withDuration: 0.3, animations: {
-                                self.uploadBtn.alpha = 1
-                            })
+                        StateService.shared.isMatched = true
+                        if self.currentUser?.canUpload == true {
+                            AlarmClockService.shared.upload()
                         }
                     } else {
-                        self.isMatched = false
-                        // Hide uploadBtn
-                        UIView.animate(withDuration: 0.3, animations: {
-                            self.uploadBtn.alpha = 0
-                        })
+                        StateService.shared.isMatched = false
                     }
                 })
+            
+            // Rest isPartnerCodeChanged
+            StateService.shared.isPartnerCodeChanged = false
         }
         
         self.navLocLbl.text = TimeZone(identifier: UserService.shared.get()!.partnerTimeZone!)?.localizedName(for: .shortGeneric, locale: Locale.current)
@@ -202,12 +184,11 @@ class AlarmClockViewController: UIViewController {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "DownloadingAlarmClocks"), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "DownloadedAlarmClocks"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ActivityStart"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ActivityDone"), object: nil)
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "CanUploadFalse"), object: nil)
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "CanUploadTrue"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ShouldRefreshAlarmClocks"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ShouldRefreshTable"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "CanUploadFalse"), object: nil)
     }
     
     func updateTimeLbl() {
@@ -219,9 +200,11 @@ class AlarmClockViewController: UIViewController {
         self.navPeriodLbl.text = Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "a")
     }
     
+    func reloadTable() {
+        self.tableview.reloadData()
+    }
     func reloadData() {
         self.tabledata = AlarmClockService.shared.get()
-        
         self.tableview.reloadData()
     }
     
@@ -236,9 +219,7 @@ class AlarmClockViewController: UIViewController {
     }
 
     @IBAction func addBtnClick(_ sender: UIButton) {
-        let vc = NewAlarmClockViewController.vc {
-            self.reloadData()
-        }
+        let vc = NewAlarmClockViewController.vc()
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -271,6 +252,12 @@ class AlarmClockViewController: UIViewController {
                 SlidingFormPage.getSelect(withTitle: NSLocalizedString("Partner's Timezone", comment: "SlidingForm"), desc: nil, selectOptions: AVAILABLE_TIME_ZONE_LIST_LOCALIZED, selectedOptionIndex: Helpers.sharedInstance.getTimezoneIndexByIdentifier(settings.partnerTimeZone!)),
                 ]) { results in
                     let user = UserService.shared.get()!
+                    
+                    // Check if partnerCode is changed
+                    if results[3] as? String != user.partnerCode {
+                        StateService.shared.isPartnerCodeChanged = true
+                    }
+                    
                     user.nickname = results[0] as? String
                     user.partnerNickname = results[1] as? String
                     user.code = results[2] as? String
@@ -308,7 +295,7 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tabledata.count == 0 ? 1 : isMatched == false ? tabledata.count + 1 : tabledata.count
+        return tabledata.count == 0 ? 1 : StateService.shared.isMatched == false ? tabledata.count + 1 : tabledata.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -317,7 +304,7 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tabledata.count > 0 {
-            if isMatched == false {
+            if StateService.shared.isMatched == false {
                 if indexPath.row == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "AttentionCell") as! AttentionCell
                     cell.msgLbl.text = NSLocalizedString("Partner not found", comment: "没有找到你的对象")
@@ -349,9 +336,7 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
         
         if tabledata.count > 0 {
             let edit = UITableViewRowAction(style: .normal, title: NSLocalizedString("Edit", comment: "AlarmClock")) { (editAction, curIndexPath) in
-                let vc = NewAlarmClockViewController.vc(with: self.tabledata[indexPath.row], saveCallback: {
-                    self.reloadData()
-                })
+                let vc = NewAlarmClockViewController.vc(with: self.tabledata[indexPath.row])
                 self.present(vc, animated: true, completion: nil)
             }
             edit.backgroundColor = SLIDER_BG_DARK
@@ -369,7 +354,7 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tabledata.count > 0 && isMatched == false && indexPath.row == 0 {
+        if tabledata.count > 0 && StateService.shared.isMatched == false && indexPath.row == 0 {
             return 34
         }
         return 90

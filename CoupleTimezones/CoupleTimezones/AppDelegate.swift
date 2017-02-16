@@ -20,11 +20,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // Init Firebase
         FIRApp.configure()
         
-//        UserDefaults.standard.removeObject(forKey: "AlarmClock")
-//        UserDefaults.standard.removeObject(forKey: "UserSettings")
-//        UserDefaults.standard.synchronize()
+        // Set up network connection service
+        let connectedRef = FIRDatabase.database().reference(withPath: ".info/connected")
+        connectedRef.observe(.value, with: { snapshot in
+            let connected = snapshot.value as? Bool
+            if  connected == true {
+                StateService.shared.isConnected = true
+            } else {
+                StateService.shared.isConnected = false
+            }
+        })
+        
+        
+        // Ask authorization of notification
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (isSuccess, error) in
             if error != nil {
                 Helpers.sharedInstance.toast(withString: "Error!")
@@ -38,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         }
         
+        // Check for dilivered notification
         if UserService.shared.get() != nil {
             NotifService.shared.removeDeliveredNotifications()
         }
@@ -100,8 +112,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let list = AlarmClockService.shared.get()
         for item in list {
             if item.id == notification.request.identifier {
+                // Do not upload this change
+                // Because this alarm will be turned inactive on partner's device
                 item.isActive = false
-                AlarmClockService.shared.saveAndUploadSingle(item)
+                AlarmClockService.shared.save()
                 NotificationCenter.default.post(name: NSNotification.Name("ShouldRefreshAlarmClocks"), object: nil)
             }
         }
@@ -136,8 +150,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let list = AlarmClockService.shared.get()
         for item in list {
             if item.id == notification.userInfo?["id"] as! String {
+                // Do not upload this change
+                // Because this alarm will be turned inactive on partner's device
                 item.isActive = false
-                AlarmClockService.shared.saveAndUploadSingle(item)
+                AlarmClockService.shared.save()
                 NotificationCenter.default.post(name: NSNotification.Name("ShouldRefreshAlarmClocks"), object: nil)
             }
         }

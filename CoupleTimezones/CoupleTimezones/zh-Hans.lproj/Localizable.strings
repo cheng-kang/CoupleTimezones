@@ -7,6 +7,12 @@
 /* AlarmClock */
 ", " = "、";
 
+/* 验证中…… */
+"Checking..." = "验证中……";
+
+/* 神秘代码已被占用。 */
+"Code is used by someone else." = "神秘代码已被占用。";
+
 /* AlarmClock */
 "Delete" = "删除";
 
@@ -28,6 +34,9 @@
 /* AlarmClock
    Repetance */
 "Everyday" = "每天";
+
+/* 无法连接到服务器。请稍后手动上传。 */
+"Fail to connect to server. Please manually upload later." = "无法连接到服务器。请稍后手动上传。";
 
 /* SlidingForm */
 "First" = "第一项";
@@ -55,6 +64,9 @@
 
 /* AlarmClock */
 "No Alarm Clock" = "暂时没有闹钟";
+
+/* 没有找到你的对象 */
+"Partner not found" = "没有找到你的对象";
 
 /* SlidingForm */
 "Partner's Code" = "对方的神秘代码";
@@ -107,9 +119,6 @@ Usage: When the two codes (your code and your partner's code) match with another
 
 /* SlidingForm */
 "Settings" = "自定义设置";
-
-/* 开始使用 */
-"Start" = "开始使用";
 
 /* AlarmClock */
 "Sun" = "日";

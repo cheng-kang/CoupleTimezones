@@ -19,6 +19,9 @@
 /* Class = "UILabel"; text = "上一页"; ObjectID = "LS1-sC-mpR"; */
 "LS1-sC-mpR.text" = "上一页";
 
+/* Class = "UILabel"; text = "“我住长江头，君住长江尾。”"; ObjectID = "LUG-R0-ti1"; */
+"LUG-R0-ti1.text" = "\"I live upstream and you downstream,From night to night of you i dream.\"";
+
 /* Class = "UILabel"; text = "设置"; ObjectID = "aIA-A4-JLO"; */
 "aIA-A4-JLO.text" = "设置";
 
