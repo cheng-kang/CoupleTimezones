@@ -38,7 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         }
         
-        Helpers.sharedInstance.checkDeliveredLocalNotification()
+        if UserService.shared.get() != nil {
+            NotifService.shared.removeDeliveredNotifications()
+        }
         
         return true
     }
@@ -55,7 +57,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        Helpers.sharedInstance.checkDeliveredLocalNotification()
+        
+        if UserService.shared.get() != nil {
+            NotifService.shared.removeDeliveredNotifications()
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -92,17 +97,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         topWindow.makeKeyAndVisible()
         topWindow.rootViewController?.present(alert, animated: true, completion: nil)
         
-        let (allData, selfCount) = UserData.sharedInstance.getAlarmClockAll()
-        for i in 0..<allData.count {
-            if allData[i]._id == notification.request.identifier {
-                let isSelf = allData.count <= selfCount
-                let relIndex = isSelf ? i : i - selfCount
-                
-                let alarmClock = allData[i]
-                alarmClock.isActive = false
-                
-                UserData.sharedInstance.updateAlarmClock(ofSelf: isSelf, atIndex: relIndex, withElement: alarmClock, isFromUploadAlarmClocks: false, callback: { (isSuccess) in
-                })
+        let list = AlarmClockService.shared.get()
+        for item in list {
+            if item.id == notification.request.identifier {
+                item.isActive = false
+                AlarmClockService.shared.saveAndUploadSingle(item)
+                NotificationCenter.default.post(name: NSNotification.Name("ShouldRefreshAlarmClocks"), object: nil)
             }
         }
     }
@@ -133,20 +133,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         topWindow.makeKeyAndVisible()
         topWindow.rootViewController?.present(alert, animated: true, completion: nil)
 
-        
-        
-        
-        let (allData, selfCount) = UserData.sharedInstance.getAlarmClockAll()
-        for i in 0..<allData.count {
-            if allData[i]._id == notification.userInfo?["id"] as! String {
-                let isSelf = allData.count <= selfCount
-                let relIndex = isSelf ? i : i - selfCount
-                
-                let alarmClock = allData[i]
-                alarmClock.isActive = false
-                
-                UserData.sharedInstance.updateAlarmClock(ofSelf: isSelf, atIndex: relIndex, withElement: alarmClock, isFromUploadAlarmClocks: false, callback: { (isSuccess) in
-                })
+        let list = AlarmClockService.shared.get()
+        for item in list {
+            if item.id == notification.userInfo?["id"] as! String {
+                item.isActive = false
+                AlarmClockService.shared.saveAndUploadSingle(item)
+                NotificationCenter.default.post(name: NSNotification.Name("ShouldRefreshAlarmClocks"), object: nil)
             }
         }
     }

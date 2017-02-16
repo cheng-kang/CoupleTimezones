@@ -34,7 +34,7 @@ class AlarmClockCell: UITableViewCell {
         self.isActiveSwitch.toggleSwitchCallback = { isActive in
             // Save the change once toggled
             self.alarmClock.isActive = isActive
-            AlarmClockService.shared.save(false)
+            AlarmClockService.shared.saveAndUploadSingle(self.alarmClock)
             // Reschedule local notification
             
             
@@ -47,7 +47,7 @@ class AlarmClockCell: UITableViewCell {
     var isShowingPartnerText = false
     func toggleLblText() {
         alarmClock.isShowingPartnerText = !alarmClock.isShowingPartnerText
-        AlarmClockService.shared.save()
+        AlarmClockService.shared.save(false)
         
         if alarmClock.isShowingPartnerText {
             showPartnerText()

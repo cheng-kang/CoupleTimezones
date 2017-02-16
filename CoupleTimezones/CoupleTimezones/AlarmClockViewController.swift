@@ -22,6 +22,7 @@ class AlarmClockViewController: UIViewController {
     
     @IBOutlet weak var tableview: UITableView!
     let loadingView = LoadingView()
+    let topMsgView = UILabel()
     var currentUser: User?
     var isMatched: Bool? {
         didSet {
@@ -48,6 +49,11 @@ class AlarmClockViewController: UIViewController {
         tableview.dataSource = self
         tableview.delegate = self
         tableview.tableFooterView = UIView()
+        topMsgView.text = "❤️Baby, I love You!!!"
+        topMsgView.font = TEXT_FONT(withSize: 16)
+        topMsgView.textColor = TEXT_DARK
+        topMsgView.frame = CGRect(x: 10, y: -60, width: self.view.frame.width-20, height: 60)
+        self.tableview.addSubview(topMsgView)
         
         loadingView.initView()
         
@@ -63,11 +69,12 @@ class AlarmClockViewController: UIViewController {
         // Check if user can download
         FIRDatabase.database().reference().child("canDownload").child(currentUser!.code!).observe(.value, with: { (snapshot) in
             if snapshot.exists() {
+                self.downloadBtn.sendActions(for: .touchUpInside)
                 // Show downloadBtn
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.downloadBtn.alpha = 1
-                    self.uploadBtnToRight.constant = 46
-                })
+//                UIView.animate(withDuration: 0.3, animations: {
+//                    self.downloadBtn.alpha = 1
+//                    self.uploadBtnToRight.constant = 46
+//                })
             } else {
                 // Hide downloadBtn
                 UIView.animate(withDuration: 0.3, animations: {
@@ -86,10 +93,12 @@ class AlarmClockViewController: UIViewController {
                 if snapshot.value as? String == self.currentUser?.code {
                     self.isMatched = true
                     if self.currentUser?.canUpload ?? false {
+                        self.uploadBtn.sendActions(for: .touchUpInside)
+                        
                         // Show uploadBtn
-                        UIView.animate(withDuration: 0.3, animations: {
-                            self.uploadBtn.alpha = 1
-                        })
+//                        UIView.animate(withDuration: 0.3, animations: {
+//                            self.uploadBtn.alpha = 1
+//                        })
                     }
                 } else {
                     self.isMatched = false
@@ -102,9 +111,17 @@ class AlarmClockViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.clearTable), name: NSNotification.Name("DownloadingAlarmClocks"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadData), name: NSNotification.Name("DownloadedAlarmClocks"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.hideUploadBtn), name: NSNotification.Name("CanUploadFalse"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.showUploadBtn), name: NSNotification.Name("CanUploadTrue"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.showLoadingView), name: NSNotification.Name("ActivityStart"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.hideLoadingView), name: NSNotification.Name("ActivityDone"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadData), name: NSNotification.Name("ShouldRefreshAlarmClocks"), object: nil)
+        
+        // Feature [Upload all] might be discard.
+//        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.hideUploadBtn), name: NSNotification.Name("CanUploadFalse"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.showUploadBtn), name: NSNotification.Name("CanUploadTrue"), object: nil)
+    }
+    
+    func showLoadingView() {
+        self.view.addSubview(loadingView)
     }
     
     func hideLoadingView() {
@@ -187,8 +204,10 @@ class AlarmClockViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "DownloadingAlarmClocks"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "DownloadedAlarmClocks"), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "CanUploadFalse"), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "CanUploadTrue"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ActivityStart"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ActivityDone"), object: nil)
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "CanUploadFalse"), object: nil)
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "CanUploadTrue"), object: nil)
     }
     
     func updateTimeLbl() {
@@ -213,7 +232,7 @@ class AlarmClockViewController: UIViewController {
         // So that it won't occur the case that
         // the cell to be deleted display on screen with no data
         self.tableview.reloadData()
-        AlarmClockService.shared.delete(object: item)
+        AlarmClockService.shared.deleteAndUploadSingle(item)
     }
 
     @IBAction func addBtnClick(_ sender: UIButton) {
@@ -275,12 +294,10 @@ class AlarmClockViewController: UIViewController {
     }
 
     @IBAction func uploadBtnOnPress(_ sender: UIButton) {
-        self.view.addSubview(loadingView)
         AlarmClockService.shared.upload()
     }
     
     @IBAction func downloadBtnOnPress(_ sender: UIButton) {
-        self.view.addSubview(loadingView)
         AlarmClockService.shared.download()
     }
 }

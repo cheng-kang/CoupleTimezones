@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class NewAlarmClockViewController: UIViewController {
     
@@ -90,10 +91,12 @@ class NewAlarmClockViewController: UIViewController {
         } else {
             // Init new AlarmClock
             let data = AlarmClockService.shared.new()
+            data.id = FIRDatabase.database().reference().childByAutoId().key
             data.timeZone = UserService.shared.get()?.partnerTimeZone!
             data.tag = NSLocalizedString("Remind Darling", comment: "AlarmClock")
             data.isActive = true
             data.days = [false, false, false, false, false, false, false]
+            data.isShowingPartnerText = true
             vc.data = data
         }
         vc.saveCallback = saveCallback
@@ -120,7 +123,7 @@ class NewAlarmClockViewController: UIViewController {
         data.time = Helpers.sharedInstance.getDatetimeText(fromDate: self.datePicker.date, withFormat: "HH:mm")
         
         // Sava data
-        AlarmClockService.shared.save()
+        AlarmClockService.shared.saveAndUploadSingle(data)
         // Refresh table on AlarmClock page
         self.saveCallback?()
         
