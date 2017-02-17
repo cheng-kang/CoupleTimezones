@@ -28,6 +28,9 @@
 /* AlarmClock */
 "Edit" = "编辑";
 
+/* SlidingForm */
+"Enter your email for better service." = "输入你的 email 已获得更多服务。";
+
 /* AlarmClock */
 "Every " = "每周";
 
@@ -46,6 +49,9 @@
 
 /* Repetance */
 "Friday" = "每周五";
+
+/* SlidingForm */
+"Hidden Message" = "隐藏消息";
 
 /* AlarmClock */
 "Mon" = "一";
@@ -99,6 +105,9 @@ Usage: When the two codes (your code and your partner's code) match with another
 /* SlidingForm */
 "Prev" = "上一项";
 
+/* SlidingForm */
+"Relation Start Date" = "缘起之日";
+
 /* 记得 */
 "Remember" = "记得";
 
@@ -113,6 +122,16 @@ Usage: When the two codes (your code and your partner's code) match with another
 
 /* Repetance */
 "Saturday" = "每周六";
+
+/* SlidingForm */
+"Set up a hidden message that will should on top of the alarm clock list on your partner's device." = "设置一条 隐藏消息，它将显示在你对象的 App 中闹钟列表顶部。";
+
+/* SlidingForm */
+"Set up your relation start date, in the format of this example: 2016-05-30.
+If your partner leaves Hidden Message empty, a message about how long you've been together will be shown at your list top.
+Like: ❤️ Together for 8 months 18 days ❤️" = "设置你们恋爱开始的日期，格式如下：2016-05-30。
+如果你的对象没有设置 隐藏消息，在你的闹钟列表顶部会显示一条关于你们在一起多长时间的消息。
+比如： ❤️ 已经在一起 9 个月 18 天 ❤️";
 
 /* 初始化设置 */
 "Setting" = "初始化设置";
@@ -159,8 +178,35 @@ Usage: When the two codes (your code and your partner's code) match with another
 "Your Code" = "你的神秘代码";
 
 /* SlidingForm */
+"Your Email" = "你的邮箱";
+
+/* SlidingForm */
 "Your Nickname" = "你的昵称";
 
 /* SlidingForm */
 "Your Timezone" = "你的时区";
+
+/* 天 */
+"day" = "天";
+
+/* 天 */
+"days" = "天";
+
+/* 现在 %@ */
+"it's %@ now" = "现在时间 %@";
+
+/* 个月 */
+"month" = "个月";
+
+/* 个月 */
+"months" = "个月";
+
+/* 年 */
+"year " = "年 ";
+
+/* 年 */
+"years " = "年 ";
+
+/* ❤️ 已经在一起 %@ ❤️ */
+"❤️ Together for %@ ❤️" = "❤️ 已经在一起 %@ ❤️";
 

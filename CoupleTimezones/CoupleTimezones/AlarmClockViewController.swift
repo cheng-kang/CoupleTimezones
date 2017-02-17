@@ -38,11 +38,25 @@ class AlarmClockViewController: UIViewController {
         currentUser = UserService.shared.get()
         self.reloadData()
         
-        // init tableview
+        // Init tableview
         tableview.dataSource = self
         tableview.delegate = self
         tableview.tableFooterView = UIView()
-        topMsgView.text = "❤️Baby, I love You!!!"
+        
+        // Init top message view
+        if StateService.shared.topMessage == "" {
+            if currentUser!.relationShipLengthText == "" {
+                topMsgView.text = ""
+            } else {
+                topMsgView.text = String(format: NSLocalizedString("❤️ Together for %@ ❤️", comment: "❤️ 已经在一起 %@ ❤️"), arguments: [currentUser!.relationShipLengthText])
+            }
+        } else {
+            topMsgView.text = StateService.shared.topMessage
+        }
+        topMsgView.minimumScaleFactor = 0.5
+        topMsgView.adjustsFontSizeToFitWidth = true
+        topMsgView.lineBreakMode = .byTruncatingTail
+        
         topMsgView.font = TEXT_FONT(withSize: 16)
         topMsgView.textColor = TEXT_DARK
         topMsgView.frame = CGRect(x: 10, y: -60, width: self.view.frame.width-20, height: 60)
@@ -99,6 +113,11 @@ class AlarmClockViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadTable), name: NSNotification.Name("ShouldRefreshTable"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.hideBtns), name: NSNotification.Name("CanUploadFalse"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.updateTopMsg), name: NSNotification.Name("ShouldUpdateTopMsg"), object: nil)
+    }
+    
+    func updateTopMsg() {
+        self.topMsgView.text = StateService.shared.topMessage
     }
     
     func showLoadingView() {
@@ -189,6 +208,7 @@ class AlarmClockViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ShouldRefreshAlarmClocks"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ShouldRefreshTable"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "CanUploadFalse"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ShouldUpdateTopMsg"), object: nil)
     }
     
     func updateTimeLbl() {
@@ -227,55 +247,73 @@ class AlarmClockViewController: UIViewController {
         let settings = UserService.shared.get()!
         
         SlidingFormPageConfig.sharedInstance.customFontName = "FZYanSongS-R-GB"
-        
+        var pages = [
+            SlidingFormPage.getInput(withTitle: NSLocalizedString("Your Nickname", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please enter your nickname.", comment: "SlidingForm"), defaultValue: settings.nickname, errorMsg: "长度至少一位"),
+            SlidingFormPage.getInput(withTitle: NSLocalizedString("Partner's Nickname", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please enter your partner's nickname.", comment: "SlidingForm"), defaultValue: settings.partnerNickname, errorMsg: "长度至少一位"),
+            SlidingFormPage.getInput(withTitle: NSLocalizedString("Your Code", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please enter a special code to identify yourself.\nFormat:\n4 or more characters, consisting only letters and numbers.\nUsage: When the two codes (your code and your partner's code) match with another pair of codes set by another user, your accounts are matched. Matched users will share their alarm clocks.", comment: "SlidingForm"), defaultValue: settings.code, inputRule: "[A-Za-z0-9]{4,}", errorMsg: "长度至少四位，由字母和数字组成") { inputValue, errorMsgLabel in
+                FIRDatabase.database().reference().child("users").child(inputValue).observeSingleEvent(of: .value, with: { (snapshot) in
+                    if snapshot.exists() && inputValue != self.currentUser!.code {
+                        errorMsgLabel.text = NSLocalizedString("Code is used by someone else.", comment: "神秘代码已被占用。")
+                    } else {
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentPageFinished"), object: nil)
+                        errorMsgLabel.text = ""
+                    }
+                })
+                
+            },
+            SlidingFormPage.getInput(withTitle: NSLocalizedString("Partner's Code", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please ask your partner for his/her Code.", comment: "SlidingForm"), defaultValue: settings.partnerCode, inputRule: "[A-Za-z0-9]{4,}", errorMsg: "长度至少四位，由字母和数字组成"),
+            SlidingFormPage.getSelect(withTitle: NSLocalizedString("Your Timezone", comment: "SlidingForm"), desc: nil, selectOptions: AVAILABLE_TIME_ZONE_LIST_LOCALIZED, selectedOptionIndex: Helpers.sharedInstance.getTimezoneIndexByIdentifier(settings.timeZone!) ),
+            SlidingFormPage.getSelect(withTitle: NSLocalizedString("Partner's Timezone", comment: "SlidingForm"), desc: nil, selectOptions: AVAILABLE_TIME_ZONE_LIST_LOCALIZED, selectedOptionIndex: Helpers.sharedInstance.getTimezoneIndexByIdentifier(settings.partnerTimeZone!)),
+            SlidingFormPage.getInput(withTitle: NSLocalizedString("Your Email", comment: "SlidingForm"), desc: NSLocalizedString("Enter your email for better service.", comment: "SlidingForm"), defaultValue: settings.email),
+            ]
+        if StateService.shared.isMatched {
+            pages.append(contentsOf: [
+                SlidingFormPage.getInput(withTitle: NSLocalizedString("Relation Start Date", comment: "SlidingForm"), desc: NSLocalizedString("Set up your relation start date, in the format of this example: 2016-05-30.\nIf your partner leaves Hidden Message empty, a message about how long you've been together will be shown at your list top.\nLike: ❤️ Together for 8 months 18 days ❤️", comment: "SlidingForm"), defaultValue: settings.startDate),
+                SlidingFormPage.getInput(withTitle: NSLocalizedString("Hidden Message", comment: "SlidingForm"), desc: NSLocalizedString("Set up a hidden message that will should on top of the alarm clock list on your partner's device.", comment: "SlidingForm"), defaultValue: settings.topMessage),
+                ])
+        }
         let vc = SlidingFormViewController.vc(
             withStoryboardName: "Main",
             bundle: nil,
             identifier: "SlidingFormViewController",
             andFormTitle: NSLocalizedString("Settings",comment: "SlidingForm"),
-            pages: [
-                SlidingFormPage.getInput(withTitle: NSLocalizedString("Your Nickname", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please enter your nickname.", comment: "SlidingForm"), defaultValue: settings.nickname, errorMsg: "长度至少一位"),
-                SlidingFormPage.getInput(withTitle: NSLocalizedString("Partner's Nickname", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please enter your partner's nickname.", comment: "SlidingForm"), defaultValue: settings.partnerNickname, errorMsg: "长度至少一位"),
-                SlidingFormPage.getInput(withTitle: NSLocalizedString("Your Code", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please enter a special code to identify yourself.\nFormat:\n4 or more characters, consisting only letters and numbers.\nUsage: When the two codes (your code and your partner's code) match with another pair of codes set by another user, your accounts are matched. Matched users will share their alarm clocks.", comment: "SlidingForm"), defaultValue: settings.code, inputRule: "[A-Za-z0-9]{4,}", errorMsg: "长度至少四位，由字母和数字组成") { inputValue, errorMsgLabel in
-                    FIRDatabase.database().reference().child("users").child(inputValue).observeSingleEvent(of: .value, with: { (snapshot) in
-                        if snapshot.exists() && inputValue != self.currentUser!.code {
-                            errorMsgLabel.text = NSLocalizedString("Code is used by someone else.", comment: "神秘代码已被占用。")
-                        } else {
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentPageFinished"), object: nil)
-                            errorMsgLabel.text = ""
-                        }
-                    })
+            pages: pages) { results in
+                let user = UserService.shared.get()!
+                
+                // Check if partnerCode is changed
+                if results[3] as? String != user.partnerCode {
+                    StateService.shared.isPartnerCodeChanged = true
+                }
+                
+                user.nickname = results[0] as! String
+                user.partnerNickname = results[1] as! String
+                user.code = results[2] as! String
+                user.partnerCode = results[3] as! String
+                user.timeZone = AVAILABLE_TIME_ZONE_LIST[(results[4] as! [Any])[0] as! Int]
+                user.partnerTimeZone = AVAILABLE_TIME_ZONE_LIST[(results[5] as! [Any])[0] as! Int]
+                user.email = results[6] as! String
+                
+                var updates = [String:Any]()
+                updates["users/\(user.code!)/email"] = user.email!
+                if results.count > 7 {
+                    user.startDate = results[7] as? String
+                    user.topMessage = results[8] as? String
                     
-                },
-                SlidingFormPage.getInput(withTitle: NSLocalizedString("Partner's Code", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please ask your partner for his/her Code.", comment: "SlidingForm"), defaultValue: settings.partnerCode, inputRule: "[A-Za-z0-9]{4,}", errorMsg: "长度至少四位，由字母和数字组成"),
-                SlidingFormPage.getSelect(withTitle: NSLocalizedString("Your Timezone", comment: "SlidingForm"), desc: nil, selectOptions: AVAILABLE_TIME_ZONE_LIST_LOCALIZED, selectedOptionIndex: Helpers.sharedInstance.getTimezoneIndexByIdentifier(settings.timeZone!) ),
-                SlidingFormPage.getSelect(withTitle: NSLocalizedString("Partner's Timezone", comment: "SlidingForm"), desc: nil, selectOptions: AVAILABLE_TIME_ZONE_LIST_LOCALIZED, selectedOptionIndex: Helpers.sharedInstance.getTimezoneIndexByIdentifier(settings.partnerTimeZone!)),
-                ]) { results in
-                    let user = UserService.shared.get()!
-                    
-                    // Check if partnerCode is changed
-                    if results[3] as? String != user.partnerCode {
-                        StateService.shared.isPartnerCodeChanged = true
+                    updates["users/\(user.code!)/startDate"] = user.startDate!
+                    updates["users/\(user.code!)/topMessage"] = user.topMessage!
+                }
+                if StateService.shared.isPartnerCodeChanged {
+                    updates["/users/\(user.code!)/partnerCode"] = user.partnerCode!
+                }
+                FIRDatabase.database().reference().updateChildValues(updates, withCompletionBlock: { (error, ref) in
+                    if error == nil {
+                        UserService.shared.save()
+                        // Pop up alert: Update Success.
+                    } else {
+                        // Pop up alert: Update Fail.
                     }
-                    
-                    user.nickname = results[0] as? String
-                    user.partnerNickname = results[1] as? String
-                    user.code = results[2] as? String
-                    user.partnerCode = results[3] as? String
-                    user.timeZone = AVAILABLE_TIME_ZONE_LIST[(results[4] as! [Any])[0] as! Int]
-                    user.partnerTimeZone = AVAILABLE_TIME_ZONE_LIST[(results[5] as! [Any])[0] as! Int]
-                    
-                    FIRDatabase.database().reference().child("users").child(user.code!)
-                        .updateChildValues([
-                            "partnerCode": user.partnerCode!
-                        ], withCompletionBlock: { (error, ref) in
-                            if error == nil {
-                                UserService.shared.save()
-                                // Pop up alert: Update Success.
-                            } else {
-                                // Pop up alert: Update Fail.
-                            }
-                    })
+                })
+                
         }
         self.present(vc, animated: true, completion: nil)
     }

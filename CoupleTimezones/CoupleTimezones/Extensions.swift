@@ -43,6 +43,31 @@ extension Date {
     }
 }
 
+extension User {
+    var relationShipLengthText: String {
+        let df = DateFormatter()
+        df.defaultDate = Date()
+        df.dateFormat = "yyyy-MM-dd"
+        if let date = df.date(from: self.startDate ?? "") {
+            let today = Date()
+            let components = Calendar.current.dateComponents([.year, .month, .day], from: date, to: today)
+            let (year, month, day) = (components.year!, components.month!, components.day!)
+            var text = ""
+            if year != 0 {
+                text += year > 1 ? "\(year) "+NSLocalizedString("years ", comment: "年 ") : "\(year) "+NSLocalizedString("year ", comment: "年 ")
+            }
+            
+            if month != 0 {
+                text += month > 1 ? "\(month) "+NSLocalizedString("months", comment: "个月") : "\(month) "+NSLocalizedString("month", comment: "个月")
+            }
+            text += day > 1 ? " \(day) "+NSLocalizedString("days", comment: "天") : " \(day) "+NSLocalizedString("day", comment: "天")
+            
+            return text
+        }
+        return ""
+    }
+}
+
 extension AlarmClock {
     var days: [Bool] {
         get {

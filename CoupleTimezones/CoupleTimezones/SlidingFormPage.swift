@@ -193,7 +193,7 @@ class SlidingFormPage: UIView {
         }
     }
     
-    class func getInput(withTitle title: String, isRequired: Bool, desc: String?, defaultValue: String? = nil, inputRule: String? = nil, errorMsg: String? = nil, inputValueAsyncCheck: ((_ inputValue: String, _ errorMsgLbl: UILabel)->())? = nil) -> SlidingFormPage {
+    class func getInput(withTitle title: String, isRequired: Bool = false, desc: String?, defaultValue: String? = nil, inputRule: String? = nil, errorMsg: String? = nil, inputValueAsyncCheck: ((_ inputValue: String, _ errorMsgLbl: UILabel)->())? = nil) -> SlidingFormPage {
         let page = SlidingFormPage()
         
         page.type = .input
@@ -210,6 +210,8 @@ class SlidingFormPage: UIView {
         
         let textField = UITextField()
         let textFiledBottomLineView = UIView()
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
         textFiledBottomLineView.translatesAutoresizingMaskIntoConstraints = false
         page.addSubview(textField)
