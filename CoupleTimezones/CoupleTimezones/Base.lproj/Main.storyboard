@@ -74,7 +74,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="poemLbl" destination="LUG-R0-ti1" id="eJN-Pf-ogd"/>
                         <outlet property="startBtn" destination="f1Z-2A-HgC" id="jWV-3B-AAC"/>
+                        <outlet property="titleLbl" destination="tyx-1d-06a" id="FrH-iX-HDk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ksR-U8-KbU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -437,6 +439,7 @@
                     </view>
                     <connections>
                         <outlet property="addBtn" destination="Tq0-mM-RG7" id="UOz-da-cms"/>
+                        <outlet property="bannerView" destination="Khx-DP-at7" id="RlQ-ZR-325"/>
                         <outlet property="downloadBtn" destination="ibQ-V6-BEF" id="C6p-Sj-YZ2"/>
                         <outlet property="menuBtn" destination="PhP-jJ-jEB" id="Czy-Oh-6AW"/>
                         <outlet property="navLocLbl" destination="k6O-YN-Gwo" id="JfC-6Z-lb6"/>
@@ -538,6 +541,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bgView" destination="0TS-ao-dIX" id="Jhv-CI-4hI"/>
                         <outlet property="contentLbl" destination="HBS-1L-oig" id="uYG-al-91g"/>
                         <outlet property="dismissBtn" destination="HCR-l1-kcb" id="rfy-eE-gJr"/>
                         <outlet property="titleLbl" destination="6Pw-UW-Fil" id="feA-cR-y9M"/>
@@ -824,8 +828,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bannerBiew" destination="j6K-o1-Tnw" id="aRA-D7-RWh"/>
+                        <outlet property="cancelBtn" destination="yqE-cW-Y0G" id="WWQ-Of-kSz"/>
                         <outlet property="datePicker" destination="qV8-6n-Fi6" id="NAu-Ht-K7v"/>
+                        <outlet property="saveBtn" destination="emS-iX-Yfm" id="skc-to-iE8"/>
                         <outlet property="tableview" destination="LdN-aR-FGg" id="f87-XH-ZWv"/>
+                        <outlet property="titleLbl" destination="2qy-xC-i9D" id="gaj-X3-Axj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ov-BN-hvd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -957,8 +965,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bannerView" destination="qIA-td-62j" id="OBP-Pr-UkS"/>
+                        <outlet property="cancelBtn" destination="eCp-Vo-EWy" id="Zab-8F-ELQ"/>
                         <outlet property="ratioPanelView" destination="d4B-kl-aJK" id="300-UO-77D"/>
                         <outlet property="tableview" destination="9Xv-il-gFA" id="pb5-F8-big"/>
+                        <outlet property="titleLbl" destination="r7W-3I-Zci" id="Vln-5t-cCP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mXU-he-7bb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1035,7 +1046,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backBtn" destination="Aw3-Ew-hn0" id="dEK-bK-zbw"/>
+                        <outlet property="bannerView" destination="Dc2-b0-2Gt" id="eEf-cv-YK4"/>
                         <outlet property="tagFiled" destination="EHf-jn-3Y0" id="1Er-Ed-owr"/>
+                        <outlet property="titleLbl" destination="vnJ-ZG-AHn" id="hI0-Z6-68f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vnj-1S-lSx" userLabel="First Responder" sceneMemberID="firstResponder"/>

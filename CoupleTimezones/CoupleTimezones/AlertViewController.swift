@@ -10,6 +10,7 @@ import UIKit
 
 class AlertViewController: UIViewController {
 
+    @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var contentLbl: UILabel!
     @IBOutlet weak var dismissBtn: UIButton!
@@ -39,6 +40,12 @@ class AlertViewController: UIViewController {
         self.titleLbl.text = titleLblText
         self.contentLbl.text = contentLblText
         self.dismissBtn.setTitle(dismissBtnTitle, for: .normal)
+        
+        // Init theme color
+        self.bgView.backgroundColor = ThemeService.shared.bg_dark
+        self.titleLbl.textColor = ThemeService.shared.text_light
+        self.contentLbl.textColor = ThemeService.shared.text_light
+        self.dismissBtn.tintColor = ThemeService.shared.text_light
     }
 
     override func didReceiveMemoryWarning() {

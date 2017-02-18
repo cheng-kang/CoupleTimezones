@@ -14,6 +14,7 @@ class AlarmClockService: NSObject {
     static let shared = AlarmClockService()
     
     fileprivate var alarmClocks: [AlarmClock] = [AlarmClock]()
+    fileprivate var shouldRefresh = false
     
     var context: NSManagedObjectContext!{
         return (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
@@ -27,7 +28,7 @@ class AlarmClockService: NSObject {
     }
     
     func get() -> [AlarmClock] {
-        if alarmClocks != [] {
+        if alarmClocks != [] && !shouldRefresh {
             return alarmClocks
         }
         
@@ -45,6 +46,7 @@ class AlarmClockService: NSObject {
             }
             
             self.alarmClocks = fetchedData
+            self.shouldRefresh = false
             
             return self.alarmClocks
         } catch {
@@ -58,7 +60,7 @@ class AlarmClockService: NSObject {
     
     func save(_ canUpload: Bool = true) {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
-        refresh()
+        self.shouldRefresh = true
         
         // Tell AlarmClockViewController to refresh alarm clocks
         NotificationCenter.default.post(name: NSNotification.Name("ShouldRefreshAlarmClocks"), object: nil)

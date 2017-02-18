@@ -12,6 +12,10 @@ import Firebase
 class NewAlarmClockViewController: UIViewController {
     
     
+    @IBOutlet weak var bannerBiew: UIView!
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var saveBtn: UIButton!
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var tableview: UITableView!
     
@@ -64,6 +68,12 @@ class NewAlarmClockViewController: UIViewController {
         self.tableview.delegate = self
         self.tableview.tableFooterView = UIView()
         
+        // Init theme color
+        self.bannerBiew.backgroundColor = ThemeService.shared.bg_dark
+        self.cancelBtn.tintColor = ThemeService.shared.text_light
+        self.saveBtn.tintColor = ThemeService.shared.text_light
+        self.titleLbl.textColor = ThemeService.shared.text_light
+        
         let df = DateFormatter()
         df.dateFormat = "HH:mm"
         if !isNew {
@@ -95,6 +105,10 @@ class NewAlarmClockViewController: UIViewController {
             data.isActive = true
             data.days = [false, false, false, false, false, false, false]
             data.isShowingPartnerText = true
+            
+            data.time = "00:00"
+            data.period = NSLocalizedString("AM", comment: "上午")
+            
             vc.data = data
         }
         return vc
@@ -111,6 +125,9 @@ class NewAlarmClockViewController: UIViewController {
     }
     */
     @IBAction func cancelBtnClick(_ sender: UIButton) {
+        if isNew {
+            AlarmClockService.shared.delete(data)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     

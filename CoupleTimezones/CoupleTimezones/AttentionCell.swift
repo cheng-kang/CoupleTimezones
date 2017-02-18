@@ -17,7 +17,9 @@ class AttentionCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         iconImage.image = UIImage(named: "Attention")!.withRenderingMode(.alwaysTemplate)
-        iconImage.tintColor = SLIDER_BG_DARK
+        iconImage.tintColor = ThemeService.shared.page_element_dark
+        
+        self.msgLbl.textColor = ThemeService.shared.text_dark
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

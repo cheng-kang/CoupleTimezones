@@ -122,8 +122,20 @@ class AlarmClockCell: UITableViewCell {
         }
         
         for i in 0..<data.days.count {
-            daysSquareViews[i].backgroundColor = data.days[i] ? DAY_SQUARE_DARK : DAY_SQUARE_LIGHT
+            daysSquareViews[i].backgroundColor = data.days[i] ? ThemeService.shared.day_square_dark : ThemeService.shared.day_square_light
         }
+        
+        isActiveSwitch.backgroundColor = ThemeService.shared.page_element_light
+        isActiveSwitch.layer.borderColor = ThemeService.shared.page_element_block.cgColor
+        isActiveSwitch.bgLeftActiveView.backgroundColor = ThemeService.shared.page_element_dark
+        isActiveSwitch.switchButtonView.backgroundColor = ThemeService.shared.page_element_block
+        
+        self.periodLbl.textColor = ThemeService.shared.text_dark
+        self.timeLbl.textColor = ThemeService.shared.text_dark
+        self.locationLbl.textColor = ThemeService.shared.text_dark
+        self.contentLbl.textColor = ThemeService.shared.text_dark
+        
+        
         isActiveSwitch.initSwitch(data.isActive)
     }
     

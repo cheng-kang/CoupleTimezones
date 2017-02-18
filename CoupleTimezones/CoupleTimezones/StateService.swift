@@ -45,4 +45,12 @@ class StateService: NSObject {
             }
         }
     }
+    var isThemeChanged = false {
+        didSet {
+            if isThemeChanged {
+                NotificationCenter.default.post(name: NSNotification.Name("ShouldUpdateTheme"), object: nil)
+                isThemeChanged = false
+            }
+        }
+    }
 }

@@ -54,6 +54,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             NotifService.shared.removeDeliveredNotifications()
         }
         
+        // Init SlidingForm Color
+        SlidingFormPageConfig.sharedInstance.bgColor = ThemeService.shared.page_element_dark
+        SlidingFormPageConfig.sharedInstance.textColor = ThemeService.shared.text_light
+        SlidingFormPageConfig.sharedInstance.textColorHighlighted = ThemeService.shared.text_light_highlighted
+        SlidingFormPageConfig.sharedInstance.descColor = ThemeService.shared.text_grey_hightlighted
+        SlidingFormPageConfig.sharedInstance.warningColor = ThemeService.shared.text_warning
+        
         return true
     }
 

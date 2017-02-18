@@ -11,16 +11,29 @@ import Firebase
 
 class SettingViewController: UIViewController {
     
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var startBtn: UIButton!
+    @IBOutlet weak var poemLbl: UILabel!
     let settings = UserData.sharedInstance.getUserSettings()
     var currentUser: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.startBtn.setTitleColor(TEXT_LIGHT, for: .normal)
-        self.startBtn.setTitleColor(TEXT_LIGHT_HIGHLIGHTED, for: .highlighted)
+        self.startBtn.setTitleColor(ThemeService.shared.text_light, for: .normal)
+        self.startBtn.setTitleColor(ThemeService.shared.text_light_highlighted, for: .highlighted)
         SlidingFormPageConfig.sharedInstance.customFontName = "FZMingShangTis-R-GB"
+        
+        self.updateTheme()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingViewController.updateTheme), name: NSNotification.Name("ShouldUpdateTheme"), object: nil)
+    }
+    
+    func updateTheme() {
+        self.titleLbl.textColor = ThemeService.shared.text_light
+        self.startBtn.tintColor = ThemeService.shared.text_light
+        self.poemLbl.textColor = ThemeService.shared.text_light
+        self.view.backgroundColor = ThemeService.shared.text_dark
     }
     
     override func viewWillAppear(_ animated: Bool) {

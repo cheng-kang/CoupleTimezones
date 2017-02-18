@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/SettingViewController.swift"
-            timestampString = "508972591.350875"
+            timestampString = "509115182.757001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "presentSettingVC()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoupleTimezones/SettingViewController.swift"
-            timestampString = "508972591.350875"
+            timestampString = "509115182.757001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "presentSettingVC()"
             landmarkType = "7">
          </BreakpointContent>

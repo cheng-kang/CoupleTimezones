@@ -19,11 +19,12 @@
         <attribute name="partnerNickname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="partnerTimeZone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="theme" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeZone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="topMessage" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="AlarmClock" positionX="-38" positionY="-36" width="128" height="163"/>
-        <element name="User" positionX="97" positionY="-126" width="128" height="195"/>
+        <element name="User" positionX="97" positionY="-126" width="128" height="210"/>
     </elements>
 </model>

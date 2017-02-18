@@ -10,6 +10,9 @@ import UIKit
 
 class SelectRepeatDayViewController: UIViewController {
 
+    @IBOutlet weak var bannerView: UIView!
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var ratioPanelView: UIView!
     var allBtn = RatioView()
     var weekdayBtn = RatioView()
@@ -69,6 +72,11 @@ class SelectRepeatDayViewController: UIViewController {
         tableview.dataSource = self
         tableview.delegate = self
         tableview.tableFooterView = UIView()
+        
+        // Init theme color
+        self.bannerView.backgroundColor = ThemeService.shared.bg_dark
+        self.titleLbl.textColor = ThemeService.shared.text_light
+        self.cancelBtn.tintColor = ThemeService.shared.text_light
         
         self.ratioPanelView.addSubview(allBtn)
         self.ratioPanelView.addSubview(weekdayBtn)

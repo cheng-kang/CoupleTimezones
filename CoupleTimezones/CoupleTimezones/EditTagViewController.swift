@@ -10,6 +10,9 @@ import UIKit
 
 class EditTagViewController: UIViewController {
     
+    @IBOutlet weak var bannerView: UIView!
+    @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var tagFiled: UITextField!
     
     var tag = ""
@@ -28,6 +31,12 @@ class EditTagViewController: UIViewController {
         self.tagFiled.text = tag
         
         self.tagFiled.becomeFirstResponder()
+        
+        // Init theme color
+        self.bannerView.backgroundColor = ThemeService.shared.bg_dark
+        self.titleLbl.textColor = ThemeService.shared.text_light
+        self.backBtn.tintColor = ThemeService.shared.text_light
+        self.tagFiled.textColor = ThemeService.shared.text_dark
     }
 
     override func didReceiveMemoryWarning() {

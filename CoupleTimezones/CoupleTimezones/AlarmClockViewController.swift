@@ -11,6 +11,7 @@ import Firebase
 
 class AlarmClockViewController: UIViewController {
     
+    @IBOutlet weak var bannerView: UIView!
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var navTimeLbl: UILabel!
@@ -58,20 +59,18 @@ class AlarmClockViewController: UIViewController {
         topMsgView.lineBreakMode = .byTruncatingTail
         
         topMsgView.font = TEXT_FONT(withSize: 16)
-        topMsgView.textColor = TEXT_DARK
         topMsgView.frame = CGRect(x: 10, y: -60, width: self.view.frame.width-20, height: 60)
         self.tableview.addSubview(topMsgView)
         
         loadingView.initView()
         
+        // Init upload/download btns
         self.uploadBtn.alpha = 0
         self.downloadBtn.alpha = 0
         let uploadImage = UIImage(named: "Upload")?.withRenderingMode(.alwaysTemplate)
         let downloadImage = UIImage(named: "Download")?.withRenderingMode(.alwaysTemplate)
         self.uploadBtn.setImage(uploadImage, for: .normal)
         self.downloadBtn.setImage(downloadImage, for: .normal)
-        self.uploadBtn.tintColor = SLIDER_BG_DARK
-        self.downloadBtn.tintColor = SLIDER_BG_DARK
         
         // Check if user can download
         FIRDatabase.database().reference().child("canDownload").child(self.currentUser!.code!).observe(.value, with: { (snapshot) in
@@ -107,6 +106,9 @@ class AlarmClockViewController: UIViewController {
                 }
             })
         
+        // Init theme color
+        self.updateTheme()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.showLoadingView), name: NSNotification.Name("ActivityStart"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.hideLoadingView), name: NSNotification.Name("ActivityDone"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadData), name: NSNotification.Name("ShouldRefreshAlarmClocks"), object: nil)
@@ -114,6 +116,28 @@ class AlarmClockViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.hideBtns), name: NSNotification.Name("CanUploadFalse"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.updateTopMsg), name: NSNotification.Name("ShouldUpdateTopMsg"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.updateTheme), name: NSNotification.Name("ShouldUpdateTheme"), object: nil)
+    }
+    
+    func updateTheme() {
+        SlidingFormPageConfig.sharedInstance.bgColor = ThemeService.shared.page_element_dark
+        SlidingFormPageConfig.sharedInstance.textColor = ThemeService.shared.text_light
+        SlidingFormPageConfig.sharedInstance.textColorHighlighted = ThemeService.shared.text_light_highlighted
+        SlidingFormPageConfig.sharedInstance.descColor = ThemeService.shared.text_grey_hightlighted
+        SlidingFormPageConfig.sharedInstance.warningColor = ThemeService.shared.text_warning
+        
+        self.bannerView.backgroundColor = ThemeService.shared.bg_dark
+        self.navLocLbl.textColor = ThemeService.shared.text_light
+        self.navTimeLbl.textColor = ThemeService.shared.text_light
+        self.navPeriodLbl.textColor = ThemeService.shared.text_light
+        self.addBtn.tintColor = ThemeService.shared.text_light
+        self.menuBtn.tintColor = ThemeService.shared.text_light
+        
+        self.topMsgView.textColor = ThemeService.shared.text_dark
+        self.uploadBtn.tintColor = ThemeService.shared.page_element_dark
+        self.downloadBtn.tintColor = ThemeService.shared.page_element_dark
+        
+        self.tableview.reloadData()
     }
     
     func updateTopMsg() {
@@ -209,6 +233,7 @@ class AlarmClockViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ShouldRefreshTable"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "CanUploadFalse"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ShouldUpdateTopMsg"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ShouldUpdateTheme"), object: nil)
     }
     
     func updateTimeLbl() {
@@ -264,6 +289,7 @@ class AlarmClockViewController: UIViewController {
             SlidingFormPage.getInput(withTitle: NSLocalizedString("Partner's Code", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please ask your partner for his/her Code.", comment: "SlidingForm"), defaultValue: settings.partnerCode, inputRule: "[A-Za-z0-9]{4,}", errorMsg: "长度至少四位，由字母和数字组成"),
             SlidingFormPage.getSelect(withTitle: NSLocalizedString("Your Timezone", comment: "SlidingForm"), desc: nil, selectOptions: AVAILABLE_TIME_ZONE_LIST_LOCALIZED, selectedOptionIndex: Helpers.sharedInstance.getTimezoneIndexByIdentifier(settings.timeZone!) ),
             SlidingFormPage.getSelect(withTitle: NSLocalizedString("Partner's Timezone", comment: "SlidingForm"), desc: nil, selectOptions: AVAILABLE_TIME_ZONE_LIST_LOCALIZED, selectedOptionIndex: Helpers.sharedInstance.getTimezoneIndexByIdentifier(settings.partnerTimeZone!)),
+            SlidingFormPage.getSelect(withTitle: NSLocalizedString("Theme", comment: "SlidingForm"), desc: nil, selectOptions: ThemeService.shared.themeStrs, selectedOptionIndex: ThemeService.shared.seletedThemeIndex),
             SlidingFormPage.getInput(withTitle: NSLocalizedString("Your Email", comment: "SlidingForm"), desc: NSLocalizedString("Enter your email for better service.", comment: "SlidingForm"), defaultValue: settings.email),
             ]
         if StateService.shared.isMatched {
@@ -281,9 +307,8 @@ class AlarmClockViewController: UIViewController {
                 let user = UserService.shared.get()!
                 
                 // Check if partnerCode is changed
-                if results[3] as? String != user.partnerCode {
-                    StateService.shared.isPartnerCodeChanged = true
-                }
+                let isPartnerCodeChanged = results[3] as? String != user.partnerCode
+                let isThemeChanged = ((results[6] as! [Any])[0] as! Int) != ThemeService.shared.seletedThemeIndex
                 
                 user.nickname = results[0] as! String
                 user.partnerNickname = results[1] as! String
@@ -291,11 +316,12 @@ class AlarmClockViewController: UIViewController {
                 user.partnerCode = results[3] as! String
                 user.timeZone = AVAILABLE_TIME_ZONE_LIST[(results[4] as! [Any])[0] as! Int]
                 user.partnerTimeZone = AVAILABLE_TIME_ZONE_LIST[(results[5] as! [Any])[0] as! Int]
-                user.email = results[6] as! String
+                user.theme = ThemeService.shared.themeStrs[(results[6] as! [Any])[0] as! Int]
+                user.email = results[7] as! String
                 
                 var updates = [String:Any]()
                 updates["users/\(user.code!)/email"] = user.email!
-                if results.count > 7 {
+                if results.count > 8 {
                     user.startDate = results[7] as? String
                     user.topMessage = results[8] as? String
                     
@@ -308,6 +334,12 @@ class AlarmClockViewController: UIViewController {
                 FIRDatabase.database().reference().updateChildValues(updates, withCompletionBlock: { (error, ref) in
                     if error == nil {
                         UserService.shared.save()
+                        if isPartnerCodeChanged {
+                            StateService.shared.isPartnerCodeChanged = true
+                        }
+                        if isThemeChanged {
+                            StateService.shared.isThemeChanged = true
+                        }
                         // Pop up alert: Update Success.
                     } else {
                         // Pop up alert: Update Fail.
@@ -377,13 +409,13 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
                 let vc = NewAlarmClockViewController.vc(with: self.tabledata[indexPath.row])
                 self.present(vc, animated: true, completion: nil)
             }
-            edit.backgroundColor = SLIDER_BG_DARK
+            edit.backgroundColor = ThemeService.shared.page_element_dark
             
             let delete = UITableViewRowAction(style: .destructive, title: NSLocalizedString("Delete", comment: "AlarmClock")) { (deleteAction, curIndexPath) in
                 
                 self.deleteData(atIndex: indexPath.row)
             }
-            delete.backgroundColor = SLIDER_BLOCK
+            delete.backgroundColor = ThemeService.shared.page_element_block
             
             return [delete, edit]
         } else {
