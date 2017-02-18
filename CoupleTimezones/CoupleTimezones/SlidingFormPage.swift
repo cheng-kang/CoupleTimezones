@@ -31,7 +31,7 @@ class SlidingFormPage: UIView {
     
     var isFinished: Bool {
         if self.type == .input {
-            if self.isRequired != nil {
+            if self.isRequired == true {
                 if inputRule != nil {
                     return NSPredicate(format: "SELF MATCHES %@", self.inputRule!).evaluate(with: self.inputValue)
                 } else {
