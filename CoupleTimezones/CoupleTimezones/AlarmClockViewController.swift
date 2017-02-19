@@ -255,7 +255,7 @@ class AlarmClockViewController: UIViewController {
     
     func deleteData(atIndex idx: Int) {
         // Pop out the item
-        let item = self.tabledata.remove(at: idx)
+        let item = self.tabledata.remove(at: StateService.shared.isMatched ? idx : idx - 1)
         // Refresh table before deleting the record from database
         // So that it won't occur the case that
         // the cell to be deleted display on screen with no data
