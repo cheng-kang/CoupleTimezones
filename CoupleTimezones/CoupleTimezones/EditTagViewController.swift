@@ -14,6 +14,7 @@ class EditTagViewController: UIViewController {
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var tagFiled: UITextField!
+    @IBOutlet weak var tagFieldCenterY: NSLayoutConstraint!
     
     var tag = ""
     var editTagCallback: ((_ tag: String)->())?
@@ -78,4 +79,12 @@ extension EditTagViewController: UITextFieldDelegate {
         return true
     }
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        tagFieldCenterY.constant = -45
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        tagFieldCenterY.constant = 0
+    }
 }

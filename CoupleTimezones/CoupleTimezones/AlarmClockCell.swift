@@ -47,7 +47,7 @@ class AlarmClockCell: UITableViewCell {
     var isShowingPartnerText = false
     func toggleLblText() {
         alarmClock.isShowingPartnerText = !alarmClock.isShowingPartnerText
-        AlarmClockService.shared.save(false)
+        AlarmClockService.shared.save()
         
         if alarmClock.isShowingPartnerText {
             showPartnerText()

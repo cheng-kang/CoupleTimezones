@@ -68,6 +68,8 @@ class NewAlarmClockViewController: UIViewController {
         self.tableview.delegate = self
         self.tableview.tableFooterView = UIView()
         
+        self.datePicker.setValue(ThemeService.shared.text_dark, forKeyPath: "textColor")
+        
         // Init theme color
         self.bannerBiew.backgroundColor = ThemeService.shared.bg_dark
         self.cancelBtn.tintColor = ThemeService.shared.text_light
@@ -159,7 +161,9 @@ extension NewAlarmClockViewController: UITableViewDataSource, UITableViewDelegat
         let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         
         cell.textLabel?.font = TEXT_FONT(withSize: 17)
-        cell.detailTextLabel?.font = TEXT_FONT(withSize: 17)
+        cell.textLabel?.textColor = ThemeService.shared.text_dark
+        cell.detailTextLabel?.font = TEXT_FONT(withSize: 14)
+        cell.detailTextLabel?.textColor = ThemeService.shared.text_dark
         cell.accessoryType = .disclosureIndicator
         
         cell.textLabel?.text = self.settings[indexPath.row]

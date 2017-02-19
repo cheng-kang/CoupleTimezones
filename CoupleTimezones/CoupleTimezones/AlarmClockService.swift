@@ -58,7 +58,7 @@ class AlarmClockService: NSObject {
         return AlarmClock(context: context)
     }
     
-    func save(_ canUpload: Bool = true) {
+    func save() {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
         self.shouldRefresh = true
         
@@ -109,8 +109,7 @@ class AlarmClockService: NSObject {
             
             // Set canUpload to true
             // for later manual upload
-            UserService.shared.get()?.canUpload = true
-            UserService.shared.save()
+            UserService.shared.setCanUpload()
             
             NotificationCenter.default.post(name: NSNotification.Name("ActivityDone"), object: nil)
         }
@@ -157,8 +156,7 @@ class AlarmClockService: NSObject {
             
             // Set canUpload to true
             // for later manual upload
-            UserService.shared.get()?.canUpload = true
-            UserService.shared.save()
+            UserService.shared.setCanUpload()
             
             NotificationCenter.default.post(name: NSNotification.Name("ActivityDone"), object: nil)
         }
@@ -186,8 +184,7 @@ class AlarmClockService: NSObject {
             ]
             FIRDatabase.database().reference().updateChildValues(updates) { (error, ref) in
                 if error == nil {
-                    UserService.shared.get()?.canUpload = false
-                    UserService.shared.save()
+                    UserService.shared.setCanUpload(false)
                     NotificationCenter.default.post(name: NSNotification.Name("CanUploadFalse"), object: nil)
                     NotificationCenter.default.post(name: NSNotification.Name("ActivityDone"), object: nil)
                     // Pop up alert: Upload Success
@@ -219,12 +216,15 @@ class AlarmClockService: NSObject {
                                 alarm.isActive = item["isActive"] as! Bool
                                 alarm.daysStr = item["daysStr"] as! String
                                 alarm.timeZone = item["timeZone"] as! String
-                                self.save(false)
+                                self.save()
                             }
+                        } else {
+                            self.shouldRefresh = true
+                            // Tell AlarmClockViewController to refresh alarm clocks
+                            NotificationCenter.default.post(name: NSNotification.Name("ShouldRefreshAlarmClocks"), object: nil)
                         }
                         
-                        UserService.shared.get()?.canUpload = false
-                        UserService.shared.save()
+                        UserService.shared.setCanUpload(false)
                         NotificationCenter.default.post(name: NSNotification.Name("CanUploadFalse"), object: nil)
                         
                         

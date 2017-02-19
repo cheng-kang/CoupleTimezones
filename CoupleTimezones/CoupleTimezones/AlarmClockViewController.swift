@@ -37,6 +37,9 @@ class AlarmClockViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         currentUser = UserService.shared.get()
+        // Init canUpload state
+        StateService.shared.canUpload = currentUser?.canUpload
+        
         self.reloadData()
         
         // Init tableview
@@ -74,13 +77,7 @@ class AlarmClockViewController: UIViewController {
         
         // Check if user can download
         FIRDatabase.database().reference().child("canDownload").child(self.currentUser!.code!).observe(.value, with: { (snapshot) in
-            if snapshot.exists() {
-                if self.currentUser!.canUpload == true {
-                    self.showBtns()
-                } else {
-                    AlarmClockService.shared.download()
-                }
-            }
+            StateService.shared.canDownload = snapshot.exists()
         })
         
         // Set check: check if user can upload
@@ -98,9 +95,6 @@ class AlarmClockViewController: UIViewController {
                 }
                 if partnerCode == self.currentUser?.code {
                     StateService.shared.isMatched = true
-                    if self.currentUser?.canUpload == true {
-                        AlarmClockService.shared.upload()
-                    }
                 } else {
                     StateService.shared.isMatched = false
                 }
@@ -114,7 +108,10 @@ class AlarmClockViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadData), name: NSNotification.Name("ShouldRefreshAlarmClocks"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.reloadTable), name: NSNotification.Name("ShouldRefreshTable"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.hideBtns), name: NSNotification.Name("CanUploadFalse"), object: nil)
+        // Upload/Download Btns
+        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.showBtns), name: NSNotification.Name("ShouldShowBtns"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.hideBtns), name: NSNotification.Name("ShouldHideBtns"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.updateTopMsg), name: NSNotification.Name("ShouldUpdateTopMsg"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.updateTheme), name: NSNotification.Name("ShouldUpdateTheme"), object: nil)
     }
@@ -197,9 +194,6 @@ class AlarmClockViewController: UIViewController {
                     }
                     if partnerCode == self.currentUser?.code {
                         StateService.shared.isMatched = true
-                        if self.currentUser?.canUpload == true {
-                            AlarmClockService.shared.upload()
-                        }
                     } else {
                         StateService.shared.isMatched = false
                     }
@@ -231,7 +225,8 @@ class AlarmClockViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ActivityDone"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ShouldRefreshAlarmClocks"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ShouldRefreshTable"), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "CanUploadFalse"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ShouldHideBtns"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ShouldShowBtns"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ShouldUpdateTopMsg"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ShouldUpdateTheme"), object: nil)
     }

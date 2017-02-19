@@ -12,15 +12,7 @@ import Firebase
 class StateService: NSObject {
     static let shared = StateService()
     
-    var isConnected = true {
-        didSet {
-            if oldValue == false && isConnected && isMatched {
-                if UserService.shared.get()?.canUpload == true {
-                    AlarmClockService.shared.upload()
-                }
-            }
-        }
-    }
+    var isConnected = true
     var isMatched = false {
         didSet {
             if oldValue != isMatched {
@@ -50,6 +42,34 @@ class StateService: NSObject {
             if isThemeChanged {
                 NotificationCenter.default.post(name: NSNotification.Name("ShouldUpdateTheme"), object: nil)
                 isThemeChanged = false
+            }
+        }
+    }
+    var canUpload: Bool? {
+        didSet {
+            transferData()
+        }
+    }
+    var canDownload: Bool? {
+        didSet {
+            transferData()
+        }
+    }
+    
+    func transferData() {
+        if isConnected && isMatched {
+            if canDownload == true && canUpload == true {
+                NotificationCenter.default.post(name: NSNotification.Name("ShouldShowBtns"), object: nil)
+            } else {
+                NotificationCenter.default.post(name: NSNotification.Name("ShouldHideBtns"), object: nil)
+            }
+            if canDownload == true && canUpload == false {
+                NotificationCenter.default.post(name: NSNotification.Name("ShouldDownload"), object: nil)
+                AlarmClockService.shared.download()
+            }
+            if canDownload == false && canUpload == true {
+                NotificationCenter.default.post(name: NSNotification.Name("ShouldUpload"), object: nil)
+                AlarmClockService.shared.upload()
             }
         }
     }

@@ -68,4 +68,12 @@ class UserService: NSObject {
         context.delete(object)
         save()
     }
+    
+    func setCanUpload(_ value: Bool = true) {
+        self.get()!.canUpload = value
+        UserService.shared.save()
+        
+        // Update canUpload state
+        StateService.shared.canUpload = value
+    }
 }
