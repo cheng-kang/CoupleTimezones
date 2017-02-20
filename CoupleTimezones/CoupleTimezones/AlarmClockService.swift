@@ -201,48 +201,45 @@ class AlarmClockService: NSObject {
             NotificationCenter.default.post(name: NSNotification.Name("ActivityStart"), object: nil)
             FIRDatabase.database().reference().child("alarms").child(pairCode)
                 .observeSingleEvent(of: .value, with: { (snapshot) in
-                    let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
-                    let request = NSBatchDeleteRequest(fetchRequest: fetch)
-                    do {
-                        try self.context.execute(request)
-                        if let data = snapshot.value as? [String : Any] {
-                            for (key, value) in data {
-                                let item = value as! [String: Any]
-                                let alarm = self.new()
-                                alarm.id = key
-                                alarm.time = item["time"] as! String
-                                alarm.period = item["period"] as! String
-                                alarm.tag = item["tag"] as! String
-                                alarm.isActive = item["isActive"] as! Bool
-                                alarm.daysStr = item["daysStr"] as! String
-                                alarm.timeZone = item["timeZone"] as! String
-                                self.save()
-                            }
-                        } else {
-                            self.shouldRefresh = true
-                            // Tell AlarmClockViewController to refresh alarm clocks
-                            NotificationCenter.default.post(name: NSNotification.Name("ShouldRefreshAlarmClocks"), object: nil)
-                        }
-                        
-                        UserService.shared.setCanUpload(false)
-                        NotificationCenter.default.post(name: NSNotification.Name("CanUploadFalse"), object: nil)
-                        
-                        
-                        let updates: [String : Any] = [
-                            "/canDownload/"+UserService.shared.get()!.code!: NSNull()
-                        ]
-                        
-                        FIRDatabase.database().reference().updateChildValues(updates, withCompletionBlock: { (error, ref) in
-                            if error == nil {
-                                NotificationCenter.default.post(name: NSNotification.Name("ActivityDone"), object: nil)
-                                // Pop up alert: Upload Success
-                            } else {
-                                // Pop up alert: upload fail
-                            }
-                        })
-                    } catch {
-                        // Delete Data Fail
+                    let currentList = self.get()
+                    for item in currentList {
+                        self.delete(item)
                     }
+                    if let data = snapshot.value as? [String : Any] {
+                        for (key, value) in data {
+                            let item = value as! [String: Any]
+                            let alarm = self.new()
+                            alarm.id = key
+                            alarm.time = item["time"] as! String
+                            alarm.period = item["period"] as! String
+                            alarm.tag = item["tag"] as! String
+                            alarm.isActive = item["isActive"] as! Bool
+                            alarm.daysStr = item["daysStr"] as! String
+                            alarm.timeZone = item["timeZone"] as! String
+                            self.save()
+                        }
+                    } else {
+                        self.shouldRefresh = true
+                        // Tell AlarmClockViewController to refresh alarm clocks
+                        NotificationCenter.default.post(name: NSNotification.Name("ShouldRefreshAlarmClocks"), object: nil)
+                    }
+                    
+                    UserService.shared.setCanUpload(false)
+                    NotificationCenter.default.post(name: NSNotification.Name("CanUploadFalse"), object: nil)
+                    
+                    
+                    let updates: [String : Any] = [
+                        "/canDownload/"+UserService.shared.get()!.code!: NSNull()
+                    ]
+                    
+                    FIRDatabase.database().reference().updateChildValues(updates, withCompletionBlock: { (error, ref) in
+                        if error == nil {
+                            NotificationCenter.default.post(name: NSNotification.Name("ActivityDone"), object: nil)
+                            // Pop up alert: Upload Success
+                        } else {
+                            // Pop up alert: upload fail
+                        }
+                    })
                 })
         }
     }
