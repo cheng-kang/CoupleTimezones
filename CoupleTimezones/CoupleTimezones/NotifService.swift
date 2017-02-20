@@ -43,7 +43,7 @@ class NotifService: NSObject {
         let content = UNMutableNotificationContent()
         content.title = NSString.localizedUserNotificationString(forKey: title, arguments: [alarmClock.time!])
         content.body = NSString.localizedUserNotificationString(forKey: "\(alarmClock.tag!)",arguments: nil)
-        content.sound = UNNotificationSound(named: "ElephanteCatchingOnfeat25")
+        content.sound = UNNotificationSound(named: "ElephanteCatchingOnfeat25.aiff")
         
         
         var dateAtTimeInLocalTimeZone: Date!
