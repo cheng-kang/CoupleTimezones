@@ -90,16 +90,16 @@ class UserData: NSObject {
     }
     
     func updateAlarmClock(ofSelf isSelf: Bool, atIndex index: Int, withElement element: AlarmClockModel, isFromUploadAlarmClocks: Bool = false, callback: ((_ isSuccess: Bool)->())? = nil) {
-        var curAlarmClockList = self.getAlarmClock(ofSelf: isSelf)
-        curAlarmClockList[index] = element
-        
-        if element.isActive! == false {
-            Helpers.sharedInstance.cancelLocalNotification(element._id!)
-        } else {
-            Helpers.sharedInstance.scheduleLocalNotification(element)
-        }
-        
-        updateAlarmClock(ofSelf: isSelf, withList: curAlarmClockList, isFromUploadAlarmClocks: isFromUploadAlarmClocks, callback: callback)
+//        var curAlarmClockList = self.getAlarmClock(ofSelf: isSelf)
+//        curAlarmClockList[index] = element
+//        
+//        if element.isActive! == false {
+//            Helpers.sharedInstance.cancelLocalNotification(element._id!)
+//        } else {
+//            Helpers.sharedInstanccancelLocalNotificationon(element)
+//        }
+//        
+//        updateAlarmClock(ofSelf: isSelf, withList: curAlarmClockList, isFromUploadAlarmClocks: isFromUploadAlarmClocks, callback: callback)
     }
     
     func deleteAlarmClock(ofSelf isSelf: Bool, atIndex index: Int, callback: ((_ isSuccess: Bool)->())? = nil) {
@@ -110,12 +110,12 @@ class UserData: NSObject {
     }
     
     func insertAlarmClock(toSelf isSelf: Bool, newElement: AlarmClockModel, callback: ((_ isSuccess: Bool)->())?) {
-        var curAlarmClockList = self.getAlarmClock(ofSelf: isSelf)
-        curAlarmClockList.append(newElement)
-        
-        updateAlarmClock(ofSelf: isSelf, withList: curAlarmClockList, callback: callback)
-        
-        Helpers.sharedInstance.scheduleLocalNotification(newElement)
+//        var curAlarmClockList = self.getAlarmClock(ofSelf: isSelf)
+//        curAlarmClockList.append(newElement)
+//        
+//        updateAlarmClock(ofSelf: isSelf, withList: curAlarmClockList, callback: callback)
+//        
+//        Helpers.sharedInstance.scheduleLocalNotification(newElement)
     }
     
     func uploadAlarmClocks(ofSelf isSelf: Bool, withId id: String, callback: @escaping ((_ isSuccess: Bool)->())) {

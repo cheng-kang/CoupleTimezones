@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CB54568702E47198AF705E21 /* Pods_CoupleTimezones.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E79E6423D49071B02D6BA10 /* Pods_CoupleTimezones.framework */; };
+		DC1EF417573165277132ED0D /* libPods-RememberWidget1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0610276E8A196BEFE7D52B39 /* libPods-RememberWidget1.a */; };
 		ED5391DB1DA5772100071709 /* FZYanSJW.TTF in Resources */ = {isa = PBXBuildFile; fileRef = EDB1F92C1DA561FC00540AEA /* FZYanSJW.TTF */; };
 		ED5391DE1DA580E100071709 /* AlarmClockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391DD1DA580E100071709 /* AlarmClockCell.swift */; };
 		ED5391E01DA5841900071709 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391DF1DA5841900071709 /* Constants.swift */; };
@@ -31,6 +32,17 @@
 		ED660C421DA928E500411874 /* SlidingFormElementSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED660C411DA928E500411874 /* SlidingFormElementSwitch.swift */; };
 		ED6FE6861E563967003E0EB2 /* StateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6FE6851E563967003E0EB2 /* StateService.swift */; };
 		ED6FE6881E579A97003E0EB2 /* ThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6FE6871E579A97003E0EB2 /* ThemeService.swift */; };
+		ED6FE68F1E5C931D003E0EB2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED6FE68E1E5C931D003E0EB2 /* NotificationCenter.framework */; };
+		ED6FE6921E5C931D003E0EB2 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6FE6911E5C931D003E0EB2 /* TodayViewController.swift */; };
+		ED6FE6951E5C931D003E0EB2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED6FE6931E5C931D003E0EB2 /* MainInterface.storyboard */; };
+		ED6FE6991E5C931D003E0EB2 /* RememberWidget1.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ED6FE68D1E5C931D003E0EB2 /* RememberWidget1.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		ED6FE6A01E5CCB53003E0EB2 /* WidgetBtnsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6FE69F1E5CCB53003E0EB2 /* WidgetBtnsCell.swift */; };
+		ED6FE6A21E5CCB80003E0EB2 /* WidgetDateAndWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6FE6A11E5CCB80003E0EB2 /* WidgetDateAndWeatherCell.swift */; };
+		ED6FE6A31E5CE1DA003E0EB2 /* localdata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED945ACC1E51F9A700FC217E /* localdata.xcdatamodeld */; };
+		ED6FE6AC1E5CE328003E0EB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED945ACA1E51F8FA00FC217E /* GoogleService-Info.plist */; };
+		ED6FE6B01E5CE76A003E0EB2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391E11DA5845D00071709 /* Extensions.swift */; };
+		ED6FE6B11E5CE7AD003E0EB2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391DF1DA5841900071709 /* Constants.swift */; };
+		ED6FE6B31E5CEB2D003E0EB2 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED53920A1DA6513000071709 /* Helpers.swift */; };
 		ED945ACB1E51F8FA00FC217E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED945ACA1E51F8FA00FC217E /* GoogleService-Info.plist */; };
 		ED945ACE1E51F9A700FC217E /* localdata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED945ACC1E51F9A700FC217E /* localdata.xcdatamodeld */; };
 		ED945AD11E51FEE100FC217E /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED945AD01E51FEE100FC217E /* UserService.swift */; };
@@ -55,9 +67,36 @@
 		EDC521631DB0E9DC007039FC /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC521621DB0E9DC007039FC /* AlertViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		ED6FE6971E5C931D003E0EB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDB1F90E1DA55E6A00540AEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED6FE68C1E5C931D003E0EB2;
+			remoteInfo = RememberWidget1;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ED6FE69D1E5C931D003E0EB2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				ED6FE6991E5C931D003E0EB2 /* RememberWidget1.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0610276E8A196BEFE7D52B39 /* libPods-RememberWidget1.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RememberWidget1.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		073231FF07FBD526DB9F5891 /* Pods-CoupleTimezones.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoupleTimezones.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoupleTimezones/Pods-CoupleTimezones.release.xcconfig"; sourceTree = "<group>"; };
+		0DEF3A70AD7D7D9248889B12 /* Pods-RememberWidget1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RememberWidget1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RememberWidget1/Pods-RememberWidget1.debug.xcconfig"; sourceTree = "<group>"; };
 		2E79E6423D49071B02D6BA10 /* Pods_CoupleTimezones.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoupleTimezones.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B350E59C7F7B89E96418ACFC /* Pods-RememberWidget1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RememberWidget1.release.xcconfig"; path = "Pods/Target Support Files/Pods-RememberWidget1/Pods-RememberWidget1.release.xcconfig"; sourceTree = "<group>"; };
 		EB1425EFCFD125D923B0EB2F /* Pods-CoupleTimezones.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoupleTimezones.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoupleTimezones/Pods-CoupleTimezones.debug.xcconfig"; sourceTree = "<group>"; };
 		ED5391DD1DA580E100071709 /* AlarmClockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmClockCell.swift; sourceTree = "<group>"; };
 		ED5391DF1DA5841900071709 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -81,6 +120,13 @@
 		ED660C411DA928E500411874 /* SlidingFormElementSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingFormElementSwitch.swift; sourceTree = "<group>"; };
 		ED6FE6851E563967003E0EB2 /* StateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateService.swift; sourceTree = "<group>"; };
 		ED6FE6871E579A97003E0EB2 /* ThemeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeService.swift; sourceTree = "<group>"; };
+		ED6FE68D1E5C931D003E0EB2 /* RememberWidget1.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RememberWidget1.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED6FE68E1E5C931D003E0EB2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		ED6FE6911E5C931D003E0EB2 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		ED6FE6941E5C931D003E0EB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		ED6FE6961E5C931D003E0EB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED6FE69F1E5CCB53003E0EB2 /* WidgetBtnsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetBtnsCell.swift; sourceTree = "<group>"; };
+		ED6FE6A11E5CCB80003E0EB2 /* WidgetDateAndWeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetDateAndWeatherCell.swift; sourceTree = "<group>"; };
 		ED945ACA1E51F8FA00FC217E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED945ACD1E51F9A700FC217E /* localdata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = localdata.xcdatamodel; sourceTree = "<group>"; };
 		ED945AD01E51FEE100FC217E /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -111,6 +157,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		ED6FE68A1E5C931D003E0EB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED6FE68F1E5C931D003E0EB2 /* NotificationCenter.framework in Frameworks */,
+				DC1EF417573165277132ED0D /* libPods-RememberWidget1.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDB1F9131DA55E6A00540AEA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -126,6 +181,8 @@
 			isa = PBXGroup;
 			children = (
 				2E79E6423D49071B02D6BA10 /* Pods_CoupleTimezones.framework */,
+				ED6FE68E1E5C931D003E0EB2 /* NotificationCenter.framework */,
+				0610276E8A196BEFE7D52B39 /* libPods-RememberWidget1.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -135,6 +192,8 @@
 			children = (
 				EB1425EFCFD125D923B0EB2F /* Pods-CoupleTimezones.debug.xcconfig */,
 				073231FF07FBD526DB9F5891 /* Pods-CoupleTimezones.release.xcconfig */,
+				0DEF3A70AD7D7D9248889B12 /* Pods-RememberWidget1.debug.xcconfig */,
+				B350E59C7F7B89E96418ACFC /* Pods-RememberWidget1.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -244,6 +303,26 @@
 			name = Constrollers;
 			sourceTree = "<group>";
 		};
+		ED6FE6901E5C931D003E0EB2 /* RememberWidget1 */ = {
+			isa = PBXGroup;
+			children = (
+				ED6FE69E1E5CCB25003E0EB2 /* Cells */,
+				ED6FE6911E5C931D003E0EB2 /* TodayViewController.swift */,
+				ED6FE6931E5C931D003E0EB2 /* MainInterface.storyboard */,
+				ED6FE6961E5C931D003E0EB2 /* Info.plist */,
+			);
+			path = RememberWidget1;
+			sourceTree = "<group>";
+		};
+		ED6FE69E1E5CCB25003E0EB2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ED6FE69F1E5CCB53003E0EB2 /* WidgetBtnsCell.swift */,
+				ED6FE6A11E5CCB80003E0EB2 /* WidgetDateAndWeatherCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		ED945AD21E520D0F00FC217E /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +340,7 @@
 			children = (
 				ED945ACC1E51F9A700FC217E /* localdata.xcdatamodeld */,
 				EDB1F9181DA55E6B00540AEA /* CoupleTimezones */,
+				ED6FE6901E5C931D003E0EB2 /* RememberWidget1 */,
 				EDB1F9171DA55E6B00540AEA /* Products */,
 				BF4FFC3BF64FDE8E18EE8CE0 /* Pods */,
 				6BCAA7F74A2409AE153276EF /* Frameworks */,
@@ -271,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				EDB1F9161DA55E6B00540AEA /* CoupleTimezones.app */,
+				ED6FE68D1E5C931D003E0EB2 /* RememberWidget1.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -317,6 +398,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		ED6FE68C1E5C931D003E0EB2 /* RememberWidget1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED6FE69A1E5C931D003E0EB2 /* Build configuration list for PBXNativeTarget "RememberWidget1" */;
+			buildPhases = (
+				FC2BB8FDF570A58023F29EE0 /* [CP] Check Pods Manifest.lock */,
+				ED6FE6891E5C931D003E0EB2 /* Sources */,
+				ED6FE68A1E5C931D003E0EB2 /* Frameworks */,
+				ED6FE68B1E5C931D003E0EB2 /* Resources */,
+				ED92AE66D317366E7FD14F21 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RememberWidget1;
+			productName = RememberWidget1;
+			productReference = ED6FE68D1E5C931D003E0EB2 /* RememberWidget1.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		EDB1F9151DA55E6A00540AEA /* CoupleTimezones */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDB1F9281DA55E6B00540AEA /* Build configuration list for PBXNativeTarget "CoupleTimezones" */;
@@ -327,10 +427,12 @@
 				EDB1F9141DA55E6A00540AEA /* Resources */,
 				9AECB12EE505B5B0523EFDB8 /* [CP] Embed Pods Frameworks */,
 				EBE9E66262F929A7A7C9F469 /* [CP] Copy Pods Resources */,
+				ED6FE69D1E5C931D003E0EB2 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				ED6FE6981E5C931D003E0EB2 /* PBXTargetDependency */,
 			);
 			name = CoupleTimezones;
 			productName = CoupleTimezones;
@@ -343,15 +445,25 @@
 		EDB1F90E1DA55E6A00540AEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Ant;
 				TargetAttributes = {
+					ED6FE68C1E5C931D003E0EB2 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = SLMFH6GDG4;
+						ProvisioningStyle = Automatic;
+					};
 					EDB1F9151DA55E6A00540AEA = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = SLMFH6GDG4;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -369,11 +481,21 @@
 			projectRoot = "";
 			targets = (
 				EDB1F9151DA55E6A00540AEA /* CoupleTimezones */,
+				ED6FE68C1E5C931D003E0EB2 /* RememberWidget1 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		ED6FE68B1E5C931D003E0EB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED6FE6951E5C931D003E0EB2 /* MainInterface.storyboard in Resources */,
+				ED6FE6AC1E5CE328003E0EB2 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDB1F9141DA55E6A00540AEA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -440,9 +562,53 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		ED92AE66D317366E7FD14F21 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RememberWidget1/Pods-RememberWidget1-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC2BB8FDF570A58023F29EE0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		ED6FE6891E5C931D003E0EB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED6FE6A01E5CCB53003E0EB2 /* WidgetBtnsCell.swift in Sources */,
+				ED6FE6B31E5CEB2D003E0EB2 /* Helpers.swift in Sources */,
+				ED6FE6921E5C931D003E0EB2 /* TodayViewController.swift in Sources */,
+				ED6FE6B11E5CE7AD003E0EB2 /* Constants.swift in Sources */,
+				ED6FE6A21E5CCB80003E0EB2 /* WidgetDateAndWeatherCell.swift in Sources */,
+				ED6FE6A31E5CE1DA003E0EB2 /* localdata.xcdatamodeld in Sources */,
+				ED6FE6B01E5CE76A003E0EB2 /* Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDB1F9121DA55E6A00540AEA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -486,7 +652,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		ED6FE6981E5C931D003E0EB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED6FE68C1E5C931D003E0EB2 /* RememberWidget1 */;
+			targetProxy = ED6FE6971E5C931D003E0EB2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		ED6FE6931E5C931D003E0EB2 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED6FE6941E5C931D003E0EB2 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		EDB1F91D1DA55E6B00540AEA /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -524,6 +706,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		ED6FE69B1E5C931D003E0EB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DEF3A70AD7D7D9248889B12 /* Pods-RememberWidget1.debug.xcconfig */;
+			buildSettings = {
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEVELOPMENT_TEAM = SLMFH6GDG4;
+				INFOPLIST_FILE = RememberWidget1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.chengkang.CoupleTimezones.RememberWidget1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		ED6FE69C1E5C931D003E0EB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B350E59C7F7B89E96418ACFC /* Pods-RememberWidget1.release.xcconfig */;
+			buildSettings = {
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEVELOPMENT_TEAM = SLMFH6GDG4;
+				INFOPLIST_FILE = RememberWidget1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.chengkang.CoupleTimezones.RememberWidget1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		EDB1F9261DA55E6B00540AEA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -623,6 +837,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EB1425EFCFD125D923B0EB2F /* Pods-CoupleTimezones.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SLMFH6GDG4;
 				INFOPLIST_FILE = CoupleTimezones/Info.plist;
@@ -637,6 +852,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 073231FF07FBD526DB9F5891 /* Pods-CoupleTimezones.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SLMFH6GDG4;
 				INFOPLIST_FILE = CoupleTimezones/Info.plist;
@@ -650,6 +866,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		ED6FE69A1E5C931D003E0EB2 /* Build configuration list for PBXNativeTarget "RememberWidget1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED6FE69B1E5C931D003E0EB2 /* Debug */,
+				ED6FE69C1E5C931D003E0EB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EDB1F9111DA55E6A00540AEA /* Build configuration list for PBXProject "CoupleTimezones" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

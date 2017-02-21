@@ -243,4 +243,82 @@ class AlarmClockService: NSObject {
                 })
         }
     }
+    
+    func getPartnerNextClock() -> AlarmClock? {
+        if let currentUser = UserService.shared.get() {
+            // Fetch latest alarm clock for partner
+            let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
+            fetch.fetchLimit = 1
+            
+            let date = Date()
+            let timeInterval = Helpers.sharedInstance.getTimeIntervalBetweenLocalAndTimeZone(currentUser.partnerTimeZone!)
+            let dateInPartnerTimeZone = date.addingTimeInterval(-timeInterval)
+            let partnerTime = Helpers.sharedInstance.getDatetimeText(fromDate: dateInPartnerTimeZone, withFormat: "HH:mm")
+            
+            fetch.predicate = NSPredicate(format: "time >= %@ AND timeZone == %@",  partnerTime, currentUser.partnerTimeZone!)
+            do {
+                let fetchedData = try context.fetch(fetch) as! [AlarmClock]
+                if fetchedData.count == 0 {
+                    // If no later alarm clock today, fetch for the first alarm clock next day
+                    let fetch2 = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
+                    fetch2.sortDescriptors = [NSSortDescriptor(key: "time", ascending: true)]
+                    fetch2.fetchLimit = 1
+                    fetch2.predicate = NSPredicate(format: "timeZone == %@", currentUser.partnerTimeZone!)
+                    
+                    do {
+                        let fetchedData2 = try context.fetch(fetch2) as! [AlarmClock]
+                        if fetchedData2.count == 0 {
+                            return nil
+                        }
+                        return fetchedData2[0]
+                    } catch {
+                        fatalError("getPartnerNextClock 2")
+                    }
+                }
+                
+                return fetchedData[0]
+            } catch {
+                fatalError("getPartnerNextClock 1")
+            }
+        } else {
+            return nil
+        }
+    }
+    
+    func getSelfNextClock() -> AlarmClock? {
+        if let currentUser = UserService.shared.get() {
+            // Fetch latest alarm clock for partner
+            let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
+            fetch.fetchLimit = 1
+            
+            let date = Date()
+            fetch.predicate = NSPredicate(format: "time >= %@ AND timeZone == %@",  Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "HH:mm"), currentUser.timeZone!)
+            do {
+                let fetchedData = try context.fetch(fetch) as! [AlarmClock]
+                if fetchedData.count == 0 {
+                    // If no later alarm clock today, fetch for the first alarm clock next day
+                    let fetch2 = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
+                    fetch2.sortDescriptors = [NSSortDescriptor(key: "time", ascending: true)]
+                    fetch2.fetchLimit = 1
+                    fetch2.predicate = NSPredicate(format: "timeZone == %@", currentUser.timeZone!)
+                    
+                    do {
+                        let fetchedData2 = try context.fetch(fetch2) as! [AlarmClock]
+                        if fetchedData2.count == 0 {
+                            return nil
+                        }
+                        return fetchedData2[0]
+                    } catch {
+                        fatalError("getSelfNextClock 2")
+                    }
+                }
+                
+                return fetchedData[0]
+            } catch {
+                fatalError("getSelfNextClock 1")
+            }
+        } else {
+            return nil
+        }
+    }
 }

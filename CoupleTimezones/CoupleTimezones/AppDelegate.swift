@@ -11,6 +11,7 @@ import CoreData
 import UserNotifications
 import AVFoundation
 import Firebase
+import FirebaseDatabase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {

@@ -8,5 +8,9 @@ target 'CoupleTimezones' do
   # Pods for CoupleTimezones
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+end
 
+target 'RememberWidget1' do
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
 end
