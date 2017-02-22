@@ -9,6 +9,7 @@
 import UIKit
 import NotificationCenter
 import CoreData
+import Alamofire
 
 class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var table: UITableView!
@@ -16,78 +17,118 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     var selfNext: AlarmClock?
     var partnerNext: AlarmClock?
     
-    // MARK: - Core Data stack
+    var tableCellCount = 2
+    var contentHeight = 110 + 30
     
-    lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-         */
-        let container = NSPersistentContainer(name: "localdata")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+    var lastSelfDate = "" {
+        didSet {
+            if oldValue != lastSelfDate {
+                updateWeather()
             }
-        })
-        return container
-    }()
-    
-    // MARK: - Core Data Saving support
-    
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+    var lastPartnerDate = "" {
+        didSet {
+            if oldValue != lastPartnerDate {
+                updateWeather()
+            }
+        }
+    }
+    var selfWeather: [String:String]? {
+        didSet {
+            if selfWeather != nil {
+                table.reloadData()
+            }
+        }
+    }
+    var partnerWeather: [String:String]? {
+        didSet {
+            if partnerWeather != nil {
+                table.reloadData()
             }
         }
     }
     
-    var context: NSManagedObjectContext!{
-        return self.persistentContainer.viewContext
-    }
-    
-        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
         
+        table.dataSource = self
+        table.delegate = self
+        table.tableFooterView = UIView()
+
+//        self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+        
+        updateDates()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        selfNext = self.getSelfNextClock()
-        partnerNext = self.getPartnerNextClock()
+        selfNext = WidgetHelpers.shared.getSelfNextClock()
+        partnerNext = WidgetHelpers.shared.getPartnerNextClock()
         
         // DateAndWeather cell & Settings cell
-        var contentHeight = 90 + 30
         if selfNext != nil {
             contentHeight += 90
+            tableCellCount += 1
         }
         if partnerNext != nil {
             contentHeight += 90
+            tableCellCount += 1
         }
         if selfNext == nil && partnerNext == nil {
             contentHeight += 90
+            tableCellCount += 1
         }
-        self.preferredContentSize = CGSize(width: 320, height: contentHeight)
+        updateDates()
+        self.table.reloadData()
+    }
+    
+    func updateDates() {
+        lastSelfDate = Helpers.sharedInstance.getDatetimeText(fromDate: Date(), withFormat: "yyyy-MM-dd")
+        lastPartnerDate = Helpers.sharedInstance.getDatetimeText(fromDate: WidgetHelpers.shared.getDateAtTimezone((WidgetHelpers.shared.getCurrentUser()?.partnerTimeZone!)!), withFormat: "yyyy-MM-dd")
+    }
+    
+    func updateWeather() {
+        
+        Alamofire.request("http://api.openweathermap.org/data/2.5/weather?q=southampton,uk&appid=ae438196765929c4045ff867bb3e8fe0").responseJSON { response in
+            print(response.request)  // original URL request
+            print(response.response) // HTTP URL response
+            print(response.data)     // server data
+            print(response.result)   // result of response serialization
+            
+            self.selfWeather = nil
+            self.selfWeather = [String:String]()
+            
+            if let data = response.result.value as? [String: Any] {
+                let main = data["main"] as! [String: Any]
+                let weather = (data["weather"] as! [Any])[0] as! [String: Any]
+                self.selfWeather!["temp"] = (main["temp"] as! Double).description
+                self.selfWeather!["high"] = (main["temp_max"] as! Double).description
+                self.selfWeather!["low"] = (main["temp_min"] as! Double).description
+                let icon = weather["icon"] as! String
+                self.selfWeather!["icon"] = (weather["main"] as! String)+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+            }
+        }
+        
+        Alamofire.request("http://api.openweathermap.org/data/2.5/weather?q=irvine,us&appid=ae438196765929c4045ff867bb3e8fe0").responseJSON { response in
+            print(response.request)  // original URL request
+            print(response.response) // HTTP URL response
+            print(response.data)     // server data
+            print(response.result)   // result of response serialization
+            
+            self.partnerWeather = nil
+            self.partnerWeather = [String:String]()
+            
+            if let data = response.result.value as? [String: Any] {
+                let main = data["main"] as! [String: Any]
+                let weather = (data["weather"] as! [Any])[0] as! [String: Any]
+                self.partnerWeather!["temp"] = (main["temp"] as! Double).description
+                self.partnerWeather!["high"] = (main["temp_max"] as! Double).description
+                self.partnerWeather!["low"] = (main["temp_min"] as! Double).description
+                let icon = weather["icon"] as! String
+                self.partnerWeather!["icon"] = (weather["main"] as! String)+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+            }
+        }
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
@@ -100,101 +141,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         completionHandler(NCUpdateResult.newData)
     }
     
-    
-    
-    func getPartnerNextClock() -> AlarmClock? {
-        if let currentUser = self.getCurrentUser() {
-            // Fetch latest alarm clock for partner
-            let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
-            fetch.fetchLimit = 1
-            
-            let date = Date()
-            let timeInterval = Helpers.sharedInstance.getTimeIntervalBetweenLocalAndTimeZone(currentUser.partnerTimeZone!)
-            let dateInPartnerTimeZone = date.addingTimeInterval(-timeInterval)
-            let partnerTime = Helpers.sharedInstance.getDatetimeText(fromDate: dateInPartnerTimeZone, withFormat: "HH:mm")
-            
-            fetch.predicate = NSPredicate(format: "time >= %@ AND timeZone == %@",  partnerTime, currentUser.partnerTimeZone!)
-            do {
-                let fetchedData = try context.fetch(fetch) as! [AlarmClock]
-                if fetchedData.count == 0 {
-                    // If no later alarm clock today, fetch for the first alarm clock next day
-                    let fetch2 = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
-                    fetch2.sortDescriptors = [NSSortDescriptor(key: "time", ascending: true)]
-                    fetch2.fetchLimit = 1
-                    fetch2.predicate = NSPredicate(format: "timeZone == %@", currentUser.partnerTimeZone!)
-                    
-                    do {
-                        let fetchedData2 = try context.fetch(fetch2) as! [AlarmClock]
-                        if fetchedData2.count == 0 {
-                            return nil
-                        }
-                        return fetchedData2[0]
-                    } catch {
-                        fatalError("getPartnerNextClock 2")
-                    }
-                }
-                
-                return fetchedData[0]
-            } catch {
-                fatalError("getPartnerNextClock 1")
-            }
+    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+        if (activeDisplayMode == .compact) {
+            self.preferredContentSize = maxSize
         } else {
-            return nil
-        }
-    }
-    
-    func getSelfNextClock() -> AlarmClock? {
-        if let currentUser = self.getCurrentUser() {
-            // Fetch latest alarm clock for partner
-            let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
-            fetch.fetchLimit = 1
-            
-            let date = Date()
-            fetch.predicate = NSPredicate(format: "time >= %@ AND timeZone == %@",  Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "HH:mm"), currentUser.timeZone!)
-            do {
-                let fetchedData = try context.fetch(fetch) as! [AlarmClock]
-                if fetchedData.count == 0 {
-                    // If no later alarm clock today, fetch for the first alarm clock next day
-                    let fetch2 = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
-                    fetch2.sortDescriptors = [NSSortDescriptor(key: "time", ascending: true)]
-                    fetch2.fetchLimit = 1
-                    fetch2.predicate = NSPredicate(format: "timeZone == %@", currentUser.timeZone!)
-                    
-                    do {
-                        let fetchedData2 = try context.fetch(fetch2) as! [AlarmClock]
-                        if fetchedData2.count == 0 {
-                            return nil
-                        }
-                        return fetchedData2[0]
-                    } catch {
-                        fatalError("getSelfNextClock 2")
-                    }
-                }
-                
-                return fetchedData[0]
-            } catch {
-                fatalError("getSelfNextClock 1")
-            }
-        } else {
-            return nil
+            self.preferredContentSize = CGSize(width: 0, height: contentHeight)
         }
     }
     
     
-    func getCurrentUser() -> User? {
-        let userFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        userFetch.fetchLimit = 1
-        do {
-            let fetchedUsers = try context.fetch(userFetch) as! [User]
-            if fetchedUsers.count == 0 {
-                return nil
-            }
-            
-            return fetchedUsers[0]
-        } catch {
-            fatalError("Can't fetch user data.")
-        }
-    }
+    
     
 }
 
@@ -204,10 +160,47 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return tableCellCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = indexPath.row
+        if row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WidgetDateAndWeatherCell") as! WidgetDateAndWeatherCell
+            cell.configureCell(selfWeather: self.selfWeather, partnerWeather: self.partnerWeather)
+            return cell
+        }
+        if partnerNext != nil && row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WidgetAlarmClockCell") as! WidgetAlarmClockCell
+            cell.configureCell(with: partnerNext!)
+            return cell
+        }
+        if selfNext != nil && ((partnerNext == nil && row == 1) || (partnerNext != nil && row == 2)) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WidgetAlarmClockCell") as! WidgetAlarmClockCell
+            cell.configureCell(with: selfNext!)
+            return cell
+        }
+        if partnerNext == nil && selfNext == nil && row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WidgetMsgCell") as! WidgetMsgCell
+            
+            return cell
+        }
+        if row == tableCellCount-1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WidgetBtnsCell") as! WidgetBtnsCell
+            
+            return cell
+        }
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let row = indexPath.row
+        if row == 0 {
+            return 110
+        }
+        if row == tableCellCount-1 {
+            return 40
+        }
+        return 90
     }
 }

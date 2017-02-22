@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -46,85 +47,96 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2017年2月21日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGK-jq-Gg2">
                                                     <rect key="frame" x="8" y="9" width="75" height="13"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="29" id="zZB-d1-pjJ"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="FZYANS_JW--GB1-0" family="FZYanSongS-R-GB" pointSize="10"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="10"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="04:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwO-9r-3PF">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="04:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwO-9r-3PF">
                                                     <rect key="frame" x="100" y="29" width="119" height="34"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="34" id="gZy-n5-OSK"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="46"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="46"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="今天上午" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7uQ-WB-lrt">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="今天上午" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7uQ-WB-lrt">
                                                     <rect key="frame" x="44" y="48" width="48" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75" id="BLr-tk-5lt"/>
                                                         <constraint firstAttribute="height" constant="15" id="oXn-ez-1Zh"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="FZYANS_JW--GB1-0" family="FZYanSongS-R-GB" pointSize="12"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="12"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="°F" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edN-hd-znb">
                                                     <rect key="frame" x="275" y="19" width="45" height="60"/>
-                                                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="50"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="54"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="54°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="733-v0-ELc">
                                                     <rect key="frame" x="284" y="38" width="28" height="22"/>
-                                                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="18"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="57°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T80-Ri-PcM">
                                                     <rect key="frame" x="296" y="18" width="16" height="12"/>
-                                                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="10"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="10"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="49°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7a-cx-ywf">
                                                     <rect key="frame" x="296" y="68" width="16" height="12"/>
-                                                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="10"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="10"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="洛杉矶" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bSu-wJ-cZp">
-                                                    <rect key="frame" x="227" y="48" width="36" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="洛杉矶" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bSu-wJ-cZp">
+                                                    <rect key="frame" x="8" y="69" width="30" height="12"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="10"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dV4-MG-Fvq">
+                                                    <rect key="frame" x="267" y="0.0" width="53" height="89"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="fLO-Ui-TTO"/>
+                                                        <constraint firstAttribute="width" constant="50" id="JJ5-9y-WZi"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="FZYANS_JW--GB1-0" family="FZYanSongS-R-GB" pointSize="12"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="toggleTemp:" destination="X6B-Jj-8k4" eventType="touchUpInside" id="845-oJ-byp"/>
+                                                    </connections>
+                                                </button>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="04:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYF-CI-AbR">
+                                                    <rect key="frame" x="101" y="27" width="119" height="34"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="46"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="dV4-MG-Fvq" firstAttribute="top" secondItem="yVG-br-2XV" secondAttribute="top" id="4XN-MY-KKK"/>
                                                 <constraint firstItem="edN-hd-znb" firstAttribute="centerY" secondItem="yVG-br-2XV" secondAttribute="centerY" id="5Qe-9r-2Q7"/>
-                                                <constraint firstItem="bSu-wJ-cZp" firstAttribute="leading" secondItem="xwO-9r-3PF" secondAttribute="trailing" constant="8" id="5X5-bU-IwS"/>
+                                                <constraint firstAttribute="bottom" secondItem="dV4-MG-Fvq" secondAttribute="bottom" id="Dz2-sF-5al"/>
                                                 <constraint firstItem="xwO-9r-3PF" firstAttribute="centerX" secondItem="yVG-br-2XV" secondAttribute="centerX" id="Fva-7c-PZA"/>
                                                 <constraint firstItem="733-v0-ELc" firstAttribute="centerY" secondItem="yVG-br-2XV" secondAttribute="centerY" id="HYQ-DJ-95r"/>
                                                 <constraint firstItem="xwO-9r-3PF" firstAttribute="bottom" secondItem="7uQ-WB-lrt" secondAttribute="bottom" id="Hww-TP-OHH"/>
                                                 <constraint firstItem="OGK-jq-Gg2" firstAttribute="top" secondItem="yVG-br-2XV" secondAttribute="top" constant="8" id="NRG-1c-C1L"/>
                                                 <constraint firstAttribute="trailing" secondItem="733-v0-ELc" secondAttribute="trailing" constant="8" id="NvB-5S-scb"/>
                                                 <constraint firstAttribute="trailing" secondItem="g7a-cx-ywf" secondAttribute="trailing" constant="8" id="Qb8-JJ-cou"/>
+                                                <constraint firstItem="bSu-wJ-cZp" firstAttribute="bottom" secondItem="yVG-br-2XV" secondAttribute="bottomMargin" id="TdG-4J-9rY"/>
+                                                <constraint firstItem="jYF-CI-AbR" firstAttribute="centerX" secondItem="yVG-br-2XV" secondAttribute="centerX" id="UmB-yB-umD"/>
                                                 <constraint firstItem="xwO-9r-3PF" firstAttribute="leading" secondItem="7uQ-WB-lrt" secondAttribute="trailing" constant="8" id="VmT-Yf-upV"/>
+                                                <constraint firstItem="jYF-CI-AbR" firstAttribute="centerY" secondItem="yVG-br-2XV" secondAttribute="centerY" id="WDI-qD-7FY"/>
                                                 <constraint firstItem="yk0-jE-xss" firstAttribute="centerX" secondItem="yVG-br-2XV" secondAttribute="centerX" id="dT5-TD-LFk"/>
+                                                <constraint firstAttribute="trailing" secondItem="dV4-MG-Fvq" secondAttribute="trailing" id="fpD-cJ-OrU"/>
                                                 <constraint firstAttribute="trailing" secondItem="edN-hd-znb" secondAttribute="trailing" id="fxM-Og-NcS"/>
                                                 <constraint firstItem="xwO-9r-3PF" firstAttribute="centerY" secondItem="yVG-br-2XV" secondAttribute="centerY" id="hRB-09-jcr"/>
                                                 <constraint firstItem="yk0-jE-xss" firstAttribute="centerY" secondItem="yVG-br-2XV" secondAttribute="centerY" id="j9A-Mr-Xfo"/>
                                                 <constraint firstAttribute="trailing" secondItem="T80-Ri-PcM" secondAttribute="trailing" constant="8" id="pWs-YP-SVO"/>
                                                 <constraint firstItem="g7a-cx-ywf" firstAttribute="top" secondItem="733-v0-ELc" secondAttribute="bottom" constant="16" id="q9e-ye-Swn"/>
+                                                <constraint firstItem="bSu-wJ-cZp" firstAttribute="leading" secondItem="yVG-br-2XV" secondAttribute="leadingMargin" id="ryJ-7e-M8q"/>
                                                 <constraint firstItem="OGK-jq-Gg2" firstAttribute="leading" secondItem="yVG-br-2XV" secondAttribute="leading" constant="8" id="sWc-aV-81r"/>
                                                 <constraint firstItem="733-v0-ELc" firstAttribute="top" secondItem="T80-Ri-PcM" secondAttribute="bottom" constant="16" id="vDp-td-kr9"/>
-                                                <constraint firstItem="bSu-wJ-cZp" firstAttribute="bottom" secondItem="xwO-9r-3PF" secondAttribute="bottom" id="xXA-Ga-KyX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -135,10 +147,12 @@
                                             <outlet property="lowTempLbl" destination="g7a-cx-ywf" id="Drd-5H-Ho4"/>
                                             <outlet property="periodLbl" destination="7uQ-WB-lrt" id="GZx-vJ-h3R"/>
                                             <outlet property="scaleLbl" destination="edN-hd-znb" id="7mz-85-ccP"/>
+                                            <outlet property="selfTimeLbl" destination="jYF-CI-AbR" id="VSa-gL-tP6"/>
                                             <outlet property="timeLbl" destination="xwO-9r-3PF" id="GyM-vw-s8A"/>
+                                            <outlet property="weatherImage" destination="yk0-jE-xss" id="fiu-rF-pPA"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WidgetAlarmClockCell" rowHeight="90" id="jFp-ZO-Gvc" customClass="AlarmClockCell" customModule="RememberWidget1" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WidgetAlarmClockCell" rowHeight="90" id="jFp-ZO-Gvc" customClass="WidgetAlarmClockCell" customModule="RememberWidget1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="118" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jFp-ZO-Gvc" id="sor-LU-zcQ">
@@ -146,7 +160,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上午" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="V1t-d8-boZ">
-                                                    <rect key="frame" x="8" y="43.5" width="40" height="21"/>
+                                                    <rect key="frame" x="8" y="43" width="40" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="E6q-xN-7ml"/>
                                                         <constraint firstAttribute="height" constant="21" id="JWP-hX-hOL"/>
@@ -166,7 +180,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="宝贝早上没有第一节课，所以晚点叫她" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9r-GV-hqT">
-                                                    <rect key="frame" x="8" y="60.5" width="246" height="29"/>
+                                                    <rect key="frame" x="8" y="60" width="246" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="Z6d-Al-N7T"/>
                                                     </constraints>
@@ -239,10 +253,23 @@
                                                         <constraint firstAttribute="height" constant="8" id="dR8-Ce-v4d"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZF1-NT-NTl" customClass="SwitchView" customModule="RememberWidget1" customModuleProvider="target">
-                                                    <rect key="frame" x="261" y="31.5" width="51" height="27"/>
-                                                    <color key="backgroundColor" red="0.20000000000000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZF1-NT-NTl">
+                                                    <rect key="frame" x="261" y="31" width="51" height="27"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ca-dw-rmy">
+                                                            <rect key="frame" x="25" y="1" width="25" height="25"/>
+                                                            <color key="backgroundColor" red="0.23137254900000001" green="0.4039215686" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="40k-zp-cQb"/>
+                                                                <constraint firstAttribute="width" constant="25" id="GSS-5x-xKa"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.90196078430000004" green="0.0" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="4Ca-dw-rmy" secondAttribute="trailing" constant="1" id="16X-oo-O9V"/>
+                                                        <constraint firstAttribute="bottom" secondItem="4Ca-dw-rmy" secondAttribute="bottom" constant="1" id="4gQ-EZ-9at"/>
+                                                        <constraint firstItem="4Ca-dw-rmy" firstAttribute="top" secondItem="ZF1-NT-NTl" secondAttribute="top" constant="1" id="57r-Ii-GH4"/>
                                                         <constraint firstAttribute="width" constant="51" id="7iW-a5-gld"/>
                                                         <constraint firstAttribute="height" constant="27" id="kEW-5o-gjA"/>
                                                     </constraints>
@@ -279,9 +306,10 @@
                                         <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="contentLbl" destination="S9r-GV-hqT" id="qrA-8B-dkV"/>
-                                            <outlet property="isActiveSwitch" destination="ZF1-NT-NTl" id="HeE-JZ-vgv"/>
                                             <outlet property="locationLbl" destination="8oJ-Xd-K3P" id="bfo-PT-rMU"/>
                                             <outlet property="periodLbl" destination="V1t-d8-boZ" id="G79-Ri-nak"/>
+                                            <outlet property="switchBgView" destination="ZF1-NT-NTl" id="Wse-YP-lG7"/>
+                                            <outlet property="switchBlockView" destination="4Ca-dw-rmy" id="4n5-CA-oBp"/>
                                             <outlet property="timeLbl" destination="evi-b2-8Sv" id="UoQ-AP-PCs"/>
                                             <outletCollection property="daysSquareViews" destination="TFk-f5-4s6" collectionClass="NSMutableArray" id="er0-yd-wft"/>
                                             <outletCollection property="daysSquareViews" destination="22l-Hu-TdE" collectionClass="NSMutableArray" id="gYF-wV-2eg"/>
@@ -292,7 +320,7 @@
                                             <outletCollection property="daysSquareViews" destination="FHh-vI-GdJ" collectionClass="NSMutableArray" id="szs-xN-cpA"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WidgetMsgCell" rowHeight="90" id="Z4Y-is-oKE">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WidgetMsgCell" rowHeight="90" id="Z4Y-is-oKE" customClass="WidgetMsgCell" customModule="RememberWidget1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="208" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z4Y-is-oKE" id="Wz2-DX-P6T">

@@ -12,7 +12,9 @@
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="canUpload" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nickname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="partnerCode" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,8 +25,18 @@
         <attribute name="timeZone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="topMessage" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Weather" representedClassName="Weather" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="high" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isSelf" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="low" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="temp" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="AlarmClock" positionX="-38" positionY="-36" width="128" height="163"/>
-        <element name="User" positionX="97" positionY="-126" width="128" height="210"/>
+        <element name="User" positionX="97" positionY="-126" width="128" height="240"/>
+        <element name="Weather" positionX="27" positionY="-18" width="128" height="150"/>
     </elements>
 </model>
