@@ -21,11 +21,22 @@ class SettingViewController: UIViewController {
         
         self.startBtn.setTitleColor(ThemeService.shared.text_light, for: .normal)
         self.startBtn.setTitleColor(ThemeService.shared.text_light_highlighted, for: .highlighted)
-        SlidingFormPageConfig.sharedInstance.customFontName = "FZMingShangTis-R-GB"
+        SlidingFormPageConfig.sharedInstance.customFontName = "FZMingShangTiS-R-GB"
         
         self.updateTheme()
+        self.handleConnectionChange()
         
         NotificationCenter.default.addObserver(self, selector: #selector(SettingViewController.updateTheme), name: NSNotification.Name("ShouldUpdateTheme"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingViewController.handleConnectionChange), name: NSNotification.Name("ServerConnected"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingViewController.handleConnectionChange), name: NSNotification.Name("ServerDisconnected"), object: nil)
+    }
+    
+    func handleConnectionChange() {
+        if StateService.shared.isConnected {
+            self.startBtn.isEnabled = true
+        } else {
+            self.startBtn.isEnabled = false
+        }
     }
     
     func updateTheme() {
@@ -80,19 +91,23 @@ class SettingViewController: UIViewController {
                 user.timeZone = ConstantService.shared.timeZones[(results[4] as! [Any])[0] as! Int]
                 user.partnerTimeZone = ConstantService.shared.timeZones[(results[5] as! [Any])[0] as! Int]
                 
-                FIRDatabase.database().reference().child("users").updateChildValues(
-                    [
-                        user.code!: [
-                            "partnerCode": user.partnerCode!
-                        ]
-                    ], withCompletionBlock: { (error, ref) in
-                        if error == nil {
-                            UserService.shared.save()
-                            // Pop up alert: Set up success.
-                        } else {
-                            // Pop up alert: Fail to set up.
-                        }
-                })
+                if StateService.shared.isConnected {
+                    FIRDatabase.database().reference().child("users").updateChildValues(
+                        [
+                            user.code!: [
+                                "partnerCode": user.partnerCode!
+                            ]
+                        ], withCompletionBlock: { (error, ref) in
+                            if error == nil {
+                                UserService.shared.save()
+                                // Pop up alert: Set up success.
+                            } else {
+                                // Pop up alert: Fail to set up.
+                            }
+                    })
+                } else {
+                    Helpers.sharedInstance.toast(withString: NSLocalizedString("Unable to save data, please check your network connection.", comment: "保存失败，请检查网络连接。"))
+                }
         }
         self.present(vc, animated: true, completion: nil)
     }

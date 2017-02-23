@@ -49,6 +49,8 @@
 		ED6FE6C51E5EDD82003E0EB2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED6FE6C71E5EDD82003E0EB2 /* InfoPlist.strings */; };
 		ED6FE6CA1E5EDD83003E0EB2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED6FE6CC1E5EDD83003E0EB2 /* Localizable.strings */; };
 		ED6FE6CF1E5F1417003E0EB2 /* ConstantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6FE6CE1E5F1417003E0EB2 /* ConstantService.swift */; };
+		ED6FE6D21E5F5BAF003E0EB2 /* How_Long_Will_I_Love_You.aiff in Resources */ = {isa = PBXBuildFile; fileRef = ED6FE6D11E5F5BAF003E0EB2 /* How_Long_Will_I_Love_You.aiff */; };
+		ED6FE6D71E5F6B1E003E0EB2 /* FZMSTJW.TTF in Resources */ = {isa = PBXBuildFile; fileRef = ED6FE6D31E5F68BF003E0EB2 /* FZMSTJW.TTF */; };
 		ED945ACB1E51F8FA00FC217E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED945ACA1E51F8FA00FC217E /* GoogleService-Info.plist */; };
 		ED945ACE1E51F9A700FC217E /* localdata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED945ACC1E51F9A700FC217E /* localdata.xcdatamodeld */; };
 		ED945AD11E51FEE100FC217E /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED945AD01E51FEE100FC217E /* UserService.swift */; };
@@ -63,9 +65,6 @@
 		EDB1F9241DA55E6B00540AEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDB1F9221DA55E6B00540AEA /* LaunchScreen.storyboard */; };
 		EDC5211E1DA9ABC4007039FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDC521201DA9ABC4007039FC /* Localizable.strings */; };
 		EDC521231DA9ABC4007039FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDC521251DA9ABC4007039FC /* InfoPlist.strings */; };
-		EDC5213D1DAFBAA6007039FC /* ElephanteCatchingOnfeat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = EDC5213C1DAFBAA6007039FC /* ElephanteCatchingOnfeat.m4a */; };
-		EDC5213F1DAFBC75007039FC /* ElephanteCatchingOnfeat(25).wav in Resources */ = {isa = PBXBuildFile; fileRef = EDC5213E1DAFBC75007039FC /* ElephanteCatchingOnfeat(25).wav */; };
-		EDC521411DAFC3D8007039FC /* ElephanteCatchingOnfeat25.aiff in Resources */ = {isa = PBXBuildFile; fileRef = EDC521401DAFC3D8007039FC /* ElephanteCatchingOnfeat25.aiff */; };
 		EDC521631DB0E9DC007039FC /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC521621DB0E9DC007039FC /* AlertViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +136,8 @@
 		ED6FE6CB1E5EDD83003E0EB2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		ED6FE6CD1E5EDD83003E0EB2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainInterface.strings"; sourceTree = "<group>"; };
 		ED6FE6CE1E5F1417003E0EB2 /* ConstantService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantService.swift; sourceTree = "<group>"; };
+		ED6FE6D11E5F5BAF003E0EB2 /* How_Long_Will_I_Love_You.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = How_Long_Will_I_Love_You.aiff; sourceTree = "<group>"; };
+		ED6FE6D31E5F68BF003E0EB2 /* FZMSTJW.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = FZMSTJW.TTF; sourceTree = "<group>"; };
 		ED945ACA1E51F8FA00FC217E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED945ACD1E51F9A700FC217E /* localdata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = localdata.xcdatamodel; sourceTree = "<group>"; };
 		ED945AD01E51FEE100FC217E /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -156,9 +157,6 @@
 		EDC5211B1DA9A1D5007039FC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		EDC5211F1DA9ABC4007039FC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EDC521241DA9ABC4007039FC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		EDC5213C1DAFBAA6007039FC /* ElephanteCatchingOnfeat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ElephanteCatchingOnfeat.m4a; sourceTree = "<group>"; };
-		EDC5213E1DAFBC75007039FC /* ElephanteCatchingOnfeat(25).wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "ElephanteCatchingOnfeat(25).wav"; sourceTree = "<group>"; };
-		EDC521401DAFC3D8007039FC /* ElephanteCatchingOnfeat25.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = ElephanteCatchingOnfeat25.aiff; sourceTree = "<group>"; };
 		EDC521621DB0E9DC007039FC /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -375,11 +373,10 @@
 				EDB1F92B1DA55ED100540AEA /* AlarmClock */,
 				ED660C2B1DA7AD4100411874 /* Settings */,
 				EDB1F91D1DA55E6B00540AEA /* Main.storyboard */,
+				ED6FE6D31E5F68BF003E0EB2 /* FZMSTJW.TTF */,
 				EDB1F92C1DA561FC00540AEA /* FZYanSJW.TTF */,
 				EDB1F9201DA55E6B00540AEA /* Assets.xcassets */,
-				EDC521401DAFC3D8007039FC /* ElephanteCatchingOnfeat25.aiff */,
-				EDC5213C1DAFBAA6007039FC /* ElephanteCatchingOnfeat.m4a */,
-				EDC5213E1DAFBC75007039FC /* ElephanteCatchingOnfeat(25).wav */,
+				ED6FE6D11E5F5BAF003E0EB2 /* How_Long_Will_I_Love_You.aiff */,
 				EDB1F9221DA55E6B00540AEA /* LaunchScreen.storyboard */,
 				EDB1F9251DA55E6B00540AEA /* Info.plist */,
 				ED945ACA1E51F8FA00FC217E /* GoogleService-Info.plist */,
@@ -512,12 +509,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDC5213D1DAFBAA6007039FC /* ElephanteCatchingOnfeat.m4a in Resources */,
 				EDC5211E1DA9ABC4007039FC /* Localizable.strings in Resources */,
 				EDC521231DA9ABC4007039FC /* InfoPlist.strings in Resources */,
-				EDC521411DAFC3D8007039FC /* ElephanteCatchingOnfeat25.aiff in Resources */,
+				ED6FE6D21E5F5BAF003E0EB2 /* How_Long_Will_I_Love_You.aiff in Resources */,
 				ED5391DB1DA5772100071709 /* FZYanSJW.TTF in Resources */,
-				EDC5213F1DAFBC75007039FC /* ElephanteCatchingOnfeat(25).wav in Resources */,
+				ED6FE6D71E5F6B1E003E0EB2 /* FZMSTJW.TTF in Resources */,
 				EDB1F9241DA55E6B00540AEA /* LaunchScreen.storyboard in Resources */,
 				ED945ACB1E51F8FA00FC217E /* GoogleService-Info.plist in Resources */,
 				EDB1F9211DA55E6B00540AEA /* Assets.xcassets in Resources */,

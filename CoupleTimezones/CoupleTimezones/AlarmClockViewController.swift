@@ -316,7 +316,11 @@ class AlarmClockViewController: UIViewController {
                 let user = UserService.shared.get()!
                 
                 // Check if partnerCode is changed
-                let isPartnerCodeChanged = results[3] as? String != user.partnerCode
+                let oldCode = user.code!
+                let oldPartnerCode = user.partnerCode!
+                let oldPairCode = oldCode < oldPartnerCode ? oldCode+"-"+oldPartnerCode : oldPartnerCode+"-"+oldCode
+                let isCodeChanged = results[2] as? String != oldCode
+                let isPartnerCodeChanged = results[3] as? String != oldPartnerCode
                 let isThemeChanged = ((results[6] as! [Any])[0] as! Int) != ThemeService.shared.seletedThemeIndex
                 
                 user.nickname = results[0] as! String
@@ -337,23 +341,32 @@ class AlarmClockViewController: UIViewController {
                     updates["users/\(user.code!)/startDate"] = user.startDate!
                     updates["users/\(user.code!)/topMessage"] = user.topMessage!
                 }
-                if StateService.shared.isPartnerCodeChanged {
+                if isPartnerCodeChanged {
+                    StateService.shared.isPartnerCodeChanged = isPartnerCodeChanged // 这一行好像没有用 ：）
                     updates["/users/\(user.code!)/partnerCode"] = user.partnerCode!
                 }
-                FIRDatabase.database().reference().updateChildValues(updates, withCompletionBlock: { (error, ref) in
-                    if error == nil {
-                        UserService.shared.save()
-                        if isPartnerCodeChanged {
-                            StateService.shared.isPartnerCodeChanged = true
+                if isPartnerCodeChanged || isCodeChanged {
+                    updates["/alarms/\(oldPairCode)"] = NSNull()
+                }
+                
+                if StateService.shared.isConnected {
+                    FIRDatabase.database().reference().updateChildValues(updates, withCompletionBlock: { (error, ref) in
+                        if error == nil {
+                            UserService.shared.save()
+                            if isPartnerCodeChanged {
+                                StateService.shared.isPartnerCodeChanged = true
+                            }
+                            if isThemeChanged {
+                                StateService.shared.isThemeChanged = true
+                            }
+                            // Pop up alert: Update Success.
+                        } else {
+                            // Pop up alert: Update Fail.
                         }
-                        if isThemeChanged {
-                            StateService.shared.isThemeChanged = true
-                        }
-                        // Pop up alert: Update Success.
-                    } else {
-                        // Pop up alert: Update Fail.
-                    }
-                })
+                    })
+                } else {
+                    Helpers.sharedInstance.toast(withString: NSLocalizedString("Unable to save data, please check your network connection.", comment: "保存失败，请检查网络连接。"))
+                }
                 
         }
         self.present(vc, animated: true, completion: nil)

@@ -12,7 +12,15 @@ import FirebaseDatabase
 class StateService: NSObject {
     static let shared = StateService()
     
-    var isConnected = true
+    var isConnected = true {
+        didSet {
+            if isConnected {
+                NotificationCenter.default.post(name: NSNotification.Name("ServerConnected"), object: nil)
+            } else {
+                NotificationCenter.default.post(name: NSNotification.Name("ServerDisconnected"), object: nil)
+            }
+        }
+    }
     var isMatched = false {
         didSet {
             if oldValue != isMatched {

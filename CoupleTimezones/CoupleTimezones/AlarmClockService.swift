@@ -78,11 +78,18 @@ class AlarmClockService: NSObject {
             "timeZone": object.timeZone!
         ]
         let key = object.id!
-        let updates: [String : Any] = [
-            "/alarms/\(pairCode)/\(key)": data,
-            "/canDownload/"+UserService.shared.get()!.partnerCode!: true,
-            "/canDownload/"+UserService.shared.get()!.code!: NSNull()
-        ]
+        var updates = [String : Any]()
+        if UserService.shared.get()!.partnerCode != UserService.shared.get()!.code {
+            updates = [
+                "/alarms/\(pairCode)/\(key)": data,
+                "/canDownload/"+UserService.shared.get()!.partnerCode!: true,
+                "/canDownload/"+UserService.shared.get()!.code!: NSNull()
+            ]
+        } else {
+            updates = [
+                "/alarms/\(pairCode)/\(key)": data
+            ]
+        }
         
         // Check connection state
         if StateService.shared.isConnected && StateService.shared.isMatched {
@@ -130,11 +137,19 @@ class AlarmClockService: NSObject {
         let key = object.id!
         NotificationCenter.default.post(name: NSNotification.Name("ActivityStart"), object: nil)
         
-        let updates: [String : Any] = [
-            "/alarms/\(pairCode)/\(key)": NSNull(),
-            "/canDownload/"+UserService.shared.get()!.partnerCode!: true,
-            "/canDownload/"+UserService.shared.get()!.code!: NSNull()
-        ]
+        var updates = [String : Any]()
+        if UserService.shared.get()!.partnerCode != UserService.shared.get()!.code {
+            updates = [
+                "/alarms/\(pairCode)/\(key)": NSNull(),
+                "/canDownload/"+UserService.shared.get()!.partnerCode!: true,
+                "/canDownload/"+UserService.shared.get()!.code!: NSNull()
+            ]
+        } else {
+            updates = [
+                "/alarms/\(pairCode)/\(key)": NSNull()
+            ]
+        }
+        
         if StateService.shared.isConnected && StateService.shared.isMatched {
             FIRDatabase.database().reference().updateChildValues(updates, withCompletionBlock: { (error, ref) in
                 if error == nil {
@@ -244,81 +259,18 @@ class AlarmClockService: NSObject {
         }
     }
     
-    func getPartnerNextClock() -> AlarmClock? {
-        if let currentUser = UserService.shared.get() {
-            // Fetch latest alarm clock for partner
-            let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
-            fetch.fetchLimit = 1
-            
-            let date = Date()
-            let timeInterval = Helpers.sharedInstance.getTimeIntervalBetweenLocalAndTimeZone(currentUser.partnerTimeZone!)
-            let dateInPartnerTimeZone = date.addingTimeInterval(-timeInterval)
-            let partnerTime = Helpers.sharedInstance.getDatetimeText(fromDate: dateInPartnerTimeZone, withFormat: "HH:mm")
-            
-            fetch.predicate = NSPredicate(format: "time >= %@ AND timeZone == %@",  partnerTime, currentUser.partnerTimeZone!)
-            do {
-                let fetchedData = try context.fetch(fetch) as! [AlarmClock]
-                if fetchedData.count == 0 {
-                    // If no later alarm clock today, fetch for the first alarm clock next day
-                    let fetch2 = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
-                    fetch2.sortDescriptors = [NSSortDescriptor(key: "time", ascending: true)]
-                    fetch2.fetchLimit = 1
-                    fetch2.predicate = NSPredicate(format: "timeZone == %@", currentUser.partnerTimeZone!)
-                    
-                    do {
-                        let fetchedData2 = try context.fetch(fetch2) as! [AlarmClock]
-                        if fetchedData2.count == 0 {
-                            return nil
-                        }
-                        return fetchedData2[0]
-                    } catch {
-                        fatalError("getPartnerNextClock 2")
-                    }
-                }
-                
-                return fetchedData[0]
-            } catch {
-                fatalError("getPartnerNextClock 1")
-            }
-        } else {
-            return nil
+    func removeOldAndUploadNew(_ oldCode: String, _ oldPartnerCode: String) {
+        NotificationCenter.default.post(name: NSNotification.Name("ActivityStart"), object: nil)
+        // Remove old data
+        let oldPairCode = oldCode < oldPartnerCode ? oldCode+"-"+oldPartnerCode : oldPartnerCode+"-"+oldCode
+        let updates: [String : Any] = [
+            "/alarms/"+oldPairCode: NSNull(),
+        ]
+        FIRDatabase.database().reference().updateChildValues(updates) { (error, ref) in
         }
-    }
-    
-    func getSelfNextClock() -> AlarmClock? {
-        if let currentUser = UserService.shared.get() {
-            // Fetch latest alarm clock for partner
-            let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
-            fetch.fetchLimit = 1
-            
-            let date = Date()
-            fetch.predicate = NSPredicate(format: "time >= %@ AND timeZone == %@",  Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "HH:mm"), currentUser.timeZone!)
-            do {
-                let fetchedData = try context.fetch(fetch) as! [AlarmClock]
-                if fetchedData.count == 0 {
-                    // If no later alarm clock today, fetch for the first alarm clock next day
-                    let fetch2 = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
-                    fetch2.sortDescriptors = [NSSortDescriptor(key: "time", ascending: true)]
-                    fetch2.fetchLimit = 1
-                    fetch2.predicate = NSPredicate(format: "timeZone == %@", currentUser.timeZone!)
-                    
-                    do {
-                        let fetchedData2 = try context.fetch(fetch2) as! [AlarmClock]
-                        if fetchedData2.count == 0 {
-                            return nil
-                        }
-                        return fetchedData2[0]
-                    } catch {
-                        fatalError("getSelfNextClock 2")
-                    }
-                }
-                
-                return fetchedData[0]
-            } catch {
-                fatalError("getSelfNextClock 1")
-            }
-        } else {
-            return nil
-        }
+        
+        // Set canUpload to true
+        // for later manual upload
+        UserService.shared.setCanUpload()
     }
 }

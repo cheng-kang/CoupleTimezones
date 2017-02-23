@@ -43,7 +43,7 @@ class NotifService: NSObject {
         let content = UNMutableNotificationContent()
         content.title = NSString.localizedUserNotificationString(forKey: title, arguments: [alarmClock.time!])
         content.body = NSString.localizedUserNotificationString(forKey: "\(alarmClock.tag!)",arguments: nil)
-        content.sound = UNNotificationSound(named: "ElephanteCatchingOnfeat25.aiff")
+        content.sound = UNNotificationSound(named: "How_Long_Will_I_Love_You.aiff")
         
         
         var dateAtTimeInLocalTimeZone: Date!
@@ -69,7 +69,7 @@ class NotifService: NSObject {
             if isRepeat {
                 for i in 0...6 {
                     if alarmClock.days[i] {
-                        content.userInfo = ["id": "\(alarmClock.id!)-\(i)", "sound": "ElephanteCatchingOnfeat25"]
+                        content.userInfo = ["id": "\(alarmClock.id!)-\(i)", "sound": "How_Long_Will_I_Love_You"]
                         
                         var dateInfo = DateComponents()
                         dateInfo.weekday = i == 6 ? 1 : i+1
@@ -91,7 +91,7 @@ class NotifService: NSObject {
                     }
                 }
             } else {
-                content.userInfo = ["id": alarmClock.id, "sound": "ElephanteCatchingOnfeat25"]
+                content.userInfo = ["id": alarmClock.id, "sound": "How_Long_Will_I_Love_You"]
                 
                 var dateInfo = DateComponents()
                 dateInfo.hour = Int(hour)
