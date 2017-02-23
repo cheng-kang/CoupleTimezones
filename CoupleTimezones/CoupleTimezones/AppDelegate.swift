@@ -88,6 +88,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                 user.country = ConstantService.shared.supportedCountriesCodes[(results[2] as! [Any])[0] as! Int]
                                 user.city = results[3] as? String
                                 
+                                UserService.shared.save()
+                                
                                 if StateService.shared.isConnected {
                                     FIRDatabase.database().reference().child("users").updateChildValues(
                                         [
@@ -99,14 +101,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                             ]
                                         ], withCompletionBlock: { (error, ref) in
                                             if error == nil {
-                                                UserService.shared.save()
                                                 // Pop up alert: Set up success.
                                             } else {
                                                 // Pop up alert: Fail to set up.
                                             }
                                     })
-                                } else {
-                                    Helpers.sharedInstance.toast(withString: NSLocalizedString("Unable to save data, please check your network connection.", comment: "保存失败，请检查网络连接。"))
                                 }
                     }
                     StateService.shared.SetWidgetVC = vc

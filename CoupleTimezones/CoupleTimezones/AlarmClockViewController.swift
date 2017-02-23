@@ -335,8 +335,8 @@ class AlarmClockViewController: UIViewController {
                 var updates = [String:Any]()
                 updates["users/\(user.code!)/email"] = user.email!
                 if results.count > 8 {
-                    user.startDate = results[7] as? String
-                    user.topMessage = results[8] as? String
+                    user.startDate = results[8] as? String
+                    user.topMessage = results[9] as? String
                     
                     updates["users/\(user.code!)/startDate"] = user.startDate!
                     updates["users/\(user.code!)/topMessage"] = user.topMessage!
@@ -365,7 +365,7 @@ class AlarmClockViewController: UIViewController {
                         }
                     })
                 } else {
-                    Helpers.sharedInstance.toast(withString: NSLocalizedString("Unable to save data, please check your network connection.", comment: "保存失败，请检查网络连接。"))
+                    self.toast(NSLocalizedString("Unable to save data, please check your network connection.", comment: "保存失败，请检查网络连接。"), with: ThemeService.shared.bg_dark)
                 }
                 
         }

@@ -88,3 +88,31 @@ extension AlarmClock {
         }
     }
 }
+extension UIViewController {
+    func toast(_ text: String, with bgColor: UIColor) {
+        let lbl = UILabel()
+        
+        let vWidth = self.view.frame.width
+        let vHeight = self.view.frame.height
+        
+        lbl.frame = CGRect(x: 0, y: vHeight, width: vWidth, height: 21)
+        lbl.backgroundColor = bgColor
+        lbl.textColor = UIColor.white
+        lbl.font = UIFont(name: "FZYanSongS-R-GB", size: 12)
+        lbl.textAlignment = .center
+        lbl.adjustsFontSizeToFitWidth = true
+        lbl.minimumScaleFactor = 0.5
+        lbl.lineBreakMode = .byTruncatingMiddle
+        
+        lbl.text = text
+        
+        self.view.addSubview(lbl)
+        
+        UIView.animate(withDuration: 0.3) { 
+            lbl.center = CGPoint(x: vWidth/2, y: vHeight-21/2)
+        }
+        UIView.animate(withDuration: 0.3, delay: 2.5, options: [], animations: {
+            lbl.center = CGPoint(x: vWidth/2, y: vHeight+21/2)
+        }, completion: nil)
+    }
+}

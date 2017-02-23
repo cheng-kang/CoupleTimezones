@@ -106,7 +106,7 @@ class SettingViewController: UIViewController {
                             }
                     })
                 } else {
-                    Helpers.sharedInstance.toast(withString: NSLocalizedString("Unable to save data, please check your network connection.", comment: "保存失败，请检查网络连接。"))
+                    self.toast(NSLocalizedString("Unable to save data, please check your network connection.", comment: "保存失败，请检查网络连接。"), with: ThemeService.shared.bg_dark)
                 }
         }
         self.present(vc, animated: true, completion: nil)
