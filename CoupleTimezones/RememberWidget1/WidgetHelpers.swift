@@ -62,11 +62,11 @@ class WidgetHelpers: NSObject {
         return self.persistentContainer.viewContext
     }
     
-    func getPartnerNextClock() -> AlarmClock? {
+    func getPartnerNextClock() -> [AlarmClock] {
         if let currentUser = self.getCurrentUser() {
             // Fetch latest alarm clock for partner
             let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
-            fetch.fetchLimit = 1
+//            fetch.fetchLimit = 1
             
             let date = Date()
             let timeInterval = Helpers.sharedInstance.getTimeIntervalBetweenLocalAndTimeZone(currentUser.partnerTimeZone!)
@@ -76,67 +76,32 @@ class WidgetHelpers: NSObject {
             fetch.predicate = NSPredicate(format: "time >= %@ AND timeZone == %@",  partnerTime, currentUser.partnerTimeZone!)
             do {
                 let fetchedData = try context.fetch(fetch) as! [AlarmClock]
-                if fetchedData.count == 0 {
-                    // If no later alarm clock today, fetch for the first alarm clock next day
-                    let fetch2 = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
-                    fetch2.sortDescriptors = [NSSortDescriptor(key: "time", ascending: true)]
-                    fetch2.fetchLimit = 1
-                    fetch2.predicate = NSPredicate(format: "timeZone == %@", currentUser.partnerTimeZone!)
-                    
-                    do {
-                        let fetchedData2 = try context.fetch(fetch2) as! [AlarmClock]
-                        if fetchedData2.count == 0 {
-                            return nil
-                        }
-                        return fetchedData2[0]
-                    } catch {
-                        fatalError("getPartnerNextClock 2")
-                    }
-                }
                 
-                return fetchedData[0]
+                return fetchedData
             } catch {
                 fatalError("getPartnerNextClock 1")
             }
         } else {
-            return nil
+            return []
         }
     }
     
-    func getSelfNextClock() -> AlarmClock? {
+    func getSelfNextClock() -> [AlarmClock] {
         if let currentUser = self.getCurrentUser() {
             // Fetch latest alarm clock for partner
             let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
-            fetch.fetchLimit = 1
+//            fetch.fetchLimit = 1
             
             let date = Date()
             fetch.predicate = NSPredicate(format: "time >= %@ AND timeZone == %@",  self.getDatetimeText(fromDate: date, withFormat: "HH:mm"), currentUser.timeZone!)
             do {
                 let fetchedData = try context.fetch(fetch) as! [AlarmClock]
-                if fetchedData.count == 0 {
-                    // If no later alarm clock today, fetch for the first alarm clock next day
-                    let fetch2 = NSFetchRequest<NSFetchRequestResult>(entityName: "AlarmClock")
-                    fetch2.sortDescriptors = [NSSortDescriptor(key: "time", ascending: true)]
-                    fetch2.fetchLimit = 1
-                    fetch2.predicate = NSPredicate(format: "timeZone == %@", currentUser.timeZone!)
-                    
-                    do {
-                        let fetchedData2 = try context.fetch(fetch2) as! [AlarmClock]
-                        if fetchedData2.count == 0 {
-                            return nil
-                        }
-                        return fetchedData2[0]
-                    } catch {
-                        fatalError("getSelfNextClock 2")
-                    }
-                }
-                
-                return fetchedData[0]
+                return fetchedData
             } catch {
                 fatalError("getSelfNextClock 1")
             }
         } else {
-            return nil
+            return []
         }
     }
     
@@ -154,6 +119,16 @@ class WidgetHelpers: NSObject {
         } catch {
             fatalError("Can't fetch user data.")
         }
+    }
+    
+    func isCitySet() -> Bool {
+        if let user = self.getCurrentUser() {
+            if user.country == nil || user.country == "" {
+                return false
+            }
+            return true
+        }
+        return false
     }
     
     

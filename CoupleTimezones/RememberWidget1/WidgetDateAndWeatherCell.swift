@@ -36,6 +36,8 @@ class WidgetDateAndWeatherCell: UITableViewCell {
     var isShowingSelf = false
     var isShowingFScale = false
     
+    var onPressCallback: ((_ isShowingSelf: Bool)->())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -69,7 +71,7 @@ class WidgetDateAndWeatherCell: UITableViewCell {
         }
     }
     
-    func configureCell(selfWeather: [String:String]?, partnerWeather: [String:String]?) {
+    func configureCell(selfWeather: [String:String]?, partnerWeather: [String:String]?, onPressCallback: ((_ isShowingSelf: Bool)->())?) {
         self.selfWeather = selfWeather
         self.partnerWeather = partnerWeather
         
@@ -79,6 +81,7 @@ class WidgetDateAndWeatherCell: UITableViewCell {
         } else {
             clearTempText()
         }
+        self.onPressCallback = onPressCallback
     }
     
     func toggleTexts() {
@@ -99,6 +102,7 @@ class WidgetDateAndWeatherCell: UITableViewCell {
             self.locLbl.text = TimeZone(identifier: (WidgetHelpers.shared.getCurrentUser()?.partnerTimeZone)!)?.localizedName(for: .shortGeneric, locale: Locale.current)
         }
         showCScale()
+        onPressCallback!(isShowingSelf)
     }
     @IBAction func toggleTemp(_ sender: UIButton) {
         isShowingFScale = !isShowingFScale

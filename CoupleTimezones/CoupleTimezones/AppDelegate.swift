@@ -64,6 +64,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         return true
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let prefix = "Remember://action="
+        if let _ = url.absoluteString.range(of: prefix) {
+            let action = url.absoluteString.substring(from: url.absoluteString.index(url.absoluteString.startIndex, offsetBy: 18))
+            if action == "SetWidget" {
+                if let user = UserService.shared.get() {
+                    let vc = SlidingFormViewController.vc(
+                        withStoryboardName: "Main",
+                        bundle: nil,
+                        identifier: "SlidingFormViewController",
+                        andFormTitle: NSLocalizedString("Settings",comment: "SlidingForm"),
+                        pages: [
+                            SlidingFormPage.getSelect(withTitle: NSLocalizedString("Partner Country", comment: "对象所在国家"), desc: NSLocalizedString("Please select the country which partner is currently in.", comment: "请选择对象目前所在的国家。"), selectOptions: ConstantService.shared.supportedCountriesNames, selectedOptionIndex: ConstantService.shared.supportedContriesIndex(of: user.partnerCountry) ),
+                            SlidingFormPage.getInput(withTitle: NSLocalizedString("Partner City", comment: "对象所在城市"), isRequired: false, desc: NSLocalizedString("Please enter partner's city name.", comment: "请输入对象的城市名称。\n中文名称请输入其全拼。"), defaultValue: user.partnerCity),
+                            SlidingFormPage.getSelect(withTitle: NSLocalizedString("Your Country", comment: "你所在国家"), desc: NSLocalizedString("Please select the country which you are currently in.", comment: "请选择你目前所在的国家。"), selectOptions: ConstantService.shared.supportedCountriesNames, selectedOptionIndex: ConstantService.shared.supportedContriesIndex(of: user.country) ),
+                            SlidingFormPage.getInput(withTitle: NSLocalizedString("Your City", comment: "你所在城市"), isRequired: false, desc: NSLocalizedString("Please enter your city name.", comment: "请输入你的城市名称。\n中文名称请输入其全拼。"), defaultValue: user.city),
+                            ]) { results in
+                                let user = UserService.shared.get()!
+                                user.partnerCountry = ConstantService.shared.supportedCountriesCodes[(results[0] as! [Any])[0] as! Int]
+                                user.partnerCity = results[1] as? String
+                                user.country = ConstantService.shared.supportedCountriesCodes[(results[2] as! [Any])[0] as! Int]
+                                user.city = results[3] as? String
+                                
+                                FIRDatabase.database().reference().child("users").updateChildValues(
+                                    [
+                                        user.code!: [
+                                            "city": user.city!,
+                                            "partnerCity": user.partnerCity!,
+                                            "country": user.country!,
+                                            "partnerCountry": user.partnerCountry!
+                                        ]
+                                    ], withCompletionBlock: { (error, ref) in
+                                        if error == nil {
+                                            UserService.shared.save()
+                                            // Pop up alert: Set up success.
+                                        } else {
+                                            // Pop up alert: Fail to set up.
+                                        }
+                                })
+                    }
+                    StateService.shared.SetWidgetVC = vc
+                    NotificationCenter.default.post(name: NSNotification.Name("ShouldPresentSetWidgetVC"), object: nil)
+                }
+            }
+        }
+        return true
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -7,8 +7,20 @@
 /* AlarmClock */
 ", " = "、";
 
+/* 上午 */
+"AM" = "上午";
+
+/* 澳大利亚 */
+"Australia" = "澳大利亚";
+
+/* 加拿大 */
+"Canada" = "加拿大";
+
 /* 验证中…… */
 "Checking..." = "验证中……";
+
+/* 中国 */
+"China" = "中国";
 
 /* 神秘代码已被占用。 */
 "Code is used by someone else." = "神秘代码已被占用。";
@@ -44,14 +56,26 @@
 /* SlidingForm */
 "First" = "第一项";
 
+/* 法国 */
+"Frence" = "法国";
+
 /* AlarmClock */
 "Fri" = "五";
 
 /* Repetance */
 "Friday" = "每周五";
 
+/* 德国 */
+"Germany" = "德国";
+
 /* SlidingForm */
 "Hidden Message" = "隐藏消息";
+
+/* 意大利 */
+"Italy" = "意大利";
+
+/* 日本 */
+"Japan" = "日本";
 
 /* AlarmClock */
 "Mon" = "一";
@@ -70,6 +94,12 @@
 
 /* AlarmClock */
 "No Alarm Clock" = "暂时没有闹钟";
+
+/* 对象所在城市 */
+"Partner City" = "对象所在城市";
+
+/* 对象所在国家 */
+"Partner Country" = "对象所在国家";
 
 /* 没有找到你的对象 */
 "Partner not found" = "没有找到你的对象";
@@ -96,11 +126,25 @@ Usage: When the two codes (your code and your partner's code) match with another
 用途：
 当你输入的 神秘代码 和 对方的神秘代码 与另一位用户的两个神秘代码吻合时，你们就配对成功了。配对成功后，你们的闹钟数据会自动同步。";
 
+/* 请输入对象的城市名称。\n中文名称请输入其全拼。 */
+"Please enter partner's city name." = "请输入对象的城市名称。
+中文名称请输入其全拼。";
+
+/* 请输入你的城市名称。\n中文名称请输入其全拼。 */
+"Please enter your city name." = "请输入你的城市名称。
+中文名称请输入其全拼。";
+
 /* SlidingForm */
 "Please enter your nickname." = "请输入你的昵称。";
 
 /* SlidingForm */
 "Please enter your partner's nickname." = "请输入对方的昵称。";
+
+/* 请选择对象目前所在的国家。 */
+"Please select the country which partner is currently in." = "请选择对象目前所在的国家。";
+
+/* 请选择你目前所在的国家。 */
+"Please select the country which you are currently in." = "请选择你目前所在的国家。";
 
 /* SlidingForm */
 "Prev" = "上一项";
@@ -139,14 +183,26 @@ Like: ❤️ Together for 8 months 18 days ❤️" = "设置你们恋爱开始�
 /* SlidingForm */
 "Settings" = "自定义设置";
 
+/* 新加坡 */
+"Singapore" = "新加坡";
+
+/* 韩国 */
+"South Korea" = "韩国";
+
 /* AlarmClock */
 "Sun" = "日";
 
 /* Repetance */
 "Sunday" = "每周日";
 
+/* 瑞士 */
+"Switzerland" = "瑞士";
+
 /* AlarmClock */
 "Tag" = "标签";
+
+/* SlidingForm */
+"Theme" = "主题";
 
 /* AlarmClock */
 "Thu" = "四";
@@ -159,6 +215,12 @@ Like: ❤️ Together for 8 months 18 days ❤️" = "设置你们恋爱开始�
 
 /* Repetance */
 "Tuesday" = "每周二";
+
+/* 英国 */
+"United Kingdom" = "英国";
+
+/* 美国 */
+"United States" = "美国";
 
 /* AlarmClock */
 "Wed" = "三";
@@ -174,8 +236,14 @@ Like: ❤️ Together for 8 months 18 days ❤️" = "设置你们恋爱开始�
    Repetance */
 "Weekend" = "周末";
 
+/* 你所在城市 */
+"Your City" = "你所在的城市";
+
 /* SlidingForm */
 "Your Code" = "你的神秘代码";
+
+/* 你所在国家 */
+"Your Country" = "你所在的国家";
 
 /* SlidingForm */
 "Your Email" = "你的邮箱";

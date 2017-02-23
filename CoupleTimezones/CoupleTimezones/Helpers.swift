@@ -18,41 +18,6 @@ class Helpers: NSObject {
         print(text)
     }
     
-    func getTimezoneIndexByIdentifier(_ identifier: String?) -> Int {
-        
-        if let name = identifier {
-            if let timezoneIndex = AVAILABLE_TIME_ZONE_LIST.index(of: name) {
-                return timezoneIndex
-            }
-        }
-        
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "TimeZoneNotSupported"), object: nil)
-        return 0
-    }
-
-    func AddLocalNotification(_ identifier: String, tag: String, fireDate: DateComponents, musicIndex: Int? = nil, repeated: Bool) {
-        let content = UNMutableNotificationContent()
-        content.body = tag
-        content.sound = UNNotificationSound(named: "CoupleTimezones/ElephanteCatchingOnfeat25")
-        content.userInfo = ["id": identifier, "sound": "ElephanteCatchingOnfeat25"]
-        let trigger = UNCalendarNotificationTrigger(dateMatching: fireDate, repeats: repeated)
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request) { (error) in
-            if error != nil {
-                self.toast(withString: "Please enable Local Notification!")
-                return
-            }
-            
-            self.toast(withString: "Good!")
-        }
-    }
-    func cancelLocalNotification(_ identifier: String) {
-    }
-    
-    func checkDeliveredLocalNotification() {
-    }
-    
     // MARK: Methods to deal with date
     func getDatetimeText(fromDate date: Date, withFormat format: String) -> String {
         let dateFormatter = DateFormatter()

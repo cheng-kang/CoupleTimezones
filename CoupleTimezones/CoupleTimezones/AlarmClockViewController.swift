@@ -61,7 +61,7 @@ class AlarmClockViewController: UIViewController {
         topMsgView.adjustsFontSizeToFitWidth = true
         topMsgView.lineBreakMode = .byTruncatingTail
         
-        topMsgView.font = TEXT_FONT(withSize: 16)
+        topMsgView.font = UIFont(name: "FZYanSongS-R-GB", size: 16)
         topMsgView.frame = CGRect(x: 10, y: -60, width: self.view.frame.width-20, height: 60)
         self.tableview.addSubview(topMsgView)
         
@@ -114,6 +114,8 @@ class AlarmClockViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.updateTopMsg), name: NSNotification.Name("ShouldUpdateTopMsg"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.updateTheme), name: NSNotification.Name("ShouldUpdateTheme"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(AlarmClockViewController.presentSetWidgetVC), name: NSNotification.Name("ShouldPresentSetWidgetVC"), object: nil)
     }
     
     func updateTheme() {
@@ -209,6 +211,18 @@ class AlarmClockViewController: UIViewController {
         timer!.fire()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.presentSetWidgetVC()
+    }
+    
+    func presentSetWidgetVC() {
+        if let vc = StateService.shared.SetWidgetVC {
+            self.present(vc, animated: true, completion: {
+                StateService.shared.SetWidgetVC = nil
+            })
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         // deinit timer
         self.timer?.invalidate()
@@ -282,8 +296,8 @@ class AlarmClockViewController: UIViewController {
                 
             },
             SlidingFormPage.getInput(withTitle: NSLocalizedString("Partner's Code", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please ask your partner for his/her Code.", comment: "SlidingForm"), defaultValue: settings.partnerCode, inputRule: "[A-Za-z0-9]{4,}", errorMsg: "长度至少四位，由字母和数字组成"),
-            SlidingFormPage.getSelect(withTitle: NSLocalizedString("Your Timezone", comment: "SlidingForm"), desc: nil, selectOptions: AVAILABLE_TIME_ZONE_LIST_LOCALIZED, selectedOptionIndex: Helpers.sharedInstance.getTimezoneIndexByIdentifier(settings.timeZone!) ),
-            SlidingFormPage.getSelect(withTitle: NSLocalizedString("Partner's Timezone", comment: "SlidingForm"), desc: nil, selectOptions: AVAILABLE_TIME_ZONE_LIST_LOCALIZED, selectedOptionIndex: Helpers.sharedInstance.getTimezoneIndexByIdentifier(settings.partnerTimeZone!)),
+            SlidingFormPage.getSelect(withTitle: NSLocalizedString("Your Timezone", comment: "SlidingForm"), desc: nil, selectOptions: ConstantService.shared.timeZoneNames, selectedOptionIndex: ConstantService.shared.index(of: settings.timeZone) ),
+            SlidingFormPage.getSelect(withTitle: NSLocalizedString("Partner's Timezone", comment: "SlidingForm"), desc: nil, selectOptions: ConstantService.shared.timeZoneNames, selectedOptionIndex: ConstantService.shared.index(of: settings.partnerTimeZone)),
             SlidingFormPage.getSelect(withTitle: NSLocalizedString("Theme", comment: "SlidingForm"), desc: nil, selectOptions: ThemeService.shared.themeStrs, selectedOptionIndex: ThemeService.shared.seletedThemeIndex),
             SlidingFormPage.getInput(withTitle: NSLocalizedString("Your Email", comment: "SlidingForm"), desc: NSLocalizedString("Enter your email for better service.", comment: "SlidingForm"), defaultValue: settings.email),
             ]
@@ -309,8 +323,8 @@ class AlarmClockViewController: UIViewController {
                 user.partnerNickname = results[1] as! String
                 user.code = results[2] as! String
                 user.partnerCode = results[3] as! String
-                user.timeZone = AVAILABLE_TIME_ZONE_LIST[(results[4] as! [Any])[0] as! Int]
-                user.partnerTimeZone = AVAILABLE_TIME_ZONE_LIST[(results[5] as! [Any])[0] as! Int]
+                user.timeZone = ConstantService.shared.timeZones[(results[4] as! [Any])[0] as! Int]
+                user.partnerTimeZone = ConstantService.shared.timeZones[(results[5] as! [Any])[0] as! Int]
                 user.theme = ThemeService.shared.themeStrs[(results[6] as! [Any])[0] as! Int]
                 user.email = results[7] as! String
                 

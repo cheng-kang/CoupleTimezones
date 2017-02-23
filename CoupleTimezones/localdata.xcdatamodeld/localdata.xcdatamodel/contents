@@ -17,7 +17,9 @@
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nickname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="partnerCity" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="partnerCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="partnerCountry" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="partnerNickname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="partnerTimeZone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="String" syncable="YES"/>
@@ -36,7 +38,7 @@
     </entity>
     <elements>
         <element name="AlarmClock" positionX="-38" positionY="-36" width="128" height="163"/>
-        <element name="User" positionX="97" positionY="-126" width="128" height="240"/>
+        <element name="User" positionX="97" positionY="-126" width="128" height="270"/>
         <element name="Weather" positionX="27" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

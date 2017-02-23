@@ -73,4 +73,6 @@ class StateService: NSObject {
             }
         }
     }
+    
+    var SetWidgetVC: SlidingFormViewController?
 }

@@ -160,9 +160,9 @@ extension NewAlarmClockViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         
-        cell.textLabel?.font = TEXT_FONT(withSize: 17)
+        cell.textLabel?.font = UIFont(name: "FZYanSongS-R-GB", size: 17)
         cell.textLabel?.textColor = ThemeService.shared.text_dark
-        cell.detailTextLabel?.font = TEXT_FONT(withSize: 14)
+        cell.detailTextLabel?.font = UIFont(name: "FZYanSongS-R-GB", size: 14)
         cell.detailTextLabel?.textColor = ThemeService.shared.text_dark
         cell.accessoryType = .disclosureIndicator
         

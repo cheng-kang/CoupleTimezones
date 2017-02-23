@@ -67,16 +67,26 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.springboard">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EDB1F9151DA55E6A00540AEA"
-            BuildableName = "CoupleTimezones.app"
-            BlueprintName = "CoupleTimezones"
+            BlueprintIdentifier = "ED6FE68C1E5C931D003E0EB2"
+            BuildableName = "RememberWidget1.appex"
+            BlueprintName = "RememberWidget1"
             ReferencedContainer = "container:CoupleTimezones.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "ED6FE68C1E5C931D003E0EB2"
+            BuildableName = "RememberWidget1.appex"
+            BlueprintName = "RememberWidget1"
+            ReferencedContainer = "container:CoupleTimezones.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

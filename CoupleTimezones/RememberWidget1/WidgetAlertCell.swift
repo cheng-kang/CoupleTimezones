@@ -8,11 +8,17 @@
 
 import UIKit
 
-class WidgetMsgCell: UITableViewCell {
+class WidgetAlertCell: UITableViewCell {
 
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var msgLbl: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        icon.image = UIImage(named: "Attention")?.withRenderingMode(.alwaysTemplate)
+        icon.tintColor = UIColor.darkText
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

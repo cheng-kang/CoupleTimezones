@@ -25,8 +25,8 @@ class EditTagViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.tagFiled.delegate = self
         
-        self.tagFiled.layer.borderColor = RATIO_BG_DARK.cgColor
-        self.tagFiled.layer.borderWidth = 2
+        self.tagFiled.layer.borderColor = ThemeService.shared.bg_dark.cgColor
+        self.tagFiled.layer.borderWidth = 1
         self.tagFiled.layer.cornerRadius = 4
         
         self.tagFiled.text = tag
