@@ -18,8 +18,9 @@ class WidgetAlarmClockCell: UITableViewCell {
         // Initialization code
         self.isUserInteractionEnabled = true
         
-        icon.image = UIImage(named: "Alarm")?.withRenderingMode(.alwaysTemplate)
-        icon.tintColor = UIColor.darkText
+        icon.image = UIImage(named: "Alarm")
+//            .withRenderingMode(.alwaysTemplate)
+//        icon.tintColor = UIColor.darkText
     }
     
     func configure(with data: AlarmClock) {

@@ -21,12 +21,11 @@ class StateService: NSObject {
             }
         }
     }
+    var isMatchedStateFetched = false
     var isMatched = false {
         didSet {
-            if oldValue != isMatched {
-                // Tell AlarmClockViewController to refresh alarm clocks
-                NotificationCenter.default.post(name: NSNotification.Name("ShouldRefreshTable"), object: nil)
-            }
+            // Tell AlarmClockViewController to refresh alarm clocks
+            NotificationCenter.default.post(name: NSNotification.Name("ShouldRefreshTable"), object: nil)
             
             if isMatched {
                 FIRDatabase.database().reference().child("users").child(UserService.shared.get()!.partnerCode!).child("topMessage").observe(.value, with: { (snapshot) in

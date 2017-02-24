@@ -11,7 +11,6 @@ import FirebaseDatabase
 
 class SettingViewController: UIViewController {
     
-    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var startBtn: UIButton!
     @IBOutlet weak var poemLbl: UILabel!
     var currentUser: User?
@@ -19,16 +18,17 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.startBtn.setTitleColor(ThemeService.shared.text_light, for: .normal)
-        self.startBtn.setTitleColor(ThemeService.shared.text_light_highlighted, for: .highlighted)
         SlidingFormPageConfig.sharedInstance.customFontName = "FZMingShangTiS-R-GB"
         
-        self.updateTheme()
         self.handleConnectionChange()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(SettingViewController.updateTheme), name: NSNotification.Name("ShouldUpdateTheme"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(SettingViewController.handleConnectionChange), name: NSNotification.Name("ServerConnected"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(SettingViewController.handleConnectionChange), name: NSNotification.Name("ServerDisconnected"), object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ServerConnected"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ServerDisconnected"), object: nil)
     }
     
     func handleConnectionChange() {
@@ -37,13 +37,6 @@ class SettingViewController: UIViewController {
         } else {
             self.startBtn.isEnabled = false
         }
-    }
-    
-    func updateTheme() {
-        self.titleLbl.textColor = ThemeService.shared.text_light
-        self.startBtn.tintColor = ThemeService.shared.text_light
-        self.poemLbl.textColor = ThemeService.shared.text_light
-        self.view.backgroundColor = ThemeService.shared.text_dark
     }
     
     override func viewWillAppear(_ animated: Bool) {

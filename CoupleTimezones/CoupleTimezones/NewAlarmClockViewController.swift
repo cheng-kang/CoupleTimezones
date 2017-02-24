@@ -103,7 +103,8 @@ class NewAlarmClockViewController: UIViewController {
             let data = AlarmClockService.shared.new()
             data.id = FIRDatabase.database().reference().childByAutoId().key
             data.timeZone = UserService.shared.get()?.partnerTimeZone!
-            data.tag = NSLocalizedString("Remind Darling", comment: "AlarmClock")
+            data.tag = String(format: NSLocalizedString("Remind %@", comment: "AlarmClock"), UserService.shared.get()?.partnerNickname ?? "Darling")
+        
             data.isActive = true
             data.days = [false, false, false, false, false, false, false]
             data.isShowingPartnerText = true

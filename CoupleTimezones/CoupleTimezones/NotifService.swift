@@ -38,7 +38,7 @@ class NotifService: NSObject {
         let user = UserService.shared.get()!
         
         let isSetBySelf = alarmClock.timeZone == user.partnerTimeZone
-        let title = isSetBySelf ? "\(user.partnerNickname!), "+NSLocalizedString("it's %@ now", comment: "现在 %@") : NSLocalizedString("it's %@ now", comment: "现在 %@")
+        let title = !isSetBySelf ? "\(user.nickname!), "+NSLocalizedString("it's %@ now", comment: "现在 %@") : NSLocalizedString("it's %@ now", comment: "现在 %@")
         
         let content = UNMutableNotificationContent()
         content.title = NSString.localizedUserNotificationString(forKey: title, arguments: [alarmClock.time!])

@@ -60,6 +60,7 @@ class AlarmClockViewController: UIViewController {
         topMsgView.minimumScaleFactor = 0.5
         topMsgView.adjustsFontSizeToFitWidth = true
         topMsgView.lineBreakMode = .byTruncatingTail
+        topMsgView.textAlignment = .center
         
         topMsgView.font = UIFont(name: "FZYanSongS-R-GB", size: 16)
         topMsgView.frame = CGRect(x: 10, y: -60, width: self.view.frame.width-20, height: 60)
@@ -93,6 +94,7 @@ class AlarmClockViewController: UIViewController {
                 if let value = snapshot.value as? Int {
                     partnerCode = value.description
                 }
+                StateService.shared.isMatchedStateFetched = true
                 if partnerCode == self.currentUser?.code {
                     StateService.shared.isMatched = true
                 } else {
@@ -181,7 +183,8 @@ class AlarmClockViewController: UIViewController {
             if let handle = partnerCodeObserverHandle {
                 FIRDatabase.database().reference().removeObserver(withHandle: handle)
             }
-            
+            StateService.shared.isMatchedStateFetched = false
+            StateService.shared.isMatched = false
             partnerCodeObserverHandle = FIRDatabase.database().reference()
                 .child("users")
                 .child(currentUser!.partnerCode!)
@@ -194,6 +197,7 @@ class AlarmClockViewController: UIViewController {
                     if let value = snapshot.value as? Int {
                         partnerCode = value.description
                     }
+                    StateService.shared.isMatchedStateFetched = true
                     if partnerCode == self.currentUser?.code {
                         StateService.shared.isMatched = true
                     } else {
@@ -205,10 +209,21 @@ class AlarmClockViewController: UIViewController {
             StateService.shared.isPartnerCodeChanged = false
         }
         
-        self.navLocLbl.text = TimeZone(identifier: UserService.shared.get()!.partnerTimeZone!)?.localizedName(for: .shortGeneric, locale: Locale.current)
+        updateTimeLbl()
         // start timer
         timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(AlarmClockViewController.updateTimeLbl), userInfo: nil, repeats: true)
         timer!.fire()
+        
+        // Update topMessage
+        if StateService.shared.topMessage == "" {
+            if currentUser!.relationShipLengthText == "" {
+                topMsgView.text = ""
+            } else {
+                topMsgView.text = String(format: NSLocalizedString("❤️ Together for %@ ❤️", comment: "❤️ 已经在一起 %@ ❤️"), arguments: [currentUser!.relationShipLengthText])
+            }
+        } else {
+            topMsgView.text = StateService.shared.topMessage
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -248,10 +263,18 @@ class AlarmClockViewController: UIViewController {
     func updateTimeLbl() {
         self.timerCount += 1
         
-        let date = Helpers.sharedInstance.getDateAtTimezone(UserService.shared.get()!.partnerTimeZone!)
+        let user = UserService.shared.get()!
+        let date = Helpers.sharedInstance.getDateAtTimezone(user.partnerTimeZone!)
         
+        let dif = Helpers.sharedInstance.getTimeIntervalBetweenLocalAndTimeZone(user.partnerTimeZone!)
+        let partnerDate = Date().addingTimeInterval(-dif)
+        let isYesterday = Calendar.current.isDateInYesterday(partnerDate)
+        let isTommorrow = Calendar.current.isDateInTomorrow(partnerDate)
+        let dayDiffString = isYesterday ? NSLocalizedString("YDA ", comment: "昨天") : isTommorrow ? NSLocalizedString("TMW ", comment: "明天") : ""
+        
+        self.navLocLbl.text = TimeZone(identifier: user.partnerTimeZone!)!.localizedName(for: .shortGeneric, locale: Locale.current)
         self.navTimeLbl.text = (self.timerCount % 2 ) == 0 ? Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "HH:mm") : Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "HH mm")
-        self.navPeriodLbl.text = Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "a")
+        self.navPeriodLbl.text = dayDiffString + Helpers.sharedInstance.getDatetimeText(fromDate: date, withFormat: "a")
     }
     
     func reloadTable() {
@@ -399,7 +422,7 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
             if StateService.shared.isMatched == false {
                 if indexPath.row == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "AttentionCell") as! AttentionCell
-                    cell.msgLbl.text = NSLocalizedString("Partner not found", comment: "没有找到你的对象")
+                    cell.msgLbl.text = StateService.shared.isMatchedStateFetched ? NSLocalizedString("Partner not found", comment: "没有找到你的对象") : NSLocalizedString("Matching partner...", comment: "正在匹配你的对象……")
                     
                     return cell
                 } else {

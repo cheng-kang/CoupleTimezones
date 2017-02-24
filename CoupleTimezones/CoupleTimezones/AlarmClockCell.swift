@@ -86,13 +86,14 @@ class AlarmClockCell: UITableViewCell {
             let partnerTime = Helpers.sharedInstance.getDatetimeText(fromDate: dateInPartnerTimeZone, withFormat: "HH:mm")
             let partnerPeriod = Helpers.sharedInstance.getDatetimeText(fromDate: dateInPartnerTimeZone, withFormat: "a")
             
-            var partnerCalendar = Calendar.current
-            partnerCalendar.timeZone = TimeZone(identifier: currentUser.partnerTimeZone!)!
-            let isYesterday = partnerCalendar.isDateInYesterday(Helpers.sharedInstance.getDateTodayAtTime(data.time!, inFormat: "HH:mm"))
-            let isTommorrow = partnerCalendar.isDateInTomorrow(Helpers.sharedInstance.getDateTodayAtTime(data.time!, inFormat: "HH:mm"))
-            let dayDiffString = isYesterday ? "-1 " : isTommorrow ? "+1 " : ""
-            
-            let partnerDesc: String = dayDiffString + currentUser.partnerNickname! + NSLocalizedString("'s Time", comment: "的时间")
+//            var partnerCalendar = Calendar.current
+//            partnerCalendar.timeZone = TimeZone(identifier: currentUser.partnerTimeZone!)!
+//            let isYesterday = partnerCalendar.isDateInYesterday(Helpers.sharedInstance.getDateTodayAtTime(data.time!, inFormat: "HH:mm"))
+//            let isTommorrow = partnerCalendar.isDateInTomorrow(Helpers.sharedInstance.getDateTodayAtTime(data.time!, inFormat: "HH:mm"))
+//            let dayDiffString = isYesterday ? "-1 " : isTommorrow ? "+1 " : ""
+//            
+//            let partnerDesc: String = dayDiffString + currentUser.partnerNickname! + NSLocalizedString("'s Time", comment: "的时间")
+            let partnerDesc: String = currentUser.partnerNickname! + NSLocalizedString("'s Time", comment: "的时间")
             partnerLabelTexts = (partnerTime, partnerPeriod, partnerDesc)
         } else {
             
@@ -105,12 +106,13 @@ class AlarmClockCell: UITableViewCell {
             
             myLabelTexts = (time, period, NSLocalizedString("My Time", comment: "我的时间"))
             
-            var partnerCalendar = Calendar.current
-            partnerCalendar.timeZone = TimeZone(identifier: currentUser.partnerTimeZone!)!
-            let isYesterday = partnerCalendar.isDateInYesterday(Helpers.sharedInstance.getDateTodayAtTime(time, inFormat: "HH:mm"))
-            let isTommorrow = partnerCalendar.isDateInTomorrow(Helpers.sharedInstance.getDateTodayAtTime(time, inFormat: "HH:mm"))
-            let dayDiffString = isYesterday ? "-1 " : isTommorrow ? "+1 " : ""
-            let partnerDesc: String = dayDiffString + currentUser.partnerNickname! + NSLocalizedString("'s Time", comment: "的时间")
+//            var partnerCalendar = Calendar.current
+//            partnerCalendar.timeZone = TimeZone(identifier: currentUser.partnerTimeZone!)!
+//            let isYesterday = partnerCalendar.isDateInYesterday(Helpers.sharedInstance.getDateTodayAtTime(time, inFormat: "HH:mm"))
+//            let isTommorrow = partnerCalendar.isDateInTomorrow(Helpers.sharedInstance.getDateTodayAtTime(time, inFormat: "HH:mm"))
+//            let dayDiffString = isYesterday ? "-1 " : isTommorrow ? "+1 " : ""
+//            let partnerDesc: String = dayDiffString + currentUser.partnerNickname! + NSLocalizedString("'s Time", comment: "的时间")
+            let partnerDesc: String = currentUser.partnerNickname! + NSLocalizedString("'s Time", comment: "的时间")
             
             partnerLabelTexts = (data.time!, data.period!, partnerDesc)
         }

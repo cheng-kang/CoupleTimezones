@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		382E0211C3D813386FBACD84 /* Pods_RememberWidget1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4998CAD4D334D059FE2C2B /* Pods_RememberWidget1.framework */; };
 		CB54568702E47198AF705E21 /* Pods_CoupleTimezones.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E79E6423D49071B02D6BA10 /* Pods_CoupleTimezones.framework */; };
+		ED486A671E60D1E10046E156 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED486A661E60D1E10046E156 /* Theme.swift */; };
 		ED5391DB1DA5772100071709 /* FZYanSJW.TTF in Resources */ = {isa = PBXBuildFile; fileRef = EDB1F92C1DA561FC00540AEA /* FZYanSJW.TTF */; };
 		ED5391DE1DA580E100071709 /* AlarmClockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391DD1DA580E100071709 /* AlarmClockCell.swift */; };
 		ED5391E21DA5845D00071709 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5391E11DA5845D00071709 /* Extensions.swift */; };
@@ -99,6 +100,7 @@
 		B350E59C7F7B89E96418ACFC /* Pods-RememberWidget1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RememberWidget1.release.xcconfig"; path = "Pods/Target Support Files/Pods-RememberWidget1/Pods-RememberWidget1.release.xcconfig"; sourceTree = "<group>"; };
 		DA4998CAD4D334D059FE2C2B /* Pods_RememberWidget1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RememberWidget1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB1425EFCFD125D923B0EB2F /* Pods-CoupleTimezones.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoupleTimezones.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoupleTimezones/Pods-CoupleTimezones.debug.xcconfig"; sourceTree = "<group>"; };
+		ED486A661E60D1E10046E156 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		ED5391DD1DA580E100071709 /* AlarmClockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmClockCell.swift; sourceTree = "<group>"; };
 		ED5391E11DA5845D00071709 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		ED53920A1DA6513000071709 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 		ED6FE6D01E5F53AE003E0EB2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				ED660C351DA9012000411874 /* SlidingForm */,
 				ED945AD71E54F66900FC217E /* LoadingView.swift */,
 				ED53920A1DA6513000071709 /* Helpers.swift */,
 				ED5391E11DA5845D00071709 /* Extensions.swift */,
@@ -335,6 +338,7 @@
 				ED6FE6851E563967003E0EB2 /* StateService.swift */,
 				ED6FE6871E579A97003E0EB2 /* ThemeService.swift */,
 				ED6FE6CE1E5F1417003E0EB2 /* ConstantService.swift */,
+				ED486A661E60D1E10046E156 /* Theme.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -368,7 +372,6 @@
 				EDC521251DA9ABC4007039FC /* InfoPlist.strings */,
 				EDC521201DA9ABC4007039FC /* Localizable.strings */,
 				ED6FE6D01E5F53AE003E0EB2 /* Utils */,
-				ED660C351DA9012000411874 /* SlidingForm */,
 				ED945AD21E520D0F00FC217E /* Services */,
 				EDB1F92B1DA55ED100540AEA /* AlarmClock */,
 				ED660C2B1DA7AD4100411874 /* Settings */,
@@ -640,6 +643,7 @@
 				ED660C401DA913B800411874 /* SlidingFormPageConfig.swift in Sources */,
 				ED5392111DA6600F00071709 /* SwitchView.swift in Sources */,
 				ED5392181DA6CDF400071709 /* EditTagViewController.swift in Sources */,
+				ED486A671E60D1E10046E156 /* Theme.swift in Sources */,
 				ED53921A1DA6D62800071709 /* NoContentCell.swift in Sources */,
 				ED53920F1DA65BEF00071709 /* RatioView.swift in Sources */,
 				ED6FE6861E563967003E0EB2 /* StateService.swift in Sources */,

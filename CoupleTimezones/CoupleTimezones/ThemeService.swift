@@ -11,7 +11,7 @@ import UIKit
 class ThemeService: NSObject {
     static let shared = ThemeService()
     
-    var themeStrs = ["dark purple","blue", "dark green", "coral", "red"]
+    var themeStrs = ["default", "default1", "dark purple", "blue", "dark green", "coral", "red", "American Rose"]
     var seletedThemeIndex: Int {
         return themeStrs.index(of: theme) ?? 0
     }
@@ -22,6 +22,36 @@ class ThemeService: NSObject {
         return "dark green"
     }
     var colors: [String:[String:UIColor]] = [
+        "default": [
+            "bg_light": UIColor(red: 255, green: 255, blue: 255), //Dont'change
+            "bg_dark": UIColor(red: 255, green: 255, blue: 255),
+            "text_light": UIColor(red: 51, green: 48, blue: 59),
+            "text_light_highlighted": UIColor(red: 252/255, green: 252/255, blue: 252/255, alpha: 0.7),
+            "text_grey": UIColor(red: 240, green: 239, blue: 241),
+            "text_grey_hightlighted": UIColor(red: 240/255, green: 239/255, blue: 241/255, alpha: 0.7),
+            "text_dark": UIColor(red: 51, green: 48, blue: 59),
+            "text_warning": UIColor(red: 1, green: 1, blue: 0, alpha: 1),
+            "page_element_block": UIColor(red: 51/255, green: 48/255, blue: 59/255, alpha: 0.9),
+            "page_element_light": UIColor(red: 255, green: 255, blue: 255),
+            "page_element_dark": UIColor(red: 51/255, green: 48/255, blue: 59/255, alpha: 0.6),
+            "day_square_light": UIColor(red: 51/255, green: 48/255, blue: 59/255, alpha: 0.4),
+            "day_square_dark": UIColor(red: 51, green: 48, blue: 59),
+        ],
+        "default1": [
+            "bg_light": UIColor(red: 255, green: 255, blue: 255), //Dont'change
+            "bg_dark": UIColor(red: 255, green: 255, blue: 255),
+            "text_light": UIColor(red: 0, green: 0, blue: 0),
+            "text_light_highlighted": UIColor(red: 252/255, green: 252/255, blue: 252/255, alpha: 0.7),
+            "text_grey": UIColor(red: 240, green: 239, blue: 241),
+            "text_grey_hightlighted": UIColor(red: 240/255, green: 239/255, blue: 241/255, alpha: 0.7),
+            "text_dark": UIColor(red: 0, green: 0, blue: 0),
+            "text_warning": UIColor(red: 1, green: 1, blue: 0, alpha: 1),
+            "page_element_block": UIColor(red: 0, green: 0, blue: 0, alpha: 0.9),
+            "page_element_light": UIColor(red: 255, green: 255, blue: 255),
+            "page_element_dark": UIColor(red: 204, green: 204, blue: 204),
+            "day_square_light": UIColor(red: 204, green: 204, blue: 204),
+            "day_square_dark": UIColor(red: 0, green: 0, blue: 0),
+        ],
         "dark purple": [
             "bg_light": UIColor(red: 255, green: 255, blue: 255), //Dont'change
             "bg_dark": UIColor(red: 51, green: 48, blue: 59),
@@ -44,11 +74,11 @@ class ThemeService: NSObject {
             "text_light_highlighted": UIColor(red: 252/255, green: 252/255, blue: 252/255, alpha: 0.7), //Dont'change
             "text_grey": UIColor(red: 240, green: 239, blue: 241), //Dont'change
             "text_grey_hightlighted": UIColor(red: 240/255, green: 239/255, blue: 241/255, alpha: 0.7), //Dont'change
-            "text_dark": UIColor(red: 65, green: 109, blue: 173), // -8
+            "text_dark": UIColor(red: 36, green: 60, blue: 95), // -8
             "text_warning": UIColor(red: 1, green: 1, blue: 0, alpha: 1), //Dont'change
             "page_element_block": UIColor(red: 65, green: 109, blue: 173), // -8
             "page_element_light": UIColor(red: 255, green: 255, blue: 255),
-            "page_element_dark": UIColor(red: 81, green: 136, blue: 216), // -10
+            "page_element_dark": UIColor(red: 81/255, green: 136/255, blue: 216/255, alpha: 0.8), // -10
             "day_square_light": UIColor(red: 65/255, green: 109/255, blue: 173/255, alpha: 0.4), // -8
             "day_square_dark": UIColor(red: 65, green: 109, blue: 173), // -8
         ],
@@ -96,6 +126,21 @@ class ThemeService: NSObject {
             "page_element_dark": UIColor(red: 229, green: 50, blue: 59), // -10
             "day_square_light": UIColor(red: 183/255, green: 40/255, blue: 40/255, alpha: 0.4), // -8
             "day_square_dark": UIColor(red: 183, green: 40, blue: 40), // -8
+        ],
+        "American Rose": [
+            "bg_light": UIColor(red: 255, green: 255, blue: 255), //Dont'change
+            "bg_dark": UIColor(red: 255, green: 94, blue: 132), // -10
+            "text_light": UIColor(red: 252, green: 252, blue: 252), //Dont'change
+            "text_light_highlighted": UIColor(red: 252/255, green: 252/255, blue: 252/255, alpha: 0.7), //Dont'change
+            "text_grey": UIColor(red: 240, green: 239, blue: 241), //Dont'change
+            "text_grey_hightlighted": UIColor(red: 240/255, green: 239/255, blue: 241/255, alpha: 0.7), //Dont'change
+            "text_dark": UIColor(red: 255, green: 3, blue: 62), // -8
+            "text_warning": UIColor(red: 1, green: 1, blue: 0, alpha: 1), //Dont'change
+            "page_element_block": UIColor(red: 255, green: 3, blue: 62), // -8
+            "page_element_light": UIColor(red: 255, green: 255, blue: 255), //Dont'change
+            "page_element_dark": UIColor(red: 255, green: 94, blue: 132), // -10
+            "day_square_light": UIColor(red: 255/255, green: 3/255, blue: 62/255, alpha: 0.4), // -8
+            "day_square_dark": UIColor(red: 255, green: 3, blue: 62), // -8
         ],
     ]
     

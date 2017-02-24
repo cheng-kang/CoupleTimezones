@@ -156,7 +156,7 @@ Usage: When the two codes (your code and your partner's code) match with another
 "Remember" = "记得";
 
 /* AlarmClock */
-"Remind Darling" = "提醒亲爱的";
+"Remind %@" = "提醒%@";
 
 /* AlarmClock */
 "Repetance" = "重复";
@@ -198,6 +198,9 @@ Like: ❤️ Together for 8 months 18 days ❤️" = "设置你们恋爱开始�
 /* 瑞士 */
 "Switzerland" = "瑞士";
 
+/* 明天 */
+"TMW " = "明天";
+
 /* AlarmClock */
 "Tag" = "标签";
 
@@ -235,6 +238,9 @@ Like: ❤️ Together for 8 months 18 days ❤️" = "设置你们恋爱开始�
 /* AlarmClock
    Repetance */
 "Weekend" = "周末";
+
+/* 昨天 */
+"YDA " = "昨天";
 
 /* 你所在城市 */
 "Your City" = "你所在的城市";

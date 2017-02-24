@@ -1,44 +1,8 @@
-/* 澳大利亚 */
-"Australia" = "澳大利亚";
-
 /* 无法获取天气信息，请检查设置。 */
 "Can't get weather for your cities, please check." = "无法获取天气信息，请检查设置。";
 
-/* 加拿大 */
-"Canada" = "加拿大";
-
-/* 中国 */
-"China" = "中国";
-
 /* 点击 展开，完成天气设置 */
 "Click 'Show More' to set up for weather." = "点击 展开，完成天气先关设置。";
-
-/* 法国 */
-"Frence" = "法国";
-
-/* 德国 */
-"Germany" = "德国";
-
-/* 意大利 */
-"Italy （The Republic of）" = "意大利";
-
-/* 日本 */
-"Japan" = "日本";
-
-/* 新加坡 */
-"Singapore" = "新加坡";
-
-/* 韩国 */
-"South Korea" = "韩国";
-
-/* 瑞士 */
-"Switzerland" = "瑞士";
-
-/* 英国 */
-"United Kingdom" = "英国";
-
-/* 美国 */
-"United States" = "美国";
 
 /* 天 */
 "day" = "天";
