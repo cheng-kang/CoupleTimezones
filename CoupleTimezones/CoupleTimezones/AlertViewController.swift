@@ -42,10 +42,11 @@ class AlertViewController: UIViewController {
         self.dismissBtn.setTitle(dismissBtnTitle, for: .normal)
         
         // Init theme color
-        self.bgView.backgroundColor = ThemeService.shared.bg_dark
-        self.titleLbl.textColor = ThemeService.shared.text_light
-        self.contentLbl.textColor = ThemeService.shared.text_light
-        self.dismissBtn.tintColor = ThemeService.shared.text_light
+        self.bgView.backgroundColor = Theme.shared.banner_bg
+        self.titleLbl.textColor = Theme.shared.banner_text
+        self.contentLbl.textColor = Theme.shared.banner_text
+        self.dismissBtn.tintColor = Theme.shared.banner_btn
+        self.dismissBtn.setTitleColor(Theme.shared.banner_btn, for: .normal)
     }
 
     override func didReceiveMemoryWarning() {

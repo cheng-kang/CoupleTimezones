@@ -68,13 +68,13 @@ class NewAlarmClockViewController: UIViewController {
         self.tableview.delegate = self
         self.tableview.tableFooterView = UIView()
         
-        self.datePicker.setValue(ThemeService.shared.text_dark, forKeyPath: "textColor")
+        self.datePicker.setValue(Theme.shared.datepicker_text, forKeyPath: "textColor")
         
         // Init theme color
-        self.bannerBiew.backgroundColor = ThemeService.shared.bg_dark
-        self.cancelBtn.tintColor = ThemeService.shared.text_light
-        self.saveBtn.tintColor = ThemeService.shared.text_light
-        self.titleLbl.textColor = ThemeService.shared.text_light
+        self.bannerBiew.backgroundColor = Theme.shared.banner_bg
+        self.cancelBtn.tintColor = Theme.shared.banner_btn
+        self.saveBtn.tintColor = Theme.shared.banner_btn
+        self.titleLbl.textColor = Theme.shared.banner_text
         
         let df = DateFormatter()
         df.dateFormat = "HH:mm"
@@ -162,9 +162,9 @@ extension NewAlarmClockViewController: UITableViewDataSource, UITableViewDelegat
         let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         
         cell.textLabel?.font = UIFont(name: "FZYanSongS-R-GB", size: 17)
-        cell.textLabel?.textColor = ThemeService.shared.text_dark
+        cell.textLabel?.textColor = Theme.shared.edit_alarm_cell_title
         cell.detailTextLabel?.font = UIFont(name: "FZYanSongS-R-GB", size: 14)
-        cell.detailTextLabel?.textColor = ThemeService.shared.text_dark
+        cell.detailTextLabel?.textColor = Theme.shared.edit_alarm_cell_right_detail
         cell.accessoryType = .disclosureIndicator
         
         cell.textLabel?.text = self.settings[indexPath.row]

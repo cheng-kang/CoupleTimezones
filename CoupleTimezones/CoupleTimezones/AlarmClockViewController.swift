@@ -17,6 +17,7 @@ class AlarmClockViewController: UIViewController {
     @IBOutlet weak var navTimeLbl: UILabel!
     @IBOutlet weak var navLocLbl: UILabel!
     @IBOutlet weak var navPeriodLbl: UILabel!
+    @IBOutlet weak var balloon: UIImageView!
     @IBOutlet weak var uploadBtn: UIButton!
     @IBOutlet weak var downloadBtn: UIButton!
     @IBOutlet var uploadBtnToRight: NSLayoutConstraint!
@@ -76,6 +77,10 @@ class AlarmClockViewController: UIViewController {
         self.uploadBtn.setImage(uploadImage, for: .normal)
         self.downloadBtn.setImage(downloadImage, for: .normal)
         
+        self.balloon.isUserInteractionEnabled = true
+        let balloonTap = UITapGestureRecognizer(target: self, action: #selector(self.handleBalloonTap))
+        self.balloon.addGestureRecognizer(balloonTap)
+        
         // Check if user can download
         FIRDatabase.database().reference().child("canDownload").child(self.currentUser!.code!).observe(.value, with: { (snapshot) in
             StateService.shared.canDownload = snapshot.exists()
@@ -121,24 +126,41 @@ class AlarmClockViewController: UIViewController {
     }
     
     func updateTheme() {
-        SlidingFormPageConfig.sharedInstance.bgColor = ThemeService.shared.page_element_dark
-        SlidingFormPageConfig.sharedInstance.textColor = ThemeService.shared.text_light
-        SlidingFormPageConfig.sharedInstance.textColorHighlighted = ThemeService.shared.text_light_highlighted
-        SlidingFormPageConfig.sharedInstance.descColor = ThemeService.shared.text_grey_hightlighted
-        SlidingFormPageConfig.sharedInstance.warningColor = ThemeService.shared.text_warning
+        SlidingFormPageConfig.sharedInstance.bgColor = Theme.shared.form_bg
+        SlidingFormPageConfig.sharedInstance.textColor = Theme.shared.form_text
+        SlidingFormPageConfig.sharedInstance.textColorHighlighted = Theme.shared.form_text_highlighted
+        SlidingFormPageConfig.sharedInstance.descColor = Theme.shared.form_desc
+        SlidingFormPageConfig.sharedInstance.warningColor = Theme.shared.form_text_warning
         
-        self.bannerView.backgroundColor = ThemeService.shared.bg_dark
-        self.navLocLbl.textColor = ThemeService.shared.text_light
-        self.navTimeLbl.textColor = ThemeService.shared.text_light
-        self.navPeriodLbl.textColor = ThemeService.shared.text_light
-        self.addBtn.tintColor = ThemeService.shared.text_light
-        self.menuBtn.tintColor = ThemeService.shared.text_light
+        self.bannerView.backgroundColor = Theme.shared.banner_bg
+        self.navLocLbl.textColor = Theme.shared.banner_text
+        self.navTimeLbl.textColor = Theme.shared.banner_text
+        self.navPeriodLbl.textColor = Theme.shared.banner_text
+        self.addBtn.tintColor = Theme.shared.banner_btn
+        self.menuBtn.tintColor = Theme.shared.banner_btn
         
-        self.topMsgView.textColor = ThemeService.shared.text_dark
-        self.uploadBtn.tintColor = ThemeService.shared.page_element_dark
-        self.downloadBtn.tintColor = ThemeService.shared.page_element_dark
+        self.topMsgView.textColor = Theme.shared.banner_text // should separate
+        self.uploadBtn.tintColor = Theme.shared.upload_btn
+        self.downloadBtn.tintColor = Theme.shared.download_btn
         
         self.tableview.reloadData()
+    }
+    
+    func handleBalloonTap() {
+        let x = self.balloon.center.x
+        let y = self.balloon.center.y
+        let originalCenter = CGPoint(x: x, y: y)
+        UIView.animate(withDuration: 0.8, delay: 0, options: [.curveEaseIn], animations: { 
+            self.balloon.center = CGPoint(x: x, y: -self.balloon.frame.height)
+        })
+        
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (_) in
+            self.balloon.center = CGPoint(x: x, y: self.bannerView.frame.height+self.balloon.frame.height/2)
+            UIView.animate(withDuration: 0.8, delay: 2, options: [.curveEaseInOut], animations: {
+                self.balloon.center = originalCenter
+            }, completion: nil)
+        }
+        
     }
     
     func updateTopMsg() {
@@ -321,7 +343,7 @@ class AlarmClockViewController: UIViewController {
             SlidingFormPage.getInput(withTitle: NSLocalizedString("Partner's Code", comment: "SlidingForm"), isRequired: true, desc: NSLocalizedString("Please ask your partner for his/her Code.", comment: "SlidingForm"), defaultValue: settings.partnerCode, inputRule: "[A-Za-z0-9]{4,}", errorMsg: "长度至少四位，由字母和数字组成"),
             SlidingFormPage.getSelect(withTitle: NSLocalizedString("Your Timezone", comment: "SlidingForm"), desc: nil, selectOptions: ConstantService.shared.timeZoneNames, selectedOptionIndex: ConstantService.shared.index(of: settings.timeZone) ),
             SlidingFormPage.getSelect(withTitle: NSLocalizedString("Partner's Timezone", comment: "SlidingForm"), desc: nil, selectOptions: ConstantService.shared.timeZoneNames, selectedOptionIndex: ConstantService.shared.index(of: settings.partnerTimeZone)),
-            SlidingFormPage.getSelect(withTitle: NSLocalizedString("Theme", comment: "SlidingForm"), desc: nil, selectOptions: ThemeService.shared.themeStrs, selectedOptionIndex: ThemeService.shared.seletedThemeIndex),
+            SlidingFormPage.getSelect(withTitle: NSLocalizedString("Theme", comment: "SlidingForm"), desc: nil, selectOptions: Theme.shared.themeStrs, selectedOptionIndex: Theme.shared.seletedThemeIndex),
             SlidingFormPage.getInput(withTitle: NSLocalizedString("Your Email", comment: "SlidingForm"), desc: NSLocalizedString("Enter your email for better service.", comment: "SlidingForm"), defaultValue: settings.email),
             ]
         if StateService.shared.isMatched {
@@ -344,7 +366,7 @@ class AlarmClockViewController: UIViewController {
                 let oldPairCode = oldCode < oldPartnerCode ? oldCode+"-"+oldPartnerCode : oldPartnerCode+"-"+oldCode
                 let isCodeChanged = results[2] as? String != oldCode
                 let isPartnerCodeChanged = results[3] as? String != oldPartnerCode
-                let isThemeChanged = ((results[6] as! [Any])[0] as! Int) != ThemeService.shared.seletedThemeIndex
+                let isThemeChanged = ((results[6] as! [Any])[0] as! Int) != Theme.shared.seletedThemeIndex
                 
                 user.nickname = results[0] as! String
                 user.partnerNickname = results[1] as! String
@@ -352,7 +374,7 @@ class AlarmClockViewController: UIViewController {
                 user.partnerCode = results[3] as! String
                 user.timeZone = ConstantService.shared.timeZones[(results[4] as! [Any])[0] as! Int]
                 user.partnerTimeZone = ConstantService.shared.timeZones[(results[5] as! [Any])[0] as! Int]
-                user.theme = ThemeService.shared.themeStrs[(results[6] as! [Any])[0] as! Int]
+                user.theme = Theme.shared.themeStrs[(results[6] as! [Any])[0] as! Int]
                 user.email = results[7] as! String
                 
                 var updates = [String:Any]()
@@ -370,6 +392,7 @@ class AlarmClockViewController: UIViewController {
                 }
                 if isPartnerCodeChanged || isCodeChanged {
                     updates["/alarms/\(oldPairCode)"] = NSNull()
+                    UserService.shared.setCanUpload()
                 }
                 
                 if StateService.shared.isConnected {
@@ -388,7 +411,7 @@ class AlarmClockViewController: UIViewController {
                         }
                     })
                 } else {
-                    self.toast(NSLocalizedString("Unable to save data, please check your network connection.", comment: "保存失败，请检查网络连接。"), with: ThemeService.shared.bg_dark)
+                    self.toast(NSLocalizedString("Unable to save data, please check your network connection.", comment: "保存失败，请检查网络连接。"), with: UIColor(red: 0, green: 0, blue: 0, withAlpha: 0.8))
                 }
                 
         }
@@ -454,13 +477,13 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
                 let vc = NewAlarmClockViewController.vc(with: self.tabledata[indexPath.row])
                 self.present(vc, animated: true, completion: nil)
             }
-            edit.backgroundColor = ThemeService.shared.page_element_dark
+            edit.backgroundColor = Theme.shared.alarm_cell_edit_btn
             
             let delete = UITableViewRowAction(style: .destructive, title: NSLocalizedString("Delete", comment: "AlarmClock")) { (deleteAction, curIndexPath) in
                 
                 self.deleteData(atIndex: indexPath.row)
             }
-            delete.backgroundColor = ThemeService.shared.page_element_block
+            delete.backgroundColor = Theme.shared.alarm_cell_delete_btn
             
             return [delete, edit]
         } else {

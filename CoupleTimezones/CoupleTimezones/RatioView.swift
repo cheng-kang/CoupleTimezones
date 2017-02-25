@@ -24,10 +24,10 @@ class RatioView: UIView {
     var textLblAlphaUnselected: CGFloat = 0.7
     var dotViewAlphaUnselected: CGFloat = 0
     
-    var buttonBgColor: UIColor = ThemeService.shared.page_element_light
-    var buttonBorderColor: UIColor = ThemeService.shared.page_element_dark
-    var dotColor: UIColor = ThemeService.shared.page_element_block
-    var textColor: UIColor = ThemeService.shared.text_dark
+    var buttonBgColor: UIColor = Theme.shared.radio_bg
+    var buttonBorderColor: UIColor = Theme.shared.radio_border
+    var dotColor: UIColor = Theme.shared.radio_block
+    var textColor: UIColor = Theme.shared.radio_text_active
     var textFont: UIFont = UIFont(name: "FZYanSongS-R-GB", size: 20)!
     
     var buttonBgView = UIView()

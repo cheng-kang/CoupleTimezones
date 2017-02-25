@@ -26,6 +26,6 @@ class NoContentCell: UITableViewCell {
 
     func configureCell(withText text: String) {
         self.textLbl.text = text
-        self.textLbl.textColor = ThemeService.shared.text_dark
+        self.textLbl.textColor = Theme.shared.alarm_cell_text_inactive
     }
 }

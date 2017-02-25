@@ -29,7 +29,6 @@
 		ED660C401DA913B800411874 /* SlidingFormPageConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED660C3F1DA913B800411874 /* SlidingFormPageConfig.swift */; };
 		ED660C421DA928E500411874 /* SlidingFormElementSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED660C411DA928E500411874 /* SlidingFormElementSwitch.swift */; };
 		ED6FE6861E563967003E0EB2 /* StateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6FE6851E563967003E0EB2 /* StateService.swift */; };
-		ED6FE6881E579A97003E0EB2 /* ThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6FE6871E579A97003E0EB2 /* ThemeService.swift */; };
 		ED6FE68F1E5C931D003E0EB2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED6FE68E1E5C931D003E0EB2 /* NotificationCenter.framework */; };
 		ED6FE6921E5C931D003E0EB2 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6FE6911E5C931D003E0EB2 /* TodayViewController.swift */; };
 		ED6FE6951E5C931D003E0EB2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED6FE6931E5C931D003E0EB2 /* MainInterface.storyboard */; };
@@ -119,7 +118,6 @@
 		ED660C3F1DA913B800411874 /* SlidingFormPageConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingFormPageConfig.swift; sourceTree = "<group>"; };
 		ED660C411DA928E500411874 /* SlidingFormElementSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingFormElementSwitch.swift; sourceTree = "<group>"; };
 		ED6FE6851E563967003E0EB2 /* StateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateService.swift; sourceTree = "<group>"; };
-		ED6FE6871E579A97003E0EB2 /* ThemeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeService.swift; sourceTree = "<group>"; };
 		ED6FE68D1E5C931D003E0EB2 /* RememberWidget1.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RememberWidget1.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED6FE68E1E5C931D003E0EB2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		ED6FE6911E5C931D003E0EB2 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -336,7 +334,6 @@
 				ED945AD31E520D2200FC217E /* AlarmClockService.swift */,
 				ED945AD91E55DC3900FC217E /* NotifService.swift */,
 				ED6FE6851E563967003E0EB2 /* StateService.swift */,
-				ED6FE6871E579A97003E0EB2 /* ThemeService.swift */,
 				ED6FE6CE1E5F1417003E0EB2 /* ConstantService.swift */,
 				ED486A661E60D1E10046E156 /* Theme.swift */,
 			);
@@ -647,7 +644,6 @@
 				ED53921A1DA6D62800071709 /* NoContentCell.swift in Sources */,
 				ED53920F1DA65BEF00071709 /* RatioView.swift in Sources */,
 				ED6FE6861E563967003E0EB2 /* StateService.swift in Sources */,
-				ED6FE6881E579A97003E0EB2 /* ThemeService.swift in Sources */,
 				ED660C3C1DA90A1E00411874 /* SlidingFormElementCheckbox.swift in Sources */,
 				ED945AD61E54A76200FC217E /* AttentionCell.swift in Sources */,
 				ED5391DE1DA580E100071709 /* AlarmClockCell.swift in Sources */,

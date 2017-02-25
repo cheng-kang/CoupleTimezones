@@ -76,9 +76,6 @@
 /* Class = "UILabel"; text = "Repetance"; ObjectID = "r7W-3I-Zci"; */
 "r7W-3I-Zci.text" = "重复";
 
-/* Class = "UILabel"; text = "Remember"; ObjectID = "tyx-1d-06a"; */
-"tyx-1d-06a.text" = "记得";
-
 /* Class = "UILabel"; text = "Never"; ObjectID = "uxy-V6-7j1"; */
 "uxy-V6-7j1.text" = "永不";
 

@@ -56,11 +56,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         // Init SlidingForm Color
-        SlidingFormPageConfig.sharedInstance.bgColor = ThemeService.shared.page_element_dark
-        SlidingFormPageConfig.sharedInstance.textColor = ThemeService.shared.text_light
-        SlidingFormPageConfig.sharedInstance.textColorHighlighted = ThemeService.shared.text_light_highlighted
-        SlidingFormPageConfig.sharedInstance.descColor = ThemeService.shared.text_grey_hightlighted
-        SlidingFormPageConfig.sharedInstance.warningColor = ThemeService.shared.text_warning
+        SlidingFormPageConfig.sharedInstance.bgColor = Theme.shared.form_bg
+        SlidingFormPageConfig.sharedInstance.textColor = Theme.shared.form_text
+        SlidingFormPageConfig.sharedInstance.textColorHighlighted = Theme.shared.form_text_highlighted
+        SlidingFormPageConfig.sharedInstance.descColor = Theme.shared.form_desc
+        SlidingFormPageConfig.sharedInstance.warningColor = Theme.shared.form_text_warning
         
         return true
     }

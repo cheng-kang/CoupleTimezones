@@ -122,4 +122,8 @@ class NotifService: NSObject {
         
         Helpers.sharedInstance.toast(withString: identifier+" Local Notification Canceled!")
     }
+    
+    func removeAll() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    }
 }

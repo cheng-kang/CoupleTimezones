@@ -74,9 +74,9 @@ class SelectRepeatDayViewController: UIViewController {
         tableview.tableFooterView = UIView()
         
         // Init theme color
-        self.bannerView.backgroundColor = ThemeService.shared.bg_dark
-        self.titleLbl.textColor = ThemeService.shared.text_light
-        self.cancelBtn.tintColor = ThemeService.shared.text_light
+        self.bannerView.backgroundColor = Theme.shared.banner_bg
+        self.titleLbl.textColor = Theme.shared.banner_text
+        self.cancelBtn.tintColor = Theme.shared.banner_btn
         
         self.ratioPanelView.addSubview(allBtn)
         self.ratioPanelView.addSubview(weekdayBtn)

@@ -71,7 +71,7 @@ class UserService: NSObject {
     
     func setCanUpload(_ value: Bool = true) {
         self.get()!.canUpload = value
-        UserService.shared.save()
+        self.save()
         
         // Update canUpload state
         StateService.shared.canUpload = value

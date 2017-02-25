@@ -112,7 +112,28 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                         self.selfWeather!["high"] = (main["temp_max"] as! Double).description
                         self.selfWeather!["low"] = (main["temp_min"] as! Double).description
                         let icon = weather["icon"] as! String
-                        self.selfWeather!["icon"] = (weather["main"] as! String)+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        let wId = weather["id"] as! Int
+                        if wId > 950 {
+                            self.selfWeather!["icon"] = "Additional"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else if wId > 900 {
+                            self.selfWeather!["icon"] = "Extreme"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else if wId > 800 {
+                            self.selfWeather!["icon"] = "Clouds"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else if wId == 800 {
+                            self.selfWeather!["icon"] = "Clear"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else if wId > 700 {
+                            self.selfWeather!["icon"] = "Atmosphere"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else if wId > 600 {
+                            self.selfWeather!["icon"] = "Snow"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else if wId > 500 {
+                            self.selfWeather!["icon"] = "Rain"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else if wId > 300 {
+                            self.selfWeather!["icon"] = "Drizzle"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else if wId > 200 {
+                            self.selfWeather!["icon"] = "Thunderstorm"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else {
+                            self.selfWeather!["icon"] = "Atmosphered"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        }
                     } else {
                         self.isCityWrong = true
                     }
@@ -132,7 +153,28 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                         self.partnerWeather!["high"] = (main["temp_max"] as! Double).description
                         self.partnerWeather!["low"] = (main["temp_min"] as! Double).description
                         let icon = weather["icon"] as! String
-                        self.partnerWeather!["icon"] = (weather["main"] as! String)+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        let wId = weather["id"] as! Int
+                        if wId > 950 {
+                            self.partnerWeather!["icon"] = "Additional"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else if wId > 900 {
+                            self.partnerWeather!["icon"] = "Extreme"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else if wId > 800 {
+                            self.partnerWeather!["icon"] = "Clouds"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else if wId == 800 {
+                            self.partnerWeather!["icon"] = "Clear"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else if wId > 700 {
+                            self.partnerWeather!["icon"] = "Atmosphere"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else if wId > 600 {
+                            self.partnerWeather!["icon"] = "Snow"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else if wId > 500 {
+                            self.partnerWeather!["icon"] = "Rain"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else if wId > 300 {
+                            self.partnerWeather!["icon"] = "Drizzle"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else if wId > 200 {
+                            self.partnerWeather!["icon"] = "Thunderstorm"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        } else {
+                            self.partnerWeather!["icon"] = "Atmosphered"+icon.substring(from: icon.index(icon.endIndex, offsetBy: -1))
+                        }
                     } else {
                         self.isCityWrong = true
                     }

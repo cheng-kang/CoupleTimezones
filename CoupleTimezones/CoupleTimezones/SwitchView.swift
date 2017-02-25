@@ -22,10 +22,10 @@ class SwitchView: UIView {
     let height: CGFloat = 25
     let borderWidth: CGFloat = 1
     
-    var borderColor: UIColor = ThemeService.shared.page_element_block
-    var bgColor: UIColor = ThemeService.shared.page_element_light
-    var bgColorActive: UIColor = ThemeService.shared.page_element_dark
-    var buttonColor: UIColor = ThemeService.shared.page_element_block
+    var borderColor: UIColor = Theme.shared.switch_border
+    var bgColor: UIColor = Theme.shared.switch_bg_inactive
+    var bgColorActive: UIColor = Theme.shared.switch_bg_active
+    var buttonColor: UIColor = Theme.shared.switch_block
     
     let duration: Double = 0.2
     

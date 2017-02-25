@@ -37,6 +37,33 @@ class AlarmClockCell: UITableViewCell {
             AlarmClockService.shared.saveAndUploadSingle(self.alarmClock)
             // Reschedule local notification
             
+            if isActive {
+                for i in 0..<self.alarmClock.days.count {
+                    self.daysSquareViews[i].backgroundColor = self.alarmClock.days[i] ? Theme.shared.alarm_cell_day_active : Theme.shared.alarm_cell_day_inactive
+                }
+                self.isActiveSwitch.backgroundColor = Theme.shared.switch_bg_inactive
+                self.isActiveSwitch.layer.borderColor = Theme.shared.switch_border.cgColor
+                self.isActiveSwitch.bgLeftActiveView.backgroundColor = Theme.shared.switch_bg_active
+                self.isActiveSwitch.switchButtonView.backgroundColor = Theme.shared.switch_block
+                
+                self.periodLbl.textColor = Theme.shared.alarm_cell_text_active
+                self.timeLbl.textColor = Theme.shared.alarm_cell_text_active
+                self.locationLbl.textColor = Theme.shared.alarm_cell_text_active
+                self.contentLbl.textColor = Theme.shared.alarm_cell_text_active
+            } else {
+                for i in 0..<self.alarmClock.days.count {
+                    self.daysSquareViews[i].backgroundColor = Theme.shared.alarm_cell_day_inactive
+                }
+                self.isActiveSwitch.backgroundColor = Theme.shared.switch_bg_inactive
+                self.isActiveSwitch.layer.borderColor = Theme.shared.switch_bg_active.cgColor
+                self.isActiveSwitch.bgLeftActiveView.backgroundColor = Theme.shared.switch_bg_active
+                self.isActiveSwitch.switchButtonView.backgroundColor = Theme.shared.switch_bg_active
+                
+                self.periodLbl.textColor = Theme.shared.alarm_cell_text_inactive
+                self.timeLbl.textColor = Theme.shared.alarm_cell_text_inactive
+                self.locationLbl.textColor = Theme.shared.alarm_cell_text_inactive
+                self.contentLbl.textColor = Theme.shared.alarm_cell_text_inactive
+            }
             
         }
     }
@@ -86,13 +113,6 @@ class AlarmClockCell: UITableViewCell {
             let partnerTime = Helpers.sharedInstance.getDatetimeText(fromDate: dateInPartnerTimeZone, withFormat: "HH:mm")
             let partnerPeriod = Helpers.sharedInstance.getDatetimeText(fromDate: dateInPartnerTimeZone, withFormat: "a")
             
-//            var partnerCalendar = Calendar.current
-//            partnerCalendar.timeZone = TimeZone(identifier: currentUser.partnerTimeZone!)!
-//            let isYesterday = partnerCalendar.isDateInYesterday(Helpers.sharedInstance.getDateTodayAtTime(data.time!, inFormat: "HH:mm"))
-//            let isTommorrow = partnerCalendar.isDateInTomorrow(Helpers.sharedInstance.getDateTodayAtTime(data.time!, inFormat: "HH:mm"))
-//            let dayDiffString = isYesterday ? "-1 " : isTommorrow ? "+1 " : ""
-//            
-//            let partnerDesc: String = dayDiffString + currentUser.partnerNickname! + NSLocalizedString("'s Time", comment: "的时间")
             let partnerDesc: String = currentUser.partnerNickname! + NSLocalizedString("'s Time", comment: "的时间")
             partnerLabelTexts = (partnerTime, partnerPeriod, partnerDesc)
         } else {
@@ -106,12 +126,6 @@ class AlarmClockCell: UITableViewCell {
             
             myLabelTexts = (time, period, NSLocalizedString("My Time", comment: "我的时间"))
             
-//            var partnerCalendar = Calendar.current
-//            partnerCalendar.timeZone = TimeZone(identifier: currentUser.partnerTimeZone!)!
-//            let isYesterday = partnerCalendar.isDateInYesterday(Helpers.sharedInstance.getDateTodayAtTime(time, inFormat: "HH:mm"))
-//            let isTommorrow = partnerCalendar.isDateInTomorrow(Helpers.sharedInstance.getDateTodayAtTime(time, inFormat: "HH:mm"))
-//            let dayDiffString = isYesterday ? "-1 " : isTommorrow ? "+1 " : ""
-//            let partnerDesc: String = dayDiffString + currentUser.partnerNickname! + NSLocalizedString("'s Time", comment: "的时间")
             let partnerDesc: String = currentUser.partnerNickname! + NSLocalizedString("'s Time", comment: "的时间")
             
             partnerLabelTexts = (data.time!, data.period!, partnerDesc)
@@ -123,19 +137,34 @@ class AlarmClockCell: UITableViewCell {
             self.showMyText()
         }
         
-        for i in 0..<data.days.count {
-            daysSquareViews[i].backgroundColor = data.days[i] ? ThemeService.shared.day_square_dark : ThemeService.shared.day_square_light
+        
+        if data.isActive {
+            for i in 0..<data.days.count {
+                daysSquareViews[i].backgroundColor = data.days[i] ? Theme.shared.alarm_cell_day_active : Theme.shared.alarm_cell_day_inactive
+            }
+            isActiveSwitch.backgroundColor = Theme.shared.switch_bg_inactive
+            isActiveSwitch.layer.borderColor = Theme.shared.switch_border.cgColor
+            isActiveSwitch.bgLeftActiveView.backgroundColor = Theme.shared.switch_bg_active
+            isActiveSwitch.switchButtonView.backgroundColor = Theme.shared.switch_block
+            
+            self.periodLbl.textColor = Theme.shared.alarm_cell_text_active
+            self.timeLbl.textColor = Theme.shared.alarm_cell_text_active
+            self.locationLbl.textColor = Theme.shared.alarm_cell_text_active
+            self.contentLbl.textColor = Theme.shared.alarm_cell_text_active
+        } else {
+            for i in 0..<data.days.count {
+                daysSquareViews[i].backgroundColor = Theme.shared.alarm_cell_day_inactive
+            }
+            isActiveSwitch.backgroundColor = Theme.shared.switch_bg_inactive
+            isActiveSwitch.layer.borderColor = Theme.shared.switch_bg_active.cgColor
+            isActiveSwitch.bgLeftActiveView.backgroundColor = Theme.shared.switch_bg_active
+            isActiveSwitch.switchButtonView.backgroundColor = Theme.shared.switch_bg_active
+            
+            self.periodLbl.textColor = Theme.shared.alarm_cell_text_inactive
+            self.timeLbl.textColor = Theme.shared.alarm_cell_text_inactive
+            self.locationLbl.textColor = Theme.shared.alarm_cell_text_inactive
+            self.contentLbl.textColor = Theme.shared.alarm_cell_text_inactive
         }
-        
-        isActiveSwitch.backgroundColor = ThemeService.shared.page_element_light
-        isActiveSwitch.layer.borderColor = ThemeService.shared.page_element_block.cgColor
-        isActiveSwitch.bgLeftActiveView.backgroundColor = ThemeService.shared.page_element_dark
-        isActiveSwitch.switchButtonView.backgroundColor = ThemeService.shared.page_element_block
-        
-        self.periodLbl.textColor = ThemeService.shared.text_dark
-        self.timeLbl.textColor = ThemeService.shared.text_dark
-        self.locationLbl.textColor = ThemeService.shared.text_dark
-        self.contentLbl.textColor = ThemeService.shared.text_dark
         
         
         isActiveSwitch.initSwitch(data.isActive)

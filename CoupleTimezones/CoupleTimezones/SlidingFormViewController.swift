@@ -194,6 +194,7 @@ class SlidingFormViewController: UIViewController {
         
         // init page btns
         self.prevBtn.tintColor = config.textColor
+        self.prevBtn.setTitleColor(config.textColor, for: .normal)
         self.prevBtn.setTitleColor(config.textColorHighlighted, for: .highlighted)
         self.prevBtn.setTitleColor(config.textColorHighlighted, for: .disabled)
         
@@ -204,6 +205,7 @@ class SlidingFormViewController: UIViewController {
         }
         
         self.nextBtn.tintColor = config.textColor
+        self.nextBtn.setTitleColor(config.textColor, for: .normal)
         self.nextBtn.setTitleColor(config.textColorHighlighted, for: .highlighted)
         self.nextBtn.setTitleColor(config.textColorHighlighted, for: .disabled)
         

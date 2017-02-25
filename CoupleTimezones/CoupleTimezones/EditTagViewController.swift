@@ -25,19 +25,20 @@ class EditTagViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.tagFiled.delegate = self
         
-        self.tagFiled.layer.borderColor = ThemeService.shared.bg_dark.cgColor
+        self.tagFiled.layer.borderColor = Theme.shared.tag_input_border.cgColor
         self.tagFiled.layer.borderWidth = 1
         self.tagFiled.layer.cornerRadius = 4
+        self.tagFiled.textColor = Theme.shared.tag_input_text
         
         self.tagFiled.text = tag
         
         self.tagFiled.becomeFirstResponder()
         
         // Init theme color
-        self.bannerView.backgroundColor = ThemeService.shared.bg_dark
-        self.titleLbl.textColor = ThemeService.shared.text_light
-        self.backBtn.tintColor = ThemeService.shared.text_light
-        self.tagFiled.textColor = ThemeService.shared.text_dark
+        self.bannerView.backgroundColor = Theme.shared.banner_bg
+        self.titleLbl.textColor = Theme.shared.banner_text
+        self.backBtn.tintColor = Theme.shared.banner_btn
+        self.tagFiled.textColor = Theme.shared.banner_btn
     }
 
     override func didReceiveMemoryWarning() {

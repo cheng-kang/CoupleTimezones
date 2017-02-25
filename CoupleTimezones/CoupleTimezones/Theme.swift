@@ -11,18 +11,23 @@ import UIKit
 class Theme: NSObject {
     static let shared = Theme()
     
-    var themeStrs = ["default"]
+    var themeStrs: [String] = [
+        NSLocalizedString("default", comment: "默认")
+    ]
     var seletedThemeIndex: Int {
         return themeStrs.index(of: theme) ?? 0
     }
     var theme: String {
         if let userTheme = UserService.shared.get()?.theme {
-            return userTheme
+            if themeStrs.contains(userTheme) {
+                return userTheme
+            }
         }
-        return "default"
+        return NSLocalizedString("default", comment: "默认")
     }
     var colors: [String:[String:UIColor]] = [
-        "default": [
+        NSLocalizedString("default", comment: "默认"): [
+            "banner_bg": UIColor(red: 255, green: 255, blue: 255),
             "banner_btn": UIColor(red: 0, green: 0, blue: 0),
             "banner_text": UIColor(red: 0, green: 0, blue: 0),
             "banner_balloon": UIColor(red: 215, green: 22, blue: 27),
@@ -37,7 +42,7 @@ class Theme: NSObject {
             "download_btn": UIColor(red: 255, green: 255, blue: 255),
             "switch_border": UIColor(red: 0, green: 0, blue: 0),
             "switch_block": UIColor(red: 0, green: 0, blue: 0),
-            "switch_bg_active": UIColor(red: 93, green: 93, blue: 93),
+            "switch_bg_active": UIColor(red: 204, green: 204, blue: 204),
             "switch_bg_inactive": UIColor(red: 255, green: 255, blue: 255),
             "datepicker_text": UIColor(red: 0, green: 0, blue: 0),
             "edit_alarm_cell_title": UIColor(red: 0, green: 0, blue: 0),
@@ -52,12 +57,17 @@ class Theme: NSObject {
             "tag_input_text": UIColor(red: 0, green: 0, blue: 0),
             "form_bg": UIColor(red: 255, green: 255, blue: 255),
             "form_text": UIColor(red: 0, green: 0, blue: 0),
-            "form_text_warning": UIColor(red: 1, green: 1, blue: 0),
+            "form_desc": UIColor(red: 93, green: 93, blue: 93),
+            "form_text_highlighted": UIColor(red: 204, green: 204, blue: 204),
+            "form_text_warning": UIColor(red: 255, green: 0, blue: 0, alpha: 1),
             "form_text_error": UIColor(red: 255, green: 0, blue: 0),
             "form_btn": UIColor(red: 255, green: 255, blue: 255)
         ]
     ]
     
+    var banner_bg: UIColor {
+        return colors[theme]!["banner_bg"]!
+    }
     var banner_btn: UIColor {
         return colors[theme]!["banner_btn"]!
     }
@@ -87,6 +97,12 @@ class Theme: NSObject {
     }
     var alarm_cell_delete_btn: UIColor {
         return colors[theme]!["alarm_cell_delete_btn"]!
+    }
+    var upload_btn: UIColor {
+        return colors[theme]!["upload_btn"]!
+    }
+    var download_btn: UIColor {
+        return colors[theme]!["download_btn"]!
     }
     var switch_border: UIColor {
         return colors[theme]!["switch_border"]!
@@ -138,6 +154,12 @@ class Theme: NSObject {
     }
     var form_text: UIColor {
         return colors[theme]!["form_text"]!
+    }
+    var form_desc: UIColor {
+        return colors[theme]!["form_desc"]!
+    }
+    var form_text_highlighted: UIColor {
+        return colors[theme]!["form_text_highlighted"]!
     }
     var form_text_warning: UIColor {
         return colors[theme]!["form_text_warning"]!

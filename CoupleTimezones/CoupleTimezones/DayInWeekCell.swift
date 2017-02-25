@@ -23,7 +23,7 @@ class DayInWeekCell: UITableViewCell {
     func configureCell(withText text: String, isActive: Bool, switchOnCallback: ((_ isActive: Bool)->())?) {
         self.switchBtn.initSwitch(isActive, animated: true)
         self.textLbl.text = text
-        self.textLbl.textColor = ThemeService.shared.text_dark
+        self.textLbl.textColor = Theme.shared.repeat_cell_text
         self.switchOnCallback = switchOnCallback
         
         self.switchBtn.toggleSwitchCallback = { isActive in
