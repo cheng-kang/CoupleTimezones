@@ -66,6 +66,9 @@
 		EDC5211E1DA9ABC4007039FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDC521201DA9ABC4007039FC /* Localizable.strings */; };
 		EDC521231DA9ABC4007039FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDC521251DA9ABC4007039FC /* InfoPlist.strings */; };
 		EDC521631DB0E9DC007039FC /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC521621DB0E9DC007039FC /* AlertViewController.swift */; };
+		EDCE027B1E636681006D676D /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCE027A1E636681006D676D /* AudioKit.framework */; };
+		EDCE027C1E636681006D676D /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDCE027A1E636681006D676D /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EDCE027F1E63684A006D676D /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCE027E1E63684A006D676D /* RecordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +91,17 @@
 				ED6FE6991E5C931D003E0EB2 /* RememberWidget1.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDCE027D1E636681006D676D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EDCE027C1E636681006D676D /* AudioKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -158,6 +172,8 @@
 		EDC5211F1DA9ABC4007039FC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EDC521241DA9ABC4007039FC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		EDC521621DB0E9DC007039FC /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		EDCE027A1E636681006D676D /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioKit.framework; sourceTree = "<group>"; };
+		EDCE027E1E63684A006D676D /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDCE027B1E636681006D676D /* AudioKit.framework in Frameworks */,
 				CB54568702E47198AF705E21 /* Pods_CoupleTimezones.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,6 +240,7 @@
 				ED5392151DA6832900071709 /* SelectRepeatDayViewController.swift */,
 				ED5392171DA6CDF400071709 /* EditTagViewController.swift */,
 				EDC521621DB0E9DC007039FC /* AlertViewController.swift */,
+				EDCE027E1E63684A006D676D /* RecordViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -343,6 +361,7 @@
 		EDB1F90D1DA55E6A00540AEA = {
 			isa = PBXGroup;
 			children = (
+				EDCE027A1E636681006D676D /* AudioKit.framework */,
 				ED945ACC1E51F9A700FC217E /* localdata.xcdatamodeld */,
 				EDB1F9181DA55E6B00540AEA /* CoupleTimezones */,
 				ED6FE6901E5C931D003E0EB2 /* RememberWidget1 */,
@@ -426,6 +445,7 @@
 				9AECB12EE505B5B0523EFDB8 /* [CP] Embed Pods Frameworks */,
 				EBE9E66262F929A7A7C9F469 /* [CP] Copy Pods Resources */,
 				ED6FE69D1E5C931D003E0EB2 /* Embed App Extensions */,
+				EDCE027D1E636681006D676D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -652,6 +672,7 @@
 				ED6FE6CF1E5F1417003E0EB2 /* ConstantService.swift in Sources */,
 				ED945AD81E54F66900FC217E /* LoadingView.swift in Sources */,
 				ED6FE6C11E5DF80D003E0EB2 /* PersistentContainer.swift in Sources */,
+				EDCE027F1E63684A006D676D /* RecordViewController.swift in Sources */,
 				ED945ADA1E55DC3900FC217E /* NotifService.swift in Sources */,
 				ED5392161DA6832900071709 /* SelectRepeatDayViewController.swift in Sources */,
 			);
@@ -869,6 +890,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CoupleTimezones/CoupleTimezones.entitlements;
 				DEVELOPMENT_TEAM = SLMFH6GDG4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CoupleTimezones/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.chengkang.CoupleTimezones;
@@ -885,6 +910,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CoupleTimezones/CoupleTimezones.entitlements;
 				DEVELOPMENT_TEAM = SLMFH6GDG4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CoupleTimezones/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.chengkang.CoupleTimezones;
