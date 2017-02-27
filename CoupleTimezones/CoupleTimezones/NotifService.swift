@@ -72,7 +72,7 @@ class NotifService: NSObject {
                         content.userInfo = ["id": "\(alarmClock.id!)-\(i)", "sound": "How_Long_Will_I_Love_You"]
                         
                         var dateInfo = DateComponents()
-                        dateInfo.weekday = i == 6 ? 1 : i+1
+                        dateInfo.weekday = i == 6 ? 1 : i+2
                         dateInfo.hour = Int(hour)
                         dateInfo.minute = Int(minute)
                         let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)
