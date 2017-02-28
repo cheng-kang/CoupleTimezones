@@ -80,7 +80,7 @@ class RecordViewController: UIViewController {
     @IBAction func startBtnOnClick(sender: UIButton) {
         switch state {
         case .readyToRecord :
-            statusLbl.text = "Recording..."
+            statusLbl.text = "Recording"
             startBtn.setTitle("Stop", for: .normal)
             state = .recording
             // microphone will be monitored while recording
@@ -133,8 +133,6 @@ class RecordViewController: UIViewController {
         do {
             try recorder?.reset()
             self.state = .readyToRecord
-            self.statusLbl.text = "Ready to record"
-            self.startBtn.setTitle("Record", for: .normal)
         } catch { print("Errored resetting.") }
     }
 

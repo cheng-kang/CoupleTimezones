@@ -1169,11 +1169,11 @@
                                     <constraint firstAttribute="bottom" secondItem="Qwe-bB-zYw" secondAttribute="bottom" constant="8" id="tdL-jF-BKk"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cH-iR-sYf" customClass="AKOutputWaveformPlot" customModule="AudioKit">
-                                <rect key="frame" x="187" y="45" width="188" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sgf-I8-uvy" customClass="AKNodeOutputPlot" customModule="AudioKit">
+                                <rect key="frame" x="0.0" y="0.0" width="188" height="140"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="0Vr-Jw-oQ8"/>
+                                    <constraint firstAttribute="height" constant="140" id="1yw-tT-Ekm"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ready to record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dz-A8-kIo">
@@ -1211,17 +1211,17 @@
                                 <fontDescription key="fontDescription" name="FZYANS_JW--GB1-0" family="FZYanSongS-R-GB" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sgf-I8-uvy" customClass="AKNodeOutputPlot" customModule="AudioKit">
-                                <rect key="frame" x="-1" y="45" width="188" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cH-iR-sYf" customClass="AKOutputWaveformPlot" customModule="AudioKit">
+                                <rect key="frame" x="187" y="0.0" width="188" height="140"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="1yw-tT-Ekm"/>
+                                    <constraint firstAttribute="height" constant="140" id="0Vr-Jw-oQ8"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6cH-iR-sYf" firstAttribute="top" secondItem="5zj-oF-evT" secondAttribute="top" constant="45" id="0De-wf-pLN"/>
+                            <constraint firstItem="6cH-iR-sYf" firstAttribute="top" secondItem="5zj-oF-evT" secondAttribute="top" id="0De-wf-pLN"/>
                             <constraint firstAttribute="trailing" secondItem="1Xq-pt-nYC" secondAttribute="trailing" id="3GJ-1Q-6ZK"/>
                             <constraint firstItem="6cH-iR-sYf" firstAttribute="width" secondItem="Sgf-I8-uvy" secondAttribute="width" id="ChA-XZ-eTX"/>
                             <constraint firstAttribute="trailing" secondItem="6cH-iR-sYf" secondAttribute="trailing" id="G06-PJ-eax"/>
@@ -1239,7 +1239,7 @@
                             <constraint firstItem="1Xq-pt-nYC" firstAttribute="centerY" secondItem="P63-C2-cpR" secondAttribute="centerY" id="aT0-Po-EmO"/>
                             <constraint firstItem="c7j-WW-8uY" firstAttribute="top" secondItem="5zj-oF-evT" secondAttribute="top" id="cb5-vZ-qgA"/>
                             <constraint firstItem="P63-C2-cpR" firstAttribute="width" secondItem="5zj-oF-evT" secondAttribute="width" multiplier="0.5" id="g54-72-YSX"/>
-                            <constraint firstItem="Sgf-I8-uvy" firstAttribute="top" secondItem="5zj-oF-evT" secondAttribute="top" constant="45" id="hhT-kT-f6v"/>
+                            <constraint firstItem="Sgf-I8-uvy" firstAttribute="top" secondItem="5zj-oF-evT" secondAttribute="top" id="hhT-kT-f6v"/>
                             <constraint firstAttribute="trailing" secondItem="c7j-WW-8uY" secondAttribute="trailing" id="hui-Cc-3Ap"/>
                             <constraint firstItem="P63-C2-cpR" firstAttribute="leading" secondItem="5zj-oF-evT" secondAttribute="leading" id="pWJ-GG-Ldi"/>
                             <constraint firstItem="Sgf-I8-uvy" firstAttribute="width" secondItem="5zj-oF-evT" secondAttribute="width" multiplier="0.5" id="uXf-z5-vhN"/>
