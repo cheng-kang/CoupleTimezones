@@ -309,7 +309,7 @@ class AlarmClockViewController: UIViewController {
     
     func deleteData(atIndex idx: Int) {
         // Pop out the item
-        let item = self.tabledata.remove(at: StateService.shared.isMatched ? idx : idx - 1)
+        let item = self.tabledata.remove(at: idx)
         // Refresh table before deleting the record from database
         // So that it won't occur the case that
         // the cell to be deleted display on screen with no data
@@ -473,15 +473,21 @@ extension AlarmClockViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         if tabledata.count > 0 {
+            var row = 0
+            if StateService.shared.isMatched {
+                row = indexPath.row
+            } else {
+                row = indexPath.row - 1
+            }
             let edit = UITableViewRowAction(style: .normal, title: NSLocalizedString("Edit", comment: "AlarmClock")) { (editAction, curIndexPath) in
-                let vc = NewAlarmClockViewController.vc(with: self.tabledata[indexPath.row])
+                let vc = NewAlarmClockViewController.vc(with: self.tabledata[row])
                 self.present(vc, animated: true, completion: nil)
             }
             edit.backgroundColor = Theme.shared.alarm_cell_edit_btn
             
             let delete = UITableViewRowAction(style: .destructive, title: NSLocalizedString("Delete", comment: "AlarmClock")) { (deleteAction, curIndexPath) in
                 
-                self.deleteData(atIndex: indexPath.row)
+                self.deleteData(atIndex: row)
             }
             delete.backgroundColor = Theme.shared.alarm_cell_delete_btn
             
