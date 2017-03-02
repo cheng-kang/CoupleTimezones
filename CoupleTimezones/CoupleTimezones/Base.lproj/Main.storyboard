@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;I live upstream and you downstream, From night to night of you I dream.&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LUG-R0-ti1">
-                                <rect key="frame" x="30" y="598" width="315" height="49"/>
+                                <rect key="frame" x="30" y="598.5" width="315" height="48.5"/>
                                 <fontDescription key="fontDescription" name="FZMINGSTJW--GB1-0" family="FZMingShangTiS-R-GB" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -114,7 +114,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="洛杉矶" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6O-YN-Gwo">
-                                        <rect key="frame" x="46" y="43" width="97" height="12"/>
+                                        <rect key="frame" x="46" y="42.5" width="97" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="12" id="m7E-Il-Q7n"/>
                                         </constraints>
@@ -148,7 +148,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上午" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHD-7e-ssw">
-                                        <rect key="frame" x="232" y="43" width="97" height="12"/>
+                                        <rect key="frame" x="232" y="42.5" width="97" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="12" id="tah-OW-S73"/>
                                         </constraints>
@@ -454,6 +454,7 @@
                         <outlet property="addBtn" destination="Tq0-mM-RG7" id="UOz-da-cms"/>
                         <outlet property="balloon" destination="KQJ-Ko-oFd" id="Te7-Fc-9C8"/>
                         <outlet property="bannerView" destination="Khx-DP-at7" id="RlQ-ZR-325"/>
+                        <outlet property="bottomLine" destination="ee5-Cc-uH1" id="8ZG-7y-N36"/>
                         <outlet property="downloadBtn" destination="ibQ-V6-BEF" id="C6p-Sj-YZ2"/>
                         <outlet property="menuBtn" destination="PhP-jJ-jEB" id="Czy-Oh-6AW"/>
                         <outlet property="navLocLbl" destination="k6O-YN-Gwo" id="JfC-6Z-lb6"/>
@@ -855,6 +856,7 @@
                     </view>
                     <connections>
                         <outlet property="bannerBiew" destination="j6K-o1-Tnw" id="aRA-D7-RWh"/>
+                        <outlet property="bottomLine" destination="1Oq-cj-LeH" id="CZH-PZ-4rN"/>
                         <outlet property="cancelBtn" destination="yqE-cW-Y0G" id="WWQ-Of-kSz"/>
                         <outlet property="datePicker" destination="qV8-6n-Fi6" id="NAu-Ht-K7v"/>
                         <outlet property="saveBtn" destination="emS-iX-Yfm" id="skc-to-iE8"/>
@@ -893,7 +895,7 @@
                                             <action selector="backBtnClcik:" destination="2uT-AQ-Llm" eventType="touchUpInside" id="f5s-iS-lgu"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Repetance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7W-3I-Zci">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Repeat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7W-3I-Zci">
                                         <rect key="frame" x="46" y="21" width="283" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="ORm-Id-YZJ"/>
@@ -1003,6 +1005,7 @@
                     </view>
                     <connections>
                         <outlet property="bannerView" destination="qIA-td-62j" id="OBP-Pr-UkS"/>
+                        <outlet property="bottomLine" destination="HPs-mm-B9t" id="Dyv-BW-IeI"/>
                         <outlet property="cancelBtn" destination="eCp-Vo-EWy" id="Zab-8F-ELQ"/>
                         <outlet property="ratioPanelView" destination="d4B-kl-aJK" id="300-UO-77D"/>
                         <outlet property="tableview" destination="9Xv-il-gFA" id="pb5-F8-big"/>
@@ -1096,6 +1099,7 @@
                     <connections>
                         <outlet property="backBtn" destination="Aw3-Ew-hn0" id="dEK-bK-zbw"/>
                         <outlet property="bannerView" destination="Dc2-b0-2Gt" id="eEf-cv-YK4"/>
+                        <outlet property="bottomLine" destination="tJR-2D-gPh" id="lgp-Uu-jsU"/>
                         <outlet property="tagFieldCenterY" destination="Ksv-S6-r7B" id="RdO-JD-ci2"/>
                         <outlet property="tagFiled" destination="EHf-jn-3Y0" id="1Er-Ed-owr"/>
                         <outlet property="titleLbl" destination="vnJ-ZG-AHn" id="hI0-Z6-68f"/>

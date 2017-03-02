@@ -18,12 +18,13 @@ class NewAlarmClockViewController: UIViewController {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var bottomLine: UIView!
     
     var data: AlarmClock!
     var isNew = true
     var dataIndex = 0
     
-    var settings = [NSLocalizedString("Repetance", comment: "AlarmClock"), NSLocalizedString("Tag", comment: "AlarmClock")]
+    var settings = [NSLocalizedString("Repeat", comment: "AlarmClock"), NSLocalizedString("Tag", comment: "AlarmClock")]
     
     var textForRepeat: String {
         var count = 0
@@ -72,6 +73,7 @@ class NewAlarmClockViewController: UIViewController {
         
         // Init theme color
         self.bannerBiew.backgroundColor = Theme.shared.banner_bg
+        self.bottomLine.backgroundColor = Theme.shared.banner_bottom_line
         self.cancelBtn.tintColor = Theme.shared.banner_btn
         self.saveBtn.tintColor = Theme.shared.banner_btn
         self.titleLbl.textColor = Theme.shared.banner_text

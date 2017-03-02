@@ -11,6 +11,7 @@ import UIKit
 class SelectRepeatDayViewController: UIViewController {
 
     @IBOutlet weak var bannerView: UIView!
+    @IBOutlet weak var bottomLine: UIView!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var ratioPanelView: UIView!
@@ -75,6 +76,7 @@ class SelectRepeatDayViewController: UIViewController {
         
         // Init theme color
         self.bannerView.backgroundColor = Theme.shared.banner_bg
+        self.bottomLine.backgroundColor = Theme.shared.banner_bottom_line
         self.titleLbl.textColor = Theme.shared.banner_text
         self.cancelBtn.tintColor = Theme.shared.banner_btn
         

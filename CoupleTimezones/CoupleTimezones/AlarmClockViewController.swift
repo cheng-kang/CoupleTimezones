@@ -21,6 +21,7 @@ class AlarmClockViewController: UIViewController {
     @IBOutlet weak var uploadBtn: UIButton!
     @IBOutlet weak var downloadBtn: UIButton!
     @IBOutlet var uploadBtnToRight: NSLayoutConstraint!
+    @IBOutlet weak var bottomLine: UIView!
     
     @IBOutlet weak var tableview: UITableView!
     let loadingView = LoadingView()
@@ -77,6 +78,7 @@ class AlarmClockViewController: UIViewController {
         self.uploadBtn.setImage(uploadImage, for: .normal)
         self.downloadBtn.setImage(downloadImage, for: .normal)
         
+        self.balloon.image = UIImage(named: "Balloon")?.withRenderingMode(.alwaysTemplate)
         self.balloon.isUserInteractionEnabled = true
         let balloonTap = UITapGestureRecognizer(target: self, action: #selector(self.handleBalloonTap))
         self.balloon.addGestureRecognizer(balloonTap)
@@ -138,6 +140,8 @@ class AlarmClockViewController: UIViewController {
         self.navPeriodLbl.textColor = Theme.shared.banner_text
         self.addBtn.tintColor = Theme.shared.banner_btn
         self.menuBtn.tintColor = Theme.shared.banner_btn
+        self.bottomLine.backgroundColor = Theme.shared.banner_bottom_line
+        self.balloon.tintColor = Theme.shared.banner_balloon
         
         self.topMsgView.textColor = Theme.shared.banner_text // should separate
         self.uploadBtn.tintColor = Theme.shared.upload_btn

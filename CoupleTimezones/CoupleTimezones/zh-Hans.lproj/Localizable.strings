@@ -13,6 +13,9 @@
 /* 澳大利亚 */
 "Australia" = "澳大利亚";
 
+/* 天蓝 */
+"Azure" = "天蓝";
+
 /* 加拿大 */
 "Canada" = "加拿大";
 
@@ -25,8 +28,14 @@
 /* 神秘代码已被占用。 */
 "Code is used by someone else." = "神秘代码已被占用。";
 
+/* 默认 */
+"Default" = "默认";
+
 /* AlarmClock */
 "Delete" = "删除";
+
+/* 牛仔 */
+"Denim" = "牛仔";
 
 /* SlidingForm */
 "Description:" = "说明：";
@@ -39,6 +48,9 @@
 
 /* AlarmClock */
 "Edit" = "编辑";
+
+/* 祖母绿 */
+"Emerald" = "祖母绿";
 
 /* SlidingForm */
 "Enter your email for better service." = "输入你的 email 已获得更多服务。";
@@ -65,6 +77,9 @@
 /* Repetance */
 "Friday" = "每周五";
 
+/* 海棠 */
+"Fuchsia" = "海棠";
+
 /* 德国 */
 "Germany" = "德国";
 
@@ -74,8 +89,14 @@
 /* 意大利 */
 "Italy" = "意大利";
 
+/* 翡翠 */
+"Jade" = "翡翠";
+
 /* 日本 */
 "Japan" = "日本";
+
+/* 柠檬 */
+"Lemon" = "柠檬";
 
 /* 正在匹配你的对象…… */
 "Matching partner..." = "正在匹配你的对象……";
@@ -162,7 +183,7 @@ Usage: When the two codes (your code and your partner's code) match with another
 "Remind %@" = "提醒%@";
 
 /* AlarmClock */
-"Repetance" = "重复";
+"Repeat" = "重复";
 
 /* AlarmClock */
 "Sat" = "六";
@@ -271,9 +292,6 @@ Like: ❤️ Together for 8 months 18 days ❤️" = "设置你们恋爱开始�
 
 /* 天 */
 "days" = "天";
-
-/* 默认 */
-"default" = "默认";
 
 /* 现在 %@ */
 "it's %@ now" = "现在时间 %@";

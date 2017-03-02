@@ -91,15 +91,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                 UserService.shared.save()
                                 
                                 if StateService.shared.isConnected {
-                                    FIRDatabase.database().reference().child("users").updateChildValues(
-                                        [
-                                            user.code!: [
-                                                "city": user.city!,
-                                                "partnerCity": user.partnerCity!,
-                                                "country": user.country!,
-                                                "partnerCountry": user.partnerCountry!
-                                            ]
-                                        ], withCompletionBlock: { (error, ref) in
+                                    var updates = [String:Any]()
+                                    updates["users/\(user.code!)/city"] = user.city!
+                                    updates["users/\(user.code!)/partnerCity"] = user.partnerCity!
+                                    updates["users/\(user.code!)/country"] = user.country!
+                                    updates["users/\(user.code!)/partnerCountry"] = user.partnerCountry!
+                                    FIRDatabase.database().reference().updateChildValues(
+                                        updates, withCompletionBlock: { (error, ref) in
                                             if error == nil {
                                                 // Pop up alert: Set up success.
                                             } else {

@@ -73,7 +73,7 @@
 /* Class = "UIButton"; normalTitle = "上一页"; ObjectID = "phY-MS-UkF"; */
 "phY-MS-UkF.normalTitle" = "上一页";
 
-/* Class = "UILabel"; text = "Repetance"; ObjectID = "r7W-3I-Zci"; */
+/* Class = "UILabel"; text = "Repeat"; ObjectID = "r7W-3I-Zci"; */
 "r7W-3I-Zci.text" = "重复";
 
 /* Class = "UILabel"; text = "Never"; ObjectID = "uxy-V6-7j1"; */

@@ -11,6 +11,7 @@ import UIKit
 class EditTagViewController: UIViewController {
     
     @IBOutlet weak var bannerView: UIView!
+    @IBOutlet weak var bottomLine: UIView!
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var tagFiled: UITextField!
@@ -36,6 +37,7 @@ class EditTagViewController: UIViewController {
         
         // Init theme color
         self.bannerView.backgroundColor = Theme.shared.banner_bg
+        self.bottomLine.backgroundColor = Theme.shared.banner_bottom_line
         self.titleLbl.textColor = Theme.shared.banner_text
         self.backBtn.tintColor = Theme.shared.banner_btn
         self.tagFiled.textColor = Theme.shared.banner_btn
